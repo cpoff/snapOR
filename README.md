@@ -23,6 +23,7 @@ To contribute:
 	Local workflow:
 		pull from master
 		Create you own branch
+		merge master with your branch
 		Work from your branch
 		Commit to your branch
 		Push from your branch
