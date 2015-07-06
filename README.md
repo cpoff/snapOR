@@ -16,3 +16,15 @@ Nate:
 Curt:
 
 initial BDD descriptions:
+
+To contribute:
+	Local workflow:
+		pull from master
+		Create you own branch
+		Work from your branch
+		Commit to your branch
+		Push from your branch
+	Remote workflow:
+		create a remote branch that has the same name as your local branch
+		after a push, submit a pull request
+
