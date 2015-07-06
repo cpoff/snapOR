@@ -12,10 +12,11 @@ api's :
 
 central goals for mvp:
 
+
 area's of responsibility:
-Angela:
-Nate:
-Curt:
+Angela: stateparks api [pull out features]
+Nate: google maps api
+Curt: photos
 
 initial BDD descriptions:
 
