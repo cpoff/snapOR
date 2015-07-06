@@ -23,7 +23,7 @@ Outline of mvp [Website](https://bubbl.us/mindmap?h=2b3e64/5740cb/28h3pIVw29bJE)
 ##To contribute
 ######Local workflow
 * Pull from master
-* Create you own branch
+* Create your own branch
 * Merge master with your branch
 * Work from your branch
 * Commit to your branch
