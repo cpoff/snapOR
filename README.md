@@ -21,13 +21,13 @@ Outline of mvp [Website](https://bubbl.us/mindmap?h=2b3e64/5740cb/28h3pIVw29bJE)
 ##Initial BDD descriptions:
 
 ##To contribute:
-	###Local workflow:
-		* Pull from master
-		* Create you own branch
-		* Merge master with your branch
-		* Work from your branch
-		* Commit to your branch
-		* Push from your branch
-	###Remote workflow:
-		* Create a remote branch that has the same name as your local branch
-		* After a push, submit a pull request
+###Local workflow:
+* Pull from master
+* Create you own branch
+* Merge master with your branch
+* Work from your branch
+* Commit to your branch
+* Push from your branch
+###Remote workflow:
+* Create a remote branch that has the same name as your local branch
+* After a push, submit a pull request
