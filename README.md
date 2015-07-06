@@ -13,10 +13,11 @@ Outline of Website: https://bubbl.us/mindmap?h=2b3e64/5740cb/28h3pIVw29bJE
 
 central goals for mvp:
 
+
 area's of responsibility:
-Angela:
-Nate:
-Curt:
+Angela: stateparks api [pull out features]
+Nate: google maps api
+Curt: photos
 
 initial BDD descriptions:
 
