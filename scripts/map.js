@@ -6,6 +6,14 @@ function initialize(){
 		mapTypeId : google.maps.MapTypeId.TERRAIN //additional options:ROADMAP, SATELLITE, HYBRID
 	}
 	var map = new google.maps.Map(mapCanvas, mapOptions);
+
+	var myMarker = new google.maps.LatLng(44, -121);
+	var marker = new google.maps.Marker({
+		position: myMarker,
+		// map: map,
+		title: 'Bend'
+	});
+	marker.setMap(map);
 }
 
 google.maps.event.addDomListener(window, 'load', initialize); //loads the map on the page once the html is loaded
