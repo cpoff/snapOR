@@ -39,7 +39,21 @@ function initialize(){
 		agate_info.open(map, agate_marker);
 	})
 	//next step: create a function that loops through all of the oregon state parks and creates a marker with an info window
-
+	for(var i = 0; i<parkArray.length; i++){
+		var marker_position = new google.maps.LatLng(parkArray[i].latitude, parkArray[i].longitude);
+		var info = new google.maps.InfoWindow({
+			content: "<div><p>" + parkArray[i].name + "<p></div>"
+		});
+		var marker = new google.maps.Marker({
+			position: marker_position,
+			map: map,
+			title: parkArray[i].name,
+			animation: google.maps.Animation.DROP,
+		});
+		google.maps.event.addListener(marker, 'click', function(){
+			info.open(map, marker);
+		});
+	}
 }
 
 google.maps.event.addDomListener(window, 'load', initialize); //loads the map on the page once the html is loaded

@@ -14,13 +14,13 @@ function latLong () {
   })
 };
 
-console.log(parkArray[1]);
+// console.log(parkArray[1]);
 
 function go() {
   $.ajax(url, {data: data})
   .then(function(data, status, xhr) {
-    console.log("data");
-    console.log(data);
+    // console.log("data");
+    // console.log(data);
     parkData = data;
     latLong();
   })
