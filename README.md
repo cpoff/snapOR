@@ -29,6 +29,11 @@ Outline of mvp [Website](https://bubbl.us/mindmap?h=2b3e64/5740cb/28h3pIVw29bJE)
 * Commit to your branch
 * Push from your branch
 
+##Fonts:
+*Satisfy
+*Roboto
+*Roboto Slab
+
 ######Remote workflow
 * Create a remote branch that has the same name as your local branch
 * After a push, submit a pull request
