@@ -1,4 +1,24 @@
+.title{
+	width: 10%;
+	background-color: #FEC63D;
+}
+
+.ul_flex{
+	width: 70%;
+	display: -webkit-flex;
+	-webkit-flex-direction: row;
+	justify-content: flex-end;
+/*	display: flex;
+	flex-direction: row;*/
+}
+
+li{
+	background-color: gray;
+	margin-left: 1%;
+}
+
+
 #map_canvas{
-	height: 400px;
-	width: 400px;
+	height: 300px;
+	width: 500px;
 }
