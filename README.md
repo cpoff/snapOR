@@ -13,7 +13,7 @@ landing page [wireframe](https://wireframe.cc/3Nwtr2)
 
 Outline of mvp [Website](https://bubbl.us/mindmap?h=2b3e64/5740cb/28h3pIVw29bJE)
 
-##Area's of responsibility
+##Areas of responsibility
 * Angela: stateparks api [pull out features], css, server, register domain name, fonts
 * Nate: google maps api, database (orchestrate), backbone
 * Curt: photos, tests, heroku, bdd descriptions
