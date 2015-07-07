@@ -38,7 +38,16 @@ function initialize(){
 	google.maps.event.addListener(agate_marker, 'click', function(){
 		agate_info.open(map, agate_marker);
 	})
-	//next step: create a function that loops through all of the oregon state parks and creates a marker with an info window
+	next step: create a function that loops through all of the oregon state parks and creates a marker with an info window
+function initialize(){
+	var mapCanvas = document.getElementById('map_canvas');
+	var Bend = new google.maps.LatLng(44.058173, -121.31531);
+	var mapOptions = {
+		center : Bend,
+		zoom : 6,
+		mapTypeId : google.maps.MapTypeId.TERRAIN
+	}
+	var map = new google.maps.Map(mapCanvas, mapOptions);
 	for(var i = 0; i<parkArray.length; i++){
 		var marker_position = new google.maps.LatLng(parkArray[i].latitude, parkArray[i].longitude);
 		var info = new google.maps.InfoWindow({
@@ -55,5 +64,5 @@ function initialize(){
 		});
 	}
 }
-
 google.maps.event.addDomListener(window, 'load', initialize); //loads the map on the page once the html is loaded
+
