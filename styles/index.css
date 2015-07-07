@@ -1,3 +1,20 @@
+/*************************
+Variables
+*************************/
+/*
+font-family: 'Lora', serif;
+font-family: 'Satisfy', cursive;
+font-family: 'Open Sans Condensed', sans-serif;
+
+red: #EB584E;
+blue: #1E749E;
+yellow: #EEC54B
+*/
+
+/*************************
+Header & Nav 
+*************************/
+
 .title{
 	width: 10%;
 	background-color: #FEC63D;
@@ -13,3 +30,11 @@ li{
 	height: 300px;
 	width: 500px;
 }
+
+/*************************
+Ind. Park Page
+*************************/
+
+/*************************
+Photo Search
+*************************/
