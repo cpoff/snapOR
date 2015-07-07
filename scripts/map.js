@@ -19,13 +19,27 @@ function initialize(){
 		position: Bend,
 		map: map,
 		title: 'Bend',
-		draggable: true,
 		animation: google.maps.Animation.DROP,
 	});
 	// marker.setMap(map); additional method to set the marker on map
-	google.maps.event.addDomListener(Bend_marker, 'click', function(){
+	google.maps.event.addListener(Bend_marker, 'click', function(){
 		infowindow.open(map, Bend_marker);
 	})
+	var agate_Beach_State_Recreation_Site = new google.maps.LatLng(44.659645, -124.056381);
+	var agate_info = new google.maps.InfoWindow({
+		content: "<div><p><a href='http:www.oregonstateparks.org/index.cfm?do=parkPage.dsp_parkPage&parkId=152'>Agate Beach State Recreation Site</a><p></div>"
+	});
+	var agate_marker = new google.maps.Marker({
+		position: agate_Beach_State_Recreation_Site,
+		map: map,
+		title: 'Agate Beach State Recreation Site',
+		animation: google.maps.Animation.DROP,
+	});
+	google.maps.event.addListener(agate_marker, 'click', function(){
+		agate_info.open(map, agate_marker);
+	})
+	//next step: create a function that loops through all of the oregon state parks and creates a marker with an info window
+
 }
 
 google.maps.event.addDomListener(window, 'load', initialize); //loads the map on the page once the html is loaded
