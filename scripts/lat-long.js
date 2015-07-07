@@ -14,7 +14,7 @@ function latLong () {
   })
 };
 
-console.log(parkObj[1]);
+console.log(parkArray[1]);
 
 function go() {
   $.ajax(url, {data: data})
