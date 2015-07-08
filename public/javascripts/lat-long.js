@@ -40,7 +40,7 @@ function initialize(){
 
 		google.maps.event.addListener(marker, 'click', (function(marker, i){
 			return function(){
-				info.setContent(parkArray[i].name);
+				info.setContent("<div><p>" + parkArray[i].name + "</p></div>");
 				info.open(map, marker);
 			}
 		})(marker,i));
