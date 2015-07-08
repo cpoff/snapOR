@@ -17,14 +17,14 @@ block content
 					a(href='#', data-reveal-id="login") Login
 						#login.reveal-modal(data-reveal='', aria-labelledby='modalTitle', aria-hidden='true', role='dialog')
 							form(method="post" action="/login")
-								input(type="text" name="username" value="username")
+								input(type="text" name="username" placeholder="username")
 								br
-								input(type="password" name="password" value="password")
+								input(type="password" name="password" placeholder="password")
 								br
 								input(type="submit" value="Let me in!")
 								br
 								input(type="submit" value="reset password")
-					a.close-reveal-modal(aria-label='Close') &times;
+							a.close-reveal-modal(aria-label='Close') &times;
 				li
 					a(href='#', data-reveal-id='register') Register
 						#register.reveal-modal(data-reveal='', aria-labelledby='modalTitle', aria-hidden='true', role='dialog')
@@ -40,7 +40,7 @@ block content
 										input(type="password" name="password_confirm")
 								div.sub-btn
 									input.submit(type="submit" style="font-family: 'Carrois Gothic'" value="Register account")
-					a.close-reveal-modal(aria-label='Close') &#215;
+							a.close-reveal-modal(aria-label='Close') &#215;
 	div#map_canvas
 		p
 		//img.hero(src='/images/placeholder.jpg')
