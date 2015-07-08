@@ -2,7 +2,7 @@
 
 url :[heroku](https://snaporegon.herokuapp.com/)
 
-landing page [wireframe](https://wireframe.cc/3Nwtr2)
+landing page [wireframe](https://moqups.com/#!/edit/angelariggs/zbq8VzMg)
 
 ##api's
 * [Oregon State Parks](http://oregonstateparks.org/data/index.cfm/)
