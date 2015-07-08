@@ -1,0 +1,22 @@
+{
+  "name": "snapor",
+  "version": "1.0.0",
+  "description": "url : snaporegon",
+  "main": "lat-long.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/nathan-j-brenner/snapOR.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/nathan-j-brenner/snapOR/issues"
+  },
+  "homepage": "https://github.com/nathan-j-brenner/snapOR#readme",
+  "dependencies": {
+    "orchestrate": "^0.4.4"
+  }
+}
