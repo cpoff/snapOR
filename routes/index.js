@@ -7,3 +7,8 @@ router.get('/', function(req, res, next) {
 });
 
 module.exports = router;
+
+
+//post user registration data
+//put user data
+//delete user
