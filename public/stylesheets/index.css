@@ -14,21 +14,24 @@ yellow: #EEC54B
 /*************************
 Header & Nav 
 *************************/
-
-.title{
+h1{
 	width: 10%;
 	background-color: #FEC63D;
 }
-
+ul{
+	width: 70%;
+	float: right;
+}
 li{
 	background-color: gray;
 	margin-left: 1%;
+	display: inline-block;
 }
 
 
 #map_canvas{
-	height: 300px;
-	width: 500px;
+	height: 600px;
+	width: 1000px;
 }
 
 /*************************
