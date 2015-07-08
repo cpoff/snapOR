@@ -25,22 +25,22 @@ block content
 								br
 								input(type="submit" value="reset password")
 								a.close-reveal-modal(aria-label='Close') &times;
-        li
-          a(href='#', data-reveal-id='myModal') Register
-            #myModal.reveal-modal(data-reveal='', aria-labelledby='modalTitle', aria-hidden='true', role='dialog')
-              h2#modalTitle Register New Account
-                div.user-label
-                  label Email (This will be your username): 
-                  input(type="text", name="email", style="font-family: 'Carrois Gothic'", placeholder="user@example.com")
-                div.pw-label
-                  label Password:
-                  input(type="password" name="password")
-                div.pw-confirm
-                  label Confirm Password: 
-                  input(type="password" name="password_confirm")
-                div.sub-btn
-                input.submit(type="submit" style="font-family: 'Carrois Gothic'" value="Register account")
-          a.close-reveal-modal(aria-label='Close') &#215;
+				li
+					a(href='#', data-reveal-id='myModal') Register
+						#myModal.reveal-modal(data-reveal='', aria-labelledby='modalTitle', aria-hidden='true', role='dialog')
+							h2#modalTitle Register New Account
+								div.user-label
+									label Email (This will be your username): 
+									input(type="text", name="email", style="font-family: 'Carrois Gothic'", placeholder="user@example.com")
+								div.pw-label
+									label Password:
+										input(type="password" name="password")
+								div.pw-confirm
+									label Confirm Password: 
+										input(type="password" name="password_confirm")
+								div.sub-btn
+									input.submit(type="submit" style="font-family: 'Carrois Gothic'" value="Register account")
+								a.close-reveal-modal(aria-label='Close') &#215;
 	div#map_canvas
 		p
 		//img.hero(src='/images/placeholder.jpg')
