@@ -19,9 +19,9 @@ router.post('/register', function(req, res){
 	// var home_location = document.getElementById();
 	var email = req.body.email;
 	var password = req.body.password;
-	var password_confirm = reqest.body.password_confirm;
+	var password_confirm = req.body.password_confirm;
 	var user_key = uuid.v4();
-
+	console.log(user_key);
 	if (password === password_confirm){
 		db.put('snap', user_key, {
 			'email': email,
