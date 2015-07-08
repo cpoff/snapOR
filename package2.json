@@ -1,0 +1,22 @@
+{
+  "name": "snap-oregon",
+  "version": "1.0.0",
+  "description": "snap-oregon allows photographers to explore state parks in oregon, to see what photos have been taken there, and get directions to their chosen park. if iterated, v2 would include weather information and the option to set parks as favorites.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/nathan-j-brenner/snapOR.git"
+  },
+  "author": "angela riggs, curt poff, nathan brenner",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/nathan-j-brenner/snapOR/issues"
+  },
+  "homepage": "https://github.com/nathan-j-brenner/snapOR#readme",
+  "dependencies": {
+    "express": "^4.13.1"
+  }
+}
