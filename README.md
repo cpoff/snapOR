@@ -1,7 +1,6 @@
 #snapOR
 
-[heroku](https://calm-taiga-6961.herokuapp.com/)
-url : snaporegon
+url :[heroku](https://snaporegon.herokuapp.com/)
 
 landing page [wireframe](https://wireframe.cc/3Nwtr2)
 
