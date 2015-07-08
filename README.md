@@ -1,6 +1,6 @@
 #snapOR
 
-url : snaporegon
+url :[heroku](https://snaporegon.herokuapp.com/)
 
 landing page [wireframe](https://wireframe.cc/3Nwtr2)
 
