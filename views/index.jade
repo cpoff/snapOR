@@ -1,20 +1,32 @@
 extends layout
 
 block content
-  div.sticky
-    nav.top-bar
-      ul.title-area
-        li.name
-          h1
-            a(href='#') snapOR
-      ul.left
-        li
-          p Discover Photos
-        li
-          p Explore Parks
-      ul.right
-        li
-          a(href='#') Login/Register
-  div#map_canvas
-    p
-    //img.hero(src='/images/placeholder.jpg')
+	div.sticky
+		nav.top-bar
+			ul.title-area
+				li.name
+					h1
+						a(href='#') snapOR
+			ul.left
+				li
+					p Discover Photos
+				li
+					p Explore Parks
+			ul.right
+				li
+					a(href='#' data-reveal-id="loginModal") Login
+					#myModal.reveal-modal(data-reveal='', aria-labelledby='modalTitle', aria-hidden='true', role='dialog')
+						form(method="post" action="/login")
+							input(type="text" name="username" value="username")
+							br
+							input(type="password" name="password" value="password")
+							br
+							input(type="submit" value="Let me in!")
+							br
+							input(type="submit" value="reset password")
+				li
+					a(href='#') Register
+	div#map_canvas
+		p
+		//img.hero(src='/images/placeholder.jpg')
+extends layout
