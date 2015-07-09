@@ -31,7 +31,6 @@ var ParkCollection = Backbone.Collection.extend({
     }
 });
 
-    
 //var parkCollection, parkCollectionView;
 $(document).ready( function () {
  
