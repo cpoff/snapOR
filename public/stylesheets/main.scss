@@ -1,0 +1,11 @@
+@import 'foundation.scss';
+//cd into snapOR/public/stylesheets, then run 'scss main.scss main.css' in terminal to compile scss to css
+
+h1 {
+	background-color: orange;
+}
+
+#map_canvas {
+	height: 600px;
+	width: 1000px;
+}
