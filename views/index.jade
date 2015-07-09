@@ -29,18 +29,15 @@ block content
 						a(href='#', data-reveal-id='register') Register
 							#register.reveal-modal(data-reveal='', aria-labelledby='modalTitle', aria-hidden='true', role='dialog')
 								h2#modalTitle Register New Account
-									div.user-label
-										label Email (This will be your username): 
-										input(type="text", name="email", style="font-family: 'Carrois Gothic'", placeholder="user@example.com")
-									div.pw-label
-										label Password:
-											input(type="password" name="password")
-									div.pw-confirm
-										label Confirm Password: 
-											input(type="password" name="password_confirm")
-									div.sub-btn
+									form(method="post" action="/register")
+										input(type="text" name="email" style="font-family: 'Carrois Gothic'" placeholder="user@example.com")
+										br
+										input(type="password" name="password" placeholder="password")
+										br
+										input(type="password" name="password_confirm" placeholder="password confirmation")
+										br
 										input.submit(type="submit" style="font-family: 'Carrois Gothic'" value="Register account")
-							//a.close-reveal-modal(aria-label='Close') &#215;
+									//- a.close-reveal-modal(aria-label='Close') &#215;
 				ul.left
 					li.active
 						a(href='#', data-reveal-id="photos") Discover Photos
