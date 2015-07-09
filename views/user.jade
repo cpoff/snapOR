@@ -13,31 +13,8 @@ block content
 			section.top-bar-section
 				ul.right
 					li
-						a(href='#', data-reveal-id="login") Login
-							#login.reveal-modal(data-reveal='', aria-labelledby='modalTitle', aria-hidden='true', role='dialog')
-								h2#modalTitle Login
-								form(method="post" action="/login")
-									input(type="text" name="username" placeholder="username")
-									br
-									input(type="password" name="password" placeholder="password")
-									br
-									input(type="submit" value="Let me in!")
-									br
-									input(type="submit" value="reset password")
-							//a.close-reveal-modal(aria-label='Close') &times;
-					li
-						a(href='#', data-reveal-id='register') Register
-							#register.reveal-modal(data-reveal='', aria-labelledby='modalTitle', aria-hidden='true', role='dialog')
-								h2#modalTitle Register New Account
-									form(method="post" action="/user")
-										input(type="text" name="email" style="font-family: 'Carrois Gothic'" placeholder="user@example.com")
-										br
-										input(type="password" name="password" placeholder="password")
-										br
-										input(type="password" name="password_confirm" placeholder="password confirmation")
-										br
-										input.submit(type="submit" style="font-family: 'Carrois Gothic'" value="Register account")
-									//- a.close-reveal-modal(aria-label='Close') &#215;
+						if email
+       				h2 Welcome, #{ email.toUpperCase() }!
 				ul.left
 					li.active
 						a(href='#', data-reveal-id="photos") Discover Photos
