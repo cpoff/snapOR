@@ -3,14 +3,12 @@ var router = express.Router();
 var config = require('../config.js');
 var db = require('orchestrate')(config.dbKey);
 var uuid = require('uuid');
+var app = require('../app');
 
 /* GET home page. */
 router.get('/', function(req, res, next) {
   res.render('index', { title: 'snapOR' });
 });
-
-module.exports = router;
-
 
 //post user registration data
 router.post('/user', function(req, res){
@@ -42,3 +40,5 @@ router.post('/user', function(req, res){
 });// closes router.post
 //put user data
 //delete user
+
+module.exports = router;
