@@ -6322,15 +6322,21 @@ th.hide-for-touch {
 @media not print {
   .show-for-print {
     display: none !important; } }
-h1 {
-  background-color: orange; }
+body div.contain-to-grid.sticky {
+  background-color: #FF5D55;
+  color: #FEC63D; }
+
+body div nav.top-bar ul.title-area li.name h1 a {
+  background-color: #FEC63D;
+  color: #FF5D55; }
+
+body div.contain-to-grid.sticky nav.top-bar section.top-bar-section ul.right li a, body div.contain-to-grid.sticky nav.top-bar section.top-bar-section ul.left li.active a, body div.contain-to-grid.sticky nav.top-bar {
+  background-color: #FF5D55;
+  color: #FEC63D; }
 
 #map_canvas {
-  height: 600px;
-  width: 1000px; }
-
-#map_canvas {
-  height: 600px;
-  width: 1000px; }
+  height: 45%;
+  width: 50%;
+  margin: 5% auto; }
 
 /*# sourceMappingURL=main.css.map */
