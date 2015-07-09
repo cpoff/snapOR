@@ -1,18 +1,23 @@
 @import 'foundation.scss';
 //cd into snapOR/public/stylesheets, then run 'scss main.scss main.css' in terminal to compile scss to css
 
+$blue: #1E749E;
+$yellow: #FEC63D;
+$red: #FF5D55;
+
+
 body div.contain-to-grid.sticky{
-	background-color: #FF5D55;
-	color: #FEC63D;
+	background-color: $red;
+	color: $yellow;
 }
 body div nav.top-bar ul.title-area li.name h1 a{
-	background-color: #FEC63D;
-	color: #FF5D55;
+	background-color: $yellow;
+	color: $red;
 }
 
 body div.contain-to-grid.sticky nav.top-bar section.top-bar-section ul.right li a, body div.contain-to-grid.sticky nav.top-bar section.top-bar-section ul.left li.active a, body div.contain-to-grid.sticky nav.top-bar{
-	background-color: #FF5D55;
-	color: #FEC63D;
+	background-color: $red;
+	color: $yellow;
 }
 
 #map_canvas {
