@@ -1,0 +1,39 @@
+extends layout
+
+block content
+	div.contain-to-grid.sticky
+		nav.top-bar(data-topbar="", role="navigation")
+			ul.title-area
+				li.name
+					h1
+						a(href='#') snapOR
+				li.toggle-topbar.menu-icon
+					a(href="#")
+						span Menu
+			section.top-bar-section
+				ul.right
+					li
+						if email
+       				h2 Welcome, #{ email.toUpperCase() }!
+				ul.left
+					li.active
+						a(href='#', data-reveal-id="photos") Discover Photos
+							#photos.reveal-modal(data-reveal='', aria-labelledby='modalTitle', aria-hidden='true', role='dialog')
+									h2#modalTitle Discover Photos
+									form(method="post" action="/photos")
+										input(type="text" name="Enter tags:" placeholder="Ex: 'waterfalls', 'cape kiwanda'")
+										br
+										input(type="submit" value="Discover")
+								//-a.close-reveal-modal(aria-label='Close') &times;
+					li.active
+						a(href='#', data-reveal-id="parks") Explore Parks
+							#parks.reveal-modal(data-reveal='', aria-labelledby='modalTitle', aria-hidden='true', role='dialog')
+									h2#modalTitle Explore Parks
+									form(method="post" action="/parks")
+										input(type="text" name="Enter park name:" placeholder="Ex: 'cape kiwanda', 'silver falls state park'")
+										br
+										input(type="submit" value="Explore")
+								//-a.close-reveal-modal(aria-label='Close') &times;
+	div#map_canvas
+		script.
+			$(document).foundation();
