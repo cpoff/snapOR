@@ -17,34 +17,36 @@ block content
 							#login.reveal-modal(data-reveal='', aria-labelledby='modalTitle', aria-hidden='true', role='dialog')
 								h2#modalTitle Login
 								form(method="post" action="/login")
-									input(type="text" name="username" placeholder="username")
+									label.label Email: 
+									input(type="text" name="username" style="font-family: 'Lora'" placeholder="ex: user@domain.com")
+									label.label Password: 
+									input(type="password" name="password" style="font-family: 'Lora'" placeholder="password")
 									br
-									input(type="password" name="password" placeholder="password")
+									input.button(type="submit" style="font-family: 'Open Sans Condensed'" value="Login")
 									br
-									input(type="submit" value="Let me in!")
-									br
-									input(type="submit" value="reset password")
+									input.button(type="submit" style="font-family: 'Open Sans Condensed'" value="Reset Password")
 							//a.close-reveal-modal(aria-label='Close') &times;
 					li
 						a(href='#', data-reveal-id='register') Register
 							#register.reveal-modal(data-reveal='', aria-labelledby='modalTitle', aria-hidden='true', role='dialog')
 								h2#modalTitle Register New Account
-									form(method="post" action="/user")
-										input(type="text" name="email" style="font-family: 'Carrois Gothic'" placeholder="user@example.com")
-										br
-										input(type="password" name="password" placeholder="password")
-										br
-										input(type="password" name="password_confirm" placeholder="password confirmation")
-										br
-										input.submit(type="submit" style="font-family: 'Carrois Gothic'" value="Register account")
-									//- a.close-reveal-modal(aria-label='Close') &#215;
+								form(method="post" action="/user")
+									label.label Email (This will be your username): 
+									input(type="text" name="email" style="font-family: 'Lora'" placeholder="user@example.com")
+									label.label Password: 
+									input(type="password" name="password" style="font-family: 'Lora'" placeholder="password")
+									label.label Re-enter Password: 
+									input(type="password" name="password_confirm" style="font-family: 'Lora'" placeholder="password confirmation")
+									br
+									input.button(type="submit" style="font-family: 'Open Sans Condensed'" value="Register account")
+								//- a.close-reveal-modal(aria-label='Close') &#215;
 				ul.left
 					li.active
 						a(href='#', data-reveal-id="photos") Discover Photos
 							#photos.reveal-modal(data-reveal='', aria-labelledby='modalTitle', aria-hidden='true', role='dialog')
 									h2#modalTitle Discover Photos
 									form(method="post" action="/photos")
-										input(type="text" name="Enter tags:" placeholder="Ex: 'waterfalls', 'cape kiwanda'")
+										input(type="text" name="Enter tags:" style="font-family: 'Lora'" placeholder="Ex: 'waterfalls', 'cape kiwanda'")
 										br
 										input(type="submit" value="Discover")
 								//a.close-reveal-modal(aria-label='Close') &times;
@@ -53,7 +55,7 @@ block content
 							#parks.reveal-modal(data-reveal='', aria-labelledby='modalTitle', aria-hidden='true', role='dialog')
 									h2#modalTitle Explore Parks
 									form(method="post" action="/parks")
-										input(type="text" name="Enter park name:" placeholder="Ex: 'cape kiwanda', 'silver falls state park'")
+										input(type="text" name="Enter park name:" style="font-family: 'Lora'" placeholder="Ex: 'cape kiwanda', 'silver falls state park'")
 										br
 										input(type="submit" value="Explore")
 								//a.close-reveal-modal(aria-label='Close') &times;

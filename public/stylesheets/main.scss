@@ -1,28 +1,82 @@
 @import 'foundation.scss';
+@import url(http://fonts.googleapis.com/css?family=Lora:400,700|Open+Sans+Condensed:300,700|Satisfy);
 //cd into snapOR/public/stylesheets, then run 'scss main.scss main.css' in terminal to compile scss to css
+
+/******************
+VARIABLES
+******************/
 
 $blue: #1E749E;
 $yellow: #FEC63D;
 $red: #FF5D55;
 
+$sans-serif: "Open Sans Condensed", sans-serif;  
+$serif: "Lora", serif;
+$cursive: "Satisfy", cursive;
 
-body div.contain-to-grid.sticky{
+/******************
+GENERAL
+******************/
+
+body {
+	background-color: $blue;
+}
+
+/******************
+NAV BAR
+******************/
+
+body div.contain-to-grid.sticky {
 	background-color: $red;
 	color: $yellow;
 }
-body div nav.top-bar ul.title-area li.name h1 a{
+
+body div.contain-to-grid.sticky nav.top-bar section.top-bar-section ul.right li a, body div.contain-to-grid.sticky nav.top-bar section.top-bar-section ul.left li.active a, body div.contain-to-grid.sticky nav.top-bar {
+	background-color: $red;
+	color: $yellow;
+	font-family: $sans-serif;
+}
+
+/******************
+SITE NAME
+******************/
+
+body div nav.top-bar ul.title-area li.name h1 a {
 	background-color: $yellow;
 	color: $red;
+	font-family: $cursive;
 }
 
-body div.contain-to-grid.sticky nav.top-bar section.top-bar-section ul.right li a, body div.contain-to-grid.sticky nav.top-bar section.top-bar-section ul.left li.active a, body div.contain-to-grid.sticky nav.top-bar{
+
+
+/******************
+MODALS
+******************/
+
+.reveal-modal {
 	background-color: $red;
+}
+
+.label {
+	font-family: $sans-serif;
+	font-size: 25px;
+	color: $blue;
+	background-color: $red;
+}
+
+#modalTitle {
+	font-family: $serif;
 	color: $yellow;
 }
 
+
+/******************
+MAP CANVAS
+******************/
+
 #map_canvas {
-	height: 45%;
-	width: 50%;
+	height: 75%;
+	width: 70%;
 	// height: 600px;
 	// width: 1000px;
 	margin: 5% auto;
