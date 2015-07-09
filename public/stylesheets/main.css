@@ -6322,6 +6322,7 @@ th.hide-for-touch {
 @media not print {
   .show-for-print {
     display: none !important; } }
+
 body div.contain-to-grid.sticky {
   background-color: #FF5D55;
   color: #FEC63D; }
