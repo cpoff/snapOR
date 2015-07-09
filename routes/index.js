@@ -17,8 +17,9 @@ router.post('/user', function(req, res){
 	var password_confirm = req.body.password_confirm;
 	var user_key = uuid.v4();
 	database = app.get('database');
-
-	database('snap').where({'email': email}).then(function(array) {
+	console.log(db.search);
+	db.search('snap', 'value.email:""')
+	.then(function(array) {
 		if (array.length > 0) {
 			response.render ('error', {
 				error: 'There is already an account associated with this email.',
@@ -30,7 +31,8 @@ router.post('/user', function(req, res){
 					'email': email,
 					'password': password
 				})// closes db.put
-				.then(function(result){
+				.then(function(){
+					response.redirect('/user');
 					console.log('user created');
 				})// closes .then
 				.fail(function(err){})

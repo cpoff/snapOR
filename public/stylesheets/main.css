@@ -1,3 +1,4 @@
+@import url(http://fonts.googleapis.com/css?family=Lora:400,700|Open+Sans+Condensed:300,700|Satisfy);
 meta.foundation-version {
   font-family: "/5.5.2/"; }
 
@@ -6322,21 +6323,57 @@ th.hide-for-touch {
 @media not print {
   .show-for-print {
     display: none !important; } }
+/******************
+VARIABLES
+******************/
+/******************
+GENERAL
+******************/
+body {
+  background-color: #1E749E; }
+
+/******************
+NAV BAR
+******************/
 body div.contain-to-grid.sticky {
   background-color: #FF5D55;
   color: #FEC63D; }
 
-body div nav.top-bar ul.title-area li.name h1 a {
-  background-color: #FEC63D;
-  color: #FF5D55; }
-
 body div.contain-to-grid.sticky nav.top-bar section.top-bar-section ul.right li a, body div.contain-to-grid.sticky nav.top-bar section.top-bar-section ul.left li.active a, body div.contain-to-grid.sticky nav.top-bar {
   background-color: #FF5D55;
+  color: #FEC63D;
+  font-family: "Open Sans Condensed", sans-serif; }
+
+/******************
+SITE NAME
+******************/
+body div nav.top-bar ul.title-area li.name h1 a {
+  background-color: #FEC63D;
+  color: #FF5D55;
+  font-family: "Satisfy", cursive; }
+
+/******************
+MODALS
+******************/
+.reveal-modal {
+  background-color: #FF5D55; }
+
+.label {
+  font-family: "Open Sans Condensed", sans-serif;
+  font-size: 25px;
+  color: #1E749E;
+  background-color: #FF5D55; }
+
+#modalTitle {
+  font-family: "Lora", serif;
   color: #FEC63D; }
 
+/******************
+MAP CANVAS
+******************/
 #map_canvas {
-  height: 45%;
-  width: 50%;
+  height: 75%;
+  width: 70%;
   margin: 5% auto; }
 
 /*# sourceMappingURL=main.css.map */
