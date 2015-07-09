@@ -6325,7 +6325,7 @@ th.hide-for-touch {
 h1 {
   background-color: red; }
 
-map_canvas {
+#map_canvas {
   height: 600px;
   width: 1000px; }
 
