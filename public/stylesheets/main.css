@@ -6323,7 +6323,11 @@ th.hide-for-touch {
   .show-for-print {
     display: none !important; } }
 h1 {
-  background-color: red; }
+  background-color: orange; }
+
+#map_canvas {
+  height: 600px;
+  width: 1000px; }
 
 #map_canvas {
   height: 600px;
