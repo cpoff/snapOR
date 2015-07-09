@@ -1,4 +1,4 @@
-body {
+/*body {
   padding: 50px;
   font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
 }
@@ -6,7 +6,7 @@ body {
 a {
   color: #00B7FF;
 }
-
+*/
 
 
 /*************************
@@ -25,7 +25,7 @@ yellow: #EEC54B
 /*************************
 Header & Nav 
 *************************/
-
+/*
 .title{
   width: 10%;
   background-color: #FEC63D;
@@ -40,7 +40,7 @@ li{
 #map_canvas{
   margin: auto;
 }
-
+*/
 /*************************
 Ind. Park Page
 *************************/

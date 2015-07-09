@@ -15,17 +15,25 @@ yellow: #EEC54B
 Header & Nav 
 *************************/
 h1{
-	width: 10%;
-	background-color: #FEC63D;
+/*	width: 10%;*/
+/*	background-color: #FEC63D;*/
 }
 ul{
-	width: 70%;
-	float: right;
+/*	width: 70%;*/
+/*	float: right;*/
 }
 li{
-	background-color: gray;
-	margin-left: 1%;
-	display: inline-block;
+/*	background-color: gray;*/
+/*	margin-left: 1%;*/
+/*	display: inline-block;*/
+}
+
+.top-bar{
+	background-color: #FF5D55;
+}
+
+ul li {
+	background-color: #FEC63D;
 }
 
 
