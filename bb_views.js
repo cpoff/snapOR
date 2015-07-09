@@ -4,14 +4,24 @@ var ParkModel = Backbone.Model.extend({
     }    
 });
 
-var ParkView = Backbone.View.extend({
+var MasterView = Backbone.View.extend({
     render: function () {      
-        this.$el.html("<div>" + "Flickr api response goes here" + "</div>");
+        this.$el.html("<div>" + "Map API response goes here" + "</div>");
     },
 
-    initialize: function () {
-        this.model.on("change", this.render, this);
+//    initialize: function () {
+//        this.model.on("change", this.render, this);
+//    },
+ 
+
+var ParkView = Backbone.View.extend({
+    render: function () {      
+        this.$el.html("<div>" + "Flickr API response goes here" + "</div>");
     },
+
+//    initialize: function () {
+//        this.model.on("change", this.render, this);
+//    },
     
 var ParkCollection = Backbone.Collection.extend({
     model : ParkModel,
@@ -29,5 +39,5 @@ $(document).ready( function () {
 //parkCollectionView = new ParkCollectionView({ collection : parkCollection});
 //parkCollectionView.render();
 //$("#detaildiv").append(parkCollectionView.$el);
-
 });
+
