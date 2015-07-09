@@ -14,9 +14,6 @@ module.exports = router;
 
 //post user registration data
 router.post('/register', function(req, res){
-	// var email = document.getElementById();
-	// var name = document.getElementById();
-	// var home_location = document.getElementById();
 	var email = req.body.email;
 	var password = req.body.password;
 	var password_confirm = req.body.password_confirm;
