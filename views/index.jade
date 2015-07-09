@@ -7,47 +7,28 @@ block content
 				li.name
 					h1
 						a(href='#') snapOR
-<<<<<<< HEAD
-			section.top-bar-section
-				ul.left
-					li
-						p Discover Photos
-					li
-						p Explore Parks
-=======
 				li.toggle-topbar.menu-icon
 					a(href="#")
 						span Menu
 			section.top-bar-section
->>>>>>> master
 				ul.right
 					li
 						a(href='#', data-reveal-id="login") Login
 							#login.reveal-modal(data-reveal='', aria-labelledby='modalTitle', aria-hidden='true', role='dialog')
-<<<<<<< HEAD
-								form(method="post" action="/login")
-									input(type="text" name="email" placeholder="username")
-=======
 								h2#modalTitle Login
 								form(method="post" action="/login")
 									input(type="text" name="username" placeholder="username")
->>>>>>> master
 									br
 									input(type="password" name="password" placeholder="password")
 									br
 									input(type="submit" value="Let me in!")
 									br
 									input(type="submit" value="reset password")
-<<<<<<< HEAD
-								//- a.close-reveal-modal(aria-label='Close') &times;
-=======
 							//a.close-reveal-modal(aria-label='Close') &times;
->>>>>>> master
 					li
 						a(href='#', data-reveal-id='register') Register
 							#register.reveal-modal(data-reveal='', aria-labelledby='modalTitle', aria-hidden='true', role='dialog')
 								h2#modalTitle Register New Account
-<<<<<<< HEAD
 									form(method="post" action="/register")
 										input(type="text" name="email" style="font-family: 'Carrois Gothic'" placeholder="user@example.com")
 										br
@@ -57,19 +38,6 @@ block content
 										br
 										input.submit(type="submit" style="font-family: 'Carrois Gothic'" value="Register account")
 									//- a.close-reveal-modal(aria-label='Close') &#215;
-=======
-									div.user-label
-										label Email (This will be your username): 
-										input(type="text", name="email", style="font-family: 'Carrois Gothic'", placeholder="user@example.com")
-									div.pw-label
-										label Password:
-											input(type="password" name="password")
-									div.pw-confirm
-										label Confirm Password: 
-											input(type="password" name="password_confirm")
-									div.sub-btn
-										input.submit(type="submit" style="font-family: 'Carrois Gothic'" value="Register account")
-							//a.close-reveal-modal(aria-label='Close') &#215;
 				ul.left
 					li.active
 						a(href='#', data-reveal-id="photos") Discover Photos
@@ -89,7 +57,6 @@ block content
 										br
 										input(type="submit" value="Explore")
 								//a.close-reveal-modal(aria-label='Close') &times;
->>>>>>> master
 	div#map_canvas
 		p
 		//img.hero(src='/images/placeholder.jpg')
