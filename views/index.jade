@@ -1,7 +1,7 @@
 extends layout
 
 block content
-	div.fixed.sticky
+	.fixed.sticky
 		nav.top-bar(data-topbar="", role="navigation")
 			ul.title-area
 				li.name
@@ -39,7 +39,6 @@ block content
 									input(type="password" name="password_confirm" style="font-family: 'Lora'" placeholder="password confirmation")
 									br
 									input.button(type="submit" style="font-family: 'Open Sans Condensed'" value="Register account")
-								//- a.close-reveal-modal(aria-label='Close') &#215;
 				ul.left
 					li.active
 						a(href='#', data-reveal-id="photos") Discover Photos
@@ -55,11 +54,12 @@ block content
 							#parks.reveal-modal(data-reveal='', aria-labelledby='modalTitle', aria-hidden='true', role='dialog')
 									h2#modalTitle Explore Parks
 									form(method="post" action="/parks")
-										input(type="text" name="Enter park name:" style="font-family: 'Lora'" placeholder="Ex: 'cape kiwanda', 'silver falls state park'")
-										br
-										input(type="submit" value="Explore")
+										#parkList
+											input(class="typeahead" type="text" name="Enter park name:" style="font-family: 'Lora'" placeholder="Ex: 'cape kiwanda', 'silver falls state park'")
+											br
+											input(class="submit" type="submit" value="Explore")
 								//a.close-reveal-modal(aria-label='Close') &times;
-	div#map_canvas
+	#map_canvas
 		script.
 			$(document).foundation();
 

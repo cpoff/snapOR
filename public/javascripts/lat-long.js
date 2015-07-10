@@ -2,19 +2,19 @@ var url = 'http://oregonstateparks.org/data/index.cfm';
 
 var parkData;
 var data = {
-  endpoint: '/parks',
-  parkName: ""
+	endpoint: '/parks',
+	parkName: ""
 };
-var parkArray = [];
+var parkArray = []; //create an object per park, properties for name, lat, long
+var parkNameArray = []; //create an array that has a list of park names, for typeahead
 
 function latLong () {
-  parkData.forEach(function(feature) {
-    var parkObj = {"name": feature.park_name, "latitude": feature.park_latitude, "longitude": feature.park_longitude};
-    parkArray.push(parkObj);
-  }); 
+	parkData.forEach(function(feature) {
+		var parkObj = {"name": feature.park_name, "latitude": feature.park_latitude, "longitude": feature.park_longitude};
+		parkArray.push(parkObj);
+		parkNameArray.push(feature.park_name);
+	}); 
 };
-
-// console.log(parkArray[1]);
 
 //google map
 function initialize(){
@@ -48,16 +48,48 @@ function initialize(){
 }
 
 function go() {
-  $.ajax(url, {data: data})
-  .then(function(data, status, xhr) {
-    // console.log("data");
-    // console.log(data);
-    parkData = data;
-    latLong();
-  }).then(function(){
-  	initialize();
-  	google.maps.event.addDomListener(window, 'load', initialize);
-  });
+	$.ajax(url, {data: data})
+	.then(function(data, status, xhr) {
+		parkData = data;
+		latLong();
+	}).then(function(){
+		initialize();
+		google.maps.event.addDomListener(window, 'load', initialize);
+	}).then(function(){
+		var substringMatcher = function(strs) {
+		  return function findMatches(q, cb) {
+		    var matches, substringRegex;
+		 
+		    // an array that will be populated with substring matches
+		    matches = [];
+		 
+		    // regex used to determine if a string contains the substring `q`
+		    substrRegex = new RegExp(q, 'i');
+		 
+		    // iterate through the pool of strings and for any string that
+		    // contains the substring `q`, add it to the `matches` array
+		    $.each(strs, function(i, str) {
+		      if (substrRegex.test(str)) {
+		        matches.push(str);
+		      }
+		    });
+		 
+		    cb(matches);
+		  };
+		};
+		$(function(){
+		  $('#parkList .typeahead').typeahead({
+		    hint: true,
+		    highlight: true,
+		    minLength: 1
+		  },
+		  {
+		    name: 'parkNameArray',
+		    source: substringMatcher(parkNameArray)
+		  });
+		});
+	});
 };
+
 
 go();

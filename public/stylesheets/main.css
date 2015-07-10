@@ -6371,7 +6371,8 @@ nav.top-bar.expanded.fixed section.top-bar-section ul.left li.active a {
 MODALS
 ******************/
 .reveal-modal {
-  background-color: #FF5D55; }
+  background-color: #FF5D55;
+  height: 30%; }
 
 .label {
   font-family: "Open Sans Condensed", sans-serif;
@@ -6382,6 +6383,21 @@ MODALS
 #modalTitle {
   font-family: "Lora", serif;
   color: #FEC63D; }
+
+#parkList {
+  display: flex;
+  flex-direction: row;
+  justify-content: center; }
+
+#parkList .submit {
+  width: 10%;
+  margin-left: 5%; }
+
+#parkList .typeahead {
+  width: 100%; }
+
+form div#parkList span.twitter-typeahead {
+  width: 60%; }
 
 /******************
 USER PAGE
