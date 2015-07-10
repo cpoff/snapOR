@@ -1,0 +1,138 @@
+[
+   {
+      "featureClass": "ampitheater",
+      "featureTitle": "Ampitheater"
+   },
+   {
+      "featureClass": "beach",
+      "featureTitle": "Beach Access"
+   },
+   {
+      "featureClass": "bike",
+      "featureTitle": "Bike Path"
+   },
+   {
+      "featureClass": "boat",
+      "featureTitle": "Boat Ramp"
+   },
+   {
+      "featureClass": "cabin",
+      "featureTitle": "Cabin"
+   },
+   {
+      "featureClass": "camping",
+      "featureTitle": "Camping"
+   },
+   {
+      "featureClass": "dayuse",
+      "featureTitle": "Day-Use Fee"
+   },
+   {
+      "featureClass": "deluxecabin",
+      "featureTitle": "Deluxe Cabin"
+   },
+   {
+      "featureClass": "deluxeyurt",
+      "featureTitle": "Deluxe Yurt"
+   },
+   {
+      "featureClass": "disc",
+      "featureTitle": "Disc Golf"
+   },
+   {
+      "featureClass": "dump",
+      "featureTitle": "Dump Station"
+   },
+   {
+      "featureClass": "exhibit",
+      "featureTitle": "Exhibit Information"
+   },
+   {
+      "featureClass": "fishing",
+      "featureTitle": "Fishing"
+   },
+   {
+      "featureClass": "hiker",
+      "featureTitle": "Hiker Biker"
+   },
+   {
+      "featureClass": "hiking",
+      "featureTitle": "Hiking Trails"
+   },
+   {
+      "featureClass": "horse",
+      "featureTitle": "Horse Trails"
+   },
+   {
+      "featureClass": "kayak",
+      "featureTitle": "Kayaking"
+   },
+   {
+      "featureClass": "marina",
+      "featureTitle": "Marina"
+   },
+   {
+      "featureClass": "pet",
+      "featureTitle": "Pet Friendly"
+   },
+   {
+      "featureClass": "picnic",
+      "featureTitle": "Picknicking"
+   },
+   {
+      "featureClass": "pit",
+      "featureTitle": "Pit Toilets"
+   },
+   {
+      "featureClass": "playground",
+      "featureTitle": "Playground"
+   },
+   {
+      "featureClass": "potable",
+      "featureTitle": "Potable Water"
+   },
+   {
+      "featureClass": "reservable",
+      "featureTitle": "Reservable"
+   },
+   {
+      "featureClass": "restrooms",
+      "featureTitle": "Restrooms Flush"
+   },
+   {
+      "featureClass": "shower",
+      "featureTitle": "Hot Shower"
+   },
+   {
+      "featureClass": "swimming",
+      "featureTitle": "Swimming"
+   },
+   {
+      "featureClass": "tepee",
+      "featureTitle": "Tepee"
+   },
+   {
+      "featureClass": "vault",
+      "featureTitle": "Vault Toilets"
+   },
+   {
+      "featureClass": "viewpoint",
+      "featureTitle": "Viewpoint"
+   },
+   {
+      "featureClass": "wildlife",
+      "featureTitle": "Wildlife"
+   },
+   {
+      "featureClass": "windsurfing",
+      "featureTitle": "Windsurfing"
+   },
+   {
+      "featureClass": "yearround",
+      "featureTitle": "Open Year Round"
+   },
+   {
+      "featureClass": "yurt",
+      "featureTitle": "Yurt"
+   }
+]
