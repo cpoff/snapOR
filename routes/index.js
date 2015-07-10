@@ -1,7 +1,7 @@
 var express = require('express');
 var router = express.Router();
-var config = require('../config.js');
-var db = require('orchestrate')(config.dbKey);
+if (!process.env.heroku) var config = require('../config.js');
+var db = require('orchestrate')(process.env.dbKey || config.dbKey);
 var uuid = require('uuid');
 var app = require('../app');
 
