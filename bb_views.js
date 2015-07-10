@@ -11,17 +11,29 @@ var ParkModel = Backbone.Model.extend({
                 }
 });
 
+// snapOR homepage
 var MasterView = Backbone.View.extend({
     render: function () {      
         this.$el.html("<div>" + "Map API response goes here" + "</div>");
     },
 
+// individual park pages
 var ParkView = Backbone.View.extend({
     render: function () {      
         this.$el.html("<div>" + "Flickr API response goes here" + "</div>");
     },
 });
 
+//user page
+var userModel = Backbone.Model.extend({
+    defaults: {"email": "", "name": "", "home": ""}
+});// closes userModel
+
+var userView = Backbone.View.extend({
+    
+});// closes userView
+
+// collection of park pages
 var ParkCollection = Backbone.Collection.extend({
     model : ParkModel,
     url : "/parkdetail",

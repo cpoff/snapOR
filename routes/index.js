@@ -32,8 +32,8 @@ router.post('/user', function(req, res){
 					'password': password
 				})// closes db.put
 				.then(function(){
-					response.redirect('/user');
 					console.log('user created');
+					res.redirect('/user');
 				})// closes .then
 				.fail(function(err){})
 			}// closes password_confirm
@@ -42,5 +42,10 @@ router.post('/user', function(req, res){
 });// closes router.post
 //put user data
 //delete user
+
+router.get('/user', function(req, res) {
+	console.log("bananas");
+	res.render('user');
+})
 
 module.exports = router;
