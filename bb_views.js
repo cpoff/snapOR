@@ -72,7 +72,9 @@ var ParkCollection = Backbone.Collection.extend({
 $(document).ready( function () {
 	var parkModel = new Park();
 	var parkCollection = new ParkCollection();
-	var parkView = new parkView({model : parkModel});
+	var parkView = new ParkView({model : parkModel});
+	var userModel = new User();
+	var userView = new UserView({model: userModel});
 
   parkView.render();
 
