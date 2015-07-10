@@ -78,7 +78,7 @@ function go() {
 		  };
 		};
 		$(function(){
-		  $('#the-basics .typeahead').typeahead({
+		  $('#parkList .typeahead').typeahead({
 		    hint: true,
 		    highlight: true,
 		    minLength: 1
