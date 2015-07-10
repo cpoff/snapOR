@@ -7,6 +7,7 @@ var data = {
 };
 var parkArray = []; //create an object per park, properties for name, lat, long
 var parkNameArray = []; //create an array that has a list of park names, for typeahead
+var featureList = ['waterfalls', 'hiking'];
 
 function latLong () {
 	parkData.forEach(function(feature) {
@@ -86,6 +87,17 @@ function go() {
 		  {
 		    name: 'parkNameArray',
 		    source: substringMatcher(parkNameArray)
+		  });
+		});
+		$(function(){
+		  $('#featureList .typeahead').typeahead({
+		    hint: true,
+		    highlight: true,
+		    minLength: 1
+		  },
+		  {
+		    name: 'featureList',
+		    source: substringMatcher(featureList)
 		  });
 		});
 	});
