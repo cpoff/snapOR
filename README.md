@@ -4,7 +4,7 @@ url :[heroku](https://snaporegon.herokuapp.com/)
 
 landing page [wireframe](https://moqups.com/#!/edit/angelariggs/zbq8VzMg)
 
-##api's
+##APIs
 * [Oregon State Parks](http://oregonstateparks.org/data/index.cfm/)
 * [500PX](https://github.com/500px/api-documentation)
 * [Flickr](https://www.flickr.com/services/api/)
@@ -14,9 +14,9 @@ landing page [wireframe](https://moqups.com/#!/edit/angelariggs/zbq8VzMg)
 Outline of mvp [Website](https://bubbl.us/mindmap?h=2b3e64/5740cb/28h3pIVw29bJE)
 
 ##Areas of responsibility
-* Angela: stateparks api [pull out features], css, server, register domain name, fonts
-* Nate: google maps api, database (orchestrate), backbone
-* Curt: photos, tests, heroku, bdd descriptions
+* Angela: state parks API, express server, foundation/SCSS, backbone
+* Nate: google maps API, database (orchestrate), backbone
+* Curt: flickr API, tests, heroku, bdd descriptions, backbone
 
 ##Initial BDD descriptions:
 
@@ -28,11 +28,6 @@ Outline of mvp [Website](https://bubbl.us/mindmap?h=2b3e64/5740cb/28h3pIVw29bJE)
 * Work from your branch
 * Commit to your branch
 * Push from your branch
-
-##Fonts:
-*Satisfy
-*Roboto
-*Roboto Slab
 
 ######Remote workflow
 * Create a remote branch that has the same name as your local branch

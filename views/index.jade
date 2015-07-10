@@ -1,12 +1,12 @@
 extends layout
 
 block content
-	.contain-to-grid.sticky
+	.fixed.sticky
 		nav.top-bar(data-topbar="", role="navigation")
 			ul.title-area
 				li.name
 					h1
-						a(href='#') snapOR
+						a(href='/') snapOR
 				li.toggle-topbar.menu-icon
 					a(href="#")
 						span Menu
@@ -39,7 +39,6 @@ block content
 									input(type="password" name="password_confirm" style="font-family: 'Lora'" placeholder="password confirmation")
 									br
 									input.button(type="submit" style="font-family: 'Open Sans Condensed'" value="Register account")
-								//- a.close-reveal-modal(aria-label='Close') &#215;
 				ul.left
 					li.active
 						a(href='#', data-reveal-id="photos") Discover Photos
