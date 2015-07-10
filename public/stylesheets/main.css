@@ -6374,6 +6374,12 @@ MODALS
   background-color: #FF5D55;
   height: 30%; }
 
+.queries {
+  height: 30%; }
+
+.users {
+  height: 40%; }
+
 .label {
   font-family: "Open Sans Condensed", sans-serif;
   font-size: 25px;
@@ -6398,6 +6404,9 @@ MODALS
 
 form div#featureList span.twitter-typeahead, form div#parkList span.twitter-typeahead {
   width: 60%; }
+
+.button {
+  margin-right: 1%; }
 
 /******************
 USER PAGE

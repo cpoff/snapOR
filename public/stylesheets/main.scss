@@ -74,6 +74,12 @@ MODALS
 	background-color: $red;
 	height: 30%;
 }
+.queries {
+	height: 30%;
+}
+.users{
+	height: 40%;
+}
 
 .label {
 	font-family: $sans-serif;
@@ -101,6 +107,10 @@ MODALS
 }
 form div#featureList span.twitter-typeahead, form div#parkList span.twitter-typeahead{
 	width: 60%;
+}
+
+.button{
+	margin-right: 1%;
 }
 
 /******************
