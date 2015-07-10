@@ -6,7 +6,7 @@ var data = {
 	parkName: ""
 };
 var parkArray = []; //create an object per park, properties for name, lat, long
-var parkNameArray = []; //create an array that has a list of park names, for typeahead
+var parkNameArray = ["Ampitheater","Beach Access","Bike Path","Boat Ramp","Cabin","Camping","Day-Use Fee","Deluxe Cabin","Deluxe Yurt","Disc Golf","Dump Station","Exhibit Information","Fishing","Hiker Biker","Hiking Trails","Horse Trails","Kayaking","Marina","Pet Friendly","Picknicking","Pit Toilets","Playground","Potable Water","Reservable","Restrooms Flush","Hot Shower","Swimming","Tepee","Vault Toilets","Viewpoint","Wildlife","Windsurfing","Open Year Round","Yurt"]
 
 function latLong () {
 	parkData.forEach(function(feature) {
