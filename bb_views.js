@@ -17,7 +17,7 @@ var MasterView = Backbone.View.extend({
 		this.$el.html("<div>" + "Map API response goes here" + "</div>");
 	},
 
-// individual park pages
+
 var ParkView = Backbone.View.extend({
 	render: function () {      
 		this.$el.html("<div>" + "Flickr API response goes here" + "</div>");
