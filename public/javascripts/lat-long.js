@@ -5,16 +5,16 @@ var data = {
   endpoint: '/parks',
   parkName: ""
 };
-var parkArray = [];
+var parkArray = []; //create an object per park, properties for name, lat, long
+var parkNameArray = []; //create an array that has a list of park names, for typeahead
 
 function latLong () {
   parkData.forEach(function(feature) {
     var parkObj = {"name": feature.park_name, "latitude": feature.park_latitude, "longitude": feature.park_longitude};
     parkArray.push(parkObj);
+    parkNameArray.push(feature.park_name);
   }); 
 };
-
-// console.log(parkArray[1]);
 
 //google map
 function initialize(){

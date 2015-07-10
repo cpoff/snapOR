@@ -55,7 +55,8 @@ block content
 							#parks.reveal-modal(data-reveal='', aria-labelledby='modalTitle', aria-hidden='true', role='dialog')
 									h2#modalTitle Explore Parks
 									form(method="post" action="/parks")
-										input(type="text" name="Enter park name:" style="font-family: 'Lora'" placeholder="Ex: 'cape kiwanda', 'silver falls state park'")
+										#the-basics
+											input(class="typeahead" type="text" name="Enter park name:" style="font-family: 'Lora'" placeholder="Ex: 'cape kiwanda', 'silver falls state park'")
 										br
 										input(type="submit" value="Explore")
 								//a.close-reveal-modal(aria-label='Close') &times;
