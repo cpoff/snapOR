@@ -2,8 +2,13 @@ var ParkModel = Backbone.Model.extend({
     initialize : function () {
         this.fetch();
     } 
-//    defaults?
-//    defaults : {"value" : 0}
+    defaults : {'parkName' : '',
+                'parkFeatures':[], 
+                'parkAda':'', 
+                'parkLatitude':'', 
+                'parkLongitude':'', 
+                'parkNarrative':''
+                }
 });
 
 var MasterView = Backbone.View.extend({
