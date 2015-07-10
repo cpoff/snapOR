@@ -45,9 +45,10 @@ block content
 							#photos.reveal-modal(data-reveal='', aria-labelledby='modalTitle', aria-hidden='true', role='dialog')
 									h2#modalTitle Discover Photos
 									form(method="post" action="/photos")
-										input(type="text" name="Enter tags:" style="font-family: 'Lora'" placeholder="Ex: 'waterfalls', 'cape kiwanda'")
-										br
-										input(type="submit" value="Discover")
+										#featureList
+											input(class="typeahead" type="text" name="Enter tags:" style="font-family: 'Lora'" placeholder="Ex: 'waterfalls', 'cape kiwanda'")
+											br
+											input(class="submit" type="submit" value="Discover")
 								//a.close-reveal-modal(aria-label='Close') &times;
 					li.active
 						a(href='#', data-reveal-id="parks") Explore Parks
