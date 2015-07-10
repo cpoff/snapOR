@@ -87,19 +87,19 @@ MODALS
 	color: $yellow;
 }
 
-#parkList{
+#featureList, #parkList{
 	display: flex;
 	flex-direction: row;
 	justify-content: center;
 }
-#parkList .submit{
+#featureList .submit, #parkList .submit{
 	width: 10%;
 	margin-left: 5%;
 }
-#parkList .typeahead{
+#featureList .typeahead, #parkList .typeahead{
 	width: 100%
 }
-form div#parkList span.twitter-typeahead{
+form div#featureList span.twitter-typeahead, form div#parkList span.twitter-typeahead{
 	width: 60%;
 }
 
