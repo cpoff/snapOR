@@ -31,7 +31,7 @@ body div.contain-to-grid.sticky {
 	color: $yellow;
 }
 
-body div.contain-to-grid.sticky nav.top-bar section.top-bar-section ul.right li a, body div.contain-to-grid.sticky nav.top-bar section.top-bar-section ul.left li.active a, body div.contain-to-grid.sticky nav.top-bar {
+body div.fixed.sticky nav.top-bar section.top-bar-section ul.right li a, body div.fixed.sticky nav.top-bar section.top-bar-section ul.left li.active a, body div.fixed.sticky nav.top-bar {
 	background-color: $red;
 	color: $yellow;
 	font-family: $sans-serif;
@@ -47,6 +47,23 @@ body div nav.top-bar ul.title-area li.name h1 a {
 	font-family: $cursive;
 }
 
+nav.top-bar ul.title-area li.toggle-topbar.menu-icon a {
+	background-color: $red;
+	color: $yellow;
+	font-family: $sans-serif;
+}
+
+nav.top-bar.expanded.fixed section.top-bar-section ul.right li a{
+	background-color: $red;
+	color: $yellow;
+	font-family: $sans-serif;
+} 
+
+nav.top-bar.expanded.fixed section.top-bar-section ul.left li.active a {
+	background-color: $red;
+	color: $yellow;
+	font-family: $sans-serif;
+} 
 
 
 /******************
@@ -66,6 +83,16 @@ MODALS
 
 #modalTitle {
 	font-family: $serif;
+	color: $yellow;
+}
+
+/******************
+USER PAGE
+******************/
+.welcome {
+	padding-top: 5px;
+	background-color: $red;
+	font-family: $sans-serif;
 	color: $yellow;
 }
 
