@@ -2,18 +2,18 @@ var url = 'http://oregonstateparks.org/data/index.cfm';
 
 var parkData;
 var data = {
-  endpoint: '/parks',
-  parkName: ""
+	endpoint: '/parks',
+	parkName: ""
 };
 var parkArray = []; //create an object per park, properties for name, lat, long
 var parkNameArray = []; //create an array that has a list of park names, for typeahead
 
 function latLong () {
-  parkData.forEach(function(feature) {
-    var parkObj = {"name": feature.park_name, "latitude": feature.park_latitude, "longitude": feature.park_longitude};
-    parkArray.push(parkObj);
-    parkNameArray.push(feature.park_name);
-  }); 
+	parkData.forEach(function(feature) {
+		var parkObj = {"name": feature.park_name, "latitude": feature.park_latitude, "longitude": feature.park_longitude};
+		parkArray.push(parkObj);
+		parkNameArray.push(feature.park_name);
+	}); 
 };
 
 //google map
@@ -47,121 +47,40 @@ function initialize(){
 	}
 }
 
-// var substringMatcher = function(strs) {
-//   return function findMatches(q, cb) {
-//     var matches, substringRegex;
- 
-//     // an array that will be populated with substring matches
-//     matches = [];
- 
-//     // regex used to determine if a string contains the substring `q`
-//     substrRegex = new RegExp(q, 'i');
- 
-//     // iterate through the pool of strings and for any string that
-//     // contains the substring `q`, add it to the `matches` array
-//     $.each(strs, function(i, str) {
-//       if (substrRegex.test(str)) {
-//         matches.push(str);
-//       }
-//     });
- 
-//     cb(matches);
-//   };
-// };
-
 function go() {
-  $.ajax(url, {data: data})
-  .then(function(data, status, xhr) {
-    // console.log(parkArray + "2");
-    parkData = data;
-    latLong();
-    // console.log(parkArray + "3");
-  }).then(function(){
-  	initialize();
-  	google.maps.event.addDomListener(window, 'load', initialize);
-  }).then(function(){
-		// var substringMatcher = function(strs){
-		// 	return function findMatches(q, cb){
-		// 		var matches, substringRegex;
-		// 		matches = [];
-		// 		substrRegex = new RegExp(q, 'i');
-		// 		$.each(strs, function(i, str){
-		// 			if(substrRegex.test(str)){
-		// 				matches.push(str);
-		// 			}
-		// 		});
-		// 		cb(matches);
-		// 	};
-		// };
-		// //this function will need to run after the map has been loaded
-		// //parkNameArray
-		// $(function(){
-		// 	$('#the-basics .typeahead').typeahead({
-		// 		hint: true,
-		// 		highlight: true,
-		// 		minLength: 1
-		// 	},
-		// 	{
-		// 		name: 'parkNameArray',
-		// 		source: substringMatcher(parkNameArray)
-		// 	});
-		// });
-	});
+	$.ajax(url, {data: data})
+	.then(function(data, status, xhr) {
+	// console.log(parkArray + "2");
+		parkData = data;
+		latLong();
+	// console.log(parkArray + "3");
+	}).then(function(){
+		initialize();
+		google.maps.event.addDomListener(window, 'load', initialize);
+	}).then(function(){
+		var substringMatcher = function(strs) {
+  return function findMatches(q, cb) {
+    var matches, substringRegex;
+ 
+    // an array that will be populated with substring matches
+    matches = [];
+ 
+    // regex used to determine if a string contains the substring `q`
+    substrRegex = new RegExp(q, 'i');
+ 
+    // iterate through the pool of strings and for any string that
+    // contains the substring `q`, add it to the `matches` array
+    $.each(strs, function(i, str) {
+      if (substrRegex.test(str)) {
+        matches.push(str);
+      }
+    });
+ 
+    cb(matches);
+  };
 };
-
-
-// var substringMatcher = function(strs){
-// 	return function findMatches(q, cb){
-// 		var matches, substringRegex;
-// 		matches = [];
-// 		substrRegex = new RegExp(q, 'i');
-// 		$.each(strs, function(i, str){
-// 			if(substrRegex.test(str)){
-// 				matches.push(str);
-// 			}
-// 		});
-// 		cb(matches);
-// 	};
-// };
-// //this function will need to run after the map has been loaded
-// //parkNameArray
-// $(function(){
-// 	$('#the-basics .typeahead').typeahead({
-// 		hint: true,
-// 		highlight: true,
-// 		minLength: 1
-// 	},
-// 	{
-// 		name: 'parkNameArray',
-// 		source: substringMatcher(parkNameArray)
-// 	});
-// });
-
-go();
-
-// var substringMatcher = function(strs) {
-//   return function findMatches(q, cb) {
-//     var matches, substringRegex;
  
-//     // an array that will be populated with substring matches
-//     matches = [];
- 
-//     // regex used to determine if a string contains the substring `q`
-//     substrRegex = new RegExp(q, 'i');
- 
-//     // iterate through the pool of strings and for any string that
-//     // contains the substring `q`, add it to the `matches` array
-//     $.each(strs, function(i, str) {
-//       if (substrRegex.test(str)) {
-//         matches.push(str);
-//       }
-//     });
- 
-//     cb(matches);
-//   };
-// };
- 
-// var states = ['Alabama', 'Alaska', 'Arizona', 'Arkansas', 'California',
+// var parkNameArray = ['Alabama', 'Alaska', 'Arizona', 'Arkansas', 'California',
 //   'Colorado', 'Connecticut', 'Delaware', 'Florida', 'Georgia', 'Hawaii',
 //   'Idaho', 'Illinois', 'Indiana', 'Iowa', 'Kansas', 'Kentucky', 'Louisiana',
 //   'Maine', 'Maryland', 'Massachusetts', 'Michigan', 'Minnesota',
@@ -172,14 +91,19 @@ go();
 //   'Virginia', 'Washington', 'West Virginia', 'Wisconsin', 'Wyoming'
 // ];
 
-// $(function(){
-//   $('#the-basics .typeahead').typeahead({
-//     hint: true,
-//     highlight: true,
-//     minLength: 1
-//   },
-//   {
-//     name: 'states',
-//     source: substringMatcher(states)
-//   });
-// });
+$(function(){
+  $('#the-basics .typeahead').typeahead({
+    hint: true,
+    highlight: true,
+    minLength: 1
+  },
+  {
+    name: 'parkNameArray',
+    source: substringMatcher(parkNameArray)
+  });
+});
+	});
+};
+
+
+go();
