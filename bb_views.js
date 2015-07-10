@@ -1,9 +1,14 @@
 var ParkModel = Backbone.Model.extend({
+    defaults : {'parkName': '',
+                'parkFeatures':[],
+                'parkAda':'',
+                'parkLat':'',
+                'parkLong':'',
+                'parkNarrative':'',
+               },
 	initialize : function () {
 		this.fetch();
 	} 
-//    defaults?
-//    defaults : {"value" : 0}
 });
 
 // snapOR homepage
