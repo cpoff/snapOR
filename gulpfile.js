@@ -2,7 +2,8 @@
 
 var gulp = require('gulp'),
 	concat = require('gulp-concat'),
-	rename = require('gulp-rename');
+	rename = require('gulp-rename'),
+	uglify = require('gulp-uglify');
 
 gulp.task('concatScripts', function(){
 	return gulp.src([
@@ -16,11 +17,12 @@ gulp.task('concatScripts', function(){
 		.pipe(gulp.dest('./public/javascripts/'));
 });
 
-// gulp.task('concatScripts', function(){
-// 	return gulp.src('./public/javascripts/*.js')
-// 		.pipe(concat('all.js'))
-// 		.pipe(gulp.dest('./public/javascripts/'));
-// });
+gulp.task('minifyScripts', function(){
+	return gulp.src('./public/javascripts/all.js')
+		.pipe(uglify())
+		.pipe(rename('all.min.js'))
+		.pipe(gulp.dest('./public/javascripts/'));
+});
 
 gulp.task('default', ['hello'], function(){
 	console.log('default task');
