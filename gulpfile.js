@@ -15,7 +15,9 @@ gulp.task('concatScripts', function(){
 		'./public/javascripts/backbone.js',
 		'./public/javascripts/typeahead.bundle.min.js',
 		'./public/javascripts/lat-long.js'])
+		.pipe(maps.init())
 		.pipe(concat('all.js'))
+		.pipe(maps.write('./'))
 		.pipe(gulp.dest('./public/javascripts/'));
 });
 
@@ -30,7 +32,7 @@ gulp.task('compileSass', function(){
 	return gulp.src('./public/stylesheets/main.scss')
 		.pipe(maps.init())
 		.pipe(sass())
-		.pipe(maps.write('./public'))
+		.pipe(maps.write('./'))
 		.pipe(gulp.dest('./public/stylesheets/'));
 });
 
