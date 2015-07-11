@@ -36,9 +36,12 @@ gulp.task('compileSass', function(){
 		.pipe(gulp.dest('./public/stylesheets/'));
 });
 
-gulp.task('watchSass', function(){
+gulp.task('watchFiles', function(){
 	gulp.watch('./public/stylesheets/**/*.scss', ['compileSass']);
+	gulp.watch('./public/javascripts/all.js', ['concatScripts']);
 });
+
+gulp.task('serve', ['watchFiles']);
 
 gulp.task('build', ['minifyScripts', 'compileSass']);
 
