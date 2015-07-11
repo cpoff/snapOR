@@ -4,23 +4,23 @@ var gulp = require('gulp'),
 	concat = require('gulp-concat'),
 	rename = require('gulp-rename');
 
-// gulp.task('concatScripts', function(){
-// 	return gulp.src([
-// 		'/public/javascripts/jquery-2.1.4.js', 
-// 		'/public/javascripts/underscore.js', 
-// 		'/public/javascripts/foundation.min.js',
-// 		'/public/javascripts/backbone.js',
-// 		'/public/javascripts/typeahead.bundle.min.js',
-// 		'/public/javascripts/lat-long.js'])
-// 		.pipe(concat('all.js'))
-// 		.pipe(gulp.dest('./public/javascripts/'));
-// });
-
 gulp.task('concatScripts', function(){
-	return gulp.src('./public/javascripts/*.js')
+	return gulp.src([
+		'./public/javascripts/jquery-2.1.4.js', 
+		'./public/javascripts/underscore.js', 
+		'./public/javascripts/foundation.min.js',
+		'./public/javascripts/backbone.js',
+		'./public/javascripts/typeahead.bundle.min.js',
+		'./public/javascripts/lat-long.js'])
 		.pipe(concat('all.js'))
 		.pipe(gulp.dest('./public/javascripts/'));
 });
+
+// gulp.task('concatScripts', function(){
+// 	return gulp.src('./public/javascripts/*.js')
+// 		.pipe(concat('all.js'))
+// 		.pipe(gulp.dest('./public/javascripts/'));
+// });
 
 gulp.task('default', ['hello'], function(){
 	console.log('default task');
