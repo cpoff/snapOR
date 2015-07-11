@@ -21,7 +21,7 @@ gulp.task('concatScripts', function(){
 		.pipe(gulp.dest('./public/javascripts/'));
 });
 
-gulp.task('minifyScripts', function(){
+gulp.task('minifyScripts', ['concatScripts'],function(){
 	return gulp.src('./public/javascripts/all.js')
 		.pipe(uglify())
 		.pipe(rename('all.min.js'))
@@ -36,8 +36,6 @@ gulp.task('compileSass', function(){
 		.pipe(gulp.dest('./public/stylesheets/'));
 });
 
-gulp.task('default', ['hello'], function(){
-	console.log('default task');
-});
+gulp.task('build', ['minifyScripts', 'compileSass']);
 
-//gulp concat: combines multiple files into one file
+gulp.task('default', ['build']);
