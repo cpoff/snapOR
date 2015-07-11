@@ -1,6 +1,4 @@
 var url = 'http://oregonstateparks.org/data/index.cfm';
-
-var parkData;
 var data = {
 	endpoint: '/parks',
 	parkName: ""

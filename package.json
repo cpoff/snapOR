@@ -17,6 +17,8 @@
     "uuid": "^2.0.1"
   },
   "devDependencies": {
-    "gulp": "^3.9.0"
+    "gulp": "^3.9.0",
+    "gulp-concat": "^2.6.0",
+    "gulp-rename": "^1.2.2"
   }
 }
