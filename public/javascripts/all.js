@@ -3437,7 +3437,9 @@ e=document.activeElement,f=d.is(e),g=d.has(e).length>0,b.isMsie()&&(f||g)&&(a.pr
   return Backbone;
 
 }));
+
 var url = 'http://oregonstateparks.org/data/index.cfm';
+
 var data = {
 	endpoint: '/parks',
 	parkName: ""
@@ -3475,14 +3477,20 @@ function initialize(){
 			title: parkArray[i].name,
 			animation: google.maps.Animation.DROP,
 		});
-
+//FIRE THE FLICKR API WHEN USER SUMMONS PARK BUBBLE
 		google.maps.event.addListener(marker, 'click', (function(marker, i){
 			return function(){
 				info.setContent("<div><p>" + parkArray[i].name + "</p></div>");
 				info.open(map, marker);
 			}
 		})(marker,i));
-	}
+//		google.maps.event.addListener(marker, 'click', (function(marker, i){
+//			return function(){
+//				info.setContent("<div><p>" + parkArray[i].name + "</p></div>");
+//				info.open(map, marker);
+//			}
+//		})(marker,i));
+    }
 }
 
 function go() {
