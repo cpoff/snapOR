@@ -3,8 +3,7 @@ var MasterView = Backbone.View.extend({
 	render: function () {      
 		this.$el.html("<div>" + "Map API response goes here" + "</div>");
 	}
-}); 
-
+});
 var ParkModel = Backbone.Model.extend({
     defaults : {'parkName': '',
                 'parkFeatures':[],
@@ -14,7 +13,6 @@ var ParkModel = Backbone.Model.extend({
                 'parkNarrative':'',
                 'parkViewUrl':'',
                 'parkFlickrCall':'',
-                
                },
 	initialize : function () {
 		this.fetch();
@@ -28,16 +26,21 @@ ParkModel.prototype.flickrApi = function () {
     var flickrApi = this.set(parkFlickrCall, "https://api.flickr.com/services/rest/?method=flickr.photos.search&api_key=0be06ecdf3fa1ac784e8fd10c279790c&tags=park&lat=" + lat + "&lon=" + long + "&radius=20&per_page=20&format=json");
 };
 
-/*
-// collection of park pages
-var ParkCollection = Backbone.Collection.extend({
-	model : ParkModel,
+var ParkView = Backbone.View.extend({
 	url : "/parkdetail",
-	initialize: function () {
-		this.fetch();
-	}
+	render: function () {      
+		this.$el.html("<div>" + "Flickr API response goes here" + "</div>");
+	},
 });
-*/
+
+// collection of park pages
+//var ParkCollection = Backbone.Collection.extend({
+//	model : ParkModel,
+//	url : "/parkdetail",
+//	initialize: function () {
+//		this.fetch();
+//	}
+//});
 
 //user page
 var UserModel = Backbone.Model.extend({
