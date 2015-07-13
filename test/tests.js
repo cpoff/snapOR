@@ -42,7 +42,10 @@ in discover photos modal
 
 in login modal:
 	if user inserts accurate and matching password/email
-		web page changes from login/register, to welcome email
+		web page changes from login/register, to welcome username, logout btn
+		username is added to cookies
+	if user clicks logout btn
+		user is redirected to homepage, cookies are cleared
 	if user enters email and email doesn't exist
 		error appears that says user does not appear, please register
 	if user enters incorrect password
