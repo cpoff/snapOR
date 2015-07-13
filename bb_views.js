@@ -5,6 +5,9 @@ var ParkModel = Backbone.Model.extend({
                 'parkLat':'',
                 'parkLong':'',
                 'parkNarrative':'',
+                'parkViewUrl':'',
+                'parkFlickrCall':'',
+                
                },
 	initialize : function () {
 		this.fetch();
