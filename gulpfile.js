@@ -9,11 +9,11 @@ var gulp = require('gulp'),
 
 gulp.task('concatScripts', function(){
 	return gulp.src([
-		'./public/javascripts/jquery-2.1.4.js', 
+		'./bower_components/jquery/dist/jquery.min.js',
+		'./bower_components/foundation/js/foundation.min.js', 
+		'./bower_components/typeahead.js/dist/typeahead.bundle.min.js',
 		'./public/javascripts/underscore.js', 
-		'./public/javascripts/foundation.min.js',
 		'./public/javascripts/backbone.js',
-		'./public/javascripts/typeahead.bundle.min.js',
 		'./public/javascripts/lat-long.js'])
 		.pipe(maps.init())
 		.pipe(concat('all.js'))
