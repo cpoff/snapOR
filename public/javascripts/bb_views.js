@@ -25,7 +25,7 @@ var ParkView = Backbone.View.extend({
 });
 
 //user page
-var userModel = Backbone.Model.extend({
+var UserModel = Backbone.Model.extend({
 	urlRoot: '/user',
 	defaults: {"name": "", "email": "", "home": ""},
 	replace : function(str) {
@@ -33,7 +33,7 @@ var userModel = Backbone.Model.extend({
 	}
 });// closes userModel
 
-var userView = Backbone.View.extend({
+var UserView = Backbone.View.extend({
 	url: '/user',
 	render : function(){
 		//var nameVal = this.model.get("name");
@@ -75,18 +75,24 @@ var ParkCollection = Backbone.Collection.extend({
 	}
 });
 
-$(document).ready( function () {
-	var parkModel = new Park();
+var parkModel;
+var parkCollection;
+var parkView;
+var userModel;
+var userView;
+
+$(document).ready(function() {
+	var parkModel = new ParkModel();
 	var parkCollection = new ParkCollection();
 	var parkView = new ParkView({model : parkModel});
-	var userModel = new User();
+	var userModel = new UserModel();
 	var userView = new UserView({model: userModel});
 
   parkView.render();
   userView.render();
 
 
-  $("#parkdiv").append(parkView.$el);
+  //$("#parkdiv").append(parkView.$el);
   $("#userDiv").append(userView.$el);
 });
 
