@@ -3,6 +3,7 @@ var router = express.Router();
 if (!process.env.heroku) var config = require('../config.js');
 var db = require('orchestrate')(process.env.dbKey || config.dbKey);
 var uuid = require('uuid');
+var pass = require('pwd');
 var app = require('../app');
 
 /* GET home page. */
@@ -16,6 +17,23 @@ router.post('/user', function(req, res){
 	var password = req.body.password;
 	var password_confirm = req.body.password_confirm;
 	var user_key = uuid.v4();
+
+	var raw = {email: email, password: password};
+	var stored = {email : raw.email, salt:'', hash:''};
+	function register(raw){
+		pass.hash(raw.password, function(err, salt, hash){
+			stored = {email: raw.email, salt: salt, hash: hash};
+			// console.log(stored);
+		});
+	}
+	function authenticate(attempt){
+		pass.hash(attempt.password, stored.salt, function(err, hash){
+			if(hash===stored.hash){
+				console.log("succss");
+			}
+		});
+	}
+
 	database = app.get('database');
 	console.log(db.search);
 	db.search('snap', 'value.email:""')
@@ -27,12 +45,17 @@ router.post('/user', function(req, res){
 			});
 		} else {
 			if (password === password_confirm){
+				register(raw);
 				db.put('snap', user_key, {
-					'email': email,
-					'password': password
+					'email': stored.email,
+					// 'password': password
+					'salt': stored.salt,
+					'hash': stored.hash
 				})// closes db.put
 				.then(function(){
 					console.log('user created');
+					// console.log(user_key);
+					console.log(stored);
 					res.redirect('/user');
 				})// closes .then
 				.fail(function(err){})
