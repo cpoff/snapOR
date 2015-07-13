@@ -1,5 +1,13 @@
+// snapOR homepage
+var MasterView = Backbone.View.extend({
+	render: function () {      
+		this.$el.html("<div>" + "Map API response goes here" + "</div>");
+	}
+});
+/*
 var ParkModel = Backbone.Model.extend({
-    defaults : {'parkName': '',
+	urlRoot : "/parkdetail",
+  defaults : {'parkName': '',
                 'parkFeatures':[],
                 'parkAda':'',
                 'parkLat':'',
@@ -11,25 +19,35 @@ var ParkModel = Backbone.Model.extend({
 	} 
 });
 
-// snapOR homepage
-var MasterView = Backbone.View.extend({
-	render: function () {      
-		this.$el.html("<div>" + "Map API response goes here" + "</div>");
-	},
-
-
 var ParkView = Backbone.View.extend({
+	url : "/parkdetail",
 	render: function () {      
 		this.$el.html("<div>" + "Flickr API response goes here" + "</div>");
 	},
 });
 
+// collection of park pages
+var ParkCollection = Backbone.Collection.extend({
+	model : ParkModel,
+	url : "/parkdetail",
+	initialize: function () {
+		this.fetch();
+	}
+});
+*/
+
 //user page
 var UserModel = Backbone.Model.extend({
 	urlRoot: '/user',
 	defaults: {"name": "", "email": "", "home": ""},
+	initialize : function() {
+		this.fetch();
+	},
 	replace : function(str) {
-		this.set("name", str)
+		this.set("name", str);
+		this.set("email", str);
+		this.set("home", str);
+		this.save();
 	}
 });// closes userModel
 
@@ -55,7 +73,7 @@ var UserView = Backbone.View.extend({
 	replace : function() {
 		var str = this.$el.find("input").val();
 		this.model.replace(str);
-	}
+	},
 	initialize : function(){
 		this.model.on("change", this.render, this);
 	},
@@ -66,15 +84,6 @@ var UserView = Backbone.View.extend({
 	}, //closes events
 });// closes userView
 
-// collection of park pages
-var ParkCollection = Backbone.Collection.extend({
-	model : ParkModel,
-	url : "/parkdetail",
-	initialize: function () {
-		this.fetch();
-	}
-});
-
 var parkModel;
 var parkCollection;
 var parkView;
@@ -82,13 +91,13 @@ var userModel;
 var userView;
 
 $(document).ready(function() {
-	var parkModel = new ParkModel();
-	var parkCollection = new ParkCollection();
-	var parkView = new ParkView({model : parkModel});
-	var userModel = new UserModel();
-	var userView = new UserView({model: userModel});
+	//parkModel = new ParkModel();
+	//parkCollection = new ParkCollection();
+	//parkView = new ParkView({model : parkModel});
+	userModel = new UserModel();
+	userView = new UserView({model: userModel});
 
-  parkView.render();
+  //parkView.render();
   userView.render();
 
 
