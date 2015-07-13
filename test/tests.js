@@ -64,7 +64,7 @@ in register modal
 			user is prompted to add content
 		marker element is added to map with different color and info box that dispays home
 
-
+more tests to come
 /*
 
 
