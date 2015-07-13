@@ -3,7 +3,7 @@ var MasterView = Backbone.View.extend({
 	render: function () {      
 		this.$el.html("<div>" + "Map API response goes here" + "</div>");
 	}
-});
+}); 
 
 var ParkModel = Backbone.Model.extend({
     defaults : {'parkName': '',
