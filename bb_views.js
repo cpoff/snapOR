@@ -1,4 +1,4 @@
-var ParkModel = Backbone.Model.extend({
+var Park = Backbone.Model.extend({
     defaults : {'parkName': '',
                 'parkFeatures':[],
                 'parkAda':'',
@@ -14,6 +14,15 @@ var ParkModel = Backbone.Model.extend({
 	} 
 });
 
+//BUILD MODEL CONTAINING LAT/LONG, PLUS FLICKR API URL
+Park.prototype.flickrApi = function () {
+    var lat = this.get("parkLat");
+    var long = this.get("parkLong");
+    var flickrApi = this.set(parkFlickrCall, "https://api.flickr.com/services/rest/?method=flickr.photos.search&api_key=0be06ecdf3fa1ac784e8fd10c279790c&tags=park&lat=" + lat + "&lon=" + long + "&radius=20&per_page=20&format=json");
+},
+
+//https://api.flickr.com/services/rest/?method=flickr.photos.search&api_key=0be06ecdf3fa1ac784e8fd10c279790c&tags=park&lat=[LATITUDE]&lon=[LONGITUDE]&radius=20&per_page=20&format=json
+
 // snapOR homepage
 var MasterView = Backbone.View.extend({
 	render: function () {      
@@ -22,7 +31,8 @@ var MasterView = Backbone.View.extend({
 
 
 var ParkView = Backbone.View.extend({
-	render: function () {      
+	render: function () {  
+    console.log(this.model.get(parkFlickrCall()));
 		this.$el.html("<div>" + "Flickr API response goes here" + "</div>");
 	},
 });
@@ -71,11 +81,11 @@ var ParkCollection = Backbone.Collection.extend({
 		this.fetch();
 	}
 });
-
+var parkView;
 $(document).ready( function () {
 	var parkModel = new Park();
 	var parkCollection = new ParkCollection();
-	var parkView = new ParkView({model : parkModel});
+    parkView = new ParkView({model : parkModel});
 	var userModel = new User();
 	var userView = new UserView({model: userModel});
 
