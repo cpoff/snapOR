@@ -1,6 +1,10 @@
+<<<<<<< HEAD
 //var url = 'http://oregonstateparks.org/data/index.cfm';
 
 var parkData;
+=======
+var url = 'http://oregonstateparks.org/data/index.cfm';
+>>>>>>> 9ddc1e751ccc50975d892613ba107e47eb0084e5
 var data = {
 	endpoint: '/parks',
 	parkName: ""
