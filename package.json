@@ -13,7 +13,7 @@
     "jade": "^1.11.0",
     "morgan": "^1.6.1",
     "orchestrate": "^0.4.5",
-    "pwd": "*",
+    "pwd": "0.0.4",
     "serve-favicon": "^2.3.0",
     "uuid": "*"
   },
