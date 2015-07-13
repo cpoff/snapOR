@@ -6331,13 +6331,9 @@ nav.top-bar.expanded.fixed section.top-bar-section ul.left li.active a {
 MODALS
 ******************/
 .reveal-modal {
-  background-color: #FF5D55;
-  height: 30%; }
+  background-color: #FF5D55; }
 
-.queries {
-  height: 30%; }
-
-.users {
+#photos, #parks {
   height: 40%; }
 
 .label {
