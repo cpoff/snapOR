@@ -26,20 +26,33 @@ var ParkView = Backbone.View.extend({
 
 //user page
 var userModel = Backbone.Model.extend({
-	defaults: {"name": "", "email": "", "home": ""}
+	urlRoot: '/user',
+	defaults: {"name": "", "email": "", "home": ""},
+	replace : function(str) {
+		this.set("name", str)
+	}
 });// closes userModel
 
 var userView = Backbone.View.extend({
 	render : function(){
 		var nameVal = this.model.get("name");
+		var nameInput = '<input type="text" id="nameInput" placeholder="enter name"</input>';
+		var updateBtn = '<button type="submit" id="update">Update Info</button>';
 		var emailVal = this.model.get("email");
+		var emailInput = '<input type="text" id="emailInput" placeholder="enter email"</input>';
 		var homeVal = this.model.get("home");
+		var homeInput = '<input type="text" id="homeInput" placeholder="enter home location"</input>';
 
 		this.$el.html = 
-		//label 'name' + input:text(name) + button.name-btn:update
-		//label 'email' + input:email(from registration) + button.email-btn:update
-		//label 'home location' + input:text(home) + button.home-btn:update
+		(nameInput + updateBtn + '<br />' + 
+			emailInput + updateBtn + '<br />' +
+			homeInput + updateBtn
+			);
 	}, // closes render
+	replace : function() {
+		var str = this.$el.find("input").val();
+		this.model.replace(str);
+	}
 	initialize : function(){
 		this.model.on("change", this.render, this);
 	},
@@ -77,8 +90,11 @@ $(document).ready( function () {
 	var userView = new UserView({model: userModel});
 
   parkView.render();
+  userView.render();
+
 
   $("#parkdiv").append(parkView.$el);
+  $("#userDiv").append(userView.$el);
 });
 
 
