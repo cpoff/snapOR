@@ -23,11 +23,11 @@ router.post('/user', function(req, res){
 	function register(raw){
 		pass.hash(raw.password, function(err, salt, hash){
 			stored = {email: raw.email, salt: salt, hash: hash};
-			console.log(stored);
+			// console.log(stored);
 		});
 	}
 	function authenticate(attempt){
-		pwd.has(attempt.password, stored.salt, function(err, hash){
+		pass.hash(attempt.password, stored.salt, function(err, hash){
 			if(hash===stored.hash){
 				console.log("succss");
 			}
@@ -54,6 +54,8 @@ router.post('/user', function(req, res){
 				})// closes db.put
 				.then(function(){
 					console.log('user created');
+					// console.log(user_key);
+					console.log(stored);
 					res.redirect('/user');
 				})// closes .then
 				.fail(function(err){})
