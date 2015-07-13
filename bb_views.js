@@ -34,19 +34,22 @@ var userModel = Backbone.Model.extend({
 });// closes userModel
 
 var userView = Backbone.View.extend({
+	url: '/user',
 	render : function(){
-		var nameVal = this.model.get("name");
-		var nameInput = '<input type="text" id="nameInput" placeholder="enter name"</input>';
-		var updateBtn = '<button type="submit" id="update">Update Info</button>';
-		var emailVal = this.model.get("email");
-		var emailInput = '<input type="text" id="emailInput" placeholder="enter email"</input>';
-		var homeVal = this.model.get("home");
-		var homeInput = '<input type="text" id="homeInput" placeholder="enter home location"</input>';
+		//var nameVal = this.model.get("name");
+		var nameInput = '<label>Name: </label><input type="text" id="nameInput" placeholder="enter name"</input>';
+		var nameBtn = '<button type="submit" id="nameUpdate">Update Info</button>';
+		//var emailVal = this.model.get("email");
+		var emailInput = '<label>Email: </label><input type="text" id="emailInput" placeholder="enter email"</input>';
+		var emailBtn = '<button type="submit" id="emailUpdate">Update Info</button>';
+		//var homeVal = this.model.get("home");
+		var homeInput = '<label>Home Location: </label><input type="text" id="homeInput" placeholder="enter home location"</input>';
+		var homeBtn = '<button type="submit" id="homeUpdate">Update Info</button>';
 
 		this.$el.html = 
-		(nameInput + updateBtn + '<br />' + 
-			emailInput + updateBtn + '<br />' +
-			homeInput + updateBtn
+		(nameInput + nameBtn + '<br />' + 
+			emailInput + emailBtn + '<br />' +
+			homeInput + homeBtn
 			);
 	}, // closes render
 	replace : function() {
@@ -57,20 +60,10 @@ var userView = Backbone.View.extend({
 		this.model.on("change", this.render, this);
 	},
 	events : {
-		'click .name-btn' : "update-name",
-		'click .email-btn' : "update-email",
-		'click .home-btn' : "update-home"
+		'click #nameUpdate' : "replace",
+		'click #emailUpdate' : "replace",
+		'click #homeUpdate' : "replace"
 	}, //closes events
-	update-name : function() {
-
-	},
-	update-email : function() {
-
-	},
-	update-home : function() {
-		
-	}
-
 });// closes userView
 
 // collection of park pages
