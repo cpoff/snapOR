@@ -4,28 +4,31 @@ var MasterView = Backbone.View.extend({
 		this.$el.html("<div>" + "Map API response goes here" + "</div>");
 	}
 });
-/*
+
 var ParkModel = Backbone.Model.extend({
-	urlRoot : "/parkdetail",
-  defaults : {'parkName': '',
+    defaults : {'parkName': '',
                 'parkFeatures':[],
                 'parkAda':'',
                 'parkLat':'',
                 'parkLong':'',
                 'parkNarrative':'',
+                'parkViewUrl':'',
+                'parkFlickrCall':'',
+                
                },
 	initialize : function () {
 		this.fetch();
 	} 
 });
 
-var ParkView = Backbone.View.extend({
-	url : "/parkdetail",
-	render: function () {      
-		this.$el.html("<div>" + "Flickr API response goes here" + "</div>");
-	},
-});
+//BUILD MODEL CONTAINING LAT/LONG, PLUS FLICKR API URL
+ParkModel.prototype.flickrApi = function () {
+    var lat = this.get("parkLat");
+    var long = this.get("parkLong");
+    var flickrApi = this.set(parkFlickrCall, "https://api.flickr.com/services/rest/?method=flickr.photos.search&api_key=0be06ecdf3fa1ac784e8fd10c279790c&tags=park&lat=" + lat + "&lon=" + long + "&radius=20&per_page=20&format=json");
+};
 
+/*
 // collection of park pages
 var ParkCollection = Backbone.Collection.extend({
 	model : ParkModel,
