@@ -14,7 +14,8 @@ gulp.task('concatScripts', function(){
 		'./bower_components/typeahead.js/dist/typeahead.bundle.min.js',
 		'./public/javascripts/underscore.js', 
 		'./public/javascripts/backbone.js',
-		'./public/javascripts/lat-long.js'])
+		'./public/javascripts/lat-long.js',
+		'./public/javascripts/bb_views.js'])
 		.pipe(maps.init())
 		.pipe(concat('all.js'))
 		.pipe(maps.write('./'))
@@ -39,6 +40,7 @@ gulp.task('compileSass', function(){
 gulp.task('watchFiles', function(){
 	gulp.watch('./public/stylesheets/**/*.scss', ['compileSass']);
 	gulp.watch('./public/javascripts/lat-long.js', ['minifyScripts']);
+	gulp.watch('./public/javascripts/bb_views.js', ['minifyScripts']);
 });
 
 gulp.task('serve', ['watchFiles']);
