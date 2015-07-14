@@ -1,5 +1,5 @@
 @import 'foundation.scss';
-@import url(https://fonts.googleapis.com/css?family=Lora:400,700|Open+Sans+Condensed:300,700|Satisfy);
+@import url(https://fonts.googleapis.com/css?family=Questrial|Satisfy|Roboto+Slab);
 //cd into snapOR/public/stylesheets, then run 'scss main.scss main.css' in terminal to compile scss to css or gulp serve
 
 /******************
@@ -10,8 +10,8 @@ $blue: #1E749E;
 $yellow: #FEC63D;
 $red: #FF5D55;
 
-$sans-serif: "Open Sans Condensed", sans-serif;  
-$serif: "Lora", serif;
+$sans-serif: "Questrial", sans-serif;  
+$serif: "Roboto Slab", serif;
 $cursive: "Satisfy", cursive;
 
 /******************
@@ -45,12 +45,21 @@ body div nav.top-bar ul.title-area li.name h1 a {
 	background-color: $yellow;
 	color: $red;
 	font-family: $cursive;
+	font-size: 25px;
 }
 
 nav.top-bar ul.title-area li.toggle-topbar.menu-icon a {
 	background-color: $red;
 	color: $yellow;
 	font-family: $sans-serif;
+}
+
+nav.top-bar section.top-bar-section ul.right li a {
+	font-size: 20px;
+}
+
+nav.top-bar section.top-bar-section ul.left li a {
+	font-size: 20px;
 }
 
 nav.top-bar.expanded.fixed section.top-bar-section ul.right li a{
