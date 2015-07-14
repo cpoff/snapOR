@@ -69,17 +69,16 @@ var UserView = Backbone.View.extend({
 	url: '/user',
 	render : function(){
 		//var nameVal = this.model.get("name");
-		var nameInput = '<label>Name: </label><input type="text" id="nameInput" placeholder="enter name"</input>';
+		var nameInput = '<label>Name: </label><input type="text" id="nameInput" placeholder="enter name"</input> value=""';
 		var nameBtn = '<button type="submit" id="nameUpdate">Update Info</button>';
 		//var emailVal = this.model.get("email");
-		var emailInput = '<label>Email: </label><input type="text" id="emailInput" placeholder="enter email"</input>';
+		var emailInput = '<label>Email: </label><input type="text" id="emailInput" placeholder="enter email" value=""</input>';
 		var emailBtn = '<button type="submit" id="emailUpdate">Update Info</button>';
 		//var homeVal = this.model.get("home");
-		var homeInput = '<label>Home Location: </label><input type="text" id="homeInput" placeholder="enter home location"</input>';
+		var homeInput = '<label>Home Location: </label><input type="text" id="homeInput" placeholder="enter home location" value=""</input>';
 		var homeBtn = '<button type="submit" id="homeUpdate">Update Info</button>';
 
-		this.$el.html = 
-		(nameInput + nameBtn + '<br />' + 
+		this.$el.html(nameInput + nameBtn + '<br />' + 
 			emailInput + emailBtn + '<br />' +
 			homeInput + homeBtn
 			);
