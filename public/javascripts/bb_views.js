@@ -13,28 +13,25 @@ var ParkCollection = Backbone.Collection.extend({
 	}
 });
 
-var parkCollection = new Backbone.Collection(parkArray, {
-		model: ParkModel,
-});
+//var parkCollection = new Backbone.Collection(parkArray, {
+//		model: ParkModel,
+//});
 
-//var data = parkArray
-//var collection = new TestCollection();
-//collection.add(data);
 
 var ParkModel = Backbone.Model.extend({
 	 defaults : {'name': '',
-//            'features':[],
+                'features':[],
                 'latitude':'0',
                 'longitude':'0',
                 'parkFlickrCall':'',
-			     },
+							},
 	initialize : function () {
 		this.fetch();
 	} 
 });
 
 //BUILD MODEL CONTAINING LAT/LONG, PLUS FLICKR API URL
-ParkModel.prototype.flickrApi = function () {
+ParkModel.prototype.flickrApi = function (model) {
 	var name = this.get("name");
 	var lat = this.get("latitude");
 	var long = this.get("longitude");
@@ -104,7 +101,7 @@ var userView;
 $(document).ready(function() {
 	parkModel = new ParkModel();
 	parkView = new ParkView({model : parkModel});
-	parkCollection = new ParkCollection(parkArray);
+	parkCollection = new ParkCollection();
 	parkView = new ParkView({
 			model: parkModel
 	});
