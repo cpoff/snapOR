@@ -15,8 +15,6 @@
     "orchestrate": "^0.4.4",
     "serve-favicon": "~2.2.1",
     "uuid": "^2.0.1"
-<<<<<<< HEAD
-=======
   },
   "devDependencies": {
     "gulp": "^3.9.0",
@@ -26,6 +24,5 @@
     "gulp-sass": "^2.0.3",
     "gulp-sourcemaps": "^1.5.2",
     "gulp-uglify": "^1.2.0"
->>>>>>> 2f795e2bc890c4668153cd653af2c2c40b616a78
   }
 }
