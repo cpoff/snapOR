@@ -67,13 +67,13 @@
 		url: '/user',
 		render : function(){
 			//var nameVal = this.model.get("name");
-			var nameInput = '<label>Name: </label><input type="text" id="nameInput" placeholder="enter name"/>';
+			var nameInput = '<label>Name: </label><input type="text" id="nameInput" placeholder="enter name" value=" "/>';
 			var nameBtn = '<button type="submit" id="nameUpdate">Update Info</button>';
 			//var emailVal = this.model.get("email");
-			var emailInput = '<label>Email: </label><input type="text" id="emailInput" placeholder="enter email"/>';
+			var emailInput = '<label>Email: </label><input type="text" id="emailInput" placeholder="enter email" value=" "/>';
 			var emailBtn = '<button type="submit" id="emailUpdate">Update Info</button>';
 			//var homeVal = this.model.get("home");
-			var homeInput = '<label>Home Location: </label><input type="text" id="homeInput" placeholder="enter home location"/>';
+			var homeInput = '<label>Home Location: </label><input type="text" id="homeInput" placeholder="enter home location" value=" "/>';
 			var homeBtn = '<button type="submit" id="homeUpdate">Update Info</button>';
 
 			this.$el.html(nameInput + nameBtn + '<br />' + 
