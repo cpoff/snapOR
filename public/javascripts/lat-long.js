@@ -1,4 +1,3 @@
-
 var url = 'http://oregonstateparks.org/data/index.cfm';
 
 var data = {
