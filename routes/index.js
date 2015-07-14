@@ -38,7 +38,7 @@ router.post('/user', function(req, res){
 					pass.hash(raw.password, function(err,salt,hash) {
 						stored = {name:raw.email, salt:salt, hash:hash};
 						console.log(stored);
-					})// closes pass.hash
+					});// closes pass.hash
 				}// closes function register(raw)
 
 				register(raw);
@@ -55,7 +55,7 @@ router.post('/user', function(req, res){
 					console.log(stored);
 					res.redirect('/user');
 				})// closes .then
-				.fail(function(err){})
+				.fail(function(err){});
 			}// closes password_confirm
 		}// closes else
 	});// closes initial db query for existing email
@@ -75,8 +75,6 @@ router.post('/login', function(req, res) {
 	var password = request.body.password;
 	var database = app.get('database');
 
-	// translate from regis to login
-	var database = app.get('database');
 	console.log(db.search);
 	db.search('snap', 'value.email:""')
 	.then(function(array) {
@@ -95,11 +93,12 @@ router.post('/login', function(req, res) {
 						response.render('/error', {
 							error: "It looks like your password was incorrect.",
 							text: "Please click here to return to the login page: "
-						})// closes response.render
+						});// closes response.render
 					}// closes else
 				});// closes pass.hash
 			}// closes function authenticate
 		}// closes else
-});// closes login router
+	});// closes login router
+});
 
 module.exports = router;
