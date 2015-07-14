@@ -5,6 +5,7 @@ var MasterView = Backbone.View.extend({
 	}
 });
 
+/*
 var ParkModel = Backbone.Model.extend({
     defaults : {'name': '',
 //                'features':[],
@@ -47,6 +48,7 @@ var ParkView = Backbone.View.extend({
 		this.$el.html("<div>" + "Flickr API response goes here" + "</div>");
 	},
 });
+*/
 
 
 
@@ -97,14 +99,14 @@ var UserView = Backbone.View.extend({
 	}, //closes events
 });// closes userView
 
-var parkView;
+//var parkView;
 var userModel;
 var userView;
 
 $(document).ready(function() {
-	parkModel = new ParkModel();
-	parkCollection = new ParkCollection();
-	parkView = new ParkView({model : parkModel});
+	//parkModel = new ParkModel();
+	//parkCollection = new ParkCollection();
+	//parkView = new ParkView({model : parkModel});
 	userModel = new UserModel();
 	userView = new UserView({model: userModel});
 
