@@ -9,11 +9,8 @@ var ParkModel = Backbone.Model.extend({
     defaults: {
         'parkName': '',
         'parkFeatures': [],
-        'parkAda': '',
         'parkLat': '',
         'parkLong': '',
-        'parkNarrative': '',
-        'parkViewUrl': '',
         'parkFlickrCall': '',
     },
     initialize: function() {
