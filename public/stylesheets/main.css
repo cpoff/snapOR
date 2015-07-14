@@ -1,4 +1,4 @@
-@import url(https://fonts.googleapis.com/css?family=Lora:400,700|Open+Sans+Condensed:300,700|Satisfy);
+@import url(https://fonts.googleapis.com/css?family=Questrial|Satisfy|Roboto+Slab);
 meta.foundation-version {
   font-family: "/5.5.2/"; }
 
@@ -6302,7 +6302,7 @@ body div.contain-to-grid.sticky {
 body div.fixed.sticky nav.top-bar section.top-bar-section ul.right li a, body div.fixed.sticky nav.top-bar section.top-bar-section ul.left li.active a, body div.fixed.sticky nav.top-bar {
   background-color: #FF5D55;
   color: #FEC63D;
-  font-family: "Open Sans Condensed", sans-serif; }
+  font-family: "Questrial", sans-serif; }
 
 /******************
 SITE NAME
@@ -6310,22 +6310,29 @@ SITE NAME
 body div nav.top-bar ul.title-area li.name h1 a {
   background-color: #FEC63D;
   color: #FF5D55;
-  font-family: "Satisfy", cursive; }
+  font-family: "Satisfy", cursive;
+  font-size: 25px; }
 
 nav.top-bar ul.title-area li.toggle-topbar.menu-icon a {
   background-color: #FF5D55;
   color: #FEC63D;
-  font-family: "Open Sans Condensed", sans-serif; }
+  font-family: "Questrial", sans-serif; }
+
+nav.top-bar section.top-bar-section ul.right li a {
+  font-size: 20px; }
+
+nav.top-bar section.top-bar-section ul.left li a {
+  font-size: 20px; }
 
 nav.top-bar.expanded.fixed section.top-bar-section ul.right li a {
   background-color: #FF5D55;
   color: #FEC63D;
-  font-family: "Open Sans Condensed", sans-serif; }
+  font-family: "Questrial", sans-serif; }
 
 nav.top-bar.expanded.fixed section.top-bar-section ul.left li.active a {
   background-color: #FF5D55;
   color: #FEC63D;
-  font-family: "Open Sans Condensed", sans-serif; }
+  font-family: "Questrial", sans-serif; }
 
 /******************
 MODALS
@@ -6337,13 +6344,13 @@ MODALS
   height: 40%; }
 
 .label {
-  font-family: "Open Sans Condensed", sans-serif;
+  font-family: "Questrial", sans-serif;
   font-size: 25px;
   color: #1E749E;
   background-color: #FF5D55; }
 
 #modalTitle {
-  font-family: "Lora", serif;
+  font-family: "Roboto Slab", serif;
   color: #FEC63D; }
 
 #featureList, #parkList {
@@ -6370,7 +6377,7 @@ USER PAGE
 .welcome {
   padding-top: 5px;
   background-color: #FF5D55;
-  font-family: "Open Sans Condensed", sans-serif;
+  font-family: "Questrial", sans-serif;
   color: #FEC63D; }
 
 /******************
