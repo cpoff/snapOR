@@ -1,3 +1,6 @@
+
+
+since it's a single page app, testing needs to be on the ui, in the browser
 when a user visits http://snaporegon.herokuapp.com/, 
 	the page should render with http status 200 or 300
 
