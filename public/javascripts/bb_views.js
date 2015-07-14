@@ -17,10 +17,6 @@ var parkCollection = new Backbone.Collection(parkArray, {
 		model: ParkModel,
 });
 
-//var data = parkArray
-//var collection = new TestCollection();
-//collection.add(data);
-
 var ParkModel = Backbone.Model.extend({
 	 defaults : {'name': '',
 //            'features':[],
@@ -47,7 +43,6 @@ var ParkView = Backbone.View.extend({
 		this.$el.html("<div>" + "Park detail template goes here" + "</div>");
 	},
 });
-
 //user page
 var UserModel = Backbone.Model.extend({
 	urlRoot: '/user',
@@ -98,6 +93,8 @@ var UserView = Backbone.View.extend({
 var parkModel;
 var parkCollection;
 var parkView;
+var parkCollection;
+
 var userModel;
 var userView;
 
@@ -109,6 +106,7 @@ $(document).ready(function() {
 			model: parkModel
 	});
 	userModel = new UserModel();
+
 	userView = new UserView({
 			model: userModel
 	});
