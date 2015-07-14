@@ -38,7 +38,7 @@ gulp.task('compileSass', function(){
 
 gulp.task('watchFiles', function(){
 	gulp.watch('./public/stylesheets/**/*.scss', ['compileSass']);
-	gulp.watch('./public/javascripts/all.js', ['concatScripts']);
+	gulp.watch('./public/javascripts/lat-long.js', ['minifyScripts']);
 });
 
 gulp.task('serve', ['watchFiles']);
