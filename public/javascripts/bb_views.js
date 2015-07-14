@@ -5,23 +5,6 @@ var MasterView = Backbone.View.extend({
 	}
 });
 
-<<<<<<< HEAD
-var ParkModel = Backbone.Model.extend({
-    defaults : {'name': '',
-//                'features':[],
-                'latitude':'',
-                'longitude':'',
-                'parkFlickrCall':'',
-               },
-	initialize : function () {
-        console.log(ParkModel);
-        console.log('Yes');
-        this.fetch();
-	} 
-});
-// collection of park pages
-=======
->>>>>>> master
 var ParkCollection = Backbone.Collection.extend({
 	model : ParkModel,
 //	url : "/parkdetail",
@@ -34,21 +17,18 @@ var parkCollection = new Backbone.Collection(parkArray, {
 		model: ParkModel,
 });
 
-<<<<<<< HEAD
-=======
 var ParkModel = Backbone.Model.extend({
 	 defaults : {'name': '',
 //            'features':[],
-							'latitude':'0',
-							'longitude':'0',
-							'parkFlickrCall':'',
+                'latitude':'0',
+                'longitude':'0',
+                'parkFlickrCall':'',
 							},
 	initialize : function () {
 		this.fetch();
 	} 
 });
 
->>>>>>> master
 //BUILD MODEL CONTAINING LAT/LONG, PLUS FLICKR API URL
 ParkModel.prototype.flickrApi = function () {
 	var name = this.get("name");
@@ -60,22 +40,9 @@ ParkModel.prototype.flickrApi = function () {
 var ParkView = Backbone.View.extend({
 	url : "/parkdetail",
 	render: function () {      
-<<<<<<< HEAD
-		this.$el.html("<div><p>Flickr API response goes here<p></div>");
-	},
-});
-
-// var ParkCollectionView = Backbone.View.extend({
-// 	render:
-// 	add_park_collection
-// 	add_park_view
-// })
-=======
 		this.$el.html("<div>" + "Park detail template goes here" + "</div>");
 	},
 });
-
->>>>>>> master
 //user page
 var UserModel = Backbone.Model.extend({
 	urlRoot: '/user',
@@ -139,17 +106,7 @@ $(document).ready(function() {
 			model: parkModel
 	});
 	userModel = new UserModel();
-<<<<<<< HEAD
-	userView = new UserView({model: userModel});
 
-
- //  //parkView.render();
- //  userView.render();
-
-
- //  $("#parkdiv").append(parkView.$el);
- //  $("#userDiv").append(userView.$el);
-=======
 	userView = new UserView({
 			model: userModel
 	});
@@ -157,5 +114,4 @@ $(document).ready(function() {
 	userView.render();
 	$("#parkdiv").append(parkView.$el);
 	$("#userDiv").append(userView.$el);
->>>>>>> master
 });
