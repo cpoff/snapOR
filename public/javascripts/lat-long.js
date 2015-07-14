@@ -13,6 +13,7 @@ function latLong () {
 		var parkObj = {"name": feature.park_name, "latitude": feature.park_latitude, "longitude": feature.park_longitude};
 		parkArray.push(parkObj);
 		parkNameArray.push(feature.park_name);
+        parkCollection.add(parkObj);
 	}); 
 };
 
@@ -106,9 +107,8 @@ function go() {
 		  });
 		});
 	});
-    var parkCollection = new Backbone.Collection(parkArray, {
-    model: ParkModel,
-});
+    
+
 };
 
 
