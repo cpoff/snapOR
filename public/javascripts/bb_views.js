@@ -82,7 +82,7 @@ var UserView = Backbone.View.extend({
 			emailInput + emailBtn + '<br />' +
 			homeInput + homeBtn
 			);
-	}, // closes render
+	}, // closes render again
 	replace : function() {
 		var str = this.$el.find("input").val();
 		this.model.replace(str);
