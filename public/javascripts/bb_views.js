@@ -27,7 +27,7 @@ var ParkModel = Backbone.Model.extend({
                 'latitude':'0',
                 'longitude':'0',
                 'parkFlickrCall':'',
-							},
+			     },
 	initialize : function () {
 		this.fetch();
 	} 
