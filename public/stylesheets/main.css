@@ -6380,6 +6380,9 @@ USER PAGE
   font-family: "Questrial", sans-serif;
   color: #FEC63D; }
 
+#userDiv {
+  padding-top: 10em; }
+
 /******************
 MAP CANVAS
 ******************/
