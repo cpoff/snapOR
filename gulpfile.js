@@ -40,6 +40,7 @@ gulp.task('compileSass', function(){
 gulp.task('watchFiles', function(){
 	gulp.watch('./public/stylesheets/**/*.scss', ['compileSass']);
 	gulp.watch('./public/javascripts/lat-long.js', ['minifyScripts']);
+	gulp.watch('./public/javascripts/bb_views.js', ['minifyScripts']);
 });
 
 gulp.task('serve', ['watchFiles']);
