@@ -1,8 +1,8 @@
 #snapOR
 
-url :[heroku](https://snaporegon.herokuapp.com/)
+url: [snapOR on Heroku](https://snaporegon.herokuapp.com/)
 
-landing page [wireframe](https://moqups.com/#!/edit/angelariggs/zbq8VzMg)
+landing page: [wireframe](https://moqups.com/angelariggs/zbq8VzMg/p:a418af527)
 
 ##APIs
 * [Oregon State Parks](http://oregonstateparks.org/data/index.cfm/)
@@ -11,7 +11,7 @@ landing page [wireframe](https://moqups.com/#!/edit/angelariggs/zbq8VzMg)
 * [Weather Underground](http://www.wunderground.com/weather/api?MR=1)
 * [Google Maps](https://developers.google.com/maps/documentation/javascript/) 
 
-Outline of mvp [Website](https://bubbl.us/mindmap?h=2b3e64/5740cb/28h3pIVw29bJE)
+Outline of mvp [Mind Map](https://bubbl.us/mindmap?h=2b3e64/5740cb/28h3pIVw29bJE)
 
 ##Areas of responsibility
 * Angela: state parks API, express server, foundation/SCSS, backbone
