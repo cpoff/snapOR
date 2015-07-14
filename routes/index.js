@@ -54,7 +54,7 @@ router.post('/user', function(req, res){
 					// console.log(user_key);
 					console.log(stored);
 					res.redirect('/user');
-				});// closes .then
+				})// closes .then
 				.fail(function(err){});
 			}// closes password_confirm
 		}// closes else
@@ -74,9 +74,6 @@ router.post('/login', function(req, res) {
 	var username = request.body.username;
 	var password = request.body.password;
 	var database = app.get('database');
-
-	// translate from regis to login
-	database = app.get('database');
 	console.log(db.search);
 	db.search('snap', 'value.email:""')
 	.then(function(array) {
@@ -100,7 +97,7 @@ router.post('/login', function(req, res) {
 				});// closes pass.hash
 			}// closes function authenticate
 		}// closes else
-	});// closes then
+	});// closes .then
 });// closes login router
 
 module.exports = router;
