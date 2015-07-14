@@ -1,4 +1,3 @@
-
 var url = 'http://oregonstateparks.org/data/index.cfm';
 
 var data = {
@@ -107,6 +106,9 @@ function go() {
 		  });
 		});
 	});
+    var parkCollection = new Backbone.Collection(parkArray, {
+    model: ParkModel,
+});
 };
 
 
