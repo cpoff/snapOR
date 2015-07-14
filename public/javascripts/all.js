@@ -3434,7 +3434,6 @@ e=document.activeElement,f=d.is(e),g=d.has(e).length>0,b.isMsie()&&(f||g)&&(a.pr
   return Backbone;
 
 }));
-console.log('gulping');
 var url = 'http://oregonstateparks.org/data/index.cfm';
 
 var data = {

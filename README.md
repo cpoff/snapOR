@@ -34,4 +34,14 @@ Outline of mvp [Website](https://bubbl.us/mindmap?h=2b3e64/5740cb/28h3pIVw29bJE)
 * After a push, submit a pull request
 
 ##Gulp
+<<<<<<< HEAD
 if 'gulp command not found', run npm install gulp -g
+=======
+To make style changes
+	1. run 'gulp watch' in terminal
+	2. in another terminal window, run 'npm start'
+	3. make changes in main.scss and save, then refresh the browser
+To make changes in lat-lang.js
+	1.run 'gulp watch' and 'npm start' like before
+	2. make changes in lat-long.js, wait for gulp to concat and minify, then refresh browser to see changes
+>>>>>>> master
