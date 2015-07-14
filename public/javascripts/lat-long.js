@@ -106,6 +106,9 @@ function go() {
 		  });
 		});
 	});
+    var parkCollection = new Backbone.Collection(parkArray, {
+    model: ParkModel,
+});
 };
 
 
