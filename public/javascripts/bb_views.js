@@ -69,7 +69,7 @@ var UserView = Backbone.View.extend({
 	url: '/user',
 	render : function(){
 		//var nameVal = this.model.get("name");
-		var nameInput = '<label>Name: </label><input type="text" id="nameInput" placeholder="enter name"</input> value=""';
+		var nameInput = '<label>Name: </label><input type="text" id="nameInput" placeholder="enter name" value=""</input>';
 		var nameBtn = '<button type="submit" id="nameUpdate">Update Info</button>';
 		//var emailVal = this.model.get("email");
 		var emailInput = '<label>Email: </label><input type="text" id="emailInput" placeholder="enter email" value=""</input>';
@@ -82,7 +82,7 @@ var UserView = Backbone.View.extend({
 			emailInput + emailBtn + '<br />' +
 			homeInput + homeBtn
 			);
-	}, // closes render
+	}, // closes render again
 	replace : function() {
 		var str = this.$el.find("input").val();
 		this.model.replace(str);

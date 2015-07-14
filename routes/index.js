@@ -53,7 +53,7 @@ router.post('/user', function(req, res){
 					console.log('user created');
 					// console.log(user_key);
 					console.log(stored);
-					res.redirect('/user');
+					res.redirect('user');
 				})// closes .then
 				.fail(function(err){});
 			}// closes password_confirm
