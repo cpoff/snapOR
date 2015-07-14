@@ -8,8 +8,8 @@ var ParkModel = Backbone.Model.extend({
     defaults : {'parkName': '',
                 'parkFeatures':[],
                 'parkAda':'',
-                'parkLat':'',
-                'parkLong':'',
+                'parkLat': 0,
+                'parkLong': 0,
                 'parkNarrative':'',
                 'parkViewUrl':'',
                 'parkFlickrCall':'',
@@ -18,7 +18,9 @@ var ParkModel = Backbone.Model.extend({
 		this.fetch();
 	} 
 });
-
+var parkCollection = new Backbone.Collection(parkArray, {
+   model: ParkModel,
+});
 //BUILD MODEL CONTAINING LAT/LONG, PLUS FLICKR API URL
 ParkModel.prototype.flickrApi = function () {
     var lat = this.get("parkLat");
@@ -29,19 +31,24 @@ ParkModel.prototype.flickrApi = function () {
 var ParkView = Backbone.View.extend({
 	url : "/parkdetail",
 	render: function () {      
-		this.$el.html("<div>" + "Flickr API response goes here" + "</div>");
+		this.$el.html("<div><p>Flickr API response goes here<p></div>");
 	},
 });
 
 // collection of park pages
-//var ParkCollection = Backbone.Collection.extend({
-//	model : ParkModel,
-//	url : "/parkdetail",
-//	initialize: function () {
-//		this.fetch();
-//	}
-//});
+var ParkCollection = Backbone.Collection.extend({
+	model : ParkModel,
+	url : "/parkdetail",
+	initialize: function () {
+		this.fetch();
+	}
+});
 
+// var ParkCollectionView = Backbone.View.extend({
+// 	render:
+// 	add_park_collection
+// 	add_park_view
+// })
 //user page
 var UserModel = Backbone.Model.extend({
 	urlRoot: '/user',
@@ -91,24 +98,29 @@ var UserView = Backbone.View.extend({
 });// closes userView
 
 var parkModel;
-var parkCollection;
 var parkView;
+var parkCollection;
+
 var userModel;
 var userView;
 
 $(document).ready(function() {
-	//parkModel = new ParkModel();
-	//parkCollection = new ParkCollection();
-	//parkView = new ParkView({model : parkModel});
-	userModel = new UserModel();
-	userView = new UserView({model: userModel});
+	parkModel = new ParkModel();
+	parkView = new ParkView({model : parkModel});
+	parkView.render();
+	$("#parkdiv").append(parkView.$el);
 
-  //parkView.render();
-  userView.render();
+	// parkCollection = new ParkCollection();
+	// // parkView = new ParkView({model : parkModel});
+	// userModel = new UserModel();
+	// userView = new UserView({model: userModel});
+
+ //  //parkView.render();
+ //  userView.render();
 
 
-  //$("#parkdiv").append(parkView.$el);
-  $("#userDiv").append(userView.$el);
+ //  $("#parkdiv").append(parkView.$el);
+ //  $("#userDiv").append(userView.$el);
 });
 
 
