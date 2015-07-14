@@ -1,17 +1,25 @@
-<!DOCTYPE html>
 <html>
 <head>
-	<title></title>
-	<link rel="stylesheet" type="text/css" href="vendor/mocha.css">
-
+  <meta charset="utf-8">
+  <title>snapOR Tests</title>
+  <link href="https://cdn.rawgit.com/mochajs/mocha/2.2.5/mocha.css" rel="stylesheet" />
 </head>
 <body>
-	<div id="mocha"><p><a href=".">Index</a></p></div>
-	<div id="messages"></div>
-	<div id="fixtures"></div>
-	<script type="text/javascript" src="vendor/mocha.js"></script>
-	<script type="text/javascript" src="vendor/chai.js"></script>
-	<script type="text/javascript" src="./public/javascripts/all.js"></script>
+  <div id="mocha"></div>
 
+  <script src="https://cdn.rawgit.com/jquery/jquery/2.1.4/dist/jquery.min.js"></script>
+  <script src="https://cdn.rawgit.com/Automattic/expect.js/0.3.1/index.js"></script>
+  <script src="https://cdn.rawgit.com/mochajs/mocha/2.2.5/mocha.js"></script>
+  <script src="http://chaijs.com/chai.js"></script>
+
+  <script>mocha.setup('bdd')</script>
+  <script src="test.array.js"></script>
+  <script src="test.object.js"></script>
+  <script src="test.xhr.js"></script>
+  <script>
+    mocha.checkLeaks();
+    mocha.globals(['jQuery']);
+    mocha.run();
+  </script>
 </body>
 </html>
