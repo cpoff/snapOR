@@ -4,25 +4,36 @@ var MasterView = Backbone.View.extend({
 		this.$el.html("<div>" + "Map API response goes here" + "</div>");
 	}
 });
+
 var ParkModel = Backbone.Model.extend({
-    defaults : {'parkName': '',
-                'parkFeatures':[],
-                'parkAda':'',
-                'parkLat': 0,
-                'parkLong': 0,
-                'parkNarrative':'',
-                'parkViewUrl':'',
+    defaults : {'name': '',
+//                'features':[],
+                'latitude':'',
+                'longitude':'',
                 'parkFlickrCall':'',
                },
 	initialize : function () {
-		this.fetch();
+        console.log(ParkModel);
+        console.log('Yes');
+        this.fetch();
 	} 
 });
-var parkCollection = new Backbone.Collection(parkArray, {
-   model: ParkModel,
+// collection of park pages
+var ParkCollection = Backbone.Collection.extend({
+	model : ParkModel,
+//	url : "/parkdetail",
+	initialize: function () {
+		this.fetch();
+	}
 });
+
+var parkCollection = new Backbone.Collection(parkArray, {
+    model: ParkModel,
+});
+
 //BUILD MODEL CONTAINING LAT/LONG, PLUS FLICKR API URL
 ParkModel.prototype.flickrApi = function () {
+    var lat = this.get("parkLat");
     var lat = this.get("parkLat");
     var long = this.get("parkLong");
     var flickrApi = this.set(parkFlickrCall, "https://api.flickr.com/services/rest/?method=flickr.photos.search&api_key=0be06ecdf3fa1ac784e8fd10c279790c&tags=park&lat=" + lat + "&lon=" + long + "&radius=20&per_page=20&format=json");
@@ -33,15 +44,6 @@ var ParkView = Backbone.View.extend({
 	render: function () {      
 		this.$el.html("<div><p>Flickr API response goes here<p></div>");
 	},
-});
-
-// collection of park pages
-var ParkCollection = Backbone.Collection.extend({
-	model : ParkModel,
-	url : "/parkdetail",
-	initialize: function () {
-		this.fetch();
-	}
 });
 
 // var ParkCollectionView = Backbone.View.extend({
@@ -97,7 +99,6 @@ var UserView = Backbone.View.extend({
 	}, //closes events
 });// closes userView
 
-var parkModel;
 var parkView;
 var parkCollection;
 
@@ -106,14 +107,11 @@ var userView;
 
 $(document).ready(function() {
 	parkModel = new ParkModel();
+	parkCollection = new ParkCollection();
 	parkView = new ParkView({model : parkModel});
-	parkView.render();
-	$("#parkdiv").append(parkView.$el);
+	userModel = new UserModel();
+	userView = new UserView({model: userModel});
 
-	// parkCollection = new ParkCollection();
-	// // parkView = new ParkView({model : parkModel});
-	// userModel = new UserModel();
-	// userView = new UserView({model: userModel});
 
  //  //parkView.render();
  //  userView.render();
