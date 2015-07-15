@@ -1,51 +1,3 @@
-// snapOR homepage
-var MasterView = Backbone.View.extend({
-	render: function () {      
-		this.$el.html("<div>" + "Map API response goes here" + "</div>");
-	}
-});
-
-var ParkCollection = Backbone.Collection.extend({
-	model : ParkModel,
-//	url : "/parkdetail",
-	initialize: function () {
-		this.fetch();
-	}
-});
-
-//var parkCollection = new Backbone.Collection(parkArray, {
-//		model: ParkModel,
-//});
-
-
-var ParkModel = Backbone.Model.extend({
-	 defaults : {'name': '',
-                'features':[],
-                'latitude':'0',
-                'longitude':'0',
-                'parkFlickrCall':'',
-							},
-	initialize : function () {
-		this.fetch();
-	} 
-});
-
-//BUILD MODEL CONTAINING LAT/LONG, PLUS FLICKR API URL
-ParkModel.prototype.flickrApi = function (model) {
-	var name = this.get("name");
-	var lat = this.get("latitude");
-	var long = this.get("longitude");
-	var flickrApi = this.set('parkFlickrCall', "https://api.flickr.com/services/rest/?method=flickr.photos.search&api_key=0be06ecdf3fa1ac784e8fd10c279790c&tags=park&lat=" + lat + "&lon=" + long + "&radius=20&per_page=20&format=json");
-};
-
-var ParkView = Backbone.View.extend({
-	url : "/parkdetail",
-	render: function () {      
-		this.$el.html("<div>" + "Park detail template goes here" + "</div>");
-	},
-});
-
-
 //user page
 var UserModel = Backbone.Model.extend({
 	urlRoot: '/user',
@@ -93,28 +45,11 @@ var UserView = Backbone.View.extend({
 	}, //closes events
 }); // closes userView
 
-var parkModel;
-var parkCollection;
-var parkView;
-var parkCollection;
+var userModel, userView;
 
-var userModel;
-var userView;
-
-$(document).ready(function() {
-	parkModel = new ParkModel();
-	parkView = new ParkView({model : parkModel});
-	parkCollection = new ParkCollection(parkArray);
-	parkView = new ParkView({
-			model: parkModel
-	});
+$(document).ready(function(){
 	userModel = new UserModel();
-
-	userView = new UserView({
-			model: userModel
-	});
-	parkView.render();
+	userView = new UserView({model: userModel});
 	userView.render();
-	$("#parkdiv").append(parkView.$el);
 	$("#userDiv").append(userView.$el);
 });

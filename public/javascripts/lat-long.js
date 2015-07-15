@@ -10,9 +10,10 @@ var featureList = ["Ampitheater","Beach Access","Bike Path","Boat Ramp","Cabin",
 
 function latLong () {
 	parkData.forEach(function(feature) {
-		var parkObj = {"name": feature.park_name, "latitude": feature.park_latitude, "longitude": feature.park_longitude};
+		var parkObj = {"name": feature.park_name, "latitude": feature.park_latitude, "longitude": feature.park_longitude, "flickrApi": ''};
 		parkArray.push(parkObj);
 		parkNameArray.push(feature.park_name);
+        parkCollection.add(parkObj);
 	}); 
 };
 
@@ -44,12 +45,6 @@ function initialize(){
 				info.open(map, marker);
 			}
 		})(marker,i));
-//		google.maps.event.addListener(marker, 'click', (function(marker, i){
-//			return function(){
-//				info.setContent("<div><p>" + parkArray[i].name + "</p></div>");
-//				info.open(map, marker);
-//			}
-//		})(marker,i));
     }
 }
 
@@ -106,9 +101,8 @@ function go() {
 		  });
 		});
 	});
-    var parkCollection = new Backbone.Collection(parkArray, {
-    model: ParkModel,
-});
+    
+
 };
 
 
