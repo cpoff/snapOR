@@ -10,7 +10,7 @@ var featureList = ["Ampitheater","Beach Access","Bike Path","Boat Ramp","Cabin",
 
 function latLong () {
 	parkData.forEach(function(feature) {
-		var parkObj = {"name": feature.park_name, "latitude": feature.park_latitude, "longitude": feature.park_longitude, "parkFlickrCall": ''};
+		var parkObj = {"name": feature.park_name, "latitude": feature.park_latitude, "longitude": feature.park_longitude, "parkFlickrCall": 'https://api.flickr.com/services/rest/?method=flickr.photos.search&api_key=a3a47a8bbef03987ba49563f5120127e&tags=park&lat=' + feature.park_latitude + '&lon=' + feature.park_longitude + '&radius=20&per_page=20&format=json'};
 		parkArray.push(parkObj);
 		parkNameArray.push(feature.park_name);
         parkCollection.add(parkObj);
