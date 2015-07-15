@@ -10,12 +10,12 @@ var featureList = ["Ampitheater","Beach Access","Bike Path","Boat Ramp","Cabin",
 
 function latLong () {
 	parkData.forEach(function(feature) {
-		var parkObj = {"name": feature.park_name, "latitude": feature.park_latitude, "longitude": feature.park_longitude, "flickrApi": ''};
+		var parkObj = {"name": feature.park_name, "latitude": feature.park_latitude, "longitude": feature.park_longitude, "longitude": feature.park_longitude};
 		parkArray.push(parkObj);
 		parkNameArray.push(feature.park_name);
         parkCollection.add(parkObj);
 	}); 
-};
+}; 
 
 //google map
 function initialize(){
