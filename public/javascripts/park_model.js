@@ -25,14 +25,13 @@ var ParkModel = Backbone.Model.extend({
     },
     initialize: function() {
         this.fetch();
-        this.flickrApi();
     }
 });
 
 var ParkView = Backbone.View.extend({
     url: "/parkdetail",
     render: function() {
-        this.$el.html("<div>" + "Park detail template goes here" + "</div>");
+        this.$el.html("<div>" + "Send results to div in Park Detail template" + "</div>");
     },
 });
 var parkModel, parkView, parkCollection;

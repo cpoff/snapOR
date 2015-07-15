@@ -3442,7 +3442,7 @@ var data = {
 var parkArray = []; //create an object per park, properties for name, lat, long
 var parkNameArray = []; //create an array that has a list of park names, for typeahead
 var featureList = ["Ampitheater", "Beach Access", "Bike Path", "Boat Ramp", "Cabin", "Camping", "Day-Use Fee", "Deluxe Cabin", "Deluxe Yurt", "Disc Golf", "Dump Station", "Exhibit Information", "Fishing", "Hiker Biker", "Hiking Trails", "Horse Trails", "Kayaking", "Marina", "Pet Friendly", "Picknicking", "Pit Toilets", "Playground", "Potable Water", "Reservable", "Restrooms Flush", "Hot Shower", "Swimming", "Tepee", "Vault Toilets", "Viewpoint", "Wildlife", "Windsurfing", "Open Year Round", "Yurt"]
-
+ 
 function latLong() {
     parkData.forEach(function(feature) {
         var parkObj = {
@@ -3562,14 +3562,13 @@ var ParkModel = Backbone.Model.extend({
     },
     initialize: function() {
         this.fetch();
-        this.flickrApi();
     }
 });
 
 var ParkView = Backbone.View.extend({
     url: "/parkdetail",
     render: function() {
-        this.$el.html("<div>" + "Park detail template goes here" + "</div>");
+        this.$el.html("<div>" + "Send results to div in Park Detail template" + "</div>");
     },
 });
 var parkModel, parkView, parkCollection;
