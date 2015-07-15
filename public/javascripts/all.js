@@ -3585,6 +3585,7 @@ $(document).ready(function() {
     parkView.render();
     $("#parkdiv").append(parkView.$el);
 });
+
 //user page
 var UserModel = Backbone.Model.extend({
 	urlRoot: '/user',
