@@ -23,10 +23,7 @@ router.post('/user', function(req, res){
 	.then(function(array) {
 		console.log('email: ', email)
 		if (array.length > 0) {
-			res.render ('error', {
-				error: 'There is already an account associated with this email.',
-				text: 'Please use a unique email address, or click "Forgot Password"'
-			});
+			res.render ('error');
 		} else {
 			if (password === password_confirm){
 				//The user's registration info

@@ -5,6 +5,8 @@ var MasterView = Backbone.View.extend({
 	}
 });
 
+/////////////////COMMENTED OUT TO TEST USER CODE/////////////////////////////
+/*
 var ParkCollection = Backbone.Collection.extend({
 	model : ParkModel,
 //	url : "/parkdetail",
@@ -43,6 +45,7 @@ var ParkView = Backbone.View.extend({
 		this.$el.html("<div>" + "Park detail template goes here" + "</div>");
 	},
 });
+*/
 
 //user page
 var UserModel = Backbone.Model.extend({
@@ -91,25 +94,32 @@ var UserView = Backbone.View.extend({
 	}, //closes events
 }); // closes userView
 
+/////////////////COMMENTED OUT TO TEST USER CODE/////////////////////////////
+/*
 var parkModel;
 var parkCollection;
 var parkView;
+*/
 var userModel;
 var userView;
 
 $(document).ready(function() {
-	parkModel = new ParkModel();
+	/////////////////COMMENTED OUT TO TEST USER CODE/////////////////////////////
+	/*parkModel = new ParkModel();
 	parkView = new ParkView({model : parkModel});
 	parkCollection = new ParkCollection(parkArray);
 	parkView = new ParkView({
 			model: parkModel
 	});
+*/
 	userModel = new UserModel();
 	userView = new UserView({
 			model: userModel
 	});
-	parkView.render();
+	/////////////////COMMENTED OUT TO TEST USER CODE/////////////////////////////
+	/*parkView.render();*/
 	userView.render();
-	$("#parkdiv").append(parkView.$el);
+	/////////////////COMMENTED OUT TO TEST USER CODE/////////////////////////////
+	/*$("#parkdiv").append(parkView.$el);*/
 	$("#userDiv").append(userView.$el);
 });
