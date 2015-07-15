@@ -3609,6 +3609,10 @@ $(document).ready(function() {
 	$("#parkdiv").append(parkView.$el);
 });
 
+_.templateSettings = {
+	interpolate: /\{\{(.+?)\}\}/g
+}
+
 //user page
 var UserModel = Backbone.Model.extend({
 	urlRoot: '/user',
@@ -3631,6 +3635,11 @@ var UserModel = Backbone.Model.extend({
 var UserView = Backbone.View.extend({
 	url: '/user',
 	render: function() {
+		//if the user doesn't have property values for name and home location, render this template (to collect this data)
+		var update_user_template = _.template('<h2>Update</h2><label>Name: </label><input type="text" id="nameInput" placeholder="enter name" value=""</input><br /><label>Email: </label><input type="text" id="emailInput" placeholder="enter email" value=""</input><br /><label>Home Location: </label><input type="text" id="homeInput" placeholder="enter home location" value=""</input><br /><label>Password: </label><input type="text" id="homeInput" placeholder="enter home location" value=""</input><br /><button type="submit" id="homeUpdate">Update Info</button>');
+		var new_user_tempate = _.tempate('<h2>Welcome</h2><p>We have a couple more questions for you so we can make your experience with snapOR more personal.<p><label>Name: </label><input type="text" id="nameInput" placeholder="enter name" value=""</input><br /><label>Home Location: </label><input type="text" id="homeInput" placeholder="enter home location" value=""</input><br /><button type="submit" id="homeUpdate">Save Info</button>');
+		var user_template;
+		//else render a different template
 			//var nameVal = this.model.get("name");
 			var nameInput = '<label>Name: </label><input type="text" id="nameInput" placeholder="enter name" value=""</input>';
 			var nameBtn = '<button type="submit" id="nameUpdate">Update Info</button>';
