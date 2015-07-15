@@ -3594,6 +3594,21 @@ var ParkView = Backbone.View.extend({
 		this.$el.html("<div>" + "Park detail template goes here" + "</div>");
 	},
 });
+
+
+var parkModel, parkView, parkCollection;
+
+$(document).ready(function() {
+	parkModel = new ParkModel();
+	parkView = new ParkView({model : parkModel});
+	parkCollection = new ParkCollection(parkArray);
+	parkView = new ParkView({
+			model: parkModel
+	});
+	parkView.render();
+	$("#parkdiv").append(parkView.$el);
+});
+
 //user page
 var UserModel = Backbone.Model.extend({
 	urlRoot: '/user',
@@ -3641,30 +3656,12 @@ var UserView = Backbone.View.extend({
 	}, //closes events
 }); // closes userView
 
-var parkModel;
-var parkCollection;
-var parkView;
-var parkCollection;
+var userModel, userView;
 
-var userModel;
-var userView;
-
-$(document).ready(function() {
-	parkModel = new ParkModel();
-	parkView = new ParkView({model : parkModel});
-	parkCollection = new ParkCollection(parkArray);
-	parkView = new ParkView({
-			model: parkModel
-	});
+$(document).ready(function(){
 	userModel = new UserModel();
-
-	userView = new UserView({
-			model: userModel
-	});
-	parkView.render();
+	userView = new UserView({model: userModel});
 	userView.render();
-	$("#parkdiv").append(parkView.$el);
 	$("#userDiv").append(userView.$el);
 });
-
 //# sourceMappingURL=all.js.map
