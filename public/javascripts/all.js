@@ -3446,7 +3446,7 @@ var featureList = ["Ampitheater","Beach Access","Bike Path","Boat Ramp","Cabin",
 
 function latLong () {
 	parkData.forEach(function(feature) {
-		var parkObj = {"name": feature.park_name, "latitude": feature.park_latitude, "longitude": feature.park_longitude, "parkFlickrCall": ''};
+		var parkObj = {"name": feature.park_name, "latitude": feature.park_latitude, "longitude": feature.park_longitude, "parkFlickrCall": 'https://api.flickr.com/services/rest/?method=flickr.photos.search&api_key=a3a47a8bbef03987ba49563f5120127e&tags=park&lat=' + feature.park_latitude + '&lon=' + feature.park_longitude + '&radius=20&per_page=20&format=json'};
 		parkArray.push(parkObj);
 		parkNameArray.push(feature.park_name);
         parkCollection.add(parkObj);
@@ -3562,22 +3562,18 @@ var parkCollection = new Backbone.Collection({
 
 var ParkModel = Backbone.Model.extend({
     defaults: {
-        'name': '',
+        'park_name': '',
         'features': [],
-        'latitude': '0',
-        'longitude': '0',
-        'parkFlickrCall': '',
+        'park_latitude': '0',
+        'park_longitude': '0',
+        'parkFlickrCall': 'URL',
     },
     initialize: function() {
         this.fetch();
         this.flickrApi();
-    },
-    flickrApi: function() {
-        var lat = this.get("latitude");
-        var long = this.get("longitude");
-        var flickrUrl = this.set('parkFlickrCall', "https://api.flickr.com/services/rest/?method=flickr.photos.search&api_key=0be06ecdf3fa1ac784e8fd10c279790c&tags=park&lat=" + lat + "&lon=" + long + "&radius=20&per_page=20&format=json");
     }
 });
+
 var ParkView = Backbone.View.extend({
     url: "/parkdetail",
     render: function() {
