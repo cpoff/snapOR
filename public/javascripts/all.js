@@ -3434,127 +3434,6 @@ e=document.activeElement,f=d.is(e),g=d.has(e).length>0,b.isMsie()&&(f||g)&&(a.pr
   return Backbone;
 
 }));
-// snapOR homepage
-var MasterView = Backbone.View.extend({
-	render: function () {      
-		this.$el.html("<div>" + "Map API response goes here" + "</div>");
-	}
-});
-
-var ParkCollection = Backbone.Collection.extend({
-	model : ParkModel,
-//	url : "/parkdetail",
-	initialize: function () {
-		this.fetch();
-	}
-});
-
-var parkCollection = new Backbone.Collection({
-		model: ParkModel,
-});
-
-var ParkModel = Backbone.Model.extend({
-	 defaults : {'name': '',
-            'features':[],
-                'latitude':'0',
-                'longitude':'0',
-                'parkFlickrCall':'',
-							},
-	initialize : function () {
-		this.fetch();
-        this.flickrApi();
-	}, 
-    flickrApi : function () {
-//	var name = this.get("name");
-	var lat = this.get("latitude");
-	var long = this.get("longitude");
-    var flickrUrl = this.set('parkFlickrCall', "https://api.flickr.com/services/rest/?method=flickr.photos.search&api_key=0be06ecdf3fa1ac784e8fd10c279790c&tags=park&lat=" + lat + "&lon=" + long + "&radius=20&per_page=20&format=json");
-});
-
-//BUILD MODEL CONTAINING LAT/LONG, PLUS FLICKR API URL
-//ParkModel.prototype.flickrApi = function () {
-////	var name = this.get("name");
-//	var lat = this.get("latitude");
-//	var long = this.get("longitude");
-//    var flickrUrl = this.set(parkFlickrCall, "https://api.flickr.com/services/rest/?method=flickr.photos.search&api_key=0be06ecdf3fa1ac784e8fd10c279790c&tags=park&lat=" + lat + "&lon=" + long + "&radius=20&per_page=20&format=json");
-//};
-
-var ParkView = Backbone.View.extend({
-	url : "/parkdetail",
-	render: function () {      
-		this.$el.html("<div>" + "Park detail template goes here" + "</div>");
-	},
-});
-
-
-var parkModel, parkView, parkCollection;
-
-$(document).ready(function() {
-	parkModel = new ParkModel();
-	parkView = new ParkView({model : parkModel});
-	parkCollection = new ParkCollection(parkArray);
-	parkView = new ParkView({
-			model: parkModel
-	});
-	parkView.render();
-	$("#parkdiv").append(parkView.$el);
-});
-
-//user page
-var UserModel = Backbone.Model.extend({
-	urlRoot: '/user',
-	defaults: {
-			"name": "",
-			"email": "",
-			"home": ""
-	},
-	initialize: function() {
-			this.fetch();
-	},
-	replace: function(str) {
-			this.set("name", str);
-			this.set("email", str);
-			this.set("home", str);
-			this.save();
-	}
-}); // closes userModel
-
-var UserView = Backbone.View.extend({
-	url: '/user',
-	render: function() {
-			//var nameVal = this.model.get("name");
-			var nameInput = '<label>Name: </label><input type="text" id="nameInput" placeholder="enter name" value=""</input>';
-			var nameBtn = '<button type="submit" id="nameUpdate">Update Info</button>';
-			//var emailVal = this.model.get("email");
-			var emailInput = '<label>Email: </label><input type="text" id="emailInput" placeholder="enter email" value=""</input>';
-			var emailBtn = '<button type="submit" id="emailUpdate">Update Info</button>';
-			//var homeVal = this.model.get("home");
-			var homeInput = '<label>Home Location: </label><input type="text" id="homeInput" placeholder="enter home location" value=""</input>';
-			var homeBtn = '<button type="submit" id="homeUpdate">Update Info</button>';
-			this.$el.html(nameInput + nameBtn + '<br />' + emailInput + emailBtn + '<br />' + homeInput + homeBtn);
-	}, // closes render again
-	replace: function() {
-			var str = this.$el.find("input").val();
-			this.model.replace(str);
-	},
-	initialize: function() {
-			this.model.on("change", this.render, this);
-	},
-	events: {
-			'click #nameUpdate': "replace",
-			'click #emailUpdate': "replace",
-			'click #homeUpdate': "replace"
-	}, //closes events
-}); // closes userView
-
-var userModel, userView;
-
-$(document).ready(function(){
-	userModel = new UserModel();
-	userView = new UserView({model: userModel});
-	userView.render();
-	$("#userDiv").append(userView.$el);
-});
 var url = 'http://oregonstateparks.org/data/index.cfm';
 
 var data = {
@@ -3572,7 +3451,7 @@ function latLong () {
 		parkNameArray.push(feature.park_name);
         parkCollection.add(parkObj);
 	}); 
-}; 
+};
 
 //google map
 function initialize(){
@@ -3664,4 +3543,113 @@ function go() {
 
 
 go();
+// snapOR homepage
+var MasterView = Backbone.View.extend({
+    render: function() {
+        this.$el.html("<div>" + "Map API response goes here" + "</div>");
+    }
+});
+var ParkCollection = Backbone.Collection.extend({
+    model: ParkModel,
+    //	url : "/parkdetail",
+    initialize: function() {
+        this.fetch();
+    }
+});
+var parkCollection = new Backbone.Collection({
+    model: ParkModel,
+});
+
+var ParkModel = Backbone.Model.extend({
+    defaults: {
+        'name': '',
+        'features': [],
+        'latitude': '0',
+        'longitude': '0',
+        'parkFlickrCall': '',
+    },
+    initialize: function() {
+        this.fetch();
+        this.flickrApi();
+    },
+    flickrApi: function() {
+        var lat = this.get("latitude");
+        var long = this.get("longitude");
+        var flickrUrl = this.set('parkFlickrCall', "https://api.flickr.com/services/rest/?method=flickr.photos.search&api_key=0be06ecdf3fa1ac784e8fd10c279790c&tags=park&lat=" + lat + "&lon=" + long + "&radius=20&per_page=20&format=json");
+    }
+});
+var ParkView = Backbone.View.extend({
+    url: "/parkdetail",
+    render: function() {
+        this.$el.html("<div>" + "Park detail template goes here" + "</div>");
+    },
+});
+var parkModel, parkView, parkCollection;
+$(document).ready(function() {
+    parkModel = new ParkModel();
+    parkView = new ParkView({
+        model: parkModel
+    });
+    parkCollection = new ParkCollection(parkArray);
+    parkView = new ParkView({
+        model: parkModel
+    });
+    parkView.render();
+    $("#parkdiv").append(parkView.$el);
+});
+//user page
+var UserModel = Backbone.Model.extend({
+	urlRoot: '/user',
+	defaults: {
+			"name": "",
+			"email": "",
+			"home": ""
+	},
+	initialize: function() {
+			this.fetch();
+	},
+	replace: function(str) {
+			this.set("name", str);
+			this.set("email", str);
+			this.set("home", str);
+			this.save();
+	}
+}); // closes userModel
+
+var UserView = Backbone.View.extend({
+	url: '/user',
+	render: function() {
+			//var nameVal = this.model.get("name");
+			var nameInput = '<label>Name: </label><input type="text" id="nameInput" placeholder="enter name" value=""</input>';
+			var nameBtn = '<button type="submit" id="nameUpdate">Update Info</button>';
+			//var emailVal = this.model.get("email");
+			var emailInput = '<label>Email: </label><input type="text" id="emailInput" placeholder="enter email" value=""</input>';
+			var emailBtn = '<button type="submit" id="emailUpdate">Update Info</button>';
+			//var homeVal = this.model.get("home");
+			var homeInput = '<label>Home Location: </label><input type="text" id="homeInput" placeholder="enter home location" value=""</input>';
+			var homeBtn = '<button type="submit" id="homeUpdate">Update Info</button>';
+			this.$el.html(nameInput + nameBtn + '<br />' + emailInput + emailBtn + '<br />' + homeInput + homeBtn);
+	}, // closes render again
+	replace: function() {
+			var str = this.$el.find("input").val();
+			this.model.replace(str);
+	},
+	initialize: function() {
+			this.model.on("change", this.render, this);
+	},
+	events: {
+			'click #nameUpdate': "replace",
+			'click #emailUpdate': "replace",
+			'click #homeUpdate': "replace"
+	}, //closes events
+}); // closes userView
+
+var userModel, userView;
+
+$(document).ready(function(){
+	userModel = new UserModel();
+	userView = new UserView({model: userModel});
+	userView.render();
+	$("#userDiv").append(userView.$el);
+});
 //# sourceMappingURL=all.js.map

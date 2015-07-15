@@ -15,7 +15,7 @@ function latLong () {
 		parkNameArray.push(feature.park_name);
         parkCollection.add(parkObj);
 	}); 
-}; 
+};
 
 //google map
 function initialize(){
