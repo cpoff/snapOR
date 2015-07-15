@@ -3619,12 +3619,13 @@ var UserView = Backbone.View.extend({
 		var emailVal = this.model.get("email");
 		var homeVal = this.model.get("home");
 		var new_user_template =  _.template('<h2>Welcome {{emailVal}}</h2><p>We have a couple more questions for you so we can make your experience with snapOR more personal.<p><label>Name: </label><input type="text" id="nameInput" placeholder="Who are you?" value=""</input><br /><label>Home Location: </label><input type="text" id="homeInput" placeholder="Where do you live?" value=""</input><br /><button type="submit" id="save">Save Info</button>');
-		if(nameVal === '' && homeVal === ''){
-			this.$el.html(new_user_template({emailVal : this.model.get("email")}));
-		} else{
-			this.$el.html(
-				user_template({nameVal : this.model.get("name")}));
-		}
+		this.$el.html(new_user_template({emailVal : this.model.get("email")}));
+		// if(nameVal === '' && homeVal === ''){
+		// 	this.$el.html(new_user_template({emailVal : this.model.get("email")}));
+		// } else{
+		// 	this.$el.html(
+		// 		user_template({nameVal : this.model.get("name")}));
+		// }
 	}, // closes render again
 	update: function(){
 		var nameVal = this.model.get("name");
@@ -3638,19 +3639,19 @@ var UserView = Backbone.View.extend({
 		var emailVal = this.model.get("email");
 		var homeVal = this.model.get("home");
 		//changes made on form
-		var nameChanged = this.$el.find("#nameInput");
-		var emailChanged = this.$el.find("#emailInput");
-		var homeChanged = this.$el.find("#homeInput");
+		var nameChanged = this.$el.find("#nameInput").val();
+		var emailChanged = this.$el.find("#emailInput").val();
+		var homeChanged = this.$el.find("#homeInput").val();
 
-		if(nameVal !== nameChanged){
-			this.model.replace(nameVal);
+		if(nameVal !== nameChanged || emailVal !== emailChanged || omeVal !== homeChanged){
+			this.model.update();
 		}
-		if(emailVal !== emailChanged){
-			this.model.replace(emailVal);
-		}
-		if(homeVal !== homeChanged){
-			this.model.replace(homeVal);
-		}
+		// if(emailVal !== emailChanged){
+		// 	this.model.update();
+		// }
+		// if(homeVal !== homeChanged){
+		// 	this.model.update();
+		// }
 	},
 	// initialize: function() {
 	// 	this.model.on("change", this.render, this);
@@ -3666,5 +3667,8 @@ var userModel = new UserModel();
 var userView = new UserView({model: userModel});
 userView.render();
 $("#userDiv").append(userView.$el);
-$("#userDiv").append('<h1>Test</h1>');
+$(function(){
+	$("body").append('<h1>Test</h1>');
+});
+// $("#userDiv").append('<h1>Test</h1>');
 //# sourceMappingURL=all.js.map
