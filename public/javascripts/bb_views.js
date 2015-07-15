@@ -35,7 +35,7 @@ ParkModel.prototype.flickrApi = function (model) {
 	var name = this.get("name");
 	var lat = this.get("latitude");
 	var long = this.get("longitude");
-	var flickrApi = this.set(parkFlickrCall, "https://api.flickr.com/services/rest/?method=flickr.photos.search&api_key=0be06ecdf3fa1ac784e8fd10c279790c&tags=park&lat=" + lat + "&lon=" + long + "&radius=20&per_page=20&format=json");
+	var flickrApi = this.set('parkFlickrCall', "https://api.flickr.com/services/rest/?method=flickr.photos.search&api_key=0be06ecdf3fa1ac784e8fd10c279790c&tags=park&lat=" + lat + "&lon=" + long + "&radius=20&per_page=20&format=json");
 };
 
 var ParkView = Backbone.View.extend({
@@ -44,6 +44,7 @@ var ParkView = Backbone.View.extend({
 		this.$el.html("<div>" + "Park detail template goes here" + "</div>");
 	},
 });
+
 
 //user page
 var UserModel = Backbone.Model.extend({
@@ -95,17 +96,20 @@ var UserView = Backbone.View.extend({
 var parkModel;
 var parkCollection;
 var parkView;
+var parkCollection;
+
 var userModel;
 var userView;
 
 $(document).ready(function() {
 	parkModel = new ParkModel();
 	parkView = new ParkView({model : parkModel});
-	parkCollection = new ParkCollection();
+	parkCollection = new ParkCollection(parkArray);
 	parkView = new ParkView({
 			model: parkModel
 	});
 	userModel = new UserModel();
+
 	userView = new UserView({
 			model: userModel
 	});
