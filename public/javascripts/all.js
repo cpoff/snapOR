@@ -3469,7 +3469,7 @@ var ParkModel = Backbone.Model.extend({
 	var lat = this.get("latitude");
 	var long = this.get("longitude");
     var flickrUrl = this.set('parkFlickrCall', "https://api.flickr.com/services/rest/?method=flickr.photos.search&api_key=0be06ecdf3fa1ac784e8fd10c279790c&tags=park&lat=" + lat + "&lon=" + long + "&radius=20&per_page=20&format=json");
-});
+};
 
 //BUILD MODEL CONTAINING LAT/LONG, PLUS FLICKR API URL
 //ParkModel.prototype.flickrApi = function () {
