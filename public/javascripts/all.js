@@ -3446,7 +3446,7 @@ var featureList = ["Ampitheater","Beach Access","Bike Path","Boat Ramp","Cabin",
 
 function latLong () {
 	parkData.forEach(function(feature) {
-		var parkObj = {"name": feature.park_name, "latitude": feature.park_latitude, "longitude": feature.park_longitude};
+		var parkObj = {"name": feature.park_name, "latitude": feature.park_latitude, "longitude": feature.park_longitude, "parkFlickrCall": ''};
 		parkArray.push(parkObj);
 		parkNameArray.push(feature.park_name);
         parkCollection.add(parkObj);
@@ -3481,12 +3481,6 @@ function initialize(){
 				info.open(map, marker);
 			}
 		})(marker,i));
-//		google.maps.event.addListener(marker, 'click', (function(marker, i){
-//			return function(){
-//				info.setContent("<div><p>" + parkArray[i].name + "</p></div>");
-//				info.open(map, marker);
-//			}
-//		})(marker,i));
     }
 }
 
@@ -3551,62 +3545,57 @@ function go() {
 go();
 // snapOR homepage
 var MasterView = Backbone.View.extend({
-	render: function () {      
-		this.$el.html("<div>" + "Map API response goes here" + "</div>");
-	}
+    render: function() {
+        this.$el.html("<div>" + "Map API response goes here" + "</div>");
+    }
 });
-
 var ParkCollection = Backbone.Collection.extend({
-	model : ParkModel,
-//	url : "/parkdetail",
-	initialize: function () {
-		this.fetch();
-	}
+    model: ParkModel,
+    //	url : "/parkdetail",
+    initialize: function() {
+        this.fetch();
+    }
 });
-
-var parkCollection = new Backbone.Collection(parkArray, {
-		model: ParkModel,
+var parkCollection = new Backbone.Collection({
+    model: ParkModel,
 });
 
 var ParkModel = Backbone.Model.extend({
-	 defaults : {'name': '',
-//            'features':[],
-                'latitude':'0',
-                'longitude':'0',
-                'parkFlickrCall':'',
-							},
-	initialize : function () {
-		this.fetch();
-	} 
+    defaults: {
+        'name': '',
+        'features': [],
+        'latitude': '0',
+        'longitude': '0',
+        'parkFlickrCall': '',
+    },
+    initialize: function() {
+        this.fetch();
+        this.flickrApi();
+    },
+    flickrApi: function() {
+        var lat = this.get("latitude");
+        var long = this.get("longitude");
+        var flickrUrl = this.set('parkFlickrCall', "https://api.flickr.com/services/rest/?method=flickr.photos.search&api_key=0be06ecdf3fa1ac784e8fd10c279790c&tags=park&lat=" + lat + "&lon=" + long + "&radius=20&per_page=20&format=json");
+    }
 });
-
-//BUILD MODEL CONTAINING LAT/LONG, PLUS FLICKR API URL
-ParkModel.prototype.flickrApi = function () {
-	var name = this.get("name");
-	var lat = this.get("latitude");
-	var long = this.get("longitude");
-	var flickrApi = this.set(parkFlickrCall, "https://api.flickr.com/services/rest/?method=flickr.photos.search&api_key=0be06ecdf3fa1ac784e8fd10c279790c&tags=park&lat=" + lat + "&lon=" + long + "&radius=20&per_page=20&format=json");
-};
-
 var ParkView = Backbone.View.extend({
-	url : "/parkdetail",
-	render: function () {      
-		this.$el.html("<div>" + "Park detail template goes here" + "</div>");
-	},
+    url: "/parkdetail",
+    render: function() {
+        this.$el.html("<div>" + "Park detail template goes here" + "</div>");
+    },
 });
-
-
 var parkModel, parkView, parkCollection;
-
 $(document).ready(function() {
-	parkModel = new ParkModel();
-	parkView = new ParkView({model : parkModel});
-	parkCollection = new ParkCollection(parkArray);
-	parkView = new ParkView({
-			model: parkModel
-	});
-	parkView.render();
-	$("#parkdiv").append(parkView.$el);
+    parkModel = new ParkModel();
+    parkView = new ParkView({
+        model: parkModel
+    });
+    parkCollection = new ParkCollection(parkArray);
+    parkView = new ParkView({
+        model: parkModel
+    });
+    parkView.render();
+    $("#parkdiv").append(parkView.$el);
 });
 
 _.templateSettings = {

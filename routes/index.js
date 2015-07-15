@@ -23,10 +23,7 @@ router.post('/user', function(req, res){
 	.then(function(array) {
 		console.log('email: ', email)
 		if (array.length > 0) {
-			res.render ('error', {
-				error: 'There is already an account associated with this email.',
-				text: 'Please use a unique email address, or click "Forgot Password"'
-			});
+			res.render ('error');
 		} else {
 			if (password === password_confirm){
 				//The user's registration info
@@ -38,10 +35,7 @@ router.post('/user', function(req, res){
 					//Create and store encrypted user record:
 					pass.hash(raw.password, function(err,salt,hash) {
 						stored = {email:raw.email, salt:salt, hash:hash};
-						console.log("register function")
-						console.log(stored);
-						console.log("bananas");
-						db.put('snap', '05052323-bb6a-4e44-9db4-324fab1d30b1', {
+						db.put('snap', user_key, {
 							'email': stored.email,
 							// 'password': password
 							'salt': stored.salt,
@@ -102,5 +96,5 @@ router.post('/login', function(req, res) {
 		}// closes else
 	});// closes .then
 });// closes login router
-
+//check for change
 module.exports = router;
