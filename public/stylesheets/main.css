@@ -6299,10 +6299,21 @@ body div.contain-to-grid.sticky {
   background-color: #FF5D55;
   color: #FEC63D; }
 
-body div.fixed.sticky nav.top-bar section.top-bar-section ul.right li a, body div.fixed.sticky nav.top-bar section.top-bar-section ul.left li.active a, body div.fixed.sticky nav.top-bar {
+@media only screen and (max-width: 40em) {
+  nav.top-bar {
+    background-color: #FF5D55;
+    padding-top: 20px;
+    font-size: 25px; } }
+
+body div.fixed.sticky nav.top-bar section.top-bar-section ul.right li a, body div.fixed.sticky nav.top-bar section.top-bar-section ul.left li.active a, body div.fixed.sticky nav.top-bar .contain-to-grid {
   background-color: #FF5D55;
   color: #FEC63D;
   font-family: "Questrial", sans-serif; }
+  @media only screen and (max-width: 40em) {
+    body div.fixed.sticky nav.top-bar section.top-bar-section ul.right li a, body div.fixed.sticky nav.top-bar section.top-bar-section ul.left li.active a, body div.fixed.sticky nav.top-bar .contain-to-grid {
+      background-color: #FF5D55;
+      padding-top: 20px;
+      font-size: 25px; } }
 
 /******************
 SITE NAME

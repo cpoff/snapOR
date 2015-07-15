@@ -14,6 +14,13 @@ $sans-serif: "Questrial", sans-serif;
 $serif: "Roboto Slab", serif;
 $cursive: "Satisfy", cursive;
 
+$small-breakpoint:  em-calc(640)  !default;
+$medium-breakpoint: em-calc(1024) !default;
+$large-breakpoint:  em-calc(1440) !default;
+$xlarge-breakpoint: em-calc(1920) !default;
+
+$screen: "only screen" !default;
+
 /******************
 GENERAL
 ******************/
@@ -31,10 +38,24 @@ body div.contain-to-grid.sticky {
 	color: $yellow;
 }
 
-body div.fixed.sticky nav.top-bar section.top-bar-section ul.right li a, body div.fixed.sticky nav.top-bar section.top-bar-section ul.left li.active a, body div.fixed.sticky nav.top-bar {
+nav.top-bar {
+	@media #{$small-only} { 
+		background-color: $red;
+		padding-top: 20px;
+		font-size: 25px;
+	} 
+}
+
+body div.fixed.sticky nav.top-bar section.top-bar-section ul.right li a, body div.fixed.sticky nav.top-bar section.top-bar-section ul.left li.active a, body div.fixed.sticky nav.top-bar .contain-to-grid {
 	background-color: $red;
 	color: $yellow;
 	font-family: $sans-serif;
+	
+	@media #{$small-only} { 
+		background-color: $red;
+		padding-top: 20px;
+		font-size: 25px;
+	} 
 }
 
 /******************
