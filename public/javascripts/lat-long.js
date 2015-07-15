@@ -39,7 +39,7 @@ function initialize() {
             title: parkArray[i].name,
             animation: google.maps.Animation.DROP,
         });
-        //FIRE THE FLICKR API WHEN USER SUMMONS PARK BUBBLE
+
         google.maps.event.addListener(marker, 'click', (function(marker, i) {
             return function() {
                 info.setContent("<div><p>" + parkArray[i].name + "</p></div>");
