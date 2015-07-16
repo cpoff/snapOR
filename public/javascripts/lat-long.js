@@ -1,6 +1,5 @@
 var APP = APP || {};
-(function(APP){ 
-
+(function (APP) { 
     var url = 'http://oregonstateparks.org/data/index.cfm';
     var data = {
         endpoint: '/parks',
@@ -41,7 +40,6 @@ var APP = APP || {};
                 title: parkArray[i].name,
                 animation: google.maps.Animation.DROP,
             });
-
             google.maps.event.addListener(marker, 'click', (function(marker, i) {
                 return function() {
                     info.setContent("<div><p>" + parkArray[i].name + "</p></div>");
@@ -101,15 +99,7 @@ var APP = APP || {};
             });
         });
     })();
-
-
-
-
     // APP.LatLong = { 
     // };
 
 })(APP);
-
-
-
-
