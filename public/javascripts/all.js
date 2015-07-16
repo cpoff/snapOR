@@ -3535,6 +3535,7 @@ function go() {
     });
 };
 go();
+/*
 // snapOR homepage
 var MasterView = Backbone.View.extend({
     render: function() {
@@ -3553,6 +3554,7 @@ var parkCollection = new Backbone.Collection({
 });
 
 var ParkModel = Backbone.Model.extend({
+    urlRoot: '/parkdetail'
     defaults: {
         'park_name': '',
         'features': [],
@@ -3584,6 +3586,7 @@ $(document).ready(function() {
     parkView.render();
     $("#parkdiv").append(parkView.$el);
 });
+*/
 
 _.templateSettings = {
 	interpolate: /\{\{(.+?)\}\}/g
@@ -3662,9 +3665,13 @@ var UserView = Backbone.View.extend({
 	} //closes events
 }); // closes userView
 
-var userModel = new UserModel();
-var userView = new UserView({model: userModel});
-userView.render();
-$("#userDiv").append(userView.$el);
-$("#userDiv").append('<h1>Test</h1>');
+var userModel;
+var userView;
+
+$(document).ready(function(){
+	userModel = new UserModel();
+	userView = new UserView({model: userModel});
+	userView.render();
+	$("#userDiv").append(userView.$el);
+});
 //# sourceMappingURL=all.js.map

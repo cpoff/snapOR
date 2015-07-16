@@ -75,8 +75,12 @@ var UserView = Backbone.View.extend({
 	} //closes events
 }); // closes userView
 
-var userModel = new UserModel();
-var userView = new UserView({model: userModel});
-userView.render();
-$("#userDiv").append(userView.$el);
-$("#userDiv").append('<h1>Test</h1>');
+var userModel;
+var userView;
+
+$(document).ready(function(){
+	userModel = new UserModel();
+	userView = new UserView({model: userModel});
+	userView.render();
+	$("#userDiv").append(userView.$el);
+});
