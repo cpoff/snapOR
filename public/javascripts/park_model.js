@@ -1,3 +1,4 @@
+
 // snapOR homepage
 var MasterView = Backbone.View.extend({
     render: function() {
@@ -16,6 +17,7 @@ var parkCollection = new Backbone.Collection({
 });
 
 var ParkModel = Backbone.Model.extend({
+    urlRoot: '/parkdetail'
     defaults: {
         'park_name': '',
         'features': [],

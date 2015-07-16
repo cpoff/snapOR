@@ -1,3 +1,7 @@
+if(typeof require !== 'undefined'){
+	var stuff = require('stuff');
+}
+//or try {require(stuff)} catch (err){'nevermind'}
 var expect = require('chai').expect
   , foo = 'bar'
   , beverages = { tea: [ 'chai', 'matcha', 'oolong' ] };

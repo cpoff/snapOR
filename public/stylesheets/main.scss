@@ -14,6 +14,13 @@ $sans-serif: "Questrial", sans-serif;
 $serif: "Roboto Slab", serif;
 $cursive: "Satisfy", cursive;
 
+$small-breakpoint:  em-calc(640)  !default;
+$medium-breakpoint: em-calc(1024) !default;
+$large-breakpoint:  em-calc(1440) !default;
+$xlarge-breakpoint: em-calc(1920) !default;
+
+$screen: "only screen" !default;
+
 /******************
 GENERAL
 ******************/
@@ -26,15 +33,16 @@ body {
 NAV BAR
 ******************/
 
-body div.contain-to-grid.sticky {
-	background-color: $red;
-	color: $yellow;
-}
-
-body div.fixed.sticky nav.top-bar section.top-bar-section ul.right li a, body div.fixed.sticky nav.top-bar section.top-bar-section ul.left li.active a, body div.fixed.sticky nav.top-bar {
+body div.fixed.sticky nav.top-bar section.top-bar-section ul.right li a, body div.fixed.sticky nav.top-bar section.top-bar-section ul.left li.active a, body div.fixed.sticky nav.top-bar .contain-to-grid {
 	background-color: $red;
 	color: $yellow;
 	font-family: $sans-serif;
+	
+	@media #{$small-only} { 
+		background-color: $red;
+		padding-top: 20px;
+		font-size: 25px;
+	} 
 }
 
 /******************
@@ -45,7 +53,7 @@ body div nav.top-bar ul.title-area li.name h1 a {
 	background-color: $yellow;
 	color: $red;
 	font-family: $cursive;
-	font-size: 25px;
+	font-size: 20px;
 }
 
 nav.top-bar ul.title-area li.toggle-topbar.menu-icon a {
@@ -129,8 +137,18 @@ USER PAGE
 	color: $yellow;
 }
 
+//div for appending info from user_model.js
 #userDiv {
 	padding-top: 10em;
+}
+
+#userInfoDiv {
+	max-width: 70%;
+	padding-left: 30px;
+}
+
+button .button #saveBtn {
+	background-color: $red;
 }
 
 
