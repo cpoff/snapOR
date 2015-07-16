@@ -3657,8 +3657,8 @@ var UserView = Backbone.View.extend({
 	// },
 	events: {;
 		'click #update': "update",
-		'click #logout': "logout",
-		'click #save': "save"
+		'click #logout' : 'logout',
+		'click #save': 'save'
 	} //closes events
 }); // closes userView
 
