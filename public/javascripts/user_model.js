@@ -2,7 +2,7 @@ _.templateSettings = {
 	interpolate: /\{\{(.+?)\}\}/g
 };
 
-//user page
+//user page 
 var UserModel = Backbone.Model.extend({
 	urlRoot: '/user',
 	defaults: {	

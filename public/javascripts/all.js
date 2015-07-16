@@ -3589,13 +3589,17 @@ $(document).ready(function() {
     });
     parkView.render();
     $("#parkdiv").append(parkView.$el);
+<<<<<<< HEAD
 });
+=======
+});
+>>>>>>> master
 
 _.templateSettings = {
 	interpolate: /\{\{(.+?)\}\}/g
 };
 
-//user page
+//user page 
 var UserModel = Backbone.Model.extend({
 	urlRoot: '/user',
 	defaults: {	

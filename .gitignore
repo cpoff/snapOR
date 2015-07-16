@@ -2,8 +2,6 @@ node_modules/
 
 config.js
 flickr_api_key.js
-all.*
-all.js
-all.min.js
-all.js.map
+public/javascripts/all.*
+public/javascripts/park_model.js
 npm-debug.log

@@ -51,4 +51,8 @@ $(document).ready(function() {
     });
     parkView.render();
     $("#parkdiv").append(parkView.$el);
+<<<<<<< HEAD
 });
+=======
+});
+>>>>>>> master
