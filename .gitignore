@@ -3,4 +3,7 @@ node_modules/
 config.js
 flickr_api_key.js
 all.*
+all.js
+all.min.js
+all.js.map
 npm-debug.log
