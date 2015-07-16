@@ -1,5 +1,5 @@
 'use strict';
-
+//working code
 var gulp = require('gulp'),
 	concat = require('gulp-concat'),
 	rename = require('gulp-rename'),
@@ -15,7 +15,8 @@ gulp.task('concatScripts', function(){
 		'./public/javascripts/underscore.js', 
 		'./public/javascripts/backbone.js',
 		'./public/javascripts/lat-long.js',
-		'./public/javascripts/bb_views.js'])
+		'./public/javascripts/park_model.js',
+		'./public/javascripts/user_model.js'])
 		.pipe(maps.init())
 		.pipe(concat('all.js'))
 		.pipe(maps.write('./'))
@@ -40,7 +41,8 @@ gulp.task('compileSass', function(){
 gulp.task('watchFiles', function(){
 	gulp.watch('./public/stylesheets/**/*.scss', ['compileSass']);
 	gulp.watch('./public/javascripts/lat-long.js', ['minifyScripts']);
-	gulp.watch('./public/javascripts/bb_views.js', ['minifyScripts']);
+	gulp.watch('./public/javascripts/park_model.js', ['minifyScripts']);
+	gulp.watch('./public/javascripts/user_model.js', ['minifyScripts']);
 });
 
 gulp.task('serve', ['watchFiles']);
