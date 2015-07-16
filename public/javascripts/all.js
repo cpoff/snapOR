@@ -3550,11 +3550,7 @@ var APP = APP || {};
 
 
 
-<<<<<<< HEAD
 /*
-=======
-
->>>>>>> master
 // snapOR homepage
 var MasterView = Backbone.View.extend({
     render: function() {
@@ -3609,10 +3605,7 @@ $(document).ready(function() {
     parkView.render();
     $("#parkdiv").append(parkView.$el);
 });
-<<<<<<< HEAD
 */
-=======
->>>>>>> master
 
 _.templateSettings = {
 	interpolate: /\{\{(.+?)\}\}/g
