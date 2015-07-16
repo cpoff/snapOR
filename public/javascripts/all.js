@@ -3434,124 +3434,124 @@ e=document.activeElement,f=d.is(e),g=d.has(e).length>0,b.isMsie()&&(f||g)&&(a.pr
   return Backbone;
 
 }));
-var url = 'http://oregonstateparks.org/data/index.cfm';
-var data = {
-    endpoint: '/parks',
-    parkName: ""
-};
-var parkArray = []; //create an object per park, properties for name, lat, long
-var parkNameArray = []; //create an array that has a list of park names, for typeahead
-var featureList = ["Ampitheater", "Beach Access", "Bike Path", "Boat Ramp", "Cabin", "Camping", "Day-Use Fee", "Deluxe Cabin", "Deluxe Yurt", "Disc Golf", "Dump Station", "Exhibit Information", "Fishing", "Hiker Biker", "Hiking Trails", "Horse Trails", "Kayaking", "Marina", "Pet Friendly", "Picknicking", "Pit Toilets", "Playground", "Potable Water", "Reservable", "Restrooms Flush", "Hot Shower", "Swimming", "Tepee", "Vault Toilets", "Viewpoint", "Wildlife", "Windsurfing", "Open Year Round", "Yurt"];
-function latLong() {
-    parkData.forEach(function(feature) {
-        var parkObj = {
-            "name": feature.park_name,
-            "latitude": feature.park_latitude,
-            "longitude": feature.park_longitude,
-            "parkFlickrCall": 'https://api.flickr.com/services/rest/?method=flickr.photos.search&api_key=a3a47a8bbef03987ba49563f5120127e&tags=park&lat=' + feature.park_latitude + '&lon=' + feature.park_longitude + '&radius=20&per_page=20&format=json'
-        };
-        parkArray.push(parkObj);
-        parkNameArray.push(feature.park_name);
-        parkCollection.add(parkObj);
-    });
-}
-//google map
-function initialize() {
-    var mapCanvas = document.getElementById('map_canvas');
-    var Bend = new google.maps.LatLng(44.058173, -121.31531);
-    var mapOptions = {
-        center: Bend,
-        zoom: 7,
-        mapTypeId: google.maps.MapTypeId.TERRAIN
+var APP = APP || {};
+(function (APP) { 
+    var url = 'http://oregonstateparks.org/data/index.cfm';
+    var data = {
+        endpoint: '/parks',
+        parkName: ""
     };
-    var map = new google.maps.Map(mapCanvas, mapOptions);
-    for (var i = 0; i < parkArray.length; i++) {
-        var marker_position = new google.maps.LatLng(parkArray[i].latitude, parkArray[i].longitude);
-        var info = new google.maps.InfoWindow();
-        var marker = new google.maps.Marker({
-            position: marker_position,
-            map: map,
-            title: parkArray[i].name,
-            animation: google.maps.Animation.DROP,
-        });
-
-        google.maps.event.addListener(marker, 'click', (function(marker, i) {
-            return function() {
-                info.setContent("<div><p>" + parkArray[i].name + "</p></div>");
-                info.open(map, marker);
+    var parkArray = []; //create an object per park, properties for name, lat, long
+    var parkNameArray = []; //create an array that has a list of park names, for typeahead
+    var featureList = ["Ampitheater", "Beach Access", "Bike Path", "Boat Ramp", "Cabin", "Camping", "Day-Use Fee", "Deluxe Cabin", "Deluxe Yurt", "Disc Golf", "Dump Station", "Exhibit Information", "Fishing", "Hiker Biker", "Hiking Trails", "Horse Trails", "Kayaking", "Marina", "Pet Friendly", "Picknicking", "Pit Toilets", "Playground", "Potable Water", "Reservable", "Restrooms Flush", "Hot Shower", "Swimming", "Tepee", "Vault Toilets", "Viewpoint", "Wildlife", "Windsurfing", "Open Year Round", "Yurt"];
+    function mapParkCollection(data) {
+        data.forEach(function(feature) {
+            var parkObj = {
+                "name": feature.park_name,
+                "latitude": feature.park_latitude,
+                "longitude": feature.park_longitude,
+                "parkFlickrCall": 'https://api.flickr.com/services/rest/?method=flickr.photos.search&api_key=a3a47a8bbef03987ba49563f5120127e&tags=park&lat=' + feature.park_latitude + '&lon=' + feature.park_longitude + '&radius=20&per_page=20&format=json'
             };
-        })(marker, i));
+            parkArray.push(parkObj);
+            parkNameArray.push(feature.park_name);
+            parkCollection.add(parkObj);
+        });
     }
-}
-
-function go() {
-    $.ajax(url, {
-        data: data
-    }).then(function(data, status, xhr) {
-        parkData = data;
-        latLong();
-    }).then(function() {
-        initialize();
-        google.maps.event.addDomListener(window, 'load', initialize);
-    }).then(function() {
-        var substringMatcher = function(strs) {
-            return function findMatches(q, cb) {
-                var matches, substringRegex;
-                // an array that will be populated with substring matches
-                matches = [];
-                // regex used to determine if a string contains the substring `q`
-                substrRegex = new RegExp(q, 'i');
-                // iterate through the pool of strings and for any string that
-                // contains the substring `q`, add it to the `matches` array
-                $.each(strs, function(i, str) {
-                    if (substrRegex.test(str)) {
-                        matches.push(str);
-                    }
-                });
-                cb(matches);
-            };
+    //google map
+    function initialize() {
+        var mapCanvas = document.getElementById('map_canvas');
+        var Bend = new google.maps.LatLng(44.058173, -121.31531);
+        var mapOptions = {
+            center: Bend,
+            zoom: 7,
+            mapTypeId: google.maps.MapTypeId.TERRAIN
         };
-        $(function() {
-            $('#parkList .typeahead').typeahead({
-                hint: true,
-                highlight: true,
-                minLength: 1
-            }, {
-                name: 'parkNameArray',
-                source: substringMatcher(parkNameArray)
+        var map = new google.maps.Map(mapCanvas, mapOptions);
+        for (var i = 0; i < parkArray.length; i++) {
+            var marker_position = new google.maps.LatLng(parkArray[i].latitude, parkArray[i].longitude);
+            var info = new google.maps.InfoWindow();
+            var marker = new google.maps.Marker({
+                position: marker_position,
+                map: map,
+                title: parkArray[i].name,
+                animation: google.maps.Animation.DROP,
+            });
+            google.maps.event.addListener(marker, 'click', (function(marker, i) {
+                return function() {
+                    info.setContent("<div><p>" + parkArray[i].name + "</p></div>");
+                    info.open(map, marker);
+                };
+            })(marker, i));
+        }
+    }
+
+    (function go() {
+        $.ajax(url, {
+            data: data
+        }).then(function(data, status, xhr) {
+            mapParkCollection(data);
+        }).then(function() {
+            initialize();
+            google.maps.event.addDomListener(window, 'load', initialize);
+        }).then(function() {
+            var substringMatcher = function(strs) {
+                return function findMatches(q, cb) {
+                    var matches, substringRegex;
+                    // an array that will be populated with substring matches
+                    matches = [];
+                    // regex used to determine if a string contains the substring `q`
+                    substrRegex = new RegExp(q, 'i');
+                    // iterate through the pool of strings and for any string that
+                    // contains the substring `q`, add it to the `matches` array
+                    $.each(strs, function(i, str) {
+                        if (substrRegex.test(str)) {
+                            matches.push(str);
+                        }
+                    });
+                    cb(matches);
+                };
+            };
+            $(function() {
+                $('#parkList .typeahead').typeahead({
+                    hint: true,
+                    highlight: true,
+                    minLength: 1
+                }, 
+                {
+                    name: 'parkNameArray',
+                    source: substringMatcher(parkNameArray)
+                });
+            });
+            $(function() {
+                $('#featureList .typeahead').typeahead({
+                    hint: true,
+                    highlight: true,
+                    minLength: 1
+                }, 
+                {
+                    name: 'featureList',
+                    source: substringMatcher(featureList)
+                });
             });
         });
-        $(function() {
-            $('#featureList .typeahead').typeahead({
-                hint: true,
-                highlight: true,
-                minLength: 1
-            }, {
-                name: 'featureList',
-                source: substringMatcher(featureList)
-            });
-        });
-    });
-}
-go();
+    })();
+    // APP.LatLong = { 
+    // };
+
+})(APP);
+
+
 // snapOR homepage
 var MasterView = Backbone.View.extend({
     render: function() {
         this.$el.html("<div>" + "Map API response goes here" + "</div>");
     }
 });
-var ParkCollection = Backbone.Collection.extend({
-    model: ParkModel,
-    //	url : "/parkdetail",
-    initialize: function() {
-        this.fetch();
-    }
-});
-var parkCollection = new Backbone.Collection({
-    model: ParkModel,
-});
+
 
 var ParkModel = Backbone.Model.extend({
+    // urlRoot: '/parkdetail',
+    urlRoot: '/',
     defaults: {
         'park_name': '',
         'features': [],
@@ -3565,21 +3565,33 @@ var ParkModel = Backbone.Model.extend({
 });
 
 var ParkView = Backbone.View.extend({
-    url: "/parkdetail",
+    // url: "/parkdetail",
+    url: "/",
     render: function() {
         this.$el.html("<div>" + "Send results to div in Park Detail template" + "</div>");
     },
 });
+var ParkCollection = Backbone.Collection.extend({
+    model: ParkModel,
+    //  url : "/parkdetail", commented out until we create a route in index.js, which may be unnecessary to keep this as a spa
+    url : '/',
+    initialize: function() {
+        this.fetch();
+    }
+});
 var parkModel, parkView, parkCollection;
-$(document).ready(function() {
-    parkModel = new ParkModel();
-    parkView = new ParkView({
-        model: parkModel
-    });
-    parkCollection = new ParkCollection(parkArray);
-    parkView = new ParkView({
-        model: parkModel
-    });
+parkModel = new ParkModel();
+parkView = new ParkView({
+    model: parkModel
+});
+// parkCollection = new ParkCollection(parkArray);
+parkView = new ParkView({
+    model: parkModel
+});
+parkCollection = new Backbone.Collection({
+model: ParkModel,
+});
+$(document).ready(function() { 
     parkView.render();
     $("#parkdiv").append(parkView.$el);
 });
@@ -3589,7 +3601,7 @@ _.templateSettings = {
 	interpolate: /\{\{(.+?)\}\}/g
 };
 
-//user page
+//user page 
 var UserModel = Backbone.Model.extend({
 	urlRoot: '/user',
 	defaults: {	
@@ -3612,20 +3624,19 @@ var UserModel = Backbone.Model.extend({
 var UserView = Backbone.View.extend({
 	url: '/user',
 	// new_user_template :  _.template('<h2>Welcome</h2><p>We have a couple more questions for you so we can make your experience with snapOR more personal.<p><label>Name: </label><input type="text" id="nameInput" placeholder="Who are you?" value=""</input><br /><label>Home Location: </label><input type="text" id="homeInput" placeholder="Where do you live?" value=""</input><br /><button type="submit" id="save">Save Info</button>'),
-	user_template : _.template('<h1>Welcome {{nameVal}}<button type="submit" id="update">Update info</button><button type="submit" id="logout">Logout</button>'),
-	update_user_template : _.template('<h2>Update</h2><label>Name: </label><input type="text" id="nameInput" placeholder={{nameVal}} value=""</input><br /><label>Email: </label><input type="text" id="emailInput" placeholder={{emailVal}} value=""</input><br /><label>Home Location: </label><input type="text" id="homeInput" placeholder={{homeVal}} value=""</input><br /><label>Password: </label><input type="text" id="password" placeholder="change password" value=""</input><br /><button type="submit" id="save">Update Info</button>'),
+	user_template : _.template('<h1>Welcome to snapOR! {{nameVal}}<button type="submit" id="update">Update info</button><button type="submit" id="logout">Logout</button>'),
+	update_user_template : _.template('<h2>Update</h2><label>Name: </label><input type="text" id="nameInput" placeholder={{nameVal}} value=""</input><br /><label>Email: </label><input type="text" id="emailInput" placeholder={{emailVal}} value=""</input><br /><label>Home Location: </label><input type="text" id="homeInput" placeholder={{homeVal}} value=""</input><br /><label>Password: </label><input type="text" id="password" placeholder="change password" value=""</input><br /><button type="submit" id="saveBtn">Update Info</button>'),
 	render: function() {
 		var nameVal = this.model.get("name");
 		var emailVal = this.model.get("email");
 		var homeVal = this.model.get("home");
-		var new_user_template =  _.template('<h2>Welcome {{emailVal}}</h2><p>We have a couple more questions for you so we can make your experience with snapOR more personal.<p><label>Name: </label><input type="text" id="nameInput" placeholder="Who are you?" value=""</input><br /><label>Home Location: </label><input type="text" id="homeInput" placeholder="Where do you live?" value=""</input><br /><button type="submit" id="save">Save Info</button>');
-		this.$el.html(new_user_template({emailVal : this.model.get("email")}));
-		// if(nameVal === '' && homeVal === ''){
-		// 	this.$el.html(new_user_template({emailVal : this.model.get("email")}));
-		// } else{
-		// 	this.$el.html(
-		// 		user_template({nameVal : this.model.get("name")}));
-		// }
+		var new_user_template =  _.template('<div id="userInfoDiv"><h2>Welcome, {{emailVal}}</h2><p>Please review your information below, and update as needed.<p><label>Name: </label><input type="text" id="nameInput" placeholder="Name" value=""</input><br /><label>Home Location: </label><input type="text" id="homeInput" placeholder="Where do you live?" value=""</input><br /><button type="submit" id="save">Save Info</button></div>');
+		if(nameVal === '' && homeVal === ''){
+			this.$el.html(new_user_template({emailVal : this.model.get("email")}));
+		} else{
+			this.$el.html(
+				user_template({nameVal : this.model.get("name")}));
+		}
 	}, // closes render again
 	update: function(){
 		var nameVal = this.model.get("name");
@@ -3663,12 +3674,14 @@ var UserView = Backbone.View.extend({
 	} //closes events
 }); // closes userView
 
-var userModel = new UserModel();
-var userView = new UserView({model: userModel});
-userView.render();
-$("#userDiv").append(userView.$el);
-$(function(){
-	$("body").append('<h1>Test</h1>');
+var userModel;
+var userView;
+
+$(document).ready(function(){
+	userModel = new UserModel();
+	userView = new UserView({model: userModel});
+	userView.render();
+	$("#userDiv").append(userView.$el);
 });
-// $("#userDiv").append('<h1>Test</h1>');
+
 //# sourceMappingURL=all.js.map
