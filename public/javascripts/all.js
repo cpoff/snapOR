@@ -3587,7 +3587,6 @@ $(document).ready(function() {
     parkView.render();
     $("#parkdiv").append(parkView.$el);
 });
-
 _.templateSettings = {
 	interpolate: /\{\{(.+?)\}\}/g
 };
