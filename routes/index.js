@@ -11,6 +11,13 @@ router.get('/', function(req, res, next) {
   res.render('index', { title: 'snapOR' });
 });
 
+function validateEmail(email) {
+	var re = /^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+	console.log('email test');
+	console.log(re.test(email));
+	return re.test(email);
+}
+
 /*NEW USER REGISTRATION*/
 router.post('/user', function(req, res){
 	var email = req.body.email;
@@ -26,6 +33,10 @@ router.post('/user', function(req, res){
 		if (result.body.count !== 0) {
 			res.render ('mistake', {
 				error: "Email has already been used to register.",
+				text: "Please click here to return to the home page: "});
+		} else if(!validateEmail(email)){
+			res.render ('mistake', {
+				error: "Looks like you didn't add a valid email.",
 				text: "Please click here to return to the home page: "});
 		} else {
 			if (password === password_confirm){
