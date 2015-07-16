@@ -23,12 +23,14 @@ var ParkModel = Backbone.Model.extend({
 });
 
 var ParkView = Backbone.View.extend({
-    // url: "/parkdetail",
-    url: "/",
+	url: '/parkdetail',
+	park_template : _.template('<h1>Here are the details of this particular park.</h1>'),
     render: function() {
         this.$el.html("<div>" + "Send results to div in Park Detail template" + "</div>");
     },
 });
+
+
 var ParkCollection = Backbone.Collection.extend({
     model: ParkModel,
     //  url : "/parkdetail", commented out until we create a route in index.js, which may be unnecessary to keep this as a spa
