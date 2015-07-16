@@ -3,9 +3,5 @@ config.js
 flickr_api_key.js
 park_model.js
 npm-debug.log
-<<<<<<< HEAD
-all.*
-
-=======
 public/javascripts/all.*
->>>>>>> master
+public/javascripts/park_model.js
