@@ -22,7 +22,7 @@ router.post('/user', function(req, res){
 	db.search('snap', 'value.email')
 	.then(function() {
 		console.log('email: ', email)
-		if ('value.email' === email) {
+		if (value.email === email) {
 			res.render ('error');
 		} else {
 			if (password === password_confirm){
