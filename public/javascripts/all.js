@@ -3435,8 +3435,7 @@ e=document.activeElement,f=d.is(e),g=d.has(e).length>0,b.isMsie()&&(f||g)&&(a.pr
 
 }));
 var APP = APP || {};
-(function(APP){ 
-
+(function (APP) { 
     var url = 'http://oregonstateparks.org/data/index.cfm';
     var data = {
         endpoint: '/parks',
@@ -3477,7 +3476,6 @@ var APP = APP || {};
                 title: parkArray[i].name,
                 animation: google.maps.Animation.DROP,
             });
-
             google.maps.event.addListener(marker, 'click', (function(marker, i) {
                 return function() {
                     info.setContent("<div><p>" + parkArray[i].name + "</p></div>");
@@ -3537,18 +3535,10 @@ var APP = APP || {};
             });
         });
     })();
-
-
-
-
     // APP.LatLong = { 
     // };
 
 })(APP);
-
-
-
-
 
 
 // snapOR homepage
@@ -3608,6 +3598,7 @@ $(document).ready(function() {
     $("#parkdiv").append(parkView.$el);
 });
 
+'use strict'
 _.templateSettings = {
 	interpolate: /\{\{(.+?)\}\}/g
 };
@@ -3661,27 +3652,27 @@ var UserView = Backbone.View.extend({
 		var emailVal = this.model.get("email");
 		var homeVal = this.model.get("home");
 		//changes made on form
-		var nameChanged = this.$el.find("#nameInput");
-		var emailChanged = this.$el.find("#emailInput");
-		var homeChanged = this.$el.find("#homeInput");
+		var nameChanged = this.$el.find("#nameInput").val();
+		var emailChanged = this.$el.find("#emailInput").val();
+		var homeChanged = this.$el.find("#homeInput").val();
 
-		if(nameVal !== nameChanged){
-			this.model.replace(nameVal);
+		if(nameVal !== nameChanged || emailVal !== emailChanged || omeVal !== homeChanged){
+			this.model.update();
 		}
-		if(emailVal !== emailChanged){
-			this.model.replace(emailVal);
-		}
-		if(homeVal !== homeChanged){
-			this.model.replace(homeVal);
-		}
+		// if(emailVal !== emailChanged){
+		// 	this.model.update();
+		// }
+		// if(homeVal !== homeChanged){
+		// 	this.model.update();
+		// }
 	},
 	// initialize: function() {
 	// 	this.model.on("change", this.render, this);
 	// },
 	events: {
 		'click #update': "update",
-		'click #logout': "logout",
-		'click #save': "save"
+		'click #logout' : 'logout',
+		'click #save': 'save'
 	} //closes events
 }); // closes userView
 
@@ -3694,4 +3685,5 @@ $(document).ready(function(){
 	userView.render();
 	$("#userDiv").append(userView.$el);
 });
+
 //# sourceMappingURL=all.js.map
