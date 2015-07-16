@@ -1,0 +1,10 @@
+extends layout
+
+block content
+  body.mistake
+    h1.sorry We're sorry! Something appears to have gone a bit wibbly-wobbly.
+      if error
+        h2.pw-error= error
+      if text
+        h2.return= text 
+          a(href= './') Return to snapOR home page.
