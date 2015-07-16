@@ -18,13 +18,15 @@ router.post('/user', function(req, res){
 	var password_confirm = req.body.password_confirm;
 	var user_key = uuid.v4();
 	var database = app.get('database');
-	console.log(db.search);
-	db.search('snap', 'value.email')
+	//console.log(db.search);
+	db.search('snap', 'value.email:'+email)
 	.then(function(result) {
-		console.log(result);
-		console.log('email: ', email)
-		if (result === email) {
-			res.render ('error');
+		console.log(result.body);
+		//console.log('email: ', email)
+		if (result.body.count !== 0) {
+			res.render ('mistake', {
+				error: "Email has already been used to register.",
+				text: "Please click here to return to the home page: "});
 		} else {
 			if (password === password_confirm){
 				//The user's registration info
@@ -43,10 +45,10 @@ router.post('/user', function(req, res){
 							'hash': stored.hash
 						})// closes db.put
 						.then(function(){
-							console.log('user created');
+							//console.log('user created');
 							// console.log(user_key);
-							console.log("db push")
-							console.log(stored);
+							//console.log("db push")
+							//console.log(stored);
 							res.redirect('user');
 						})// closes .then
 						.fail(function(err){});
