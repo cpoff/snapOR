@@ -3540,10 +3540,7 @@ var APP = APP || {};
 
 })(APP);
 
-<<<<<<< HEAD
 /*
-=======
->>>>>>> master
 // snapOR homepage
 var MasterView = Backbone.View.extend({
     render: function() {
