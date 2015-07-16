@@ -1,3 +1,4 @@
+'use strict'
 _.templateSettings = {
 	interpolate: /\{\{(.+?)\}\}/g
 };
@@ -69,7 +70,7 @@ var UserView = Backbone.View.extend({
 	// initialize: function() {
 	// 	this.model.on("change", this.render, this);
 	// },
-	events: {;
+	events: {
 		'click #update': "update",
 		'click #logout' : 'logout',
 		'click #save': 'save'
