@@ -3441,8 +3441,7 @@ var data = {
 };
 var parkArray = []; //create an object per park, properties for name, lat, long
 var parkNameArray = []; //create an array that has a list of park names, for typeahead
-var featureList = ["Ampitheater", "Beach Access", "Bike Path", "Boat Ramp", "Cabin", "Camping", "Day-Use Fee", "Deluxe Cabin", "Deluxe Yurt", "Disc Golf", "Dump Station", "Exhibit Information", "Fishing", "Hiker Biker", "Hiking Trails", "Horse Trails", "Kayaking", "Marina", "Pet Friendly", "Picknicking", "Pit Toilets", "Playground", "Potable Water", "Reservable", "Restrooms Flush", "Hot Shower", "Swimming", "Tepee", "Vault Toilets", "Viewpoint", "Wildlife", "Windsurfing", "Open Year Round", "Yurt"]
- 
+var featureList = ["Ampitheater", "Beach Access", "Bike Path", "Boat Ramp", "Cabin", "Camping", "Day-Use Fee", "Deluxe Cabin", "Deluxe Yurt", "Disc Golf", "Dump Station", "Exhibit Information", "Fishing", "Hiker Biker", "Hiking Trails", "Horse Trails", "Kayaking", "Marina", "Pet Friendly", "Picknicking", "Pit Toilets", "Playground", "Potable Water", "Reservable", "Restrooms Flush", "Hot Shower", "Swimming", "Tepee", "Vault Toilets", "Viewpoint", "Wildlife", "Windsurfing", "Open Year Round", "Yurt"];
 function latLong() {
     parkData.forEach(function(feature) {
         var parkObj = {
@@ -3453,9 +3452,9 @@ function latLong() {
         };
         parkArray.push(parkObj);
         parkNameArray.push(feature.park_name);
-        parkCollection.add(parkObj);
+        // parkCollection.add(parkObj);
     });
-};
+}
 //google map
 function initialize() {
     var mapCanvas = document.getElementById('map_canvas');
@@ -3464,11 +3463,11 @@ function initialize() {
         center: Bend,
         zoom: 7,
         mapTypeId: google.maps.MapTypeId.TERRAIN
-    }
+    };
     var map = new google.maps.Map(mapCanvas, mapOptions);
     for (var i = 0; i < parkArray.length; i++) {
         var marker_position = new google.maps.LatLng(parkArray[i].latitude, parkArray[i].longitude);
-        var info = new google.maps.InfoWindow;
+        var info = new google.maps.InfoWindow();
         var marker = new google.maps.Marker({
             position: marker_position,
             map: map,
@@ -3480,7 +3479,7 @@ function initialize() {
             return function() {
                 info.setContent("<div><p>" + parkArray[i].name + "</p></div>");
                 info.open(map, marker);
-            }
+            };
         })(marker, i));
     }
 }
@@ -3517,7 +3516,8 @@ function go() {
                 hint: true,
                 highlight: true,
                 minLength: 1
-            }, {
+            }, 
+            {
                 name: 'parkNameArray',
                 source: substringMatcher(parkNameArray)
             });
@@ -3527,13 +3527,14 @@ function go() {
                 hint: true,
                 highlight: true,
                 minLength: 1
-            }, {
+            }, 
+            {
                 name: 'featureList',
                 source: substringMatcher(featureList)
             });
         });
     });
-};
+}
 go();
 
 // snapOR homepage
