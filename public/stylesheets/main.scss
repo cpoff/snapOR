@@ -137,8 +137,18 @@ USER PAGE
 	color: $yellow;
 }
 
+//div for appending info from user_model.js
 #userDiv {
 	padding-top: 10em;
+}
+
+#userInfoDiv {
+	max-width: 70%;
+	padding-left: 30px;
+}
+
+button .button #saveBtn {
+	background-color: $red;
 }
 
 
