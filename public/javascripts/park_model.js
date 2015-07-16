@@ -1,59 +1,57 @@
+
 // snapOR homepage
 var MasterView = Backbone.View.extend({
-	render: function () {      
-		this.$el.html("<div>" + "Map API response goes here" + "</div>");
-	}
+    render: function() {
+        this.$el.html("<div>" + "Map API response goes here" + "</div>");
+    }
 });
 
-var ParkCollection = Backbone.Collection.extend({
-	model : ParkModel,
-//	url : "/parkdetail",
-	initialize: function () {
-		this.fetch();
-	}
-});
-
-var parkCollection = new Backbone.Collection(parkArray, {
-		model: ParkModel,
-});
 
 var ParkModel = Backbone.Model.extend({
-	 defaults : {'name': '',
-//            'features':[],
-                'latitude':'0',
-                'longitude':'0',
-                'parkFlickrCall':'',
-							},
-	initialize : function () {
-		this.fetch();
-	} 
+    // urlRoot: '/parkdetail',
+    urlRoot: '/',
+    defaults: {
+        'park_name': '',
+        'features': [],
+        'park_latitude': '0',
+        'park_longitude': '0',
+        'parkFlickrCall': 'URL',
+    },
+    initialize: function() {
+        this.fetch();
+    }
 });
-
-//BUILD MODEL CONTAINING LAT/LONG, PLUS FLICKR API URL
-ParkModel.prototype.flickrApi = function () {
-	var name = this.get("name");
-	var lat = this.get("latitude");
-	var long = this.get("longitude");
-	var flickrApi = this.set(parkFlickrCall, "https://api.flickr.com/services/rest/?method=flickr.photos.search&api_key=0be06ecdf3fa1ac784e8fd10c279790c&tags=park&lat=" + lat + "&lon=" + long + "&radius=20&per_page=20&format=json");
-};
 
 var ParkView = Backbone.View.extend({
-	url : "/parkdetail",
-	render: function () {      
-		this.$el.html("<div>" + "Park detail template goes here" + "</div>");
-	},
+	url: '/parkdetail',
+	park_template : _.template('<h1>Here are the details of this particular park.</h1>'),
+    render: function() {
+        this.$el.html("<div>" + "Send results to div in Park Detail template" + "</div>");
+    },
 });
 
 
+var ParkCollection = Backbone.Collection.extend({
+    model: ParkModel,
+    //  url : "/parkdetail", commented out until we create a route in index.js, which may be unnecessary to keep this as a spa
+    url : '/',
+    initialize: function() {
+        this.fetch();
+    }
+});
 var parkModel, parkView, parkCollection;
-
-$(document).ready(function() {
-	parkModel = new ParkModel();
-	parkView = new ParkView({model : parkModel});
-	parkCollection = new ParkCollection(parkArray);
-	parkView = new ParkView({
-			model: parkModel
-	});
-	parkView.render();
-	$("#parkdiv").append(parkView.$el);
+parkModel = new ParkModel();
+parkView = new ParkView({
+    model: parkModel
+});
+// parkCollection = new ParkCollection(parkArray);
+parkView = new ParkView({
+    model: parkModel
+});
+parkCollection = new Backbone.Collection({
+model: ParkModel,
+});
+$(document).ready(function() { 
+    parkView.render();
+    $("#parkdiv").append(parkView.$el);
 });

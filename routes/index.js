@@ -18,15 +18,15 @@ router.post('/user', function(req, res){
 	var password_confirm = req.body.password_confirm;
 	var user_key = uuid.v4();
 	var database = app.get('database');
-	console.log(db.search);
-	db.search('snap', 'value.email')
-	.then(function(array) {
-		console.log('email: ', email)
-		if (array.length > 0) {
-			res.render ('error', {
-				error: 'There is already an account associated with this email.',
-				text: 'Please use a unique email address, or click "Forgot Password"'
-			});
+	//console.log(db.search);
+	db.search('snap', 'value.email:'+email)
+	.then(function(result) {
+		console.log(result.body);
+		//console.log('email: ', email)
+		if (result.body.count !== 0) {
+			res.render ('mistake', {
+				error: "Email has already been used to register.",
+				text: "Please click here to return to the home page: "});
 		} else {
 			if (password === password_confirm){
 				//The user's registration info
@@ -38,20 +38,17 @@ router.post('/user', function(req, res){
 					//Create and store encrypted user record:
 					pass.hash(raw.password, function(err,salt,hash) {
 						stored = {email:raw.email, salt:salt, hash:hash};
-						console.log("register function")
-						console.log(stored);
-						console.log("bananas");
-						db.put('snap', '05052323-bb6a-4e44-9db4-324fab1d30b1', {
+						db.put('snap', user_key, {
 							'email': stored.email,
 							// 'password': password
 							'salt': stored.salt,
 							'hash': stored.hash
 						})// closes db.put
 						.then(function(){
-							console.log('user created');
+							//console.log('user created');
 							// console.log(user_key);
-							console.log("db push")
-							console.log(stored);
+							//console.log("db push")
+							//console.log(stored);
 							res.redirect('user');
 						})// closes .then
 						.fail(function(err){});
@@ -63,8 +60,6 @@ router.post('/user', function(req, res){
 		}// closes else
 	});// closes initial db query for existing email
 });// closes router.post
-//put user data
-//delete user
 
 router.get('/user', function(req, res) {
 	console.log("bananas");
@@ -102,5 +97,5 @@ router.post('/login', function(req, res) {
 		}// closes else
 	});// closes .then
 });// closes login router
-
+//check for change
 module.exports = router;
