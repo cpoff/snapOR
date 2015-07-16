@@ -20,9 +20,10 @@ router.post('/user', function(req, res){
 	var database = app.get('database');
 	console.log(db.search);
 	db.search('snap', 'value.email')
-	.then(function() {
+	.then(function(result) {
+		console.log(result);
 		console.log('email: ', email)
-		if (value.email === email) {
+		if (result === email) {
 			res.render ('error');
 		} else {
 			if (password === password_confirm){
