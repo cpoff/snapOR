@@ -3452,7 +3452,11 @@ function latLong() {
         };
         parkArray.push(parkObj);
         parkNameArray.push(feature.park_name);
+<<<<<<< HEAD
          parkCollection.add(parkObj);
+=======
+        // parkCollection.add(parkObj);
+>>>>>>> master
     });
 }
 //google map
@@ -3536,6 +3540,7 @@ function go() {
     });
 }
 go();
+
 // snapOR homepage
 var MasterView = Backbone.View.extend({
     render: function() {
@@ -3554,6 +3559,7 @@ var parkCollection = new Backbone.Collection({
 });
 
 var ParkModel = Backbone.Model.extend({
+    urlRoot: '/parkdetail'
     defaults: {
         'park_name': '',
         'features': [],
@@ -3585,55 +3591,85 @@ $(document).ready(function() {
     parkView.render();
     $("#parkdiv").append(parkView.$el);
 });
+_.templateSettings = {
+	interpolate: /\{\{(.+?)\}\}/g
+};
 
-//user page
+//user page 
 var UserModel = Backbone.Model.extend({
 	urlRoot: '/user',
-	defaults: {
-			"name": "",
-			"email": "",
-			"home": ""
+	defaults: {	
+		"name": "",
+		"email": "",
+		"home": ""
 	},
 	initialize: function() {
-			this.fetch();
+		console.log('new model created');
+		this.fetch();
 	},
-	replace: function(str) {
-			this.set("name", str);
-			this.set("email", str);
-			this.set("home", str);
-			this.save();
-	}
+	// replace: function(str) {
+	// 		this.set("name", str);
+	// 		this.set("email", str);
+	// 		this.set("home", str);
+	// 		this.save();
+	// }
 }); // closes userModel
 
 var UserView = Backbone.View.extend({
 	url: '/user',
+	// new_user_template :  _.template('<h2>Welcome</h2><p>We have a couple more questions for you so we can make your experience with snapOR more personal.<p><label>Name: </label><input type="text" id="nameInput" placeholder="Who are you?" value=""</input><br /><label>Home Location: </label><input type="text" id="homeInput" placeholder="Where do you live?" value=""</input><br /><button type="submit" id="save">Save Info</button>'),
+	user_template : _.template('<h1>Welcome to snapOR! {{nameVal}}<button type="submit" id="update">Update info</button><button type="submit" id="logout">Logout</button>'),
+	update_user_template : _.template('<h2>Update</h2><label>Name: </label><input type="text" id="nameInput" placeholder={{nameVal}} value=""</input><br /><label>Email: </label><input type="text" id="emailInput" placeholder={{emailVal}} value=""</input><br /><label>Home Location: </label><input type="text" id="homeInput" placeholder={{homeVal}} value=""</input><br /><label>Password: </label><input type="text" id="password" placeholder="change password" value=""</input><br /><button type="submit" id="saveBtn">Update Info</button>'),
 	render: function() {
-			//var nameVal = this.model.get("name");
-			var nameInput = '<label>Name: </label><input type="text" id="nameInput" placeholder="enter name" value=""</input>';
-			var nameBtn = '<button type="submit" id="nameUpdate">Update Info</button>';
-			//var emailVal = this.model.get("email");
-			var emailInput = '<label>Email: </label><input type="text" id="emailInput" placeholder="enter email" value=""</input>';
-			var emailBtn = '<button type="submit" id="emailUpdate">Update Info</button>';
-			//var homeVal = this.model.get("home");
-			var homeInput = '<label>Home Location: </label><input type="text" id="homeInput" placeholder="enter home location" value=""</input>';
-			var homeBtn = '<button type="submit" id="homeUpdate">Update Info</button>';
-			this.$el.html(nameInput + nameBtn + '<br />' + emailInput + emailBtn + '<br />' + homeInput + homeBtn);
+		var nameVal = this.model.get("name");
+		var emailVal = this.model.get("email");
+		var homeVal = this.model.get("home");
+		var new_user_template =  _.template('<div id="userInfoDiv"><h2>Welcome, {{emailVal}}</h2><p>Please review your information below, and update as needed.<p><label>Name: </label><input type="text" id="nameInput" placeholder="Name" value=""</input><br /><label>Home Location: </label><input type="text" id="homeInput" placeholder="Where do you live?" value=""</input><br /><button type="submit" id="save">Save Info</button></div>');
+		if(nameVal === '' && homeVal === ''){
+			this.$el.html(new_user_template({emailVal : this.model.get("email")}));
+		} else{
+			this.$el.html(
+				user_template({nameVal : this.model.get("name")}));
+		}
 	}, // closes render again
-	replace: function() {
-			var str = this.$el.find("input").val();
-			this.model.replace(str);
+	update: function(){
+		var nameVal = this.model.get("name");
+		var emailVal = this.model.get("email");
+		var homeVal = this.model.get("home");
+		this.$el.html(update_user_template());
 	},
-	initialize: function() {
-			this.model.on("change", this.render, this);
+	save: function() {
+		//data before changes made
+		var nameVal = this.model.get("name");
+		var emailVal = this.model.get("email");
+		var homeVal = this.model.get("home");
+		//changes made on form
+		var nameChanged = this.$el.find("#nameInput");
+		var emailChanged = this.$el.find("#emailInput");
+		var homeChanged = this.$el.find("#homeInput");
+
+		if(nameVal !== nameChanged){
+			this.model.replace(nameVal);
+		}
+		if(emailVal !== emailChanged){
+			this.model.replace(emailVal);
+		}
+		if(homeVal !== homeChanged){
+			this.model.replace(homeVal);
+		}
 	},
+	// initialize: function() {
+	// 	this.model.on("change", this.render, this);
+	// },
 	events: {
-			'click #nameUpdate': "replace",
-			'click #emailUpdate': "replace",
-			'click #homeUpdate': "replace"
-	}, //closes events
+		'click #update': "update",
+		'click #logout': "logout",
+		'click #save': "save"
+	} //closes events
 }); // closes userView
 
-var userModel, userView;
+var userModel;
+var userView;
 
 $(document).ready(function(){
 	userModel = new UserModel();
