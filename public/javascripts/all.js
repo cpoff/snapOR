@@ -3536,7 +3536,7 @@ function go() {
     });
 }
 go();
-/*
+
 // snapOR homepage
 var MasterView = Backbone.View.extend({
     render: function() {
@@ -3545,7 +3545,8 @@ var MasterView = Backbone.View.extend({
 });
 var ParkCollection = Backbone.Collection.extend({
     model: ParkModel,
-    //	url : "/parkdetail",
+    //	url : "/parkdetail", commented out until we create a route in index.js, which may be unnecessary to keep this as a spa
+    url : '/',
     initialize: function() {
         this.fetch();
     }
@@ -3555,7 +3556,8 @@ var parkCollection = new Backbone.Collection({
 });
 
 var ParkModel = Backbone.Model.extend({
-    urlRoot: '/parkdetail'
+    // urlRoot: '/parkdetail',
+    urlRoot: '/',
     defaults: {
         'park_name': '',
         'features': [],
@@ -3569,7 +3571,8 @@ var ParkModel = Backbone.Model.extend({
 });
 
 var ParkView = Backbone.View.extend({
-    url: "/parkdetail",
+    // url: "/parkdetail",
+    url: "/",
     render: function() {
         this.$el.html("<div>" + "Send results to div in Park Detail template" + "</div>");
     },
@@ -3587,7 +3590,6 @@ $(document).ready(function() {
     parkView.render();
     $("#parkdiv").append(parkView.$el);
 });
-*/
 
 _.templateSettings = {
 	interpolate: /\{\{(.+?)\}\}/g
