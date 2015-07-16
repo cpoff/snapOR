@@ -3632,7 +3632,12 @@ var UserView = Backbone.View.extend({
 		var nameVal = this.model.get("name");
 		var emailVal = this.model.get("email");
 		var homeVal = this.model.get("home");
-		var new_user_template =  _.template('<div id="userInfoDiv"><h2>Welcome, {{emailVal}}</h2><p>Please review your information below, and update as needed.<p><label>Name: </label><input type="text" id="nameInput" placeholder="Name" value=""</input><br /><label>Home Location: </label><input type="text" id="homeInput" placeholder="Where do you live?" value=""</input><br /><button type="submit" id="save">Save Info</button></div>');
+		var new_user_template =  _.template(
+			'<div id="userInfoDiv"><h2>Welcome, {{emailVal}}</h2><p>Please review your information below, and update as needed.
+			<label id="userLabel">Name: </label><input type="text" id="nameInput" placeholder="Name" value=""</input><br />
+			<label id="userLabel">Email: </label><input type="text" id="emailInput" value="{value.email}"</input><br />
+			<label id="userLabel">Home Location: </label><input type="text" id="homeInput" placeholder="Where do you live?" value=""</input><br />
+			<button type="submit" id="save">Save Info</button></div>');
 		if(nameVal === '' && homeVal === ''){
 			this.$el.html(new_user_template({emailVal : this.model.get("email")}));
 		} else{
