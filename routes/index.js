@@ -20,9 +20,9 @@ router.post('/user', function(req, res){
 	var database = app.get('database');
 	console.log(db.search);
 	db.search('snap', 'value.email')
-	.then(function(array) {
+	.then(function() {
 		console.log('email: ', email)
-		if (array.length > 0) {
+		if ('value.email' === email) {
 			res.render ('error');
 		} else {
 			if (password === password_confirm){
@@ -57,8 +57,6 @@ router.post('/user', function(req, res){
 		}// closes else
 	});// closes initial db query for existing email
 });// closes router.post
-//put user data
-//delete user
 
 router.get('/user', function(req, res) {
 	console.log("bananas");
