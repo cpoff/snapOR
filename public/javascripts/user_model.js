@@ -1,3 +1,4 @@
+'use strict'
 _.templateSettings = {
 	interpolate: /\{\{(.+?)\}\}/g
 };
@@ -51,27 +52,27 @@ var UserView = Backbone.View.extend({
 		var emailVal = this.model.get("email");
 		var homeVal = this.model.get("home");
 		//changes made on form
-		var nameChanged = this.$el.find("#nameInput");
-		var emailChanged = this.$el.find("#emailInput");
-		var homeChanged = this.$el.find("#homeInput");
+		var nameChanged = this.$el.find("#nameInput").val();
+		var emailChanged = this.$el.find("#emailInput").val();
+		var homeChanged = this.$el.find("#homeInput").val();
 
-		if(nameVal !== nameChanged){
-			this.model.replace(nameVal);
+		if(nameVal !== nameChanged || emailVal !== emailChanged || omeVal !== homeChanged){
+			this.model.update();
 		}
-		if(emailVal !== emailChanged){
-			this.model.replace(emailVal);
-		}
-		if(homeVal !== homeChanged){
-			this.model.replace(homeVal);
-		}
+		// if(emailVal !== emailChanged){
+		// 	this.model.update();
+		// }
+		// if(homeVal !== homeChanged){
+		// 	this.model.update();
+		// }
 	},
 	// initialize: function() {
 	// 	this.model.on("change", this.render, this);
 	// },
 	events: {
 		'click #update': "update",
-		'click #logout': "logout",
-		'click #save': "save"
+		'click #logout' : 'logout',
+		'click #save': 'save'
 	} //closes events
 }); // closes userView
 
