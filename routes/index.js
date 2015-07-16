@@ -11,7 +11,7 @@ router.get('/', function(req, res, next) {
   res.render('index', { title: 'snapOR' });
 });
 
-function validateEmail(email) { 
+function validateEmail(email) {
 	var re = /^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
 	console.log('email test');
 	console.log(re.test(email));
