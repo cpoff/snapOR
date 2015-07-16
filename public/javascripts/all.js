@@ -3535,7 +3535,7 @@ function go() {
     });
 };
 go();
-/*
+
 // snapOR homepage
 var MasterView = Backbone.View.extend({
     render: function() {
@@ -3586,13 +3586,12 @@ $(document).ready(function() {
     parkView.render();
     $("#parkdiv").append(parkView.$el);
 });
-*/
 
 _.templateSettings = {
 	interpolate: /\{\{(.+?)\}\}/g
 };
 
-//user page
+//user page 
 var UserModel = Backbone.Model.extend({
 	urlRoot: '/user',
 	defaults: {	
