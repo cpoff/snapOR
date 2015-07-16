@@ -8,3 +8,6 @@ public/javascripts/all.*
 =======
 
 >>>>>>> master
+/public/javascripts/all.js
+/public/javascripts/all.js.map
+/public/javascripts/all.min.js
