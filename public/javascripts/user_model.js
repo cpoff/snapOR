@@ -56,9 +56,9 @@ var UserView = Backbone.View.extend({
 
 		if(nameVal !== nameChanged || emailVal !== emailChanged || omeVal !== homeChanged){
 			// this.model.update();
-			this.model.set("name", nameChanged);
-			this.model.set("email", emailChanged);
-			this.model.set("home", homeChanged);
+			this.model.replace("name", nameChanged);
+			this.model.replace("email", emailChanged);
+			this.model.replace("home", homeChanged);
 		}
 		// if(emailVal !== emailChanged){
 		// 	this.model.update();
@@ -73,16 +73,16 @@ var UserView = Backbone.View.extend({
 	events: {
 		'click #update': "update",
 		'click #logout' : 'logout',
-		'click #save': 'save'
+		'click .save': 'save'
 	} //closes events
 }); // closes userView
 
 var userModel;
 var userView;
 
-$(document).ready(function(){
+// $(document).ready(function(){
 	userModel = new UserModel();
 	userView = new UserView({model: userModel});
 	userView.render();
 	$("#userDiv").append(userView.$el);
-});
+// });
