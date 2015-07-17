@@ -4,18 +4,18 @@ var MasterView = Backbone.View.extend({
         this.$el.html("<div>" + "Map API response goes here" + "</div>");
     }
 });
-
+ 
 
 var ParkModel = Backbone.Model.extend({
     // urlRoot: '/parkdetail',
     urlRoot: '/',
-//    defaults: {
-//        'park_name': '',
-//        'features': [],
-//        'park_latitude': '0',
-//        'park_longitude': '0',
-//        'parkFlickrCall': 'URL',
-//    },
+    defaults: {
+        'park_name': '',
+        'features': [],
+        'park_latitude': '0',
+        'park_longitude': '0',
+        'parkFlickrCall': 'URL',
+    },
     initialize: function() {
         this.fetch();
     }
@@ -26,7 +26,7 @@ var ParkView = Backbone.View.extend({
 	park_template : _.template('<h1>Here are the details of this particular park.</h1>'),
     render: function() {
         this.$el.html("<div>" + "Send results to div in Park Detail template" + "</div>");
-    },
+    }
 });
 
 
@@ -48,9 +48,9 @@ parkView = new ParkView({
     model: parkModel
 });
 parkCollection = new Backbone.Collection({
-model: ParkModel,
+model: ParkModel
 });
 //$(document).ready(function() {
-    parkView.render();
-    $("#parkdiv").append(parkView.$el);
+parkView.render();
+$("#parkdiv").append(parkView.$el);
 //});
