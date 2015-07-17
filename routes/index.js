@@ -73,7 +73,6 @@ router.post('/user', function(req, res){
 });// closes router.post
 
 router.get('/user', function(req, res) {
-	console.log("bananas");
 	res.render('user');
 });// closes registration router
 
