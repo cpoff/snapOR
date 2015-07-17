@@ -60,7 +60,8 @@ router.post('/user', function(req, res){
 							// console.log(user_key);
 							//console.log("db push")
 							//console.log(stored);
-							res.redirect('user');
+							// res.redirect('user');
+							res.redirect('/');
 						})// closes .then
 						.fail(function(err){});
 					});// closes pass.hash
@@ -76,8 +77,8 @@ router.get('/user', function(req, res) {
 	res.render('user');
 });// closes registration router
 
-/*ROUTE FOR EXISTING USER LOGIN*/
-router.post('/login', function(req, res) {
+/*ROUTE FOR EXISTING USER LOGIN*/  
+router.post('/login', function(req, res) { //this should be a get, it's requesting data from the server, if input matches the data, then user is redirected
 
 	var username = request.body.username;
 	var password = request.body.password;
