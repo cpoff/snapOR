@@ -21,7 +21,7 @@ var APP = APP || {};
             parkNameArray.push(feature.park_name);
             parkCollection.add(parkObj);
         });
-    }
+    } 
     //google map
     function createMap() {
         var mapCanvas = document.getElementById('map_canvas');
@@ -57,7 +57,7 @@ var APP = APP || {};
             mapParkCollection(data);
         }).then(function() {
             createMap();
-            google.maps.event.addDomListener(window, 'load', initialize);
+            google.maps.event.addDomListener(window, 'load', createMap);
         }).then(function() {
             var substringMatcher = function(strs) {
                 return function findMatches(q, cb) {
