@@ -3453,6 +3453,7 @@ var APP = APP || {};
                 "parkFlickrCall": 'https://api.flickr.com/services/rest/?method=flickr.photos.search&api_key=a3a47a8bbef03987ba49563f5120127e&tags=park&lat=' + feature.park_latitude + '&lon=' + feature.park_longitude + '&radius=20&per_page=20&format=json'
             };
             parkArray.push(parkObj);
+            console.log('push park object');
             parkNameArray.push(feature.park_name);
             parkCollection.add(parkObj);
         });
@@ -3546,7 +3547,7 @@ var MasterView = Backbone.View.extend({
         this.$el.html("<div>" + "Map API response goes here" + "</div>");
     }
 });
-
+ 
 
 var ParkModel = Backbone.Model.extend({
     // urlRoot: '/parkdetail',
@@ -3568,7 +3569,7 @@ var ParkView = Backbone.View.extend({
 	park_template : _.template('<h1>Here are the details of this particular park.</h1>'),
     render: function() {
         this.$el.html("<div>" + "Send results to div in Park Detail template" + "</div>");
-    },
+    }
 });
 
 
@@ -3590,12 +3591,12 @@ parkView = new ParkView({
     model: parkModel
 });
 parkCollection = new Backbone.Collection({
-model: ParkModel,
+model: ParkModel
 });
-$(document).ready(function() { 
-    parkView.render();
-    $("#parkdiv").append(parkView.$el);
-});
+//$(document).ready(function() {
+parkView.render();
+$("#parkdiv").append(parkView.$el);
+//});
 
 _.templateSettings = {
 	interpolate: /\{\{(.+?)\}\}/g
