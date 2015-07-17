@@ -17,6 +17,7 @@ var APP = APP || {};
                 "parkFlickrCall": 'https://api.flickr.com/services/rest/?method=flickr.photos.search&api_key=a3a47a8bbef03987ba49563f5120127e&tags=park&lat=' + feature.park_latitude + '&lon=' + feature.park_longitude + '&radius=20&per_page=20&format=json'
             };
             parkArray.push(parkObj);
+            console.log('push park object');
             parkNameArray.push(feature.park_name);
             parkCollection.add(parkObj);
         });
