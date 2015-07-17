@@ -36,7 +36,8 @@ block content
 									label.label Re-enter Password: 
 									input(type="password" name="password_confirm" style="font-family: 'Robot Slab'" placeholder="password confirmation")
 									br
-									input.save(type="submit" style="font-family: 'Questrial'" value="Register account")
+									input.save(type="submit" style="font-family: 'Questrial'" value="Register account" data-reveal-id="userDiv")
+							#userDiv.reveal-modal(data-reveal='', aria-labelledby='modalTitle', aria-hidden='true', role='dialog')
 				ul.left
 					li.active
 						a(href='#', data-reveal-id="photos") Discover Photos
