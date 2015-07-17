@@ -50,15 +50,15 @@ var UserView = Backbone.View.extend({
 		var userEmail = $('#email').val();
 		var password = $('#password').val();
 		var password_confirm = $('#password_confirm').val();
-		if(password===password_confirm){
-			userView.render();
-			$("#userDiv").append(userView.$el);
-			this.model.set("email", userEmail);
-		}
-		// userView.render();
-		// $("#userDiv").append(userView.$el)
+		// if(password===password_confirm){
+		// 	userView.render();
+		// 	$("#userDiv").append(userView.$el);
+		// 	this.model.set("email", userEmail);
+		// }
+		userView.render();
+		$("#userDiv").append(userView.$el)
 		console.log('woohoo');
-		// this.model.set("email", userEmail);
+		this.model.set("email", userEmail);
 
 		// if (password === password_confirm){
 		// 	this.model.set("email", 'n@gmail.com');
@@ -94,7 +94,8 @@ var UserView = Backbone.View.extend({
 		'click #update': "update",
 		'click #logout' : 'logout',
 		'click .save': 'save',
-		'click #create_user': 'create_user'
+		'click #create_user': 'create_user',
+		'click #create_user': 'render'
 	} //closes events
 }); // closes userView
 
