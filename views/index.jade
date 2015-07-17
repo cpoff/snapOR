@@ -29,7 +29,7 @@ block content
 							#register.reveal-modal.users(data-reveal='', aria-labelledby='modalTitle', aria-hidden='true', role='dialog')
 								h2#modalTitle Register New Account
 								form(method="post" action="/user")
-									label.label Email (This will be your username): 
+									label.label Email: 
 									input#email(type="text" name="email" style="font-family: 'Roboto Slab'" placeholder="user@example.com")
 									label.label Password: 
 									input#password(type="password" name="password" style="font-family: 'Roboto Slab'" placeholder="password")
@@ -60,6 +60,7 @@ block content
 											br
 											input(class="submit" type="submit" value="Explore")
 								//a.close-reveal-modal(aria-label='Close') &times;
+	#user
 	#map_canvas
 	#parkdiv
 	script(src='/javascripts/all.min.js')
