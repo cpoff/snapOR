@@ -9,13 +9,13 @@ var MasterView = Backbone.View.extend({
 var ParkModel = Backbone.Model.extend({
     // urlRoot: '/parkdetail',
     urlRoot: '/',
-//    defaults: {
-//        'park_name': '',
-//        'features': [],
-//        'park_latitude': '0',
-//        'park_longitude': '0',
-//        'parkFlickrCall': 'URL',
-//    },
+    defaults: {
+        'park_name': '',
+        'features': [],
+        'park_latitude': '0',
+        'park_longitude': '0',
+        'parkFlickrCall': 'URL',
+    },
     initialize: function() {
         this.fetch();
     }
