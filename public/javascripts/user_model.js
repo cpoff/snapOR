@@ -61,7 +61,7 @@ var UserView = Backbone.View.extend({
 		var emailChanged = this.$el.find("#emailInput").val();
 		var homeChanged = this.$el.find("#homeInput").val();
 
-		if(nameVal !== nameChanged || emailVal !== emailChanged || omeVal !== homeChanged){
+		if(nameVal !== nameChanged || emailVal !== emailChanged || homeVal !== homeChanged){
 			this.model.update();
 		}
 		// if(emailVal !== emailChanged){
