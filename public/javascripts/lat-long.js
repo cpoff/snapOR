@@ -17,18 +17,19 @@ var APP = APP || {};
                 "parkFlickrCall": 'https://api.flickr.com/services/rest/?method=flickr.photos.search&api_key=a3a47a8bbef03987ba49563f5120127e&tags=park&lat=' + feature.park_latitude + '&lon=' + feature.park_longitude + '&radius=20&per_page=20&format=json'
             };
             parkArray.push(parkObj);
-            console.log('push park object');
+            console.log('push park objects');
             parkNameArray.push(feature.park_name);
             parkCollection.add(parkObj);
         });
     }
     //google map
-    function initialize() {
+    function createMap() {
+        console.log('once');
         var mapCanvas = document.getElementById('map_canvas');
         var Bend = new google.maps.LatLng(44.058173, -121.31531);
         var mapOptions = {
             center: Bend,
-            zoom: 7,
+            zoom: 6,
             mapTypeId: google.maps.MapTypeId.TERRAIN
         };
         var map = new google.maps.Map(mapCanvas, mapOptions);
@@ -56,7 +57,7 @@ var APP = APP || {};
         }).then(function(data, status, xhr) {
             mapParkCollection(data);
         }).then(function() {
-            initialize();
+            createMap();
             google.maps.event.addDomListener(window, 'load', initialize);
         }).then(function() {
             var substringMatcher = function(strs) {
