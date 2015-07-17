@@ -1,6 +1,5 @@
 var APP = APP || {};
 (function (APP) { 
-    console.log('Yes');
     var url = 'http://oregonstateparks.org/data/index.cfm';
     var data = {
         endpoint: '/parks',
