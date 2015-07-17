@@ -30,13 +30,14 @@ block content
 								h2#modalTitle Register New Account
 								form(method="post" action="/user")
 									label.label Email (This will be your username): 
-									input(type="text" name="email" style="font-family: 'Roboto Slab'" placeholder="user@example.com")
+									input#email(type="text" name="email" style="font-family: 'Roboto Slab'" placeholder="user@example.com")
 									label.label Password: 
-									input(type="password" name="password" style="font-family: 'Roboto Slab'" placeholder="password")
+									input#password(type="password" name="password" style="font-family: 'Roboto Slab'" placeholder="password")
 									label.label Re-enter Password: 
-									input(type="password" name="password_confirm" style="font-family: 'Robot Slab'" placeholder="password confirmation")
+									input#password_confirm(type="password" name="password_confirm" style="font-family: 'Robot Slab'" placeholder="password confirmation")
 									br
-									input.save(type="submit" style="font-family: 'Questrial'" value="Register account")
+									input#create_user(type="submit" style="font-family: 'Questrial'" value="Register account" data-reveal-id="userDiv")
+							#userDiv.reveal-modal(data-reveal='', aria-labelledby='modalTitle', aria-hidden='true', role='dialog')
 				ul.left
 					li.active
 						a(href='#', data-reveal-id="photos") Discover Photos

@@ -23,7 +23,8 @@ var UserModel = Backbone.Model.extend({
 }); // closes userModel
 
 var UserView = Backbone.View.extend({
-	url: '/user',
+	el : '#register',
+	url: '/',
 	update_user_template : _.template('<h2>Update</h2><label>Name: </label><input type="text" id="nameInput" placeholder={{nameVal}} value=""</input><br /><label>Email: </label><input type="text" id="emailInput" placeholder={{emailVal}} value=""</input><br /><label>Home Location: </label><input type="text" id="homeInput" placeholder={{homeVal}} value=""</input><br /><label>Password: </label><input type="text" id="password" placeholder="change password" value=""</input><br /><button type="submit" id="saveBtn">Update Info</button>'),
 	render: function() {
 		var nameVal = this.model.get("name");
@@ -31,6 +32,7 @@ var UserView = Backbone.View.extend({
 		var homeVal = this.model.get("home");
 		var new_user_template =  _.template(
 			'<div id="userInfoDiv"><h2>Welcome, {{emailVal}}</h2><p>Please review your information below, and update as needed.<label id="userLabel">Name: </label><input type="text" id="nameInput" placeholder="Name" value=""</input><br /><label id="userLabel">Email: </label><input type="text" id="emailInput" value="{value.email}"</input><br /><label id="userLabel">Home Location: </label><input type="text" id="homeInput" placeholder="Where do you live?" value=""</input><br /><button type="submit" id="save">Save Info</button></div>');
+		// this.listenTo($('#create_user'), 'click', create_user);
 		if(nameVal === '' && homeVal === ''){
 			this.$el.html(new_user_template({emailVal : this.model.get("email")}));
 		} else{
@@ -43,6 +45,24 @@ var UserView = Backbone.View.extend({
 		var emailVal = this.model.get("email");
 		var homeVal = this.model.get("home");
 		this.$el.html(update_user_template());
+	},
+	create_user: function(){
+		var userEmail = $('#email').val();
+		var password = $('#password').val();
+		var password_confirm = $('#password_confirm').val();
+		// if(password===password_confirm){
+		// 	userView.render();
+		// 	$("#userDiv").append(userView.$el);
+		// 	this.model.set("email", userEmail);
+		// }
+		userView.render();
+		$("#userDiv").append(userView.$el)
+		console.log('woohoo');
+		this.model.set("email", userEmail);
+
+		// if (password === password_confirm){
+		// 	this.model.set("email", 'n@gmail.com');
+		// }
 	},
 	save: function() {
 		//data before changes made
@@ -73,16 +93,14 @@ var UserView = Backbone.View.extend({
 	events: {
 		'click #update': "update",
 		'click #logout' : 'logout',
-		'click .save': 'save'
+		'click .save': 'save',
+		'click #create_user': 'create_user',
+		'click #create_user': 'render'
 	} //closes events
 }); // closes userView
 
-var userModel;
-var userView;
+var userModel = new UserModel();
+var userView = new UserView({model: userModel});
+// userView.render();
+// $("#userDiv").append(userView.$el);
 
-// $(document).ready(function(){
-	userModel = new UserModel();
-	userView = new UserView({model: userModel});
-	userView.render();
-	$("#userDiv").append(userView.$el);
-// });
