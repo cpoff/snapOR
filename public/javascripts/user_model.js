@@ -31,7 +31,7 @@ var UserView = Backbone.View.extend({
 		var emailVal = this.model.get("email");
 		var homeVal = this.model.get("home");
 		var new_user_template =  _.template(
-			'<div id="userInfoDiv"><h2>Welcome, {{emailVal}}</h2><p>Please review your information below, and update as needed.<label id="userLabel">Name: </label><input type="text" id="nameInput" placeholder="Name" value=""</input><br /><label id="userLabel">Email: </label><input type="text" id="emailInput" value="{value.email}"</input><br /><label id="userLabel">Home Location: </label><input type="text" id="homeInput" placeholder="Where do you live?" value=""</input><br /><button type="submit" id="save">Save Info</button></div>');
+			'<div id="userInfoDiv"><h2>Welcome, {{emailVal}}</h2><p>Please review your information below, and update as needed.<label id="userLabel">Name: </label><input type="text" id="nameInput" placeholder="Name" value=""</input><br /><label id="userLabel">Email: </label><input type="text" id="emailInput" value="{{emailVal}}"</input><br /><label id="userLabel">Home Location: </label><input type="text" id="homeInput" placeholder="Where do you live?" value=""</input><br /><button type="submit" id="save">Save Info</button></div>');
 		// this.listenTo($('#create_user'), 'click', create_user);
 		if(nameVal === '' && homeVal === ''){
 			this.$el.html(new_user_template({emailVal : this.model.get("email")}));
@@ -51,18 +51,10 @@ var UserView = Backbone.View.extend({
 		var password = $('#password').val();
 		var password_confirm = $('#password_confirm').val();
 		if(password===password_confirm){
-			userView.render();
-			$("#userDiv").append(userView.$el);
 			this.model.set("email", userEmail);
+			userView.render();
+			$("#userDiv").append(userView.$el.html());
 		}
-		// userView.render();
-		// $("#userDiv").append(userView.$el)
-		// console.log('woohoo');
-		// this.model.set("email", userEmail);
-
-		// if (password === password_confirm){
-		// 	this.model.set("email", 'n@gmail.com');
-		// }
 	},
 	save: function() {
 		//data before changes made
@@ -95,7 +87,6 @@ var UserView = Backbone.View.extend({
 		'click #logout' : 'logout',
 		'click .save': 'save',
 		'click #create_user': 'create_user'
-		// 'click #create_user': 'render'
 	} //closes events
 }); // closes userView
 
