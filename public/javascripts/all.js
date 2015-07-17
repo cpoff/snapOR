@@ -3676,14 +3676,10 @@ var UserView = Backbone.View.extend({
 	} //closes events
 }); // closes userView
 
-var userModel;
-var userView;
+var userModel = new UserModel();
+var userView = new UserView({model: userModel});
+userView.render();
+$("#userDiv").append(userView.$el);
 
-// $(document).ready(function(){
-	userModel = new UserModel();
-	userView = new UserView({model: userModel});
-	userView.render();
-	$("#userDiv").append(userView.$el);
-// });
 
 //# sourceMappingURL=all.js.map
