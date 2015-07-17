@@ -23,7 +23,7 @@ var APP = APP || {};
         });
     }
     //google map
-    function initialize() {
+    function createMap() {
         var mapCanvas = document.getElementById('map_canvas');
         var Bend = new google.maps.LatLng(44.058173, -121.31531);
         var mapOptions = {
@@ -56,7 +56,7 @@ var APP = APP || {};
         }).then(function(data, status, xhr) {
             mapParkCollection(data);
         }).then(function() {
-            initialize();
+            createMap();
             google.maps.event.addDomListener(window, 'load', initialize);
         }).then(function() {
             var substringMatcher = function(strs) {
