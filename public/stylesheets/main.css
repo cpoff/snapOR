@@ -6295,10 +6295,6 @@ body {
 /******************
 NAV BAR
 ******************/
-body div.contain-to-grid.sticky {
-  background-color: #FF5D55;
-  color: #FEC63D; }
-
 body div.fixed.sticky nav.top-bar section.top-bar-section ul.right li a, body div.fixed.sticky nav.top-bar section.top-bar-section ul.left li.active a, body div.fixed.sticky nav.top-bar {
   background-color: #FF5D55;
   color: #FEC63D;
