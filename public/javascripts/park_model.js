@@ -1,10 +1,14 @@
+_.templateSettings = {
+	interpolate: /\{\{(.+?)\}\}/g
+};
+
 // snapOR homepage
 var MasterView = Backbone.View.extend({
     render: function() {
         this.$el.html("<div>" + "Map API response goes here" + "</div>");
     }
 });
-
+ 
 
 var ParkModel = Backbone.Model.extend({
     // urlRoot: '/parkdetail',
@@ -23,11 +27,21 @@ var ParkModel = Backbone.Model.extend({
 
 var ParkView = Backbone.View.extend({
 	url: '/parkdetail',
-	park_template : _.template('<h1>Here are the details of this particular park.</h1>'),
+//	park_template : _.template('<h1>Here are the details of this particular park.</h1>'),
     render: function() {
-        this.$el.html("<div>" + "Send results to div in Park Detail template" + "</div>");
-    },
+        var template = _.template('<h1>{{parkName}}</h1><div>{{FlickrInfo}}</div>');
+        this.$el.html(template(
+            {
+//                parkName: this.model.get('park_name'),
+                parkName: 'park_name',
+//                FlickrInfo: this.model.get('flickr_data')
+                FlickrInfo: 'flickr_data'
+            }
+        ));
+    }
 });
+
+
 
 
 var ParkCollection = Backbone.Collection.extend({
@@ -48,9 +62,9 @@ parkView = new ParkView({
     model: parkModel
 });
 parkCollection = new Backbone.Collection({
-model: ParkModel,
+model: ParkModel
 });
-$(document).ready(function() { 
-    parkView.render();
-    $("#parkdiv").append(parkView.$el);
-});
+//$(document).ready(function() {
+parkView.render();
+$("#parkdiv").append(parkView.$el);
+//});
