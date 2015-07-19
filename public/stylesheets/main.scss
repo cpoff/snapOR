@@ -27,11 +27,6 @@ body {
 NAV BAR
 ******************/
 
-body div.contain-to-grid.sticky {
-	background-color: $red;
-	color: $yellow;
-}
-
 body div.fixed.sticky nav.top-bar section.top-bar-section ul.right li a, body div.fixed.sticky nav.top-bar section.top-bar-section ul.left li.active a, body div.fixed.sticky nav.top-bar {
 	background-color: $red;
 	color: $yellow;
