@@ -1,4 +1,4 @@
-@import url(https://fonts.googleapis.com/css?family=Questrial|Satisfy|Roboto+Slab);
+@import url(https://fonts.googleapis.com/css?family=Questrial|Gilda+Display|Satisfy|Roboto+Slab);
 meta.foundation-version {
   font-family: "/5.5.2/"; }
 
@@ -6295,6 +6295,10 @@ body {
 /******************
 NAV BAR
 ******************/
+body div.contain-to-grid.sticky {
+  background-color: #FF5D55;
+  color: #FEC63D; }
+
 body div.fixed.sticky nav.top-bar section.top-bar-section ul.right li a, body div.fixed.sticky nav.top-bar section.top-bar-section ul.left li.active a, body div.fixed.sticky nav.top-bar {
   background-color: #FF5D55;
   color: #FEC63D;
@@ -6346,7 +6350,7 @@ MODALS
   background-color: #FF5D55; }
 
 #modalTitle {
-  font-family: "Roboto Slab", serif;
+  font-family: "Gilda Display", serif;
   color: #FEC63D; }
 
 #featureList, #parkList {
@@ -6378,6 +6382,13 @@ USER PAGE
 
 #userDiv {
   padding-top: 10em; }
+
+#userInfoDiv {
+  max-width: 70%;
+  padding-left: 30px; }
+
+button .button #saveBtn {
+  background-color: #FF5D55; }
 
 /******************
 MAP CANVAS

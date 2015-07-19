@@ -11,6 +11,13 @@ router.get('/', function(req, res, next) {
   res.render('index', { title: 'snapOR' });
 });
 
+function validateEmail(email) {
+	var re = /^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+	console.log('email test');
+	console.log(re.test(email));
+	return re.test(email);
+}
+
 /*NEW USER REGISTRATION*/
 router.post('/user', function(req, res){
 	var email = req.body.email;
@@ -18,12 +25,19 @@ router.post('/user', function(req, res){
 	var password_confirm = req.body.password_confirm;
 	var user_key = uuid.v4();
 	var database = app.get('database');
-	console.log(db.search);
-	db.search('snap', 'value.email')
-	.then(function(array) {
-		console.log('email: ', email)
-		if (array.length > 0) {
-			res.render ('error');
+	//console.log(db.search);
+	db.search('snap', 'value.email:'+email)
+	.then(function(result) {
+		console.log(result.body);
+		//console.log('email: ', email)
+		if (result.body.count !== 0) {
+			res.render ('mistake', {
+				error: "Email has already been used to register.",
+				text: "Please click here to return to the home page: "});
+		} else if(!validateEmail(email)){
+			res.render ('mistake', {
+				error: "Looks like you didn't add a valid email.",
+				text: "Please click here to return to the home page: "});
 		} else {
 			if (password === password_confirm){
 				//The user's registration info
@@ -42,11 +56,12 @@ router.post('/user', function(req, res){
 							'hash': stored.hash
 						})// closes db.put
 						.then(function(){
-							console.log('user created');
+							//console.log('user created');
 							// console.log(user_key);
-							console.log("db push")
-							console.log(stored);
-							res.redirect('user');
+							//console.log("db push")
+							//console.log(stored);
+							// res.redirect('user');
+							res.redirect('/');
 						})// closes .then
 						.fail(function(err){});
 					});// closes pass.hash
@@ -57,16 +72,13 @@ router.post('/user', function(req, res){
 		}// closes else
 	});// closes initial db query for existing email
 });// closes router.post
-//put user data
-//delete user
 
 router.get('/user', function(req, res) {
-	console.log("bananas");
 	res.render('user');
 });// closes registration router
 
-/*ROUTE FOR EXISTING USER LOGIN*/
-router.post('/login', function(req, res) {
+/*ROUTE FOR EXISTING USER LOGIN*/  
+router.post('/login', function(req, res) { //this should be a get, it's requesting data from the server, if input matches the data, then user is redirected
 
 	var username = request.body.username;
 	var password = request.body.password;

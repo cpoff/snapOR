@@ -1,5 +1,5 @@
 @import 'foundation.scss';
-@import url(https://fonts.googleapis.com/css?family=Questrial|Satisfy|Roboto+Slab);
+@import url(https://fonts.googleapis.com/css?family=Questrial|Gilda+Display|Satisfy|Roboto+Slab);
 //cd into snapOR/public/stylesheets, then run 'scss main.scss main.css' in terminal to compile scss to css or gulp serve
 
 /******************
@@ -11,7 +11,8 @@ $yellow: #FEC63D;
 $red: #FF5D55;
 
 $sans-serif: "Questrial", sans-serif;  
-$serif: "Roboto Slab", serif;
+//$serif: "Roboto Slab", serif;
+$serif: "Gilda Display", serif;
 $cursive: "Satisfy", cursive;
 
 /******************
@@ -124,8 +125,18 @@ USER PAGE
 	color: $yellow;
 }
 
+//div for appending info from user_model.js
 #userDiv {
 	padding-top: 10em;
+}
+
+#userInfoDiv {
+	max-width: 70%;
+	padding-left: 30px;
+}
+
+button .button #saveBtn {
+	background-color: $red;
 }
 
 

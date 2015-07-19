@@ -1,4 +1,9 @@
 node_modules/
-
 config.js
 flickr_api_key.js
+npm-debug.log
+public/javascripts/all.*
+public/javascripts/all.js
+public/javascripts/all.js.map
+public/javascripts/all.min.js
+public/stylesheets/main.css
