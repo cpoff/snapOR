@@ -73,39 +73,6 @@ nav.top-bar.expanded.fixed section.top-bar-section ul.left li.active a {
 	font-family: $sans-serif;
 } 
 
-
-/******************
-MOBILE VERSION
-******************/
-@media only screen and (max-width: 40em){
-	.name h1 {
-		background-color: $yellow;
-		font-family: $cursive;
-		font-size: 5em;
-		text-align: center;
-	}
-	h1 a {
-		color: $red;
-	}
-	li {
-		list-style-type: none;
-		font-size: 2em;
-		margin: 10%;
-		background-color: $red;
-		margin: 10%;
-		padding: 0 auto;
-		width: 80%;
-		text-align: center;
-	}
-	li a {
-		color: $yellow;
-	}
-	.reveal-modal{
-		width: 60%;
-		margin: 20%;
-	}
-}
-
 /******************
 MODALS
 ******************/
@@ -185,4 +152,41 @@ MAP CANVAS
 	// height: 600px;
 	// width: 1000px;
 	margin: 5% auto;
+}
+
+/******************
+MOBILE VERSION
+******************/
+@media only screen and (max-width: 40em){
+	.name h1 {
+		background-color: $yellow;
+		font-family: $cursive;
+		font-size: 5em;
+		text-align: center;
+	}
+	h1 a {
+		color: $red;
+	}
+	li {
+		list-style-type: none;
+		font-size: 2em;
+		background-color: $red;
+		margin: 10%;
+		text-align: center;
+	}
+	li a {
+		color: $yellow;
+		font-family: $sans-serif;
+	}
+	.reveal-modal{
+		width: 70%;
+		margin: 20%;
+	}
+}
+
+/******************
+PARK VIEW DATA
+******************/
+#parkdiv{
+	text-align: center;
 }

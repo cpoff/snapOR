@@ -6331,32 +6331,6 @@ nav.top-bar.expanded.fixed section.top-bar-section ul.left li.active a {
   font-family: "Questrial", sans-serif; }
 
 /******************
-MOBILE VERSION
-******************/
-@media only screen and (max-width: 40em) {
-  .name h1 {
-    background-color: #FEC63D;
-    font-family: "Satisfy", cursive;
-    font-size: 5em;
-    text-align: center; }
-  h1 a {
-    color: #FF5D55; }
-  li {
-    list-style-type: none;
-    font-size: 2em;
-    margin: 10%;
-    background-color: #FF5D55;
-    margin: 10%;
-    padding: 0 auto;
-    width: 80%;
-    text-align: center; }
-  li a {
-    color: #FEC63D; }
-  .reveal-modal {
-    width: 60%;
-    margin: 20%; } }
-
-/******************
 MODALS
 ******************/
 .reveal-modal {
@@ -6419,5 +6393,35 @@ MAP CANVAS
   height: 75%;
   width: 70%;
   margin: 5% auto; }
+
+/******************
+MOBILE VERSION
+******************/
+@media only screen and (max-width: 40em) {
+  .name h1 {
+    background-color: #FEC63D;
+    font-family: "Satisfy", cursive;
+    font-size: 5em;
+    text-align: center; }
+  h1 a {
+    color: #FF5D55; }
+  li {
+    list-style-type: none;
+    font-size: 2em;
+    background-color: #FF5D55;
+    margin: 10%;
+    text-align: center; }
+  li a {
+    color: #FEC63D;
+    font-family: "Questrial", sans-serif; }
+  .reveal-modal {
+    width: 70%;
+    margin: 20%; } }
+
+/******************
+PARK VIEW DATA
+******************/
+#parkdiv {
+  text-align: center; }
 
 /*# sourceMappingURL=main.css.map */
