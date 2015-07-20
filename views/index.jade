@@ -37,7 +37,7 @@ block content
 									label.label Re-enter Password: 
 									input#password_confirm(type="password" name="password_confirm" style="font-family: 'Robot Slab'" placeholder="password confirmation")
 									br
-									input#create_user(type="submit" style="font-family: 'Questrial'" value="Register account" data-reveal-id="userDiv")
+									input#create_user.button(type="submit" style="font-family: 'Questrial'" value="Register account" data-reveal-id="userDiv")
 							#userDiv.reveal-modal(data-reveal='', aria-labelledby='modalTitle', aria-hidden='true', role='dialog')
 				ul.left
 					li.active
@@ -60,20 +60,31 @@ block content
 										#parkList
 											input(class="typeahead" type="text" name="Enter park name:" style="font-family: 'Robot Slab'" placeholder="Ex: 'cape kiwanda', 'silver falls state park'")
 											br
-											input(class="submit" type="submit" value="Explore")
+											input.button(class="submit" type="submit" value="Explore")
 	.show-for-small-only
 		.name
-			h1
-				a(href='/') snapOR
-		ul
-			li
-				a(href='#', data-reveal-id="login") Login
-			li
-				a(href='#', data-reveal-id='register') Register
-			li.active
-				a(href='#', data-reveal-id="photos") Discover Photos
-			li.active
-				a(href='#', data-reveal-id="parks") Explore Parks
+			
+			//- h1
+			//- 	a(href='/') snapOR
+			a(href='/')
+				h1 snapOR
+			a(href='#', data-reveal-id="login") 
+				div Login
+			a(href='#', data-reveal-id='register') 
+				div Register
+			a(href='#', data-reveal-id="photos") 
+				div Discover Photos
+			a(href='#', data-reveal-id="parks")
+				div Explore Parks
+		//- ul
+		//- 	li
+		//- 		a(href='#', data-reveal-id="login") Login
+		//- 	li
+		//- 		a(href='#', data-reveal-id='register') Register
+		//- 	li.active
+		//- 		a(href='#', data-reveal-id="photos") Discover Photos
+		//- 	li.active
+		//- 		a(href='#', data-reveal-id="parks") Explore Parks
 	#user
 	#map_canvas.hide-for-small-only
 	#parkdiv

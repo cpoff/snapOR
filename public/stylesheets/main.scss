@@ -173,14 +173,25 @@ MOBILE VERSION
 	h1 a {
 		color: $red;
 	}
-	li {
+	// li {
+	// 	list-style-type: none;
+	// 	font-size: 2em;
+	// 	background-color: $red;
+	// 	margin: 10%;
+	// 	text-align: center;
+	// }
+	// li a {
+	// 	color: $yellow;
+	// 	font-family: $sans-serif;
+	// }
+	a div {
 		list-style-type: none;
 		font-size: 2em;
 		background-color: $red;
 		margin: 10%;
 		text-align: center;
 	}
-	li a {
+	a {
 		color: $yellow;
 		font-family: $sans-serif;
 	}
