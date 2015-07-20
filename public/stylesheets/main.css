@@ -6331,6 +6331,22 @@ nav.top-bar.expanded.fixed section.top-bar-section ul.left li.active a {
   font-family: "Questrial", sans-serif; }
 
 /******************
+MOBILE VERSION
+******************/
+@media only screen and (max-width: 40em) {
+  li {
+    list-style-type: none; }
+  .name h1 {
+    background-color: #FEC63D;
+    color: #FF5D55;
+    font-family: "Satisfy", cursive;
+    font-size: 2em; }
+  li {
+    list-style-type: none; }
+  li {
+    background-color: #FF5D55; } }
+
+/******************
 MODALS
 ******************/
 .reveal-modal {
