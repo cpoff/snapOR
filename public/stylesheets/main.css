@@ -6337,7 +6337,8 @@ MOBILE VERSION
   .name h1 {
     background-color: #FEC63D;
     font-family: "Satisfy", cursive;
-    font-size: 5em; }
+    font-size: 5em;
+    text-align: center; }
   h1 a {
     color: #FF5D55; }
   li {
@@ -6347,7 +6348,8 @@ MOBILE VERSION
     background-color: #FF5D55;
     margin: 10%;
     padding: 0 auto;
-    width: 80%; }
+    width: 80%;
+    text-align: center; }
   li a {
     color: #FEC63D; }
   .reveal-modal {
