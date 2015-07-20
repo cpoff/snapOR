@@ -53,10 +53,10 @@ var UserView = Backbone.View.extend({
 	}, // closes render
 	events: {
 		'click #update': "update",
-		'click #logout' : 'logout',
+		'click #logout': 'logout',
 		'click #complete_regis': 'complete_regis'
 		'click .save': 'save',
-		'click #create_user': 'create_user',
+		'click #create_user': 'create_user', // index.jade Register Account button
 	},
 	
 	create_user: function(){

@@ -17,10 +17,12 @@ function validateEmail(email) {
 	console.log(re.test(email));
 	return re.test(email);
 }
+
 //res.cookie
 
 /*NEW USER REGISTRATION*/
 router.post('/begin_regis', function(req, res){
+	console.log("bananas");
 	console.log(req.body);
 	var email = req.body.email;
 	var password = req.body.password;
