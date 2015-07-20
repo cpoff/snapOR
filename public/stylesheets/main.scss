@@ -21,6 +21,9 @@ GENERAL
 
 body {
 	background-color: $blue;
+	// @media only screen and (max-width: 40em){
+	// 	background-color: black;
+	// } 
 }
 
 /******************
@@ -151,13 +154,3 @@ MAP CANVAS
 	// width: 1000px;
 	margin: 5% auto;
 }
-
-/******************
-MOBILE VERSION
-******************/
-
-// @media only screen and (min-width: 64.063em){
-// 	body: {
-// 		background-color: black;
-// 	}
-// }
