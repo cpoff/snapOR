@@ -5,11 +5,7 @@ _.templateSettings = {
 //user page 
 var UserModel = Backbone.Model.extend({
 	urlRoot: '/',
-	defaults: {	
-		"name": "",
-		"email": "",
-		"home": ""
-	},
+	defaults: {	"name": "", "email": "", "home": ""},
 	initialize: function() {
 		console.log('new model created');
 		this.fetch();
@@ -23,13 +19,26 @@ var UserModel = Backbone.Model.extend({
 var UserView = Backbone.View.extend({
 	el : '#register',
 	url: '/',
-	update_user_template : _.template('<h2>Update</h2><label>Name: </label><input type="text" id="nameInput" placeholder={{nameVal}} value=""</input><br /><label>Email: </label><input type="text" id="emailInput" placeholder={{emailVal}} value=""</input><br /><label>Home Location: </label><input type="text" id="homeInput" placeholder={{homeVal}} value=""</input><br /><label>Password: </label><input type="text" id="password" placeholder="change password" value=""</input><br /><button type="submit" id="saveBtn">Update Info</button>'),
+	//EXISTING USER LOGGING IN
+	update_user_template : _.template('<h2>Update</h2>
+		<label>Name: </label><input type="text" id="nameInput" placeholder={{nameVal}} value=""</input><br />
+		<label>Email: </label><input type="text" id="emailInput" placeholder={{emailVal}} value=""</input><br />
+		<label>Home Location: </label><input type="text" id="homeInput" placeholder={{homeVal}} value=""</input><br />
+		<label>Password: </label><input type="text" id="password" placeholder="change password" value=""</input><br />
+		<button type="submit" id="saveBtn">Update Info</button>'),
+	// NEW USER REGISTERING
 	render: function() {
 		var nameVal = this.model.get("name");
 		var emailVal = this.model.get("email");
 		var homeVal = this.model.get("home");
 		var new_user_template =  _.template(
-			'<div id="userInfoDiv"><h2>Welcome, {{emailVal}}</h2><p>Please review your information below, and update as needed.</p><form method="post" action="/complete_registeration"><label id="userLabel">Name:</label><input id="nameInput" type="text" placeholder="Name"</input><br /><label id="userLabel">Email: </label><input id="emailInput" type="text" placeholder="{{emailVal}}"</input><br /><label id="userLabel">Home Location: </label><input id="homeInput" type="text" placeholder="Where do you live?"</input><br /><button id="complete_registeration" type="submit">Save Info</button></form></div>');
+			'<div id="userInfoDiv"><h2>Welcome, {{emailVal}}</h2>
+			<p>Please review your information below, and update as needed.</p>
+			<form method="post" action="/complete_regis">
+			<label id="userLabel">Name:</label><input id="nameInput" type="text" placeholder="Name"</input><br />
+			<label id="userLabel">Email: </label><input id="emailInput" type="text" value="{{emailVal}}"</input><br />
+			<label id="userLabel">Home Location: </label><input id="homeInput" type="text" placeholder="Where do you live?"</input><br />
+			<button id="complete_regis" type="submit">Save Info</button></form></div>');
 		var user_template = _.template('<h2>Welcome {{nameVal}}</h2><div><button type="sumbit" id="update">Update</button></button type="sumbit" id="logout">Logout</button>');
 		if(nameVal === '' && homeVal === ''){
 			this.$el.html(new_user_template({emailVal : this.model.get("email")}));
@@ -37,7 +46,7 @@ var UserView = Backbone.View.extend({
 			this.$el.html(
 				user_template({nameVal : this.model.get("name")}));
 		}
-	}, // closes render again
+	}, // closes render
 	update: function(){
 		var nameVal = this.model.get("name");
 		var emailVal = this.model.get("email");
@@ -54,13 +63,13 @@ var UserView = Backbone.View.extend({
 			$("#userDiv").append(userView.$el.html());
 		}
 	},
-	complete_registeration: function(){
+	complete_regis: function(){
 		var userName = $('#nameInput').val();
 		var userLocation = $('#homeInput').val();
 		var userEmail = $('#emailInput').val();
-		this.model.set("name", userName);
-		this.model.set("home", userLocation);
-		this.model.set("email", userEmail);
+		this.model.replace("name", userName);
+		this.model.replace("home", userLocation);
+		this.model.replace("email", userEmail);
 		userView.render()
 		$("#user").append(userView.$el.html());
 	},
@@ -74,7 +83,7 @@ var UserView = Backbone.View.extend({
 		var emailChanged = this.$el.find("#emailInput").val();
 		var homeChanged = this.$el.find("#homeInput").val();
 
-		if(nameVal !== nameChanged || emailVal !== emailChanged || omeVal !== homeChanged){
+		if(nameVal !== nameChanged || emailVal !== emailChanged || homeVal !== homeChanged){
 			// this.model.update();
 			this.model.replace("name", nameChanged);
 			this.model.replace("email", emailChanged);
@@ -84,9 +93,9 @@ var UserView = Backbone.View.extend({
 	events: {
 		'click #update': "update",
 		'click #logout' : 'logout',
-		'click .save': 'save',
+		//'click .save': 'save',
 		'click #create_user': 'create_user',
-		'click #complete_registeration': 'complete_registeration'
+		'click #complete_regis': 'complete_regis'
 	} //closes events
 }); // closes userView
 
