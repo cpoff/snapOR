@@ -6342,12 +6342,13 @@ MODALS
 .label {
   font-family: "Questrial", sans-serif;
   font-size: 25px;
-  color: #1E749E;
+  color: #FEC63D;
   background-color: #FF5D55; }
 
 #modalTitle {
   font-family: "Gilda Display", serif;
-  color: #FEC63D; }
+  color: #FEC63D;
+  text-align: center; }
 
 #featureList, #parkList {
   display: flex;
@@ -6365,7 +6366,14 @@ form div#featureList span.twitter-typeahead, form div#parkList span.twitter-type
   width: 60%; }
 
 .button {
-  margin-right: 1%; }
+  margin-right: 1%;
+  background-color: #1E749E; }
+
+.open a.close-reveal-modal {
+  color: #1E749E; }
+
+.open a.close-reveal-modal:hover {
+  color: #FEC63D; }
 
 /******************
 USER PAGE
