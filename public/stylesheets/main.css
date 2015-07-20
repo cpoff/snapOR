@@ -6336,9 +6336,10 @@ MOBILE VERSION
 @media only screen and (max-width: 40em) {
   .name h1 {
     background-color: #FEC63D;
-    color: purple;
     font-family: "Satisfy", cursive;
     font-size: 5em; }
+  h1 a {
+    color: #FF5D55; }
   li {
     list-style-type: none;
     font-size: 2em;
@@ -6347,6 +6348,8 @@ MOBILE VERSION
     margin: 10%;
     padding: 0 auto;
     width: 80%; }
+  li a {
+    color: #FEC63D; }
   .reveal-modal {
     width: 60%;
     margin: 20%; } }

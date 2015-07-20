@@ -80,10 +80,11 @@ MOBILE VERSION
 @media only screen and (max-width: 40em){
 	.name h1 {
 		background-color: $yellow;
-		color: purple;
 		font-family: $cursive;
 		font-size: 5em;
-		// margin: 0 20%;
+	}
+	h1 a {
+		color: $red;
 	}
 	li {
 		list-style-type: none;
@@ -93,6 +94,9 @@ MOBILE VERSION
 		margin: 10%;
 		padding: 0 auto;
 		width: 80%;
+	}
+	li a {
+		color: $yellow;
 	}
 	.reveal-modal{
 		width: 60%;
