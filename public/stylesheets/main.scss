@@ -2,6 +2,8 @@
 @import url(https://fonts.googleapis.com/css?family=Questrial|Gilda+Display|Satisfy|Roboto+Slab);
 //cd into snapOR/public/stylesheets, then run 'scss main.scss main.css' in terminal to compile scss to css or gulp serve
 
+
+
 /******************
 VARIABLES
 ******************/
@@ -21,9 +23,6 @@ GENERAL
 
 body {
 	background-color: $blue;
-	// @media only screen and (max-width: 40em){
-	// 	background-color: black;
-	// } 
 }
 
 /******************
@@ -88,13 +87,14 @@ MODALS
 .label {
 	font-family: $sans-serif;
 	font-size: 25px;
-	color: $blue;
+	color: $yellow;
 	background-color: $red;
 }
 
 #modalTitle {
 	font-family: $serif;
 	color: $yellow;
+	text-align: center;
 }
 
 #featureList, #parkList{
@@ -103,7 +103,7 @@ MODALS
 	justify-content: center;
 }
 #featureList .submit, #parkList .submit{
-	width: 10%;
+	width: 120px;
 	margin-left: 5%;
 }
 #featureList .typeahead, #parkList .typeahead{
@@ -114,9 +114,15 @@ form div#featureList span.twitter-typeahead, form div#parkList span.twitter-type
 }
 
 .button{
-	margin-right: 1%;
+	margin-left: 5%;
+	background-color: $blue;
 }
-
+.open a.close-reveal-modal {
+	color: $blue;
+}
+.open a.close-reveal-modal:hover {
+	color: $yellow;
+}
 /******************
 USER PAGE
 ******************/
@@ -164,17 +170,17 @@ MOBILE VERSION
 		font-size: 5em;
 		text-align: center;
 	}
-	h1 a {
+	a h1 {
 		color: $red;
 	}
-	li {
+	a div {
 		list-style-type: none;
 		font-size: 2em;
 		background-color: $red;
 		margin: 10%;
 		text-align: center;
 	}
-	li a {
+	a {
 		color: $yellow;
 		font-family: $sans-serif;
 	}

@@ -6342,12 +6342,13 @@ MODALS
 .label {
   font-family: "Questrial", sans-serif;
   font-size: 25px;
-  color: #1E749E;
+  color: #FEC63D;
   background-color: #FF5D55; }
 
 #modalTitle {
   font-family: "Gilda Display", serif;
-  color: #FEC63D; }
+  color: #FEC63D;
+  text-align: center; }
 
 #featureList, #parkList {
   display: flex;
@@ -6355,7 +6356,7 @@ MODALS
   justify-content: center; }
 
 #featureList .submit, #parkList .submit {
-  width: 10%;
+  width: 120px;
   margin-left: 5%; }
 
 #featureList .typeahead, #parkList .typeahead {
@@ -6365,7 +6366,14 @@ form div#featureList span.twitter-typeahead, form div#parkList span.twitter-type
   width: 60%; }
 
 .button {
-  margin-right: 1%; }
+  margin-left: 5%;
+  background-color: #1E749E; }
+
+.open a.close-reveal-modal {
+  color: #1E749E; }
+
+.open a.close-reveal-modal:hover {
+  color: #FEC63D; }
 
 /******************
 USER PAGE
@@ -6403,15 +6411,15 @@ MOBILE VERSION
     font-family: "Satisfy", cursive;
     font-size: 5em;
     text-align: center; }
-  h1 a {
+  a h1 {
     color: #FF5D55; }
-  li {
+  a div {
     list-style-type: none;
     font-size: 2em;
     background-color: #FF5D55;
     margin: 10%;
     text-align: center; }
-  li a {
+  a {
     color: #FEC63D;
     font-family: "Questrial", sans-serif; }
   .reveal-modal {
