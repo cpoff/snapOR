@@ -2,7 +2,6 @@ _.templateSettings = {
 	interpolate: /\{\{(.+?)\}\}/g
 };
 
-//user page 
 var UserModel = Backbone.Model.extend({
 	urlRoot: '/',
 	defaults: {	"name": "", "email": "", "home": ""},
@@ -25,7 +24,8 @@ var UserView = Backbone.View.extend({
 		<label>Email: </label><input type="text" id="emailInput" placeholder={{emailVal}} value=""</input><br />
 		<label>Home Location: </label><input type="text" id="homeInput" placeholder={{homeVal}} value=""</input><br />
 		<label>Password: </label><input type="text" id="password" placeholder="change password" value=""</input><br />
-		<button type="submit" id="saveBtn">Update Info</button>'),
+		<button type="submit" id="save">Update Info</button>'),
+		// BUTTON ID = UPDATE (2/2)
 	// NEW USER REGISTERING
 	render: function() {
 		var nameVal = this.model.get("name");
@@ -39,20 +39,26 @@ var UserView = Backbone.View.extend({
 			<label id="userLabel">Email: </label><input id="emailInput" type="text" value="{{emailVal}}"</input><br />
 			<label id="userLabel">Home Location: </label><input id="homeInput" type="text" placeholder="Where do you live?"</input><br />
 			<button id="complete_regis" type="submit">Save Info</button></form></div>');
-		var user_template = _.template('<h2>Welcome {{nameVal}}</h2><div><button type="sumbit" id="update">Update</button></button type="sumbit" id="logout">Logout</button>');
+			//BUTTON ID = COMPLETE_REGIS (1/1)
+		var user_template = _.template('<h2>Welcome {{nameVal}}</h2>
+			<div><button type="sumbit" id="update">Update</button>
+			<button type="sumbit" id="logout">Logout</button>');
+			//BUTTON ID = UPDATE (1/2)
 		if(nameVal === '' && homeVal === ''){
 			this.$el.html(new_user_template({emailVal : this.model.get("email")}));
-		} else{
+		} else {
 			this.$el.html(
 				user_template({nameVal : this.model.get("name")}));
 		}
 	}, // closes render
-	update: function(){
-		var nameVal = this.model.get("name");
-		var emailVal = this.model.get("email");
-		var homeVal = this.model.get("home");
-		this.$el.html(update_user_template());
+	events: {
+		'click #update': "update",
+		'click #logout' : 'logout',
+		'click #complete_regis': 'complete_regis'
+		'click .save': 'save',
+		'click #create_user': 'create_user',
 	},
+	
 	create_user: function(){
 		var userEmail = $('#email').val();
 		var password = $('#password').val();
@@ -73,6 +79,13 @@ var UserView = Backbone.View.extend({
 		userView.render()
 		$("#user").append(userView.$el.html());
 	},
+	update: function(){
+		var nameVal = this.model.get("name");
+		var emailVal = this.model.get("email");
+		var homeVal = this.model.get("home");
+		this.$el.html(update_user_template());
+	}
+	
 	save: function() {
 		//data before changes made
 		var nameVal = this.model.get("name");
@@ -90,13 +103,6 @@ var UserView = Backbone.View.extend({
 			this.model.replace("home", homeChanged);
 		}
 	},
-	events: {
-		'click #update': "update",
-		'click #logout' : 'logout',
-		//'click .save': 'save',
-		'click #create_user': 'create_user',
-		'click #complete_regis': 'complete_regis'
-	} //closes events
 }); // closes userView
 
 var userModel = new UserModel();
