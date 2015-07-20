@@ -1,7 +1,7 @@
 extends layout
 
 block content
-	.fixed.sticky
+	.fixed.sticky.hide-for-small-only
 		nav.top-bar(data-topbar="", role="navigation")
 			ul.title-area
 				li.name
@@ -47,7 +47,7 @@ block content
 										#featureList
 											input(class="typeahead" type="text" name="Enter tags:" style="font-family: 'Robot Slab'" placeholder="Ex: 'waterfalls', 'cape kiwanda'")
 											br
-											input.button(type="submit" style="font-family: 'Questrial'" value="Register account")
+											input.button(type="submit" style="font-family: 'Questrial'" value="Search")
 											//input(class="submit" type="submit" value="Discover")
 								//a.close-reveal-modal(aria-label='Close') &times;
 					li.active
@@ -60,8 +60,21 @@ block content
 											br
 											input(class="submit" type="submit" value="Explore")
 								//a.close-reveal-modal(aria-label='Close') &times;
+	.show-for-small-only
+		.name
+			h1
+				a(href='/') snapOR
+		ul
+			li
+				a(href='#', data-reveal-id="login") Login
+			li
+				a(href='#', data-reveal-id='register') Register
+			li.active
+				a(href='#', data-reveal-id="photos") Discover Photos
+			li.active
+				a(href='#', data-reveal-id="parks") Explore Parks
 	#user
-	#map_canvas
+	#map_canvas.hide-for-small-only
 	#parkdiv
 	script(src='/javascripts/all.min.js')
 	script.
