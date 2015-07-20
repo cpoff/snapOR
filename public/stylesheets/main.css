@@ -1,4 +1,4 @@
-@import url(https://fonts.googleapis.com/css?family=Questrial|Satisfy|Roboto+Slab);
+@import url(https://fonts.googleapis.com/css?family=Questrial|Gilda+Display|Satisfy|Roboto+Slab);
 meta.foundation-version {
   font-family: "/5.5.2/"; }
 
@@ -6295,15 +6295,10 @@ body {
 /******************
 NAV BAR
 ******************/
-body div.fixed.sticky nav.top-bar section.top-bar-section ul.right li a, body div.fixed.sticky nav.top-bar section.top-bar-section ul.left li.active a, body div.fixed.sticky nav.top-bar .contain-to-grid {
+body div.fixed.sticky nav.top-bar section.top-bar-section ul.right li a, body div.fixed.sticky nav.top-bar section.top-bar-section ul.left li.active a, body div.fixed.sticky nav.top-bar {
   background-color: #FF5D55;
   color: #FEC63D;
   font-family: "Questrial", sans-serif; }
-  @media only screen and (max-width: 40em) {
-    body div.fixed.sticky nav.top-bar section.top-bar-section ul.right li a, body div.fixed.sticky nav.top-bar section.top-bar-section ul.left li.active a, body div.fixed.sticky nav.top-bar .contain-to-grid {
-      background-color: #FF5D55;
-      padding-top: 20px;
-      font-size: 25px; } }
 
 /******************
 SITE NAME
@@ -6351,7 +6346,7 @@ MODALS
   background-color: #FF5D55; }
 
 #modalTitle {
-  font-family: "Roboto Slab", serif;
+  font-family: "Gilda Display", serif;
   color: #FEC63D; }
 
 #featureList, #parkList {

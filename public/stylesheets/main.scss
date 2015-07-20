@@ -1,5 +1,5 @@
 @import 'foundation.scss';
-@import url(https://fonts.googleapis.com/css?family=Questrial|Satisfy|Roboto+Slab);
+@import url(https://fonts.googleapis.com/css?family=Questrial|Gilda+Display|Satisfy|Roboto+Slab);
 //cd into snapOR/public/stylesheets, then run 'scss main.scss main.css' in terminal to compile scss to css or gulp serve
 
 /******************
@@ -11,15 +11,9 @@ $yellow: #FEC63D;
 $red: #FF5D55;
 
 $sans-serif: "Questrial", sans-serif;  
-$serif: "Roboto Slab", serif;
+//$serif: "Roboto Slab", serif;
+$serif: "Gilda Display", serif;
 $cursive: "Satisfy", cursive;
-
-$small-breakpoint:  em-calc(640)  !default;
-$medium-breakpoint: em-calc(1024) !default;
-$large-breakpoint:  em-calc(1440) !default;
-$xlarge-breakpoint: em-calc(1920) !default;
-
-$screen: "only screen" !default;
 
 /******************
 GENERAL
@@ -33,16 +27,10 @@ body {
 NAV BAR
 ******************/
 
-body div.fixed.sticky nav.top-bar section.top-bar-section ul.right li a, body div.fixed.sticky nav.top-bar section.top-bar-section ul.left li.active a, body div.fixed.sticky nav.top-bar .contain-to-grid {
+body div.fixed.sticky nav.top-bar section.top-bar-section ul.right li a, body div.fixed.sticky nav.top-bar section.top-bar-section ul.left li.active a, body div.fixed.sticky nav.top-bar {
 	background-color: $red;
 	color: $yellow;
 	font-family: $sans-serif;
-	
-	@media #{$small-only} { 
-		background-color: $red;
-		padding-top: 20px;
-		font-size: 25px;
-	} 
 }
 
 /******************
