@@ -17,9 +17,11 @@ function validateEmail(email) {
 	console.log(re.test(email));
 	return re.test(email);
 }
+//res.cookie
 
 /*NEW USER REGISTRATION*/
-router.post('/user', function(req, res){
+router.post('/begin_regis', function(req, res){
+	console.log(req.body);
 	var email = req.body.email;
 	var password = req.body.password;
 	var password_confirm = req.body.password_confirm;

@@ -28,8 +28,7 @@ block content
 						a(href='#', data-reveal-id='register') Register
 							#register.reveal-modal.users(data-reveal='', aria-labelledby='modalTitle', aria-hidden='true', role='dialog')
 								h2#modalTitle Register New Account
-								a.close-reveal-modal(aria-label='Close') &times;
-								form(method="post" action="/user")
+								form(method="post" action="/begin_regis")
 									label.label Email: 
 									input#email(type="text" name="email" style="font-family: 'Roboto Slab'" placeholder="user@example.com")
 									label.label Password: 
@@ -37,7 +36,7 @@ block content
 									label.label Re-enter Password: 
 									input#password_confirm(type="password" name="password_confirm" style="font-family: 'Robot Slab'" placeholder="password confirmation")
 									br
-									input#create_user.button(type="submit" style="font-family: 'Questrial'" value="Register account" data-reveal-id="userDiv")
+									input#create_user(type="submit" style="font-family: 'Questrial'" value="Register Account" data-reveal-id="userDiv")
 							#userDiv.reveal-modal(data-reveal='', aria-labelledby='modalTitle', aria-hidden='true', role='dialog')
 				ul.left
 					li.active
