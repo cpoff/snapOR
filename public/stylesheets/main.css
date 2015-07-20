@@ -6334,17 +6334,22 @@ nav.top-bar.expanded.fixed section.top-bar-section ul.left li.active a {
 MOBILE VERSION
 ******************/
 @media only screen and (max-width: 40em) {
-  li {
-    list-style-type: none; }
   .name h1 {
     background-color: #FEC63D;
-    color: #FF5D55;
+    color: purple;
     font-family: "Satisfy", cursive;
-    font-size: 2em; }
+    font-size: 5em; }
   li {
-    list-style-type: none; }
-  li {
-    background-color: #FF5D55; } }
+    list-style-type: none;
+    font-size: 2em;
+    margin: 10%;
+    background-color: #FF5D55;
+    margin: 10%;
+    padding: 0 auto;
+    width: 80%; }
+  .reveal-modal {
+    width: 60%;
+    margin: 20%; } }
 
 /******************
 MODALS

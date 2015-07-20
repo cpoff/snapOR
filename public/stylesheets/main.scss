@@ -78,35 +78,25 @@ nav.top-bar.expanded.fixed section.top-bar-section ul.left li.active a {
 MOBILE VERSION
 ******************/
 @media only screen and (max-width: 40em){
-	// ul.show-for-small-only{
-	// 	display: flex;
-	// 	flex-direction: column;
-	// 	align-items: baseline
-	// }
-	li {
-		list-style-type: none;
-		// margin: 10%;
-		// padding: 0 50%;
-	}
 	.name h1 {
 		background-color: $yellow;
-		color: $red;
+		color: purple;
 		font-family: $cursive;
-		font-size: 2em;
+		font-size: 5em;
 		// margin: 0 20%;
 	}
 	li {
 		list-style-type: none;
-		// margin: 10%;
-		// padding: 0 50%;
-	}
-	// h1{
-	// 	color: $red;
-	// 	font-family: $cursive;
-	// }
-
-	li{
+		font-size: 2em;
+		margin: 10%;
 		background-color: $red;
+		margin: 10%;
+		padding: 0 auto;
+		width: 80%;
+	}
+	.reveal-modal{
+		width: 60%;
+		margin: 20%;
 	}
 }
 
