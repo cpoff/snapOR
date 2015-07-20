@@ -28,17 +28,20 @@ router.post('/user', function(req, res){
 	//console.log(db.search);
 	db.search('snap', 'value.email:'+email)
 	.then(function(result) {
+		console.log("search result")
 		console.log(result.body);
 		//console.log('email: ', email)
 		if (result.body.count !== 0) {
 			res.render ('mistake', {
 				error: "Email has already been used to register.",
 				text: "Please click here to return to the home page: "});
-		} else if(!validateEmail(email)){
-			res.render ('mistake', {
-				error: "Looks like you didn't add a valid email.",
-				text: "Please click here to return to the home page: "});
-		} else {
+		} 
+		// else if(!validateEmail(email)){
+		// 	res.render ('mistake', {
+		// 		error: "Looks like you didn't add a valid email.",
+		// 		text: "Please click here to return to the home page: "});
+		// } 
+		else {
 			if (password === password_confirm){
 				//The user's registration info
 				var raw = {email: email, password: password};
@@ -56,9 +59,9 @@ router.post('/user', function(req, res){
 							'hash': stored.hash
 						})// closes db.put
 						.then(function(){
-							//console.log('user created');
+							console.log('user created');
 							// console.log(user_key);
-							//console.log("db push")
+							console.log("db push")
 							//console.log(stored);
 							// res.redirect('user');
 							res.redirect('/');
