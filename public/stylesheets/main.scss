@@ -103,7 +103,7 @@ MODALS
 	justify-content: center;
 }
 #featureList .submit, #parkList .submit{
-	width: 10%;
+	width: 120px;
 	margin-left: 5%;
 }
 #featureList .typeahead, #parkList .typeahead{
@@ -114,7 +114,7 @@ form div#featureList span.twitter-typeahead, form div#parkList span.twitter-type
 }
 
 .button{
-	margin-right: 1%;
+	margin-left: 5%;
 	background-color: $blue;
 }
 .open a.close-reveal-modal {
