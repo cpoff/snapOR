@@ -15,7 +15,6 @@ var APP = APP || {};
 				"longitude": feature.park_longitude,
 				"parkFlickrCall": 'https://api.flickr.com/services/rest/?method=flickr.photos.search&api_key=a3a47a8bbef03987ba49563f5120127e&tags=park&lat=' + feature.park_latitude + '&lon=' + feature.park_longitude + '&radius=20&per_page=20&format=json'
 			};
-			console.log('push park object');
 			parkNameArray.push(feature.park_name);
 			parkCollection.add(parkObj);
 		});
@@ -36,16 +35,12 @@ var APP = APP || {};
 			var marker = new google.maps.Marker({
 				position: marker_position,
 				map: map,
-//				labelContent: 'marker',
-//				labelAnchor: new google.maps.Point(3,30),
-//				labelClass: 'labels',
-//				labelInBackground: false,
 				title: parkCollection.models[i].attributes.name,
 				animation: google.maps.Animation.DROP,
 			});
-//			google.maps.event.addListener(info.setContent, 'load', );
 			google.maps.event.addListener(marker, 'click', (function(marker, i) {
 				return function() {
+
 					// info.setContent("<div><p>" + parkCollection.models[i].attributes.name + "</p></div>");
 					// info.setContent("<div><ul><li>" + parkCollection.models[i].attributes.name + "</li><li>latitude: " + parkCollection.models[i].attributes.latitude + "</li><li>longitude : " + parkCollection.models[i].attributes.longitude + "</li><li><a href=" + parkCollection.models[i].attributes.parkFlickrCall + ">parkFlickrCall</a></li></ul></div>");
 					info.setContent("<div class='markerView'></div>");
