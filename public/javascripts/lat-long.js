@@ -5,7 +5,6 @@ var APP = APP || {};
         endpoint: '/parks',
         parkName: ""
     };
-    // var parkArray = []; //create an object per park, properties for name, lat, long
     var parkNameArray = []; //create an array that has a list of park names, for typeahead
     var featureList = ["Ampitheater", "Beach Access", "Bike Path", "Boat Ramp", "Cabin", "Camping", "Day-Use Fee", "Deluxe Cabin", "Deluxe Yurt", "Disc Golf", "Dump Station", "Exhibit Information", "Fishing", "Hiker Biker", "Hiking Trails", "Horse Trails", "Kayaking", "Marina", "Pet Friendly", "Picknicking", "Pit Toilets", "Playground", "Potable Water", "Reservable", "Restrooms Flush", "Hot Shower", "Swimming", "Tepee", "Vault Toilets", "Viewpoint", "Wildlife", "Windsurfing", "Open Year Round", "Yurt"];
     function mapParkCollection(data) {
@@ -16,7 +15,6 @@ var APP = APP || {};
                 "longitude": feature.park_longitude,
                 "parkFlickrCall": 'https://api.flickr.com/services/rest/?method=flickr.photos.search&api_key=a3a47a8bbef03987ba49563f5120127e&tags=park&lat=' + feature.park_latitude + '&lon=' + feature.park_longitude + '&radius=20&per_page=20&format=json'
             };
-            // parkArray.push(parkObj);
             console.log('push park object');
             parkNameArray.push(feature.park_name);
             parkCollection.add(parkObj);
