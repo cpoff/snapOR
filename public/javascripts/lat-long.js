@@ -30,19 +30,25 @@ var APP = APP || {};
 			mapTypeId: google.maps.MapTypeId.TERRAIN
 		};
 		var map = new google.maps.Map(mapCanvas, mapOptions);
-		for (var i = 0; i < parkCollection.length; i++) { //replace parkArray with parkCollection
+		for (var i = 0; i < parkCollection.length; i++) { 
 			var marker_position = new google.maps.LatLng(parkCollection.models[i].attributes.latitude, parkCollection.models[i].attributes.longitude);
 			var info = new google.maps.InfoWindow();
 			var marker = new google.maps.Marker({
 				position: marker_position,
 				map: map,
+//				labelContent: 'marker',
+//				labelAnchor: new google.maps.Point(3,30),
+//				labelClass: 'labels',
+//				labelInBackground: false,
 				title: parkCollection.models[i].attributes.name,
 				animation: google.maps.Animation.DROP,
 			});
+//			google.maps.event.addListener(info.setContent, 'load', );
 			google.maps.event.addListener(marker, 'click', (function(marker, i) {
 				return function() {
 					// info.setContent("<div><p>" + parkCollection.models[i].attributes.name + "</p></div>");
 					info.setContent("<div><ul><li>" + parkCollection.models[i].attributes.name + "</li><li>latitude: " + parkCollection.models[i].attributes.latitude + "</li><li>longitude : " + parkCollection.models[i].attributes.longitude + "</li><li><a href=" + parkCollection.models[i].attributes.parkFlickrCall + ">parkFlickrCall</a></li></ul></div>");
+					$(this).addClass('marker');
 					info.open(map, marker);
 				};
 			})(marker, i));
