@@ -13,36 +13,32 @@ var ParkModel = Backbone.Model.extend({
     // urlRoot: '/parkdetail',
     urlRoot: '/',
     defaults: {
-        'park_name': '',
-        'marker': '',
+        'park_name': 'blah',
         'park_latitude': '0',
         'park_longitude': '0',
-        'parkFlickrCall': 'URL',
+        'parkFlickrCall': 'http://',
     },
     initialize: function() {
         this.fetch();
-    }
+    } 
 });
-
-Backbone.Model.prototype.parse = function (data) {
-        if ( _.isObject(data.results) ) {
-            return data.results;
-        } else {
-            return data;
-        }
-}; 
 
 var ParkView = Backbone.View.extend({
     url: '/parkdetail',
-    //	park_template : _.template('<h1>Here are the details of this particular park.</h1>'),
     render: function() {
         var template = _.template('<h1>{{parkName}}</h1><div>{{FlickrInfo}}</div>');
         this.$el.html(template({
-            //                parkName: this.model.get('park_name'),
             parkName: 'park_name',
-            //                FlickrInfo: this.model.get('flickr_data')
             FlickrInfo: 'flickr_data'
         }));
+    },
+    fireApi: function() {
+        var flickrUrl = this.model.get('parkFlickrCall');
+        var boogie = JSON.stringify(flickrUrl);
+        console.log(boogie);
+    },
+    events: {
+        'load info.setContent' : 'fireApi'
     }
 });
 

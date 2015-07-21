@@ -14,6 +14,7 @@ gulp.task('concatScripts', function(){
 		'./bower_components/typeahead.js/dist/typeahead.bundle.min.js',
 		'./public/javascripts/underscore.js', 
 		'./public/javascripts/backbone.js',
+		'./public/javascripts/markerwithlabels.js',
 		'./public/javascripts/lat-long.js',
 		'./public/javascripts/park_model.js',
 		'./public/javascripts/user_model.js'])
