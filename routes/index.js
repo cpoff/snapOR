@@ -26,7 +26,7 @@ router.post('/begin_regis', function(req, res){
 	console.log(req.body);
 	var email = req.body.email;
 	var password = req.body.password;
-	var password_confirm = req.body.password_confirm;
+	//var password_confirm = req.body.password_confirm;
 	var user_key = uuid.v4();
 	var database = app.get('database');
 	//console.log(db.search);
@@ -36,9 +36,8 @@ router.post('/begin_regis', function(req, res){
 		console.log(result.body);
 		//console.log('email: ', email)
 		if (result.body.count !== 0) {
-			res.render ('mistake', {
-				error: "Email has already been used to register.",
-				text: "Please click here to return to the home page: "});
+			res.send ({
+				error: "Email has already been used to register."});
 		} 
 		// else if(!validateEmail(email)){
 		// 	res.render ('mistake', {
@@ -56,6 +55,7 @@ router.post('/begin_regis', function(req, res){
 					//Create and store encrypted user record:
 					pass.hash(raw.password, function(err,salt,hash) {
 						stored = {email:raw.email, salt:salt, hash:hash};
+						//NEED TO POINT BACK TO BACKBONE FOR #COMPLETE_REGIS ACTIONS
 						db.put('snap', user_key, {
 							'email': stored.email,
 							// 'password': password

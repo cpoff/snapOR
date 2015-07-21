@@ -18,19 +18,23 @@ var UserModel = Backbone.Model.extend({
 var UserView = Backbone.View.extend({
 	el : '#register',
 	url: '/',
-	//EXISTING USER LOGGING IN
+	//TEMPLATE THAT POPULATES WHEN EXIS. USER CLICKS 'UPDATE' ON NAV
+	// BUTTON ID = SAVE
 	update_user_template : _.template('<h2>Update</h2><label>Name: </label><input type="text" id="nameInput" placeholder={{nameVal}} value=""</input><br /><label>Email: </label><input type="text" id="emailInput" placeholder={{emailVal}} value=""</input><br /><label>Home Location: </label><input type="text" id="homeInput" placeholder={{homeVal}} value=""</input><br /><label>Password: </label><input type="text" id="password" placeholder="change password" value=""</input><br /><button type="submit" id="save">Update Info</button>'),
-		// BUTTON ID = SAVE
-	// NEW USER REGISTERING
+
+	// REGISTRATION PROCESS
 	render: function() {
 		var nameVal = this.model.get("name");
 		var emailVal = this.model.get("email");
 		var homeVal = this.model.get("home");
+		//MODAL WINDOW FOR NEW USER TO ENTER NAME/HOMETOWN
+		//BUTTON ID = COMPLETE_REGIS
 		var new_user_template =  _.template(
 			'<div id="userInfoDiv"><h2>Welcome, {{emailVal}}</h2><p>Please review your information below, and update as needed.</p><form method="post" action="/complete_regis"><label id="userLabel">Name:</label><input id="nameInput" type="text" placeholder="Name"</input><br /><label id="userLabel">Email: </label><input id="emailInput" type="text" value="{{emailVal}}"</input><br /><label id="userLabel">Home Location: </label><input id="homeInput" type="text" placeholder="Where do you live?"</input><br /><button id="complete_regis" type="submit">Save Info</button></form></div>');
-			//BUTTON ID = COMPLETE_REGIS
+
+		//NAV BAR OPTIONS FOR EXIS. USERS	
+		//BUTTON ID = UPDATE
 		var user_template = _.template('<h2>Welcome {{nameVal}}</h2><div><button type="sumbit" id="update">Update</button><button type="sumbit" id="logout">Logout</button>');
-			//BUTTON ID = UPDATE
 		if(nameVal === '' && homeVal === ''){
 			this.$el.html(new_user_template({emailVal : this.model.get("email")}));
 		} else {
@@ -39,23 +43,31 @@ var UserView = Backbone.View.extend({
 		}
 	}, // closes render
 	events: {
-		'click #update': "update",
-		'click #logout': 'logout',
+		'click #create_user': 'create_user', // index.jade: Register Account
 		'click #complete_regis': 'complete_regis',
-		'click .save': 'save',
-		'click #create_user': 'create_user', // index.jade Register Account button
+		'click #update': "update",//user_template
+		'click .save': 'save',//update_user_template
+		'click #logout': 'logout',
+		'': 'reply' 
+		//need an event to render the error message
 	},
 	create_user: function(){
-		//instead of a '#create_user' click rendering the next modal, I want it to check the db
 		var userEmail = $('#email').val();
 		var password = $('#password').val();
 		var password_confirm = $('#password_confirm').val();
 		if(password===password_confirm){
-			this.model.set("email", userEmail);
-			//jquery
-			//click 
-			userView.render();
-			$("#userDiv").append(userView.$el.html());
+			//jQuery.post( url [, data ] [, success ] [, dataType ] )
+			jQuery.post('/begin_regis', {email: userEmail, password: password}, function (reply) {
+				if (reply.error) {
+					console.log(reply);
+					alert("Please use a unique email to register your account.");
+				}
+			});
+			//this.model.set("email", userEmail);
+			//userView.render();
+			//$("#userDiv").append(userView.$el.html());
+		} else {
+			alert('Please make sure your password and password confirmation are the same.')
 		}
 	},
 	complete_regis: function(){
