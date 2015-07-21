@@ -47,8 +47,8 @@ var APP = APP || {};
 			google.maps.event.addListener(marker, 'click', (function(marker, i) {
 				return function() {
 					// info.setContent("<div><p>" + parkCollection.models[i].attributes.name + "</p></div>");
-					info.setContent("<div><ul><li>" + parkCollection.models[i].attributes.name + "</li><li>latitude: " + parkCollection.models[i].attributes.latitude + "</li><li>longitude : " + parkCollection.models[i].attributes.longitude + "</li><li><a href=" + parkCollection.models[i].attributes.parkFlickrCall + ">parkFlickrCall</a></li></ul></div>");
-					$(this).addClass('marker');
+					// info.setContent("<div><ul><li>" + parkCollection.models[i].attributes.name + "</li><li>latitude: " + parkCollection.models[i].attributes.latitude + "</li><li>longitude : " + parkCollection.models[i].attributes.longitude + "</li><li><a href=" + parkCollection.models[i].attributes.parkFlickrCall + ">parkFlickrCall</a></li></ul></div>");
+					info.setContent("<div class='markerView'></div>");
 					info.open(map, marker);
 				};
 			})(marker, i));
