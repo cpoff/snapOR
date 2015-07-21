@@ -24,6 +24,14 @@ var ParkModel = Backbone.Model.extend({
     }
 });
 
+Backbone.Model.prototype.parse = function (data) {
+        if ( _.isObject(data.results) ) {
+            return data.results;
+        } else {
+            return data;
+        }
+}; 
+
 var ParkView = Backbone.View.extend({
     url: '/parkdetail',
     //	park_template : _.template('<h1>Here are the details of this particular park.</h1>'),
@@ -38,6 +46,7 @@ var ParkView = Backbone.View.extend({
     }
 });
 
+
 var ParkCollection = Backbone.Collection.extend({
     model: ParkModel,
     //  url : "/parkdetail", commented out until we create a route in index.js, which may be unnecessary to keep this as a spa
@@ -48,18 +57,18 @@ var ParkCollection = Backbone.Collection.extend({
 });
 
 var parkModel, parkView, parkCollection;
+
 parkModel = new ParkModel();
 parkView = new ParkView({
     model: parkModel
 });
-// parkCollection = new ParkCollection(parkArray);
 parkView = new ParkView({
     model: parkModel
 });
 parkCollection = new Backbone.Collection({
     model: ParkModel
 });
-//$(document).ready(function() {
+
 parkView.render();
 $("#parkdiv").append(parkView.$el);
-//});
+
