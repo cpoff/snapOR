@@ -34,15 +34,23 @@ var ParkView = Backbone.View.extend({
     },
     fireApi: function() {
         var flickrUrl = this.model.get('parkFlickrCall');
-        var boogie = JSON.stringify(flickrUrl);
-        console.log(boogie);
-    },
+			$.getJSON(flickrUrl)
+	},
     events: {
         'load info.setContent' : 'fireApi'
     }
 });
 
-
+var MarkerView = Backbone.View.extend({
+    url: '/',
+    render: function() {
+        var template = _.template('<h1>{{parkName}}</h1><div>{{FlickrInfo}}</div>');
+        this.$el.html(template({
+            parkName: 'park_name'
+		}));
+    },
+});
+	
 var ParkCollection = Backbone.Collection.extend({
     model: ParkModel,
     //  url : "/parkdetail", commented out until we create a route in index.js, which may be unnecessary to keep this as a spa
@@ -52,13 +60,13 @@ var ParkCollection = Backbone.Collection.extend({
     }
 });
 
-var parkModel, parkView, parkCollection;
+var parkModel, parkView, parkCollection, markerView;
 
 parkModel = new ParkModel();
 parkView = new ParkView({
     model: parkModel
 });
-parkView = new ParkView({
+markerView = new MarkerView({
     model: parkModel
 });
 parkCollection = new Backbone.Collection({
