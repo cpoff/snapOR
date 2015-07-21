@@ -32,7 +32,7 @@ router.post('/begin_regis', function(req, res){
 	//console.log(db.search);
 	db.search('snap', 'value.email:'+email)
 	.then(function(result) {
-		console.log("search result")
+		console.log("search result");
 		console.log(result.body);
 		//console.log('email: ', email)
 		if (result.body.count !== 0) {
@@ -65,7 +65,7 @@ router.post('/begin_regis', function(req, res){
 						.then(function(){
 							console.log('user created');
 							// console.log(user_key);
-							console.log("db push")
+							console.log("db push");
 							//console.log(stored);
 							// res.redirect('user');
 							res.redirect('/');
