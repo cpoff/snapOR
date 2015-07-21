@@ -5,7 +5,7 @@ var APP = APP || {};
         endpoint: '/parks',
         parkName: ""
     };
-    var parkArray = []; //create an object per park, properties for name, lat, long
+    // var parkArray = []; //create an object per park, properties for name, lat, long
     var parkNameArray = []; //create an array that has a list of park names, for typeahead
     var featureList = ["Ampitheater", "Beach Access", "Bike Path", "Boat Ramp", "Cabin", "Camping", "Day-Use Fee", "Deluxe Cabin", "Deluxe Yurt", "Disc Golf", "Dump Station", "Exhibit Information", "Fishing", "Hiker Biker", "Hiking Trails", "Horse Trails", "Kayaking", "Marina", "Pet Friendly", "Picknicking", "Pit Toilets", "Playground", "Potable Water", "Reservable", "Restrooms Flush", "Hot Shower", "Swimming", "Tepee", "Vault Toilets", "Viewpoint", "Wildlife", "Windsurfing", "Open Year Round", "Yurt"];
     function mapParkCollection(data) {
@@ -16,7 +16,7 @@ var APP = APP || {};
                 "longitude": feature.park_longitude,
                 "parkFlickrCall": 'https://api.flickr.com/services/rest/?method=flickr.photos.search&api_key=a3a47a8bbef03987ba49563f5120127e&tags=park&lat=' + feature.park_latitude + '&lon=' + feature.park_longitude + '&radius=20&per_page=20&format=json'
             };
-            parkArray.push(parkObj);
+            // parkArray.push(parkObj);
             console.log('push park object');
             parkNameArray.push(feature.park_name);
             parkCollection.add(parkObj);
@@ -32,18 +32,18 @@ var APP = APP || {};
             mapTypeId: google.maps.MapTypeId.TERRAIN
         };
         var map = new google.maps.Map(mapCanvas, mapOptions);
-        for (var i = 0; i < parkArray.length; i++) {
-            var marker_position = new google.maps.LatLng(parkArray[i].latitude, parkArray[i].longitude);
+        for (var i = 0; i < parkCollection.length; i++) { //replace parkArray with parkCollection
+            var marker_position = new google.maps.LatLng(parkCollection.models[i].attributes.latitude, parkCollection.models[i].attributes.longitude);
             var info = new google.maps.InfoWindow();
             var marker = new google.maps.Marker({
                 position: marker_position,
                 map: map,
-                title: parkArray[i].name,
+                title: parkCollection.models[i].attributes.name,
                 animation: google.maps.Animation.DROP,
             });
             google.maps.event.addListener(marker, 'click', (function(marker, i) {
                 return function() {
-                    info.setContent("<div><p>" + parkArray[i].name + "</p></div>");
+                    info.setContent("<div><p>" + parkCollection.models[i].attributes.name + "</p></div>");
                     info.open(map, marker);
                 };
             })(marker, i));
