@@ -1,18 +1,20 @@
 _.templateSettings = {
     interpolate: /\{\{(.+?)\}\}/g
 };
+
 // snapOR homepage
 var MasterView = Backbone.View.extend({
     render: function() {
         this.$el.html("<div>" + "Map API response goes here" + "</div>");
     }
 });
+
 var ParkModel = Backbone.Model.extend({
     // urlRoot: '/parkdetail',
     urlRoot: '/',
     defaults: {
         'park_name': '',
-        'features': [],
+        'marker': '',
         'park_latitude': '0',
         'park_longitude': '0',
         'parkFlickrCall': 'URL',
@@ -21,6 +23,7 @@ var ParkModel = Backbone.Model.extend({
         this.fetch();
     }
 });
+
 var ParkView = Backbone.View.extend({
     url: '/parkdetail',
     //	park_template : _.template('<h1>Here are the details of this particular park.</h1>'),
@@ -34,6 +37,7 @@ var ParkView = Backbone.View.extend({
         }));
     }
 });
+
 var ParkCollection = Backbone.Collection.extend({
     model: ParkModel,
     //  url : "/parkdetail", commented out until we create a route in index.js, which may be unnecessary to keep this as a spa
@@ -42,6 +46,7 @@ var ParkCollection = Backbone.Collection.extend({
         this.fetch();
     }
 });
+
 var parkModel, parkView, parkCollection;
 parkModel = new ParkModel();
 parkView = new ParkView({
