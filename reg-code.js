@@ -1,6 +1,8 @@
 jade: click #create_user
-bb: pw - pwconfirm check
-server: email check
-bb: second modal window
-bb: click #complete_regis (name and hometown)
-server: push info to orchestrate
+bb: create_user function: pw - pwconfirm check
+server: email check in orchestrate
+bb: second modal window for name/hometown
+bb: click #complete_regis
+server: push user info to orchestrate
+
+bb: click #save should also update to orchestrate

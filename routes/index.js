@@ -46,7 +46,7 @@ router.post('/begin_regis', function(req, res){
 		// 		text: "Please click here to return to the home page: "});
 		// } 
 		else {
-			if (password === password_confirm){
+			//if (password === password_confirm){
 				//The user's registration info
 				var raw = {email: email, password: password};
 				//The info that gets stored
@@ -75,7 +75,7 @@ router.post('/begin_regis', function(req, res){
 				}// closes function register(raw)
 
 				register(raw);
-			}// closes password_confirm
+			//}// closes password_confirm
 		}// closes else
 	});// closes initial db query for existing email
 });// closes router.post
