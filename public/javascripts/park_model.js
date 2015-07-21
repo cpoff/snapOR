@@ -40,17 +40,6 @@ var ParkView = Backbone.View.extend({
         'load info.setContent' : 'fireApi'
     }
 });
-
-var MarkerView = Backbone.View.extend({
-    url: '/',
-    render: function() {
-        var template = _.template('<h1>{{parkName}}</h1> <button type="fire" id="fire">Show All</button>');
-        this.$el.html(template({
-            parkName: 'park_name'
-		}));
-    },
-	el: '.markerView'
-});
 	
 var ParkCollection = Backbone.Collection.extend({
     model: ParkModel,
@@ -75,5 +64,7 @@ parkCollection = new Backbone.Collection({
 });
 
 parkView.render();
+markerView.render();
 $("#parkdiv").append(parkView.$el);
+$(".markerView").append(markerView.$el);
 
