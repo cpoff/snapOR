@@ -42,7 +42,7 @@ var APP = APP || {};
 				return function() {
 
 					// info.setContent("<div><p>" + parkCollection.models[i].attributes.name + "</p></div>");
-					info.setContent("<div><ul><li>" + parkCollection.models[i].attributes.name + "</li><li>latitude: " + parkCollection.models[i].attributes.latitude + "</li><li>longitude : " + parkCollection.models[i].attributes.longitude + "</li><li><a href=" + parkCollection.models[i].attributes.parkFlickrCall + ">parkFlickrCall</a></li></ul></div>");
+					info.setContent("<div><ul><li class='marker'>" + parkCollection.models[i].attributes.name + "</li><li>latitude: " + parkCollection.models[i].attributes.latitude + "</li><li>longitude : " + parkCollection.models[i].attributes.longitude + "</li><li><a href=" + parkCollection.models[i].attributes.parkFlickrCall + ">parkFlickrCall</a></li></ul></div>");
 					// info.setContent("<div class='markerView'></div>");
 					info.open(map, marker);
 				};
@@ -56,8 +56,8 @@ var APP = APP || {};
 		}).then(function(data, status, xhr) {
 			mapParkCollection(data);
 		}).then(function() {
-			createMap();
-			google.maps.event.addDomListener(window, 'load', createMap);
+			// createMap();
+			// google.maps.event.addDomListener(window, 'load', createMap);
 		}).then(function() {
 			var substringMatcher = function(strs) {
 				return function findMatches(q, cb) {

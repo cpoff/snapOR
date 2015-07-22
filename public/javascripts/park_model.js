@@ -40,6 +40,20 @@ var ParkView = Backbone.View.extend({
         'load info.setContent' : 'fireApi'
     }
 });
+
+var MapView = Backbone.View.extend({
+    el: '#map_canvas',
+    render: function(){
+        var mapCanvas = document.getElementById('map_canvas');
+        var Bend = new google.maps.LatLng(44.058173, -121.31531);
+        var mapOptions = {
+            center: Bend,
+            zoom: 7,
+            mapTypeId: google.maps.MapTypeId.TERRAIN
+        };
+        var map = new google.maps.Map(mapCanvas, mapOptions);
+    }
+});
 	
 var ParkCollection = Backbone.Collection.extend({
     model: ParkModel,
@@ -50,21 +64,15 @@ var ParkCollection = Backbone.Collection.extend({
     }
 });
 
-var parkModel, parkView, parkCollection, markerView;
 
-parkModel = new ParkModel();
-parkView = new ParkView({
-    model: parkModel
-});
-markerView = new MarkerView({
-    model: parkModel
-});
-parkCollection = new Backbone.Collection({
-    model: ParkModel
-});
+var parkModel = new ParkModel();
+var parkView = new ParkView({model: parkModel});
+var parkCollection = new Backbone.Collection({model: ParkModel});
 
+var mapView = new MapView({model: parkModel});
+mapView.render();
+$("#map_canvas").append(mapView.$el);
 parkView.render();
 markerView.render();
 $("#parkdiv").append(parkView.$el);
-$(".markerView").append(markerView.$el);
 
