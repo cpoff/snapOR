@@ -48,8 +48,6 @@ var MarkerView = Backbone.View.extend({
         //loop to create markers for all the state parks
         var marker_position = new google.maps.LatLng(self.model.get('latitude'), self.model.get('longitude'));
         var info = new google.maps.InfoWindow();
-        console.log(theMap);
-		console.log(self);
         var marker = new google.maps.Marker({
             position: marker_position,
             map: theMap.map,
