@@ -1,6 +1,6 @@
-jade: click #create_user
-bb: create_user function: pw - pwconfirm check
-server: email check in orchestrate
+//jade: click #create_user
+//bb: create_user function: pw - pwconfirm check
+//server: email check in orchestrate
 bb: second modal window for name/hometown
 bb: click #complete_regis
 server: db.put

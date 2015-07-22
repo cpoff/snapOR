@@ -55,7 +55,7 @@ router.post('/begin_regis', function(req, res){
 					//Create and store encrypted user record:
 					pass.hash(raw.password, function(err,salt,hash) {
 						stored = {email:raw.email, salt:salt, hash:hash};
-						//NEED TO POINT BACK TO BACKBONE FOR #COMPLETE_REGIS ACTIONS
+						//res.render('/complete_regis');
 						db.put('snap', user_key, {
 							'email': stored.email,
 							// 'password': password
@@ -64,11 +64,9 @@ router.post('/begin_regis', function(req, res){
 						})// closes db.put
 						.then(function(){
 							console.log('user created');
-							// console.log(user_key);
 							console.log("db push");
 							console.log(stored);
-							// res.redirect('user');
-							res.redirect('/');
+							res.end();
 						})// closes .then
 						.fail(function(err){});
 					});// closes pass.hash
@@ -80,23 +78,25 @@ router.post('/begin_regis', function(req, res){
 	});// closes initial db query for existing email
 });// closes router.post
 
-router.get('/user', function(req, res) {
-	res.render('user');
-});// closes registration router
+//I THINK THIS IS UNNECESSARY
+// router.get('/user', function(req, res) {
+// 	res.render('user');
+// });// closes registration router
 
 /*ROUTE FOR EXISTING USER LOGIN*/  
 router.post('/login', function(req, res) { //this should be a get, it's requesting data from the server, if input matches the data, then user is redirected
-
-	var username = request.body.username;
-	var password = request.body.password;
+	var email = req.body.email;
+	var password = req.body.password;
 	var database = app.get('database');
-	console.log(db.search);
-	db.search('snap', 'value.email:""')
-	.then(function(array) {
-		if (array.length > 0) {
-			response.render ('error', {
-				error: 'There is already an account associated with this email.',
-				text: 'Please use a unique email address, or click "Forgot Password"'
+	console.log('db search');
+	db.search('snap', 'value.email:'+email)
+	.then(function(result) {
+		if (result.body.count === 0) {
+			console.log('search results:')
+			console.log(result.body)
+			res.render ('mistake', {
+				error: 'We did not find an account with that email address.',
+				text: 'Please try again.'
 			});
 
 		} else {
@@ -104,8 +104,9 @@ router.post('/login', function(req, res) { //this should be a get, it's requesti
 				pass.hash(attempt.password, stored.salt, function(err, hash){
 					if(hash===stored.hash){
 						console.log("success");
+						response.render('user')
 					} else {
-						response.render('/error', {
+						response.render('mistake', {
 							error: "It looks like your password was incorrect.",
 							text: "Please click here to return to the login page: "
 						});// closes response.render

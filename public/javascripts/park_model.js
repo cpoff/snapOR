@@ -50,21 +50,21 @@ var ParkCollection = Backbone.Collection.extend({
     }
 });
 
-var parkModel, parkView, parkCollection, markerView;
+var parkModel, parkView, parkCollection; //markerView;
 
 parkModel = new ParkModel();
 parkView = new ParkView({
     model: parkModel
 });
-markerView = new MarkerView({
-    model: parkModel
-});
+//markerView = new MarkerView({
+    //model: parkModel
+//});
 parkCollection = new Backbone.Collection({
     model: ParkModel
 });
 
 parkView.render();
-markerView.render();
+//markerView.render();
 $("#parkdiv").append(parkView.$el);
-$(".markerView").append(markerView.$el);
+//$(".markerView").append(markerView.$el);
 
