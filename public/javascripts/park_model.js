@@ -32,10 +32,11 @@ var ParkView = Backbone.View.extend({
 			FlickrInfo: 'flickr_data'
 		}));
 	},
-	fireApi: function() {
-		var flickrUrl = this.model.get('parkFlickrCall');
-			$.getJSON(flickrUrl);
-	},
+	// fireApi: function() {
+	// 	var flickrUrl = this.model.get('parkFlickrCall');
+	// 		$.getJSON(flickrUrl);
+	// 		console.log('test');
+	// },
 	events: {
 		'load info.setContent' : 'fireApi'
 	}
@@ -43,7 +44,6 @@ var ParkView = Backbone.View.extend({
 
 var MapView = Backbone.View.extend({
 	el: '#map_canvas',
-
 	render: function(){
 		//creates map on the page
 		var mapCanvas = document.getElementById('map_canvas');
@@ -68,8 +68,14 @@ var MapView = Backbone.View.extend({
 				return function() {
 					// info.setContent("<div><p>" + parkCollection.models[i].attributes.name + "</p></div>");
 					info.setContent("<div><ul><li class='marker'>" + parkCollection.models[i].attributes.name + "</li><li>latitude: " + parkCollection.models[i].attributes.latitude + "</li><li>longitude : " + parkCollection.models[i].attributes.longitude + "</li><li><a href=" + parkCollection.models[i].attributes.parkFlickrCall + ">parkFlickrCall</a></li></ul></div>");
+					// this.model.fireApi();
 					// info.setContent("<div class='markerView'></div>");
 					info.open(map, marker);
+					console.log('test1');
+					var flickrURL = parkCollection.models[i].attributes.parkFlickrCall;
+					console.log(flickrURL);
+					$.getJSON(flickrURL);
+
 				};
 			})(marker, i));
 		}
