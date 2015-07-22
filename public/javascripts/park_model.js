@@ -45,6 +45,7 @@ var MapView = Backbone.View.extend({
 	el: '#map_canvas',
 
 	render: function(){
+		//creates map on the page
 		var mapCanvas = document.getElementById('map_canvas');
 		var Bend = new google.maps.LatLng(44.058173, -121.31531);
 		var mapOptions = {
@@ -53,15 +54,7 @@ var MapView = Backbone.View.extend({
 			mapTypeId: google.maps.MapTypeId.TERRAIN
 		};
 		var map = new google.maps.Map(mapCanvas, mapOptions);
-		
-		// var marker_position = new google.maps.LatLng(44.058173, -121.31531);
-		// var info = new google.maps.InfoWindow();
-		// var marker = new google.maps.Marker({
-		//     position: marker_position,
-		//     map: map,
-		//     title: 'Bend,OR',
-		// });
-		
+		//loop to create markers for all the state parks
 		for (var i = 0; i < parkCollection.length; i++) { 
 			var marker_position = new google.maps.LatLng(parkCollection.models[i].attributes.latitude, parkCollection.models[i].attributes.longitude);
 			var info = new google.maps.InfoWindow();
@@ -73,8 +66,8 @@ var MapView = Backbone.View.extend({
 			});
 			google.maps.event.addListener(marker, 'click', (function(marker, i) {
 				return function() {
-					info.setContent("<div><p>" + parkCollection.models[i].attributes.name + "</p></div>");
-					// info.setContent("<div><ul><li class='marker'>" + parkCollection.models[i].attributes.name + "</li><li>latitude: " + parkCollection.models[i].attributes.latitude + "</li><li>longitude : " + parkCollection.models[i].attributes.longitude + "</li><li><a href=" + parkCollection.models[i].attributes.parkFlickrCall + ">parkFlickrCall</a></li></ul></div>");
+					// info.setContent("<div><p>" + parkCollection.models[i].attributes.name + "</p></div>");
+					info.setContent("<div><ul><li class='marker'>" + parkCollection.models[i].attributes.name + "</li><li>latitude: " + parkCollection.models[i].attributes.latitude + "</li><li>longitude : " + parkCollection.models[i].attributes.longitude + "</li><li><a href=" + parkCollection.models[i].attributes.parkFlickrCall + ">parkFlickrCall</a></li></ul></div>");
 					// info.setContent("<div class='markerView'></div>");
 					info.open(map, marker);
 				};
@@ -103,7 +96,6 @@ $("#parkdiv").append(parkView.$el);
 var parkCollection = new Backbone.Collection({model: ParkModel});
 
 var mapView = new MapView({model: parkModel});
-// mapView.makeMarker();
 $("#map_canvas").append(mapView.$el);
 
 
