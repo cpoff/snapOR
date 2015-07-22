@@ -34,7 +34,7 @@ var ParkView = Backbone.View.extend({
     },
     fireApi: function() {
         var flickrUrl = this.model.get('parkFlickrCall');
-			$.getJSON(flickrUrl)
+			$.getJSON(flickrUrl);
 	},
     events: {
         'load info.setContent' : 'fireApi'
@@ -43,6 +43,7 @@ var ParkView = Backbone.View.extend({
 
 var MapView = Backbone.View.extend({
     el: '#map_canvas',
+
     render: function(){
         var mapCanvas = document.getElementById('map_canvas');
         var Bend = new google.maps.LatLng(44.058173, -121.31531);
@@ -52,8 +53,17 @@ var MapView = Backbone.View.extend({
             mapTypeId: google.maps.MapTypeId.TERRAIN
         };
         var map = new google.maps.Map(mapCanvas, mapOptions);
+        
+        var marker_position = new google.maps.LatLng(44.058173, -121.31531);
+        var info = new google.maps.InfoWindow();
+        var marker = new google.maps.Marker({
+            position: marker_position,
+            map: map,
+            title: 'Bend,OR',
+        });
     }
 });
+
 	
 var ParkCollection = Backbone.Collection.extend({
     model: ParkModel,
@@ -66,13 +76,16 @@ var ParkCollection = Backbone.Collection.extend({
 
 
 var parkModel = new ParkModel();
+
 var parkView = new ParkView({model: parkModel});
+parkView.render();
+$("#parkdiv").append(parkView.$el);
+
 var parkCollection = new Backbone.Collection({model: ParkModel});
 
 var mapView = new MapView({model: parkModel});
-mapView.render();
+// mapView.makeMarker();
 $("#map_canvas").append(mapView.$el);
-parkView.render();
-markerView.render();
-$("#parkdiv").append(parkView.$el);
+
+
 

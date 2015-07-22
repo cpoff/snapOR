@@ -55,9 +55,13 @@ var APP = APP || {};
 			data: data
 		}).then(function(data, status, xhr) {
 			mapParkCollection(data);
+			console.log(parkCollection);
 		}).then(function() {
 			// createMap();
 			// google.maps.event.addDomListener(window, 'load', createMap);
+			// var mapView = new MapView({model: parkModel});
+			mapView.render();
+mapView.render();
 		}).then(function() {
 			var substringMatcher = function(strs) {
 				return function findMatches(q, cb) {
