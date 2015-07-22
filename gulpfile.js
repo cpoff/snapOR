@@ -26,8 +26,11 @@ gulp.task('concatScripts', function(){
 
 gulp.task('minifyScripts', ['concatScripts'],function(){
 	return gulp.src('./public/javascripts/all.js')
+		// .pipe(maps.init())
 		.pipe(uglify())
+		// .pipe(maps.init())
 		.pipe(rename('all.min.js'))
+		// .pipe(maps.write('./'))
 		.pipe(gulp.dest('./public/javascripts/'));
 });
 

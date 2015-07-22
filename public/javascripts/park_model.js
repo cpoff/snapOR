@@ -32,6 +32,9 @@ var ParkView = Backbone.View.extend({
 			FlickrInfo: 'flickr_data'
 		}));
 	},
+	// viewData : function(data){
+	// 	$.each(data.items)
+	// }
 	// fireApi: function() {
 	// 	var flickrUrl = this.model.get('parkFlickrCall');
 	// 		$.getJSON(flickrUrl);
@@ -41,7 +44,7 @@ var ParkView = Backbone.View.extend({
 		'load info.setContent' : 'fireApi'
 	}
 });
-
+var flickrUrl;
 var MapView = Backbone.View.extend({
 	el: '#map_canvas',
 	render: function(){
@@ -67,15 +70,26 @@ var MapView = Backbone.View.extend({
 			google.maps.event.addListener(marker, 'click', (function(marker, i) {
 				return function() {
 					// info.setContent("<div><p>" + parkCollection.models[i].attributes.name + "</p></div>");
-					info.setContent("<div><ul><li class='marker'>" + parkCollection.models[i].attributes.name + "</li><li>latitude: " + parkCollection.models[i].attributes.latitude + "</li><li>longitude : " + parkCollection.models[i].attributes.longitude + "</li><li><a href=" + parkCollection.models[i].attributes.parkFlickrCall + ">parkFlickrCall</a></li></ul></div>");
+					info.setContent("<p>" + parkCollection.models[i].attributes.name + "<p><button id='pictures'>Search</button>");
 					// this.model.fireApi();
 					// info.setContent("<div class='markerView'></div>");
 					info.open(map, marker);
-					console.log('test1');
-					var flickrURL = parkCollection.models[i].attributes.parkFlickrCall;
-					console.log(flickrURL);
-					$.getJSON(flickrURL);
-
+					// function fireFlickrAPI(i, callback){
+					// 	var flickrURL = parkCollection.models[i].attributes.parkFlickrCall;
+					// 	$.getJSON(flickrURL, callback);
+					// }
+					// fireFlickrAPI(i, function(data){
+					// 	$.each(data.items, function(j, item){
+					// 		$("<img>").attr("src", item.media.m).appendTo('body');
+					// 	});
+					// });
+					(function(){
+						flickrURL = parkCollection.models[i].attributes.parkFlickrCall;
+						console.log(flickrURL);
+						data = $.getJSON(flickrURL).done(function(data){
+							console.log(data);
+						});
+					})();
 				};
 			})(marker, i));
 		}
@@ -103,6 +117,4 @@ var parkCollection = new Backbone.Collection({model: ParkModel});
 
 var mapView = new MapView({model: parkModel});
 $("#map_canvas").append(mapView.$el);
-
-
 

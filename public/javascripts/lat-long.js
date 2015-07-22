@@ -1,5 +1,21 @@
 var APP = APP || {};
 (function (APP) { 
+	function flick() {
+	  var flickerAPI = "https://api.flickr.com/services/rest/?method=flickr.photos.search&api_key=a3a47a8bbef03987ba49563f5120127e&tags=park&lat=44.059712&lon=-121.288275&radius=20&per_page=20&format=json";
+	  $.getJSON( flickerAPI, {
+	    tags: "mount rainier",
+	    tagmode: "any",
+	    format: "json"
+	  })
+	    .done(function( data ) {
+	      $.each( data.items, function( i, item ) {
+	        $( "<img>" ).attr( "src", item.media.m ).appendTo( "body" );
+	        if ( i === 3 ) {
+	          return false;
+	        }
+	      });
+	    });
+	};
 	var url = 'http://oregonstateparks.org/data/index.cfm';
 	var data = {
 		endpoint: '/parks',
@@ -26,7 +42,7 @@ var APP = APP || {};
 		}).then(function(data, status, xhr) {
 			mapParkCollection(data);
 		}).then(function() {
-			mapView.render();
+			mapView.render();		
 		}).then(function() {
 			var substringMatcher = function(strs) {
 				return function findMatches(q, cb) {
@@ -71,5 +87,6 @@ var APP = APP || {};
 	})();
 	// APP.LatLong = { 
 	// };
-
+	APP.flick = {
+		flick : this.flick
 })(APP);
