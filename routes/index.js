@@ -50,7 +50,7 @@ router.post('/begin_regis', function(req, res){
 				var raw = {email: email, password: password};
 				//The info that gets stored
 				var stored = {email : 'email', salt:'', hash:''};
-				
+
 				function register(raw) {
 					//Create and store encrypted user record:
 					pass.hash(raw.password, function(err,salt,hash) {
@@ -66,7 +66,7 @@ router.post('/begin_regis', function(req, res){
 							console.log('user created');
 							// console.log(user_key);
 							console.log("db push");
-							//console.log(stored);
+							console.log(stored);
 							// res.redirect('user');
 							res.redirect('/');
 						})// closes .then
