@@ -140,8 +140,8 @@ var parkView = new ParkView({
 		model: parkModel
 });
 
-parkView.render();
-$("#parkdiv").append(parkView.$el);
+// parkView.render();
+// $("#parkdiv").append(parkView.$el);
 
 //$("#markerdiv").append(markerView.$el);
 

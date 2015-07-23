@@ -14,14 +14,17 @@ var SearchParkView = Backbone.View.extend({
 		}
 		var location = parkNames.indexOf(parkName); //returns the index position of the park the user is searching for
 		var flickrUrl = this.collection.models[location].attributes.parkFlickrCall; //sets that index position as the collection.modesls index position, and stores the parkFlicker url into a new variable
+		var name = this.collection.models[location].attributes.name;
+		console.log(name);
 		var sourceArray = [];
 		$.getJSON(flickrUrl) //fires the flickr url
 			.always(function(data) {
 				newJson = JSON.parse(data.responseText.slice(14, -1));
+				$("<h1 id='parkName'>"+name+"</h1>").appendTo('#pictures');
 				for(var i = 0; i<newJson.photos.photo.length; ++i){
 					var source = "http://farm" + newJson.photos.photo[i].farm + ".static.flickr.com/" + newJson.photos.photo[i].server + "/" + newJson.photos.photo[i].id + "_" + newJson.photos.photo[i].secret + "_" + "t.jpg";
 					sourceArray.push(source);
-					$("<img class=flickrPhoto src=" + source + ">").appendTo('body');
+					$("<img class=flickrPhoto src=" + source + ">").appendTo('#pictures');
 				}
 			});
 	},
