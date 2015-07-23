@@ -25,10 +25,11 @@ var ParkModel = Backbone.Model.extend({
 
 var ParkView = Backbone.View.extend({
     url: '/',
+    el: '#photoview',
     render: function() {
         var template = _.template('<h1>{{parkName}}</h1><div>{{FlickrInfo}}</div>');
         this.$el.html(template({
-            parkName: 'park_name',
+            parkName: 'dog',
             FlickrInfo: 'flickr_data'
         }));
     },
@@ -36,18 +37,13 @@ var ParkView = Backbone.View.extend({
 
 var MarkerView = Backbone.View.extend({
     el: '#markerview',
-    render: function() {
-        var template = _.template('<h1>{{parkName}}</h1><div>{{FlickrInfo}}</div>');
-        this.$el.html(template({
-            parkName: 'park_name',
-            FlickrInfo: 'flickr_data'
-        }));
-    },
     initialize: function() {
-		var self = this;
+        var self = this;
         //loop to create markers for all the state parks
         var marker_position = new google.maps.LatLng(self.model.get('latitude'), self.model.get('longitude'));
         var info = new google.maps.InfoWindow();
+        // console.log(theMap);
+        // console.log(self);
         var marker = new google.maps.Marker({
             position: marker_position,
             map: theMap.map,
@@ -56,24 +52,26 @@ var MarkerView = Backbone.View.extend({
         });
         google.maps.event.addListener(marker, 'click', (function(marker) {
             return function() {
-                // info.setContent("<div><p>" + this.model.attributes.name + "</p></div>");
-                info.setContent("<div><ul><li class='marker'>" + self.model.get('name') + "</li><li>latitude: " + self.model.get('latitude') + "</li><li>longitude : " + self.model.get('longitude') + "</li><li><a href=" + self.model.get('parkFlickrCall') + ">parkFlickrCall</a></li></ul></div>");
-                info.open(self.map, marker);
+                info.setContent("<div><p>" + self.model.attributes.name + "</p><button id='showPictures'>See more</button></div>");
+                info.open(theMap.map, marker);
+
                 var flickrURL = self.model.attributes.parkFlickrCall;
                 console.log(flickrURL);
                 $.getJSON(flickrURL)
-                    .done(function(data) {
+                    .always(function(data) {
                         console.log('dot done');
-                        $.each(data.items, function(item) {
-                            $("<img>").attr("src", item.media.m).appendTo("#markerdiv");
-                            //                                if (i === 3) {
-                            //                                    return false;
-                            //                                }
-                        });
+                        data = JSON.parse(data.responseText)
+                        if (data && data.items) {
+                            $.each(data.items, function(item) {
+                                $("<img>").attr("src", item.media.m).appendTo("#markerdiv");
+                            });
+                        }
+                        console.log(data);
                     });
 
             };
         })(marker));
+
     }
 });
 
@@ -122,7 +120,7 @@ var parkView = new ParkView({
 });
 
 parkView.render();
-$("#parkdiv").append(parkView.$el);
+$("#markerview").append(parkView.$el);
 
 //$("#markerdiv").append(markerView.$el);
 
