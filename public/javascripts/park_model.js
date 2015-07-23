@@ -27,7 +27,7 @@ var SearchParkView = Backbone.View.extend({
 	url: '/',
 	el: '#parks',
 	render: function(){
-		var template = _.template('<h2 id="modalTitle">Explore Parks</h2><a class="close-reveal-modal aria-label="Close">&times;</a><div id="parkList"><input id="parkName" class="typeahead" type="text" name="Enter park name:" style="font-family: \'Robot Slab\'" placeholder="Ex: \'cape kiwanda\', \'silver falls state park\'"><br><input id="searchParks" class="submit" value="Explore">');
+		var template = _.template('<h2 id="modalTitle">Explore Parks</h2><a class="close-reveal-modal aria-label="Close">&times;</a><div id="parkList"><input id="parkName" class="typeahead" type="text" name="Enter park name:" style="font-family: \'Robot Slab\'" placeholder="Ex: \'cape kiwanda\', \'silver falls state park\'"><br><input id="searchParks" class="submit button" class="submit" value="Explore"></div>');
 		this.$el.html(template());
 	},
 	searchParks: function(){
