@@ -31,9 +31,9 @@ var SearchParkView = Backbone.View.extend({
 		this.$el.html(template());
 	},
 	searchParks: function(){
-		console.log('test');
-			// var parkName = $("#parkName").val();
-			// console.log(parkName);
+		// console.log('test');
+		var parkName = $("#parkName").val();
+		console.log(parkName);
 			//compare each park name in parkCollection.models.attributes.name
 				//if parkName === parkCollection.models.attributes.name
 					//render flicker data
