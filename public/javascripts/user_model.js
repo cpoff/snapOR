@@ -6,7 +6,6 @@ var UserModel = Backbone.Model.extend({
 	//urlRoot: '/',
 	defaults: {	"name": "", "email": "", "home": ""},
 	initialize: function() {
-		console.log('new model created');
 		//this.fetch();
 	},
 	replace: function(name, email, home) {
