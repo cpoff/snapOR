@@ -26,9 +26,11 @@ var ParkModel = Backbone.Model.extend({
 var ParkView = Backbone.View.extend({
 		url: '/',
 		render: function() {
-				var template = _.template('<h1>{{parkName}}</h1><div>{{FlickrInfo}}</div>');
+				var template = _.template('<h1>{{parkName}}</h1><div id="flickerPictures">{{FlickrInfo}}</div>');
+				var parkName = this.model.get("name");
 				this.$el.html(template({
 						parkName: 'park_name',
+						// parkName: parkName 
 						FlickrInfo: 'flickr_data'
 				}));
 		},
@@ -48,8 +50,6 @@ var MarkerView = Backbone.View.extend({
 				//loop to create markers for all the state parks
 			var marker_position = new google.maps.LatLng(self.model.get('latitude'), self.model.get('longitude'));
 			var info = new google.maps.InfoWindow();
-			// console.log(theMap);
-			// console.log(self);
 			var marker = new google.maps.Marker({
 				position: marker_position,
 				map: theMap.map,
@@ -58,7 +58,8 @@ var MarkerView = Backbone.View.extend({
 			});
 			google.maps.event.addListener(marker, 'click', (function(marker) {
 				return function() {
-					info.setContent("<div><p>"+ self.model.attributes.name + "</p><button id='showPictures'>Search</button></div>");
+					var name = self.model.get("name");
+					info.setContent("<div><p>"+ name + "</p><button id='showPictures'>Search</button></div>");
 					info.open(theMap.map, marker);
 				};
 			})(marker));
@@ -124,4 +125,3 @@ var mapView = new MapView({
 });
 
 $("#map_canvas").append(mapView.$el);
-
