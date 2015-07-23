@@ -58,7 +58,8 @@ var MarkerView = Backbone.View.extend({
 			});
 			google.maps.event.addListener(marker, 'click', (function(marker) {
 				return function() {
-					info.setContent("<div><p>"+ self.model.attributes.name + "</p><button id='showPictures'>Search</button></div>");
+					var name = self.model.get("name");
+					info.setContent("<div><p>"+ name + "</p><button id='showPictures'>Search</button></div>");
 					info.open(theMap.map, marker);
 				};
 			})(marker));
