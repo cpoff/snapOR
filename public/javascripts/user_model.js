@@ -46,12 +46,17 @@ var UserView = Backbone.View.extend({
 	//renderTemplate: function() {
 	events: {
 		'click #create_user': 'create_user',
+		'click .fire_new_modal': 'fire_new_modal',
 		'click #complete_regis': 'complete_regis',
 		'click #update': "update",//user_template
 		'click .save': 'save',//update_user_template
 		'click #logout': 'logout',
 		'click #login_user': 'login_user' 
 		//need an event to render the error message
+	},
+	fire_new_modal: function() {
+		$("div#register.reveal-modal.users.open").replaceWith("#userInfoDiv");
+		$(".reveal-modal-bg").css({display: "none"});
 	},
 	login_user: function() {
 		var self = this;
@@ -85,8 +90,8 @@ var UserView = Backbone.View.extend({
 		if(password===password_confirm){
 			//jQuery.post( url [, data ] [, success ] [, dataType ] )
 			jQuery.post('/begin_regis', {email: userEmail, password: password});
-			$("#register").replaceWith("#userInfoDiv");
-			$( ".reveal-modal-bg" ).css({ display: "none" });
+			// $("div#register.reveal-modal.users.open").replaceWith("#userInfoDiv");
+			// $(".reveal-modal-bg").css({display: "none"});
 				//function (reply) {
 				// if (reply.error) {
 				// 	console.log(reply);
