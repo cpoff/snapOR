@@ -25,7 +25,7 @@ var ParkModel = Backbone.Model.extend({
 
 var ParkView = Backbone.View.extend({
     url: '/',
-    el: '#photoview',
+    el: '#markerdiv',
     render: function() {
         var template = _.template('<h1>{{parkName}}</h1><div>{{FlickrInfo}}</div>');
         this.$el.html(template({
@@ -37,6 +37,16 @@ var ParkView = Backbone.View.extend({
 
 var MarkerView = Backbone.View.extend({
     el: '#markerview',
+
+//    render: function() {
+//        var template = _.template('<h1>{{parkName}}</h1><div>{{FlickrInfo}}</div>');
+//        this.$el.html(template({
+//            parkName: 'park_name',
+//            FlickrInfo: 'flickr_data'
+//        }));
+//    },
+
+
     initialize: function() {
         var self = this;
         //loop to create markers for all the state parks
@@ -59,16 +69,16 @@ var MarkerView = Backbone.View.extend({
                 console.log(flickrURL);
                 $.getJSON(flickrURL)
                     .always(function(data) {
-                        console.log('dot done');
-                        data = JSON.parse(data.responseText)
+                        //                        console.log(data);
+                        var newJson = JSON.parse(data.responseText.slice(14, -1));
+                        console.log(newJson);
                         if (data && data.items) {
                             $.each(data.items, function(item) {
                                 $("<img>").attr("src", item.media.m).appendTo("#markerdiv");
                             });
                         }
-                        console.log(data);
+                        console.log(newJson.photos.photo[2]);
                     });
-
             };
         })(marker));
 
@@ -105,7 +115,6 @@ var MapView = Backbone.View.extend({
 
 var ParkCollection = Backbone.Collection.extend({
     model: ParkModel,
-    //  url : "/parkdetail", commented out until we create a route in index.js, which may be unnecessary to keep this as a spa
     url: '/',
     initialize: function() {
         this.fetch();
@@ -116,21 +125,21 @@ var ParkCollection = Backbone.Collection.extend({
 var parkModel = new ParkModel();
 
 var parkView = new ParkView({
-    model: parkModel
+		model: parkModel
 });
 
 parkView.render();
-$("#markerview").append(parkView.$el);
+$("#parkdiv").append(parkView.$el);
 
 //$("#markerdiv").append(markerView.$el);
 
 var parkCollection = new Backbone.Collection({
-    model: ParkModel
+		model: ParkModel
 });
 
 var mapView = new MapView({
-    model: parkModel,
-    collection: parkCollection
+		model: parkModel,
+		collection: parkCollection
 });
 
 $("#map_canvas").append(mapView.$el);
