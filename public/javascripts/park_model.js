@@ -3,11 +3,11 @@ _.templateSettings = {
 };
 
 // snapOR homepage
-var MasterView = Backbone.View.extend({
-		render: function() {
-				this.$el.html("<div>" + "Map API response goes here" + "</div>");
-		}
-});
+//var MasterView = Backbone.View.extend({
+//		render: function() {
+//				this.$el.html("<div>" + "Map API response goes here" + "</div>");
+//		}
+//});
 
 var ParkModel = Backbone.Model.extend({
 		// urlRoot: '/parkdetail',
@@ -64,6 +64,7 @@ var MarkerView = Backbone.View.extend({
 				};
 			})(marker));
 		}
+
 });
 
 var markerArray = [];
@@ -125,3 +126,4 @@ var mapView = new MapView({
 });
 
 $("#map_canvas").append(mapView.$el);
+
