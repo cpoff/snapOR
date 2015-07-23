@@ -29,42 +29,60 @@ var ParkView = Backbone.View.extend({
 				var template = _.template('<h1>{{parkName}}</h1><div id="flickerPictures">{{FlickrInfo}}</div>');
 				var parkName = this.model.get("name");
 				this.$el.html(template({
-						parkName: 'park_name',
+						parkName: 'park_name here',
 						// parkName: parkName 
-						FlickrInfo: 'flickr_data'
+						FlickrInfo: 'flickr_data goes here'
 				}));
 		},
 });
 
 var MarkerView = Backbone.View.extend({
-		el: '#markerview',
-		render: function() {
-				var template = _.template('<h1>{{parkName}}</h1><div>{{FlickrInfo}}</div>');
-				this.$el.html(template({
-						parkName: 'park_name',
-						FlickrInfo: 'flickr_data'
-				}));
-		},
-		initialize: function() {
-			var self = this;
-				//loop to create markers for all the state parks
-			var marker_position = new google.maps.LatLng(self.model.get('latitude'), self.model.get('longitude'));
-			var info = new google.maps.InfoWindow();
-			var marker = new google.maps.Marker({
-				position: marker_position,
-				map: theMap.map,
-				title: self.model.attributes.name,
-				animation: google.maps.Animation.DROP,
-			});
-			google.maps.event.addListener(marker, 'click', (function(marker) {
-				return function() {
-					var name = self.model.get("name");
-					info.setContent("<div><p>"+ name + "</p><button id='showPictures'>Search</button></div>");
-					info.open(theMap.map, marker);
-				};
-			})(marker));
-		}
+    el: '#markerview',
 
+//    render: function() {
+//        var template = _.template('<h1>{{parkName}}</h1><div>{{FlickrInfo}}</div>');
+//        this.$el.html(template({
+//            parkName: 'park_name',
+//            FlickrInfo: 'flickr_data'
+//        }));
+//    }, 
+
+
+    initialize: function() {
+        var self = this;
+        //loop to create markers for all the state parks
+        var marker_position = new google.maps.LatLng(self.model.get('latitude'), self.model.get('longitude'));
+        var info = new google.maps.InfoWindow();
+        // console.log(theMap);
+        // console.log(self);
+        var marker = new google.maps.Marker({
+            position: marker_position,
+            map: theMap.map,
+            title: self.model.attributes.name,
+            animation: google.maps.Animation.DROP,
+        });
+        google.maps.event.addListener(marker, 'click', (function(marker) {
+            return function() {
+                info.setContent("<div><p>" + self.model.attributes.name + "</p><button id='showPictures'>See more</button></div>");
+                info.open(theMap.map, marker);
+
+                var flickrURL = self.model.attributes.parkFlickrCall;
+                $.getJSON(flickrURL)
+                    .always(function(data) {
+                         newJson = JSON.parse(data.responseText.slice(14, -1));
+                        console.log(newJson);
+                        if (data && data.items) {
+                            $.each(newJson.photos.photo, function(item) {
+                                $("http://farm" + newJson.photos.photo.farm + ".static.flickr.com/" + 
+        newJson.photos.photo.server + "/" + newJson.photos.photo.id + "_" + newJson.photos.photo.secret + "_" + "t.jpg").appendTo("#parkdiv");
+                            });
+                        }
+//                        console.log(newJson.photos.photo.length);
+                    });
+            };
+        })(marker));
+
+    }
 });
 
 var markerArray = [];
