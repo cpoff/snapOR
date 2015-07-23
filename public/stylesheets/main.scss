@@ -35,6 +35,24 @@ body div.fixed.sticky nav.top-bar section.top-bar-section ul.right li a, body di
 	font-family: $sans-serif;
 }
 
+nav.top-bar {
+	background-color: $red;
+	color: $yellow;
+	font-family: $sans-serif;
+}
+
+div.sticky.hide-for-small-only nav.top-bar section.top-bar-section ul.left li.active a {
+	background-color: $red;
+	color: $yellow;
+	font-family: $sans-serif;
+}
+
+div.sticky.hide-for-small-only nav.top-bar section.top-bar-section ul.right li a {
+	background-color: $red;
+	color: $yellow;
+	font-family: $sans-serif;
+}
+
 /******************
 SITE NAME
 ******************/
