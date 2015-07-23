@@ -3,7 +3,7 @@ var router = express.Router();
 if (!process.env.heroku) var config = require('../config.js');
 var db = require('orchestrate')(process.env.dbKey || config.dbKey);
 var uuid = require('uuid');
-var pass = require('pwd');
+var pwd = require('pwd');
 var app = require('../app');
 
 /* GET home page. */
@@ -45,17 +45,15 @@ router.post('/begin_regis', function(req, res){
 		// 		text: "Please click here to return to the home page: "});
 		// } 
 		else {
-			//if (password === password_confirm){
 				//The user's registration info
-				var raw = {email: email, password: password};
+				var raw = {email: 'email', password: 'password'};
 				//The info that gets stored
 				var stored = {email : 'email', salt:'', hash:''};
 
 				function register(raw) {
 					//Create and store encrypted user record:
-					pass.hash(raw.password, function(err,salt,hash) {
+					pwd.hash(raw.password, function(err,salt,hash) {
 						stored = {email:raw.email, salt:salt, hash:hash};
-						//res.render('/complete_regis');
 						db.put('snap', user_key, {
 							'email': stored.email,
 							// 'password': password
@@ -69,49 +67,52 @@ router.post('/begin_regis', function(req, res){
 							res.end();
 						})// closes .then
 						.fail(function(err){});
-					});// closes pass.hash
+					});// closes pwd.hash
 				}// closes function register(raw)
 
 				register(raw);
-			//}// closes password_confirm
 		}// closes else
 	});// closes initial db query for existing email
 });// closes router.post
 
-//I THINK THIS IS UNNECESSARY
-// router.get('/user', function(req, res) {
-// 	res.render('user');
-// });// closes registration router
+
+router.get('/user', function(req, res) {
+	res.render('user');
+});// closes registration router
 
 /*ROUTE FOR EXISTING USER LOGIN*/  
-router.post('/login', function(req, res) { //this should be a get, it's requesting data from the server, if input matches the data, then user is redirected
+router.post('/user', function(req, res) { //this should be a get, it's requesting data from the server, if input matches the data, then user is redirected
 	var email = req.body.email;
 	var password = req.body.password;
 	var database = app.get('database');
-	console.log('db search');
 	db.search('snap', 'value.email:'+email)
 	.then(function(result) {
+		var currentUser = result.body.results[0].value;
 		if (result.body.count === 0) {
-			console.log('search results:')
-			console.log(result.body)
+			console.log('search results:');
 			res.render ('mistake', {
 				error: 'We did not find an account with that email address.',
 				text: 'Please try again.'
 			});
 
 		} else {
-			function authenticate(attempt){
-				pass.hash(attempt.password, stored.salt, function(err, hash){
-					if(hash===stored.hash){
+			authenticate();
+			function authenticate(){
+				console.log(currentUser);
+				console.log("attempt to auth");
+				pwd.hash(password, currentUser.salt, function(err, hash){
+					console.log(currentUser.hash);
+					console.log(hash);
+					if(currentUser.hash===hash){
 						console.log("success");
-						response.render('user')
+						res.redirect('/user')
 					} else {
-						response.render('mistake', {
+						res.render('mistake', {
 							error: "It looks like your password was incorrect.",
 							text: "Please click here to return to the login page: "
 						});// closes response.render
 					}// closes else
-				});// closes pass.hash
+				});// closes pwd.hash
 			}// closes function authenticate
 		}// closes else
 	});// closes .then

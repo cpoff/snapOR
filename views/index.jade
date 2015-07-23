@@ -17,9 +17,9 @@ block content
 							#login.reveal-modal.users(data-reveal='', aria-labelledby='modalTitle', aria-hidden='true', role='dialog')
 								h2#modalTitle Login
 								a.close-reveal-modal(aria-label='Close') &times;
-								form(method="post" action="/login")
+								form(method="post" action="/user")
 									label.label Email: 
-									input(type="text" name="username" style="font-family: 'Robot Slab'" placeholder="user@domain.com")
+									input(type="text" name="email" style="font-family: 'Robot Slab'" placeholder="user@domain.com")
 									label.label Password: 
 									input(type="password" name="password" style="font-family: 'Robot Slab'" placeholder="password")
 									input#login_user.button(type="submit" style="font-family: 'Questrial'" value="Login")
@@ -28,6 +28,7 @@ block content
 						a(href='#', data-reveal-id='register') Register
 							#register.reveal-modal.users(data-reveal='', aria-labelledby='modalTitle', aria-hidden='true', role='dialog')
 								h2#modalTitle Register New Account
+								a.close-reveal-modal(aria-label='Close') &times;
 								form(method='post' action='/begin_regis')
 									label.label Email: 
 									input#email(type="text" name="email" style="font-family: 'Roboto Slab'" placeholder="user@example.com")
@@ -37,7 +38,8 @@ block content
 									input#password_confirm(type="password" name="password_confirm" style="font-family: 'Robot Slab'" placeholder="password confirmation")
 									br
 									input#create_user(type="submit" style="font-family: 'Questrial'" value="Register Account" data-reveal-id="userDiv")
-							#userDiv.reveal-modal(data-reveal='', aria-labelledby='modalTitle', aria-hidden='true', role='dialog')
+				//- #regAccount.reveal-modal.users(data-reveal='', aria-labelledby='modalTitle', aria-hidden='true', role='dialog')					
+							//- #userDiv.reveal-modal(data-reveal='', aria-labelledby='modalTitle', aria-hidden='true', role='dialog')
 				ul.left
 					li.active
 						a(href='#', data-reveal-id="photos") Discover Photos
@@ -75,7 +77,7 @@ block content
 	#user
 	#map_canvas.hide-for-small-only
 	#parkdiv
-	script(src='/javascripts/all.min.js')
+	script(src='/javascripts/all.js')
 	script.
 		$(document).foundation();
 
