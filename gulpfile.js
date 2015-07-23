@@ -17,7 +17,8 @@ gulp.task('concatScripts', function(){
 		'./public/javascripts/markerwithlabels.js',
 		'./public/javascripts/lat-long.js',
 		'./public/javascripts/park_model.js',
-		'./public/javascripts/user_model.js'])
+		'./public/javascripts/search_park_view.js',
+		'./public/javascripts/user_model.js',])
 		.pipe(maps.init())
 		.pipe(concat('all.js'))
 		.pipe(maps.write('./'))
@@ -26,8 +27,11 @@ gulp.task('concatScripts', function(){
 
 gulp.task('minifyScripts', ['concatScripts'],function(){
 	return gulp.src('./public/javascripts/all.js')
+		// .pipe(maps.init())
 		.pipe(uglify())
+		// .pipe(maps.init())
 		.pipe(rename('all.min.js'))
+		// .pipe(maps.write('./'))
 		.pipe(gulp.dest('./public/javascripts/'));
 });
 

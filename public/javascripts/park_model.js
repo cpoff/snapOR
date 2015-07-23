@@ -26,62 +26,45 @@ var ParkModel = Backbone.Model.extend({
 var ParkView = Backbone.View.extend({
 		url: '/',
 		render: function() {
-				var template = _.template('<h1>{{parkName}}</h1><div>{{FlickrInfo}}</div>');
+				var template = _.template('<h1>{{parkName}}</h1><div id="flickerPictures">{{FlickrInfo}}</div>');
+				var parkName = this.model.get("name");
 				this.$el.html(template({
 						parkName: 'park_name',
+						// parkName: parkName 
 						FlickrInfo: 'flickr_data'
 				}));
 		},
 });
 
 var MarkerView = Backbone.View.extend({
-    el: '#markerview',
+		el: '#markerview',
+		render: function() {
+				var template = _.template('<h1>{{parkName}}</h1><div>{{FlickrInfo}}</div>');
+				this.$el.html(template({
+						parkName: 'park_name',
+						FlickrInfo: 'flickr_data'
+				}));
+		},
+		initialize: function() {
+			var self = this;
+				//loop to create markers for all the state parks
+			var marker_position = new google.maps.LatLng(self.model.get('latitude'), self.model.get('longitude'));
+			var info = new google.maps.InfoWindow();
+			var marker = new google.maps.Marker({
+				position: marker_position,
+				map: theMap.map,
+				title: self.model.attributes.name,
+				animation: google.maps.Animation.DROP,
+			});
+			google.maps.event.addListener(marker, 'click', (function(marker) {
+				return function() {
+					var name = self.model.get("name");
+					info.setContent("<div><p>"+ name + "</p><button id='showPictures'>Search</button></div>");
+					info.open(theMap.map, marker);
+				};
+			})(marker));
+		}
 
-//    render: function() {
-//        var template = _.template('<h1>{{parkName}}</h1><div>{{FlickrInfo}}</div>');
-//        this.$el.html(template({
-//            parkName: 'park_name',
-//            FlickrInfo: 'flickr_data'
-//        }));
-//    },
-
-
-    initialize: function() {
-        var self = this;
-        //loop to create markers for all the state parks
-        var marker_position = new google.maps.LatLng(self.model.get('latitude'), self.model.get('longitude'));
-        var info = new google.maps.InfoWindow();
-        // console.log(theMap);
-        // console.log(self);
-        var marker = new google.maps.Marker({
-            position: marker_position,
-            map: theMap.map,
-            title: self.model.attributes.name,
-            animation: google.maps.Animation.DROP,
-        });
-        google.maps.event.addListener(marker, 'click', (function(marker) {
-            return function() {
-                info.setContent("<div><p>" + self.model.attributes.name + "</p><button id='showPictures'>See more</button></div>");
-                info.open(theMap.map, marker);
-
-                var flickrURL = self.model.attributes.parkFlickrCall;
-                console.log(flickrURL);
-                $.getJSON(flickrURL)
-                    .always(function(data) {
-                        //                        console.log(data);
-                        var newJson = JSON.parse(data.responseText.slice(14, -1));
-                        console.log(newJson);
-                        if (data && data.items) {
-                            $.each(data.items, function(item) {
-                                $("<img>").attr("src", item.media.m).appendTo("#markerdiv");
-                            });
-                        }
-                        console.log(newJson.photos.photo[2]);
-                    });
-            };
-        })(marker));
-
-    }
 });
 
 var markerArray = [];

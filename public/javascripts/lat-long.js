@@ -26,7 +26,7 @@ var APP = APP || {};
 		}).then(function(data, status, xhr) {
 			mapParkCollection(data);
 		}).then(function() {
-			mapView.render();
+			mapView.render();		
 		}).then(function() {
 			var substringMatcher = function(strs) {
 				return function findMatches(q, cb) {
