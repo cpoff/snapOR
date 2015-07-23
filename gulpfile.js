@@ -14,7 +14,6 @@ gulp.task('concatScripts', function(){
 		'./bower_components/typeahead.js/dist/typeahead.bundle.min.js',
 		'./public/javascripts/underscore.js', 
 		'./public/javascripts/backbone.js',
-		'./public/javascripts/markerwithlabels.js',
 		'./public/javascripts/lat-long.js',
 		'./public/javascripts/park_model.js',
 		'./public/javascripts/search_park_view.js',
@@ -45,13 +44,17 @@ gulp.task('compileSass', function(){
 
 gulp.task('watchFiles', function(){
 	gulp.watch('./public/stylesheets/**/*.scss', ['compileSass']);
-	gulp.watch('./public/javascripts/lat-long.js', ['minifyScripts']);
-	gulp.watch('./public/javascripts/park_model.js', ['minifyScripts']);
-	gulp.watch('./public/javascripts/user_model.js', ['minifyScripts']);
+// 	gulp.watch('./public/javascripts/lat-long.js', ['minifyScripts']);
+// 	gulp.watch('./public/javascripts/park_model.js', ['minifyScripts']);
+// 	gulp.watch('./public/javascripts/user_model.js', ['minifyScripts']);
 });
 
 gulp.task('serve', ['watchFiles']);
 
-gulp.task('build', ['minifyScripts', 'compileSass']);
+// gulp.task('build', ['minifyScripts', 'compileSass']);
+
+
+gulp.task('build', ['compileSass', 'concatScripts']);
+
 
 gulp.task('default', ['build']);
