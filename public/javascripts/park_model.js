@@ -29,6 +29,19 @@ var SearchParkView = Backbone.View.extend({
 	render: function(){
 		var template = _.template('<h2 id="modalTitle">Explore Parks</h2><a class="close-reveal-modal aria-label="Close">&times;</a><div id="parkList"><input id="parkName" class="typeahead" type="text" name="Enter park name:" style="font-family: \'Robot Slab\'" placeholder="Ex: \'cape kiwanda\', \'silver falls state park\'"><br><input id="searchParks" class="submit" value="Explore">');
 		this.$el.html(template());
+	},
+	searchParks: function(){
+		console.log('test');
+			// var parkName = $("#parkName").val();
+			// console.log(parkName);
+			//compare each park name in parkCollection.models.attributes.name
+				//if parkName === parkCollection.models.attributes.name
+					//render flicker data
+	},
+	events: { 
+			// "click #showPictures": //fire flicker api, render pictures on page,
+			'click #searchParks': 'searchParks'//fire flicker api, render parkView
+			//indended outcome $("#searchParks").click(function(){console.log($('#parkName').val());});
 	}
 });
 
