@@ -23,15 +23,45 @@ var ParkModel = Backbone.Model.extend({
 		}
 });
 
+var SearchParkView = Backbone.View.extend({
+	url: '/',
+	el: '#parks',
+	render: function(){
+		var template = _.template('<h2 id="modalTitle">Explore Parks</h2><a class="close-reveal-modal aria-label="Close">&times;</a><div id="parkList"><input id="parkName" class="typeahead" type="text" name="Enter park name:" style="font-family: \'Robot Slab\'" placeholder="Ex: \'cape kiwanda\', \'silver falls state park\'"><br><input id="searchParks" class="submit" value="Explore">');
+		this.$el.html(template());
+	}
+});
+
 var ParkView = Backbone.View.extend({
 		url: '/',
 		render: function() {
-				var template = _.template('<h1>{{parkName}}</h1><div>{{FlickrInfo}}</div>');
+				var template = _.template('<h1>{{parkName}}</h1><div id="flickerPictures">{{FlickrInfo}}</div>');
+				var parkName = this.model.get("name");
 				this.$el.html(template({
 						parkName: 'park_name',
+						// parkName: parkName 
 						FlickrInfo: 'flickr_data'
 				}));
 		},
+		/*function:
+			store all pictures of a park into model
+			this.render();render this view onto page
+			*/
+
+		searchParks: function(){
+			console.log('test');
+			// var parkName = $("#parkName").val();
+			// console.log(parkName);
+			//compare each park name in parkCollection.models.attributes.name
+				//if parkName === parkCollection.models.attributes.name
+					//render flicker data
+		},
+		events: { 
+			// "click #showPictures": //fire flicker api, render pictures on page,
+			'click #searchParks': 'searchParks'//fire flicker api, render parkView
+			//indended outcome $("#searchParks").click(function(){console.log($('#parkName').val());});
+		}
+
 });
 
 var MarkerView = Backbone.View.extend({
@@ -48,8 +78,6 @@ var MarkerView = Backbone.View.extend({
 				//loop to create markers for all the state parks
 			var marker_position = new google.maps.LatLng(self.model.get('latitude'), self.model.get('longitude'));
 			var info = new google.maps.InfoWindow();
-			// console.log(theMap);
-			// console.log(self);
 			var marker = new google.maps.Marker({
 				position: marker_position,
 				map: theMap.map,
@@ -125,3 +153,6 @@ var mapView = new MapView({
 
 $("#map_canvas").append(mapView.$el);
 
+var searchParkView = new SearchParkView({model: parkModel});
+searchParkView.render();
+$("#parks").append(searchParkView.$el);
