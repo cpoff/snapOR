@@ -179,6 +179,23 @@ MAP CANVAS
 }
 
 /******************
+FLICKR PICTURES
+******************/
+#pictures{
+	display: flex;
+	flex-direction: row;
+	flex-wrap: wrap;
+	justify-content: flex-end;
+	align-content: center;
+	align-items: center;
+}
+.flickrPhoto{
+	flex-grow: 0;
+	flex-shrink: 0;
+	flex-basis: 0;
+}
+
+/******************
 MOBILE VERSION
 ******************/
 @media only screen and (max-width: 40em){

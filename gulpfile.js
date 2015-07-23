@@ -44,9 +44,10 @@ gulp.task('compileSass', function(){
 
 gulp.task('watchFiles', function(){
 	gulp.watch('./public/stylesheets/**/*.scss', ['compileSass']);
-// 	gulp.watch('./public/javascripts/lat-long.js', ['minifyScripts']);
-// 	gulp.watch('./public/javascripts/park_model.js', ['minifyScripts']);
-// 	gulp.watch('./public/javascripts/user_model.js', ['minifyScripts']);
+	gulp.watch('./public/javascripts/lat-long.js', ['minifyScripts']);
+	gulp.watch('./public/javascripts/park_model.js', ['minifyScripts']);
+	gulp.watch('./public/javascripts/user_model.js', ['minifyScripts']);
+	gulp.watch('./public/javascripts/search_park_view.js', ['minifyScripts']);
 });
 
 gulp.task('serve', ['watchFiles']);

@@ -2,13 +2,6 @@ _.templateSettings = {
 		interpolate: /\{\{(.+?)\}\}/g
 };
 
-// snapOR homepage
-//var MasterView = Backbone.View.extend({
-//		render: function() {
-//				this.$el.html("<div>" + "Map API response goes here" + "</div>");
-//		}
-//});
-
 var ParkModel = Backbone.Model.extend({
 		// urlRoot: '/parkdetail',
 		urlRoot: '/',
@@ -30,7 +23,6 @@ var ParkView = Backbone.View.extend({
 				var parkName = this.model.get("name");
 				this.$el.html(template({
 						parkName: 'park_name here',
-						// parkName: parkName 
 						FlickrInfo: 'flickr_data goes here'
 				}));
 		},
@@ -39,22 +31,12 @@ var ParkView = Backbone.View.extend({
 var MarkerView = Backbone.View.extend({
 		el: '#markerview',
 
-//    render: function() {
-//        var template = _.template('<h1>{{parkName}}</h1><div>{{FlickrInfo}}</div>');
-//        this.$el.html(template({
-//            parkName: 'park_name',
-//            FlickrInfo: 'flickr_data'
-//        }));
-//    }, 
-
-
 		initialize: function() {
 				var self = this;
 				//loop to create markers for all the state parks
 				var marker_position = new google.maps.LatLng(self.model.get('latitude'), self.model.get('longitude'));
 				var info = new google.maps.InfoWindow();
-				// console.log(theMap);
-				// console.log(self);
+
 				var marker = new google.maps.Marker({
 						position: marker_position,
 						map: theMap.map,
@@ -64,32 +46,22 @@ var MarkerView = Backbone.View.extend({
 				var sourceArray = [];
 				google.maps.event.addListener(marker, 'click', (function(marker) {
 						return function() {
-								info.setContent("<div><p>" + self.model.attributes.name + "</p><button id='showPictures'>See more</button></div>");
+								info.setContent("<div><p><b>" + self.model.attributes.name + "</b></p><p>Scroll down to see more</p></div>");
 								info.open(theMap.map, marker);
 								var flickrURL = self.model.attributes.parkFlickrCall;
+								var name = self.model.attributes.name;
 								$.getJSON(flickrURL)
 										.always(function(data) {
-											newJson = JSON.parse(data.responseText.slice(14, -1));
-											console.log(newJson);
-											// sourceArray.push(newJson);
-											// console.log(newJson.photos.photo.farm);
-											// if (data && data.items) {
-												for(var i = 0; i<newJson.photos.photo.length; ++i){
-													var source = "http://farm" + newJson.photos.photo[i].farm + ".static.flickr.com/" + newJson.photos.photo[i].server + "/" + newJson.photos.photo[i].id + "_" + newJson.photos.photo[i].secret + "_" + "t.jpg";
-													// console.log('source');
-													sourceArray.push(source);
-													$("<img class=flickrPhoto src=" + source + ">").appendTo('body');
-												// }
-												// $.each(newJson.photos.photo, function(item) {
-												// 	var source = "http://farm" + newJson.photos.photo.farm + ".static.flickr.com/" + newJson.photos.photo.server + "/" + newJson.photos.photo.id + "_" + newJson.photos.photo.secret + "_" + "t.jpg";
-												// 		// .appendTo("#parkdiv");
-												// });
-											}
-//                        console.log(newJson.photos.photo.length);
+												newJson = JSON.parse(data.responseText.slice(14, -1));
+												$("<h1 id='parkName'>"+name+"</h1>").appendTo('#pictures');
+												for (var i = 0; i < newJson.photos.photo.length; ++i) {
+														var source = "http://farm" + newJson.photos.photo[i].farm + ".static.flickr.com/" + newJson.photos.photo[i].server + "/" + newJson.photos.photo[i].id + "_" + newJson.photos.photo[i].secret + "_" + "m.jpg";
+														var link = "http://www.flickr.com/photos/" + newJson.photos.photo[i].owner + "/" + newJson.photos.photo[i].id;
+														sourceArray.push(source);
+														$("<a href=" + link + "><img class=flickrPhoto src=" + source + "></a>").appendTo('#pictures');
+												}
 										})
-										.always(function(){
-											console.log(sourceArray);
-										});
+
 						};
 				})(marker));
 
@@ -139,8 +111,8 @@ var parkView = new ParkView({
 		model: parkModel
 });
 
-parkView.render();
-$("#parkdiv").append(parkView.$el);
+// parkView.render();
+// $("#parkdiv").append(parkView.$el);
 
 //$("#markerdiv").append(markerView.$el);
 
@@ -154,4 +126,3 @@ var mapView = new MapView({
 });
 
 $("#map_canvas").append(mapView.$el);
-
