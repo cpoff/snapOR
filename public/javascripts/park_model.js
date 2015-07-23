@@ -93,7 +93,6 @@ var MapView = Backbone.View.extend({
         });
     }
 });
-
 var ParkCollection = Backbone.Collection.extend({
     model: ParkModel,
     //  url : "/parkdetail", commented out until we create a route in index.js, which may be unnecessary to keep this as a spa
