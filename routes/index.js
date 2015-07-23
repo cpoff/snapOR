@@ -63,7 +63,7 @@ router.post('/begin_regis', function(req, res){
 						.then(function(){
 							console.log('user created');
 							console.log("db push");
-							console.log(stored);
+							//console.log(stored);
 							res.end();
 						})// closes .then
 						.fail(function(err){});
@@ -75,10 +75,15 @@ router.post('/begin_regis', function(req, res){
 	});// closes initial db query for existing email
 });// closes router.post
 
-
+//User page
 router.get('/user', function(req, res) {
 	res.render('user');
-});// closes registration router
+});
+
+//Mistake page
+router.get('/mistake', function(req, res) {
+	res.render('mistake');
+});
 
 /*ROUTE FOR EXISTING USER LOGIN*/  
 router.post('/user', function(req, res) { //this should be a get, it's requesting data from the server, if input matches the data, then user is redirected

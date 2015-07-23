@@ -40,8 +40,6 @@ var UserView = Backbone.View.extend({
 			console.log('welcome user');
 			// $('#regAccount').html(new_user_template({emailVal : this.model.get("email")}));
 		//},
-
-		//jquery to wipe out rg accout nd replace w/new user template
 	}, // closes render
 	//MODAL WINDOW FOR NEW USER TO ENTER NAME/HOMETOWN
 	//BUTTON ID = COMPLETE_REGIS
@@ -88,7 +86,8 @@ var UserView = Backbone.View.extend({
 		if(password===password_confirm){
 			//jQuery.post( url [, data ] [, success ] [, dataType ] )
 			jQuery.post('/begin_regis', {email: userEmail, password: password});
-			$( "#register" ).replaceWith( "userInfoDiv" );
+			$("#register").replaceWith("#userInfoDiv");
+			$( ".reveal-modal-bg" ).css({ display: "none" });
 				//function (reply) {
 				// if (reply.error) {
 				// 	console.log(reply);
