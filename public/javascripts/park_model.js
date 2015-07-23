@@ -30,18 +30,20 @@ var SearchParkView = Backbone.View.extend({
 		var template = _.template('<h2 id="modalTitle">Explore Parks</h2><a class="close-reveal-modal aria-label="Close">&times;</a><div id="parkList"><input id="parkName" class="typeahead" type="text" name="Enter park name:" style="font-family: \'Robot Slab\'" placeholder="Ex: \'cape kiwanda\', \'silver falls state park\'"><br><input id="searchParks" class="submit button" class="submit" value="Explore"></div>');
 		this.$el.html(template());
 	},
+
 	searchParks: function(){
-		// console.log('test');
-		var parkName = $("#parkName").val();
-		console.log(parkName);
-			//compare each park name in parkCollection.models.attributes.name
-				//if parkName === parkCollection.models.attributes.name
-					//render flicker data
+		var parkName = $("#parkName").val(); //store the user's input of a park they want to search for
+		var parkNames = [];
+		for(var i = 0; i<this.collection.models.length; i++){ //store all the park names into an array from the collection.model
+			parkNames.push(this.collection.models[i].attributes.name);
+		}
+		var location = parkNames.indexOf(parkName); //returns the index position of the park the user is searching for
+		var flickrUrl = this.collection.models[location].attributes.parkFlickrCall; //sets that index position as the collection.modesls index position, and stores the parkFlicker url into a new variable
+		$.getJSON(flickrUrl); //fires the flickr url
+
 	},
 	events: { 
-			// "click #showPictures": //fire flicker api, render pictures on page,
 			'click #searchParks': 'searchParks'//fire flicker api, render parkView
-			//indended outcome $("#searchParks").click(function(){console.log($('#parkName').val());});
 	}
 });
 
@@ -56,25 +58,6 @@ var ParkView = Backbone.View.extend({
 						FlickrInfo: 'flickr_data'
 				}));
 		},
-		/*function:
-			store all pictures of a park into model
-			this.render();render this view onto page
-			*/
-
-		searchParks: function(){
-			console.log('test');
-			// var parkName = $("#parkName").val();
-			// console.log(parkName);
-			//compare each park name in parkCollection.models.attributes.name
-				//if parkName === parkCollection.models.attributes.name
-					//render flicker data
-		},
-		events: { 
-			// "click #showPictures": //fire flicker api, render pictures on page,
-			'click #searchParks': 'searchParks'//fire flicker api, render parkView
-			//indended outcome $("#searchParks").click(function(){console.log($('#parkName').val());});
-		}
-
 });
 
 var MarkerView = Backbone.View.extend({
@@ -166,6 +149,6 @@ var mapView = new MapView({
 
 $("#map_canvas").append(mapView.$el);
 
-var searchParkView = new SearchParkView({model: parkModel});
+var searchParkView = new SearchParkView({model: parkModel, collection: parkCollection});
 searchParkView.render();
 $("#parks").append(searchParkView.$el);
