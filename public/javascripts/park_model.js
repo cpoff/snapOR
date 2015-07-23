@@ -46,7 +46,7 @@ var MarkerView = Backbone.View.extend({
 				var sourceArray = [];
 				google.maps.event.addListener(marker, 'click', (function(marker) {
 						return function() {
-								info.setContent("<div><p>" + self.model.attributes.name + "</p><button id='showPictures'>See more</button></div>");
+								info.setContent("<div><p>" + self.model.attributes.name + "</p><p>Scroll down to see photos</p></div>");
 								info.open(theMap.map, marker);
 								var flickrURL = self.model.attributes.parkFlickrCall;
 								var name = self.model.attributes.name;
