@@ -1,61 +1,62 @@
 extends layout
 
 block content
-	.fixed.sticky.hide-for-small-only
-		nav.top-bar(data-topbar="", role="navigation")
-			ul.title-area
-				li.name
-					h1
-						a(href='/') snapOR
-				li.toggle-topbar.menu-icon
-					a(href="#")
-						span Menu
-			section.top-bar-section
-				ul.right
-					li
-						a(href='#', data-reveal-id="login") Login
-							#login.reveal-modal.users(data-reveal='', aria-labelledby='modalTitle', aria-hidden='true', role='dialog')
-								h2#modalTitle Login
-								a.close-reveal-modal(aria-label='Close') &times;
-								form(method="post" action="/user")
-									label.label Email: 
-									input(type="text" name="email" style="font-family: 'Robot Slab'" placeholder="user@domain.com")
-									label.label Password: 
-									input(type="password" name="password" style="font-family: 'Robot Slab'" placeholder="password")
-									input#login_user.button(type="submit" style="font-family: 'Questrial'" value="Login")
-									input.button(type="submit" style="font-family: 'Questrial'" value="Reset Password")
-					li
-						a(href='#', data-reveal-id='register') Register
-							#register.reveal-modal.users(data-reveal='', aria-labelledby='modalTitle', aria-hidden='true', role='dialog')
-								h2#modalTitle Register New Account
-								a.close-reveal-modal(aria-label='Close') &times;
-								form(method='post' action='/begin_regis')
-									label.label Email: 
-									input#email(type="text" name="email" style="font-family: 'Roboto Slab'" placeholder="user@example.com")
-									label.label Password: 
-									input#password(type="password" name="password" style="font-family: 'Roboto Slab'" placeholder="password")
-									label.label Re-enter Password: 
-									input#password_confirm(type="password" name="password_confirm" style="font-family: 'Robot Slab'" placeholder="password confirmation")
-									br
-									input#create_user.fire_new_modal(type="submit" style="font-family: 'Questrial'" value="Register Account" data-reveal-id="userDiv")
-				//-#regAccount.reveal-modal.users(data-reveal='', aria-labelledby='modalTitle', aria-hidden='true', role='dialog')					
-							//- #userDiv.reveal-modal(data-reveal='', aria-labelledby='modalTitle', aria-hidden='true', role='dialog')
-				ul.left
-					li.active
-						a(href='#', data-reveal-id="parks") Explore Parks
-							#parks.reveal-modal.queries(data-reveal='', aria-labelledby='modalTitle', aria-hidden='true', role='dialog')
-	.show-for-small-only
-		.name
-			a(href='/')
-				h1 snapOR
-			a(href='#', data-reveal-id="login") 
-				div Login
-			a(href='#', data-reveal-id='register') 
-				div Register
-			a(href='#', data-reveal-id="photos") 
-				div Discover Photos
-			a(href='#', data-reveal-id="parks")
-				div Explore Parks
+	div#logged-out
+		.fixed.sticky.hide-for-small-only
+			nav.top-bar(data-topbar="", role="navigation")
+				ul.title-area
+					li.name
+						h1
+							a(href='/') snapOR
+					li.toggle-topbar.menu-icon
+						a(href="#")
+							span Menu
+				section.top-bar-section
+					ul.right
+						li
+							a(href='#', data-reveal-id="login") Login
+								#login.reveal-modal.users(data-reveal='', aria-labelledby='modalTitle', aria-hidden='true', role='dialog')
+									h2#modalTitle Login
+									a.close-reveal-modal(aria-label='Close') &times;
+									form(method="post" action="/user")
+										label.label Email: 
+										input(type="text" name="email" style="font-family: 'Robot Slab'" placeholder="user@domain.com")
+										label.label Password: 
+										input(type="password" name="password" style="font-family: 'Robot Slab'" placeholder="password")
+										input#login_user.button(type="submit" style="font-family: 'Questrial'" value="Login")
+										input.button(type="submit" style="font-family: 'Questrial'" value="Reset Password")
+						li
+							a(href='#', data-reveal-id='register') Register
+								#register.reveal-modal.users(data-reveal='', aria-labelledby='modalTitle', aria-hidden='true', role='dialog')
+									h2#modalTitle Register New Account
+									a.close-reveal-modal(aria-label='Close') &times;
+									form(method='post' action='/begin_regis')
+										label.label Email: 
+										input#email(type="text" name="email" style="font-family: 'Roboto Slab'" placeholder="user@example.com")
+										label.label Password: 
+										input#password(type="password" name="password" style="font-family: 'Roboto Slab'" placeholder="password")
+										label.label Re-enter Password: 
+										input#password_confirm(type="password" name="password_confirm" style="font-family: 'Robot Slab'" placeholder="password confirmation")
+										br
+										input#create_user.fire_new_modal(type="submit" style="font-family: 'Questrial'" value="Register Account" data-reveal-id="userDiv")
+					//-#regAccount.reveal-modal.users(data-reveal='', aria-labelledby='modalTitle', aria-hidden='true', role='dialog')					
+								//- #userDiv.reveal-modal(data-reveal='', aria-labelledby='modalTitle', aria-hidden='true', role='dialog')
+					ul.left
+						li.active
+							a(href='#', data-reveal-id="parks") Explore Parks
+								#parks.reveal-modal.queries(data-reveal='', aria-labelledby='modalTitle', aria-hidden='true', role='dialog')
+		.show-for-small-only
+			.name
+				a(href='/')
+					h1 snapOR
+				a(href='#', data-reveal-id="login") 
+					div Login
+				a(href='#', data-reveal-id='register') 
+					div Register
+				a(href='#', data-reveal-id="photos") 
+					div Discover Photos
+				a(href='#', data-reveal-id="parks")
+					div Explore Parks
 	#user
 	#userInfoDiv
 	#map_canvas.hide-for-small-only
