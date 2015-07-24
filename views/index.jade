@@ -42,17 +42,6 @@ block content
 							//- #userDiv.reveal-modal(data-reveal='', aria-labelledby='modalTitle', aria-hidden='true', role='dialog')
 				ul.left
 					li.active
-						a(href='#', data-reveal-id="photos") Discover Photos
-							#photos.reveal-modal.queries(data-reveal='', aria-labelledby='modalTitle', aria-hidden='true', role='dialog')
-									h2#modalTitle Discover Photos
-									a.close-reveal-modal(aria-label='Close') &times;
-									form(method="post" action="/photos")
-										#featureList
-											input(class="typeahead" type="text" name="Enter tags:" style="font-family: 'Robot Slab'" placeholder="Ex: 'waterfalls', 'cape kiwanda'")
-											br
-											input.button(type="submit" style="font-family: 'Questrial'" value="Search")
-											//input(class="submit" type="submit" value="Discover")
-					li.active
 						a(href='#', data-reveal-id="parks") Explore Parks
 							#parks.reveal-modal.queries(data-reveal='', aria-labelledby='modalTitle', aria-hidden='true', role='dialog')
 	.show-for-small-only
