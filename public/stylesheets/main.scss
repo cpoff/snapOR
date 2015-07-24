@@ -190,9 +190,10 @@ FLICKR PICTURES
 	display: flex;
 	flex-direction: row;
 	flex-wrap: wrap;
-	justify-content: space-around;
+	justify-content: space-between;
 	align-content: center;
 	align-items: center;
+	padding: 0 5%;
 }
 .flickrPhoto{
 	flex-grow: 0;
