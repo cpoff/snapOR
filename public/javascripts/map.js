@@ -1,3 +1,5 @@
+var info;
+
 var MarkerView = Backbone.View.extend({
 	el: '#markerview',
 
@@ -5,7 +7,7 @@ var MarkerView = Backbone.View.extend({
 		var self = this;
 		//loop to create markers for all the state parks
 		var marker_position = new google.maps.LatLng(self.model.get('latitude'), self.model.get('longitude'));
-		var info = new google.maps.InfoWindow();
+		info = new google.maps.InfoWindow();
 
 		var marker = new google.maps.Marker({
 			position: marker_position,
@@ -18,6 +20,15 @@ var MarkerView = Backbone.View.extend({
 			return function() {
 				info.setContent("<div><p><b>" + self.model.attributes.name + "</br><a href='#parkInfo'>Explore</a></div>");
 				info.open(theMap.map, marker);
+
+				//Close any open infoWindow if the map is clicked
+				google.maps.event.addListener(theMap.map, 'click', function() {
+					if (info) {
+						info.close();
+					}
+				});
+
+
 				var flickrURL = self.model.attributes.parkFlickrCall;
 				var name = self.model.attributes.name;
 				$.getJSON(flickrURL)
