@@ -181,7 +181,7 @@ MAP CANVAS
 /******************
 FLICKR PICTURES
 ******************/
-#parkLabel{
+#parkLabel, {
 	text-align: center;
 	margin-top: 10%;
 	margin-bottom: 5%;
@@ -200,6 +200,11 @@ FLICKR PICTURES
 	flex-shrink: 0;
 	flex-basis: 0;
 }
+
+#parkInfo p {
+	text-align: center;
+}
+
 .flickrPhoto:hover{
 	box-shadow: 0px 0px 30px #000000;
 	transition: all 200ms ease-in;
