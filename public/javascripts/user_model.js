@@ -40,10 +40,6 @@ var UserView = Backbone.View.extend({
 			// var new_user_template =  _.template(
 			// 	'<div id="userInfoDiv"><h2>Welcome, {{emailVal}}</h2><p>Please review your information below, and update as needed.</p><form method="post" action="/complete_regis"><label id="userLabel">Name:</label><input id="nameInput" type="text" placeholder="Name"</input><br /><label id="userLabel">Email: </label><input id="emailInput" type="text" value="{{emailVal}}"</input><br /><label id="userLabel">Home Location: </label><input id="homeInput" type="text" placeholder="Where do you live?"</input><br /><button id="complete_regis" type="submit">Save Info</button></form></div>');
 	}, // closes render
-	// renderTemplate: function() {
-	// 	var new_user_template =  _.template(
-	// 			'<div id="userInfoDiv"><h2>Welcome, {{emailVal}}</h2><p>Please review your information below, and update as needed.</p><form method="post" action="/complete_regis"><label id="userLabel">Name:</label><input id="nameInput" type="text" placeholder="Name"</input><br /><label id="userLabel">Email: </label><input id="emailInput" type="text" value="{{emailVal}}"</input><br /><label id="userLabel">Home Location: </label><input id="homeInput" type="text" placeholder="Where do you live?"</input><br /><button id="complete_regis" type="submit">Save Info</button></form></div>');
-	// }(),
 	events: {
 		'click #create_user': 'create_user',//new_user_template
 		'click #complete_regis': 'complete_regis',
@@ -83,7 +79,7 @@ var UserView = Backbone.View.extend({
 			jQuery.post('/begin_regis', {email: userEmail, password: password})
 			.then(function() {
 				var new_user_template =  _.template(
-				'<h2>Welcome, {{emailVal}}</h2><p>Please review your information below, and update as needed.</p><form method="post" action="/complete_regis"><label id="userLabel">Name:</label><input id="nameInput" type="text" placeholder="Name"</input><br /><label id="userLabel">Email: </label><input id="emailInput" type="text" value="{{emailVal}}"</input><br /><label id="userLabel">Home Location: </label><input id="homeInput" type="text" placeholder="Where do you live?"</input><br /><button id="complete_regis" type="submit">Save Info</button></form>');
+				'<h2>Welcome, {{emailVal}}</h2><p>Please review your information below, and update as needed.</p><form method="post" action="/"><label id="userLabel">Name:</label><input id="nameInput" type="text" placeholder="Name"</input><br /><label id="userLabel">Email: </label><input id="emailInput" type="text" value="{{emailVal}}"</input><br /><label id="userLabel">Home Location: </label><input id="homeInput" type="text" placeholder="Where do you live?"</input><br /><button id="complete_regis" type="submit">Save Info</button></form>');
 				$('#userInfoDiv').html(new_user_template({emailVal: userEmail}));
 				$('.reveal-modal-bg').css('display', 'none');
 				console.log("renderTemplate");
