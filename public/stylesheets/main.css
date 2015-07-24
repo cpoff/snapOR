@@ -6436,7 +6436,8 @@ FLICKR PICTURES
   flex-wrap: wrap;
   justify-content: space-around;
   align-content: center;
-  align-items: center; }
+  align-items: center;
+  margin-bottom: 50px; }
 
 .flickrPhoto {
   flex-grow: 0;
