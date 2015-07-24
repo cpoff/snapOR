@@ -15,17 +15,25 @@ var SearchParkView = Backbone.View.extend({
 		var location = parkNames.indexOf(parkName); //returns the index position of the park the user is searching for
 		var flickrUrl = this.collection.models[location].attributes.parkFlickrCall; //sets that index position as the collection.modesls index position, and stores the parkFlicker url into a new variable
 		var name = this.collection.models[location].attributes.name;
-		console.log(name);
 		var sourceArray = [];
 		$.getJSON(flickrUrl) //fires the flickr url
 			.always(function(data) {
 				newJson = JSON.parse(data.responseText.slice(14, -1));
-				$("<h1 id='parkName'>"+name+"</h1>").appendTo('#pictures');
-				for(var i = 0; i<newJson.photos.photo.length; ++i){
-					var source = "http://farm" + newJson.photos.photo[i].farm + ".static.flickr.com/" + newJson.photos.photo[i].server + "/" + newJson.photos.photo[i].id + "_" + newJson.photos.photo[i].secret + "_" + "t.jpg";
-					var link = "http://www.flickr.com/photos/" + newJson.photos.photo[i].owner + "/" + newJson.photos.photo[i].id;					
-					sourceArray.push(source);
-					$("<a href=" + link + "><img class=flickrPhoto src=" + source + "></a>").appendTo('#pictures');
+				if($("#parkLabel").val()===undefined){
+					$("<h1 id='parkLabel'>"+name+"</h1>").appendTo('#parkHeader');
+				} else {
+					$("#parkHeader").replaceWith("<h1 id='parkLabel'>"+name+"</h1>");
+				}
+				if(newJson.photos.photo.length<1){
+					$(".flickrPhoto").remove();
+					for(var i = 0; i<newJson.photos.photo.length; ++i){
+						var source = "http://farm" + newJson.photos.photo[i].farm + ".static.flickr.com/" + newJson.photos.photo[i].server + "/" + newJson.photos.photo[i].id + "_" + newJson.photos.photo[i].secret + "_" + "t.jpg";
+						var link = "http://www.flickr.com/photos/" + newJson.photos.photo[i].owner + "/" + newJson.photos.photo[i].id;					
+						sourceArray.push(source);
+						$("<a href=" + link + "><img class=flickrPhoto src=" + source + "></a>").appendTo('#pictures');
+					}
+				} else {
+					$("<p>Sorry, we couldn't find any photos from that park.</p>").appendTo('#pictures');
 				}
 			});
 	},

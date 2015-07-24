@@ -3,7 +3,6 @@ _.templateSettings = {
 };
 
 var ParkModel = Backbone.Model.extend({
-		// urlRoot: '/parkdetail',
 		urlRoot: '/',
 		defaults: {
 				'park_name': 'blah',
@@ -46,21 +45,32 @@ var MarkerView = Backbone.View.extend({
 				var sourceArray = [];
 				google.maps.event.addListener(marker, 'click', (function(marker) {
 						return function() {
-								info.setContent("<div><p><b>" + self.model.attributes.name + "</b></p><p>Scroll down to see more</p></div>");
+								info.setContent("<div><p><b>" + self.model.attributes.name + "</br><a href='#parkInfo'>Explore</a></div>");
 								info.open(theMap.map, marker);
 								var flickrURL = self.model.attributes.parkFlickrCall;
+								console.log(flickrURL);
 								var name = self.model.attributes.name;
 								$.getJSON(flickrURL)
 										.always(function(data) {
 												newJson = JSON.parse(data.responseText.slice(14, -1));
-												$("<h1 id='parkName'>"+name+"</h1>").appendTo('#pictures');
-												for (var i = 0; i < newJson.photos.photo.length; ++i) {
-														var source = "http://farm" + newJson.photos.photo[i].farm + ".static.flickr.com/" + newJson.photos.photo[i].server + "/" + newJson.photos.photo[i].id + "_" + newJson.photos.photo[i].secret + "_" + "m.jpg";
-														var link = "http://www.flickr.com/photos/" + newJson.photos.photo[i].owner + "/" + newJson.photos.photo[i].id;
-														sourceArray.push(source);
-														$("<a href=" + link + "><img class=flickrPhoto src=" + source + "></a>").appendTo('#pictures');
+												if($("#parkLabel").val()===undefined){
+													$("<h1 id='parkLabel'>"+name+"</h1>").appendTo('#parkHeader');
+												} else {
+													$("#parkHeader").replaceWith("<h1 id='parkLabel'>"+name+"</h1>");
 												}
-										})
+												console.log(newJson.photos.photo.length);
+												if(newJson.photos.photo.length>0){
+													$(".flickrPhoto").remove();
+													for (var i = 0; i < newJson.photos.photo.length; ++i) {
+															var source = "http://farm" + newJson.photos.photo[i].farm + ".static.flickr.com/" + newJson.photos.photo[i].server + "/" + newJson.photos.photo[i].id + "_" + newJson.photos.photo[i].secret + "_" + "m.jpg";
+															var link = "http://www.flickr.com/photos/" + newJson.photos.photo[i].owner + "/" + newJson.photos.photo[i].id + " target=_blank";
+															sourceArray.push(source);
+															$("<a href=" + link + "><img class=flickrPhoto src=" + source + "></a>").appendTo('#pictures');
+													}
+												} else{
+													$("<p>Sorry, we couldn't find any photos from that park.</p>").appendTo('#pictures');
+												}
+										});
 
 						};
 				})(marker));
