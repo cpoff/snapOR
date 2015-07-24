@@ -15,7 +15,6 @@ var SearchParkView = Backbone.View.extend({
 		var location = parkNames.indexOf(parkName); //returns the index position of the park the user is searching for
 		var flickrUrl = this.collection.models[location].attributes.parkFlickrCall; //sets that index position as the collection.modesls index position, and stores the parkFlicker url into a new variable
 		var name = this.collection.models[location].attributes.name;
-		console.log(name);
 		var sourceArray = [];
 		$.getJSON(flickrUrl) //fires the flickr url
 			.always(function(data) {
