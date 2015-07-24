@@ -46,7 +46,7 @@ var MarkerView = Backbone.View.extend({
 				var sourceArray = [];
 				google.maps.event.addListener(marker, 'click', (function(marker) {
 						return function() {
-								info.setContent("<div><p>" + self.model.attributes.name + "</p><button id='showPictures'>See more</button></div>");
+								info.setContent("<div><p><b>" + self.model.attributes.name + "</b></p><p>Scroll down to see more</p></div>");
 								info.open(theMap.map, marker);
 								var flickrURL = self.model.attributes.parkFlickrCall;
 								var name = self.model.attributes.name;
@@ -55,8 +55,8 @@ var MarkerView = Backbone.View.extend({
 												newJson = JSON.parse(data.responseText.slice(14, -1));
 												$("<h1 id='parkName'>"+name+"</h1>").appendTo('#parkHeader');
 												for (var i = 0; i < newJson.photos.photo.length; ++i) {
-														var source = "http://farm" + newJson.photos.photo[i].farm + ".static.flickr.com/" + newJson.photos.photo[i].server + "/" + newJson.photos.photo[i].id + "_" + newJson.photos.photo[i].secret + "_" + "t.jpg";
-														var link = "http://www.flickr.com/photos/" + newJson.photos.photo[i].owner + "/" + newJson.photos.photo[i].id;
+														var source = "http://farm" + newJson.photos.photo[i].farm + ".static.flickr.com/" + newJson.photos.photo[i].server + "/" + newJson.photos.photo[i].id + "_" + newJson.photos.photo[i].secret + "_" + "m.jpg";
+														var link = "http://www.flickr.com/photos/" + newJson.photos.photo[i].owner + "/" + newJson.photos.photo[i].id + " target=_blank";
 														sourceArray.push(source);
 														$("<a href=" + link + "><img class=flickrPhoto src=" + source + "></a>").appendTo('#pictures');
 												}
