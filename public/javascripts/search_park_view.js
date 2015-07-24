@@ -25,6 +25,7 @@ var SearchParkView = Backbone.View.extend({
 					$("#parkHeader").replaceWith("<h1 id='parkLabel'>"+name+"</h1>");
 				}
 				if(newJson.photos.photo.length<1){
+					$(".flickrPhoto").remove();
 					for(var i = 0; i<newJson.photos.photo.length; ++i){
 						var source = "http://farm" + newJson.photos.photo[i].farm + ".static.flickr.com/" + newJson.photos.photo[i].server + "/" + newJson.photos.photo[i].id + "_" + newJson.photos.photo[i].secret + "_" + "t.jpg";
 						var link = "http://www.flickr.com/photos/" + newJson.photos.photo[i].owner + "/" + newJson.photos.photo[i].id;					
