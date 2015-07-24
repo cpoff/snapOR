@@ -15,18 +15,6 @@ var ParkModel = Backbone.Model.extend({
 		}
 });
 
-var ParkView = Backbone.View.extend({
-		url: '/',
-		render: function() {
-				var template = _.template('<h1>{{parkName}}</h1><div id="flickerPictures">{{FlickrInfo}}</div>');
-				var parkName = this.model.get("name");
-				this.$el.html(template({
-						parkName: 'park_name here',
-						FlickrInfo: 'flickr_data goes here'
-				}));
-		},
-});
-
 var MarkerView = Backbone.View.extend({
 		el: '#markerview',
 
@@ -61,6 +49,7 @@ var MarkerView = Backbone.View.extend({
 												console.log(newJson.photos.photo.length);
 												if(newJson.photos.photo.length>0){
 													$(".flickrPhoto").remove();
+													$("<p>").remove();
 													for (var i = 0; i < newJson.photos.photo.length; ++i) {
 															var source = "http://farm" + newJson.photos.photo[i].farm + ".static.flickr.com/" + newJson.photos.photo[i].server + "/" + newJson.photos.photo[i].id + "_" + newJson.photos.photo[i].secret + "_" + "m.jpg";
 															var link = "http://www.flickr.com/photos/" + newJson.photos.photo[i].owner + "/" + newJson.photos.photo[i].id + " target=_blank";
@@ -68,7 +57,7 @@ var MarkerView = Backbone.View.extend({
 															$("<a href=" + link + "><img class=flickrPhoto src=" + source + "></a>").appendTo('#pictures');
 													}
 												} else{
-													$("<p>Sorry, we couldn't find any photos from that park.</p>").appendTo('#pictures');
+													$("<p>Sorry, we couldn't find any photos from that park.</p>").replaceAll('#pictures');
 												}
 										});
 
@@ -116,16 +105,6 @@ var ParkCollection = Backbone.Collection.extend({
 
 
 var parkModel = new ParkModel();
-
-var parkView = new ParkView({
-		model: parkModel
-});
-
-// parkView.render();
-// $("#parkdiv").append(parkView.$el);
-
-//$("#markerdiv").append(markerView.$el);
-
 var parkCollection = new Backbone.Collection({
 		model: ParkModel
 });
