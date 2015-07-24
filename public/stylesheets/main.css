@@ -6303,17 +6303,20 @@ body div.fixed.sticky nav.top-bar section.top-bar-section ul.right li a, body di
 nav.top-bar {
   background-color: #FF5D55;
   color: #FEC63D;
-  font-family: "Questrial", sans-serif; }
+  font-family: "Questrial", sans-serif;
+  height: 5em; }
 
 div.sticky.hide-for-small-only nav.top-bar section.top-bar-section ul.left li.active a {
   background-color: #FF5D55;
   color: #FEC63D;
-  font-family: "Questrial", sans-serif; }
+  font-family: "Questrial", sans-serif;
+  padding-top: 17px; }
 
 div.sticky.hide-for-small-only nav.top-bar section.top-bar-section ul.right li a {
   background-color: #FF5D55;
   color: #FEC63D;
-  font-family: "Questrial", sans-serif; }
+  font-family: "Questrial", sans-serif;
+  padding-top: 17px; }
 
 /******************
 SITE NAME
@@ -6322,7 +6325,9 @@ body div nav.top-bar ul.title-area li.name h1 a {
   background-color: #FEC63D;
   color: #FF5D55;
   font-family: "Satisfy", cursive;
-  font-size: 20px; }
+  font-size: 20px;
+  height: 4em;
+  padding-top: 17px; }
 
 nav.top-bar ul.title-area li.toggle-topbar.menu-icon a {
   background-color: #FF5D55;
@@ -6413,9 +6418,9 @@ button .button #saveBtn {
 MAP CANVAS
 ******************/
 #map_canvas {
-  height: 75%;
-  width: 70%;
-  margin: 5% auto; }
+  height: 85%;
+  width: 100%;
+  margin: 0 auto; }
 
 /******************
 FLICKR PICTURES

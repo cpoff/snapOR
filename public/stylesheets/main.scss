@@ -39,18 +39,21 @@ nav.top-bar {
 	background-color: $red;
 	color: $yellow;
 	font-family: $sans-serif;
+	height: 5em;
 }
 
 div.sticky.hide-for-small-only nav.top-bar section.top-bar-section ul.left li.active a {
 	background-color: $red;
 	color: $yellow;
 	font-family: $sans-serif;
+	padding-top: 17px
 }
 
 div.sticky.hide-for-small-only nav.top-bar section.top-bar-section ul.right li a {
 	background-color: $red;
 	color: $yellow;
 	font-family: $sans-serif;
+	padding-top: 17px
 }
 
 /******************
@@ -62,6 +65,8 @@ body div nav.top-bar ul.title-area li.name h1 a {
 	color: $red;
 	font-family: $cursive;
 	font-size: 20px;
+	height: 4em;
+	padding-top: 17px
 }
 
 nav.top-bar ul.title-area li.toggle-topbar.menu-icon a {
@@ -171,11 +176,11 @@ MAP CANVAS
 ******************/
 
 #map_canvas {
-	height: 75%;
-	width: 70%;
+	height: 85%;
+	width: 100%;
 	// height: 600px;
 	// width: 1000px;
-	margin: 5% auto;
+	margin: 0 auto;
 }
 
 /******************
