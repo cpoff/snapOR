@@ -6411,6 +6411,10 @@ USER PAGE
 #userInfoDiv {
   max-width: 70%;
   padding-left: 30px; }
+  #userInfoDiv h2, #userInfoDiv p {
+    color: #FFF; }
+  #userInfoDiv form label#userLabel {
+    color: #FFF; }
 
 button .button #saveBtn {
   background-color: #FF5D55; }

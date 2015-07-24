@@ -176,6 +176,12 @@ USER PAGE
 #userInfoDiv {
 	max-width: 70%;
 	padding-left: 30px;
+	h2, p,  {
+		color: $white;
+	}
+	form label#userLabel {
+		color: $white;
+	}
 }
 
 button .button #saveBtn {
