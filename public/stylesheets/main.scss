@@ -12,7 +12,7 @@ $blue: #1E749E;
 $yellow: #FEC63D;
 $red: #FF5D55;
 
-$sans-serif: "Questrial", sans-serif;  
+$sans-serif: "Questrial", sans-serif;
 //$serif: "Roboto Slab", serif;
 $serif: "Gilda Display", serif;
 $cursive: "Satisfy", cursive;
@@ -82,13 +82,13 @@ nav.top-bar.expanded.fixed section.top-bar-section ul.right li a{
 	background-color: $red;
 	color: $yellow;
 	font-family: $sans-serif;
-} 
+}
 
 nav.top-bar.expanded.fixed section.top-bar-section ul.left li.active a {
 	background-color: $red;
 	color: $yellow;
 	font-family: $sans-serif;
-} 
+}
 
 /******************
 MODALS
@@ -196,11 +196,19 @@ FLICKR PICTURES
 }
 .flickrPhoto{
 	flex-grow: 0;
+	flex-grow:hover { transform: scale(1.1); }
 	flex-shrink: 0;
 	flex-basis: 0;
 }
+
 #parkInfo p {
 	text-align: center;
+}
+
+.flickrPhoto:hover{
+	box-shadow: 0px 0px 30px #000000;
+	transition: all 200ms ease-in;
+	transform: scale(1.2);
 }
 
 /******************
