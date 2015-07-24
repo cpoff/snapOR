@@ -181,11 +181,14 @@ MAP CANVAS
 /******************
 FLICKR PICTURES
 ******************/
+#parkName{
+	text-align: center;
+}
 #pictures{
 	display: flex;
 	flex-direction: row;
 	flex-wrap: wrap;
-	justify-content: flex-end;
+	justify-content: space-around;
 	align-content: center;
 	align-items: center;
 }

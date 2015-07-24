@@ -53,7 +53,7 @@ var MarkerView = Backbone.View.extend({
 								$.getJSON(flickrURL)
 										.always(function(data) {
 												newJson = JSON.parse(data.responseText.slice(14, -1));
-												$("<h1 id='parkName'>"+name+"</h1>").appendTo('#pictures');
+												$("<h1 id='parkName'>"+name+"</h1>").appendTo('#parkHeader');
 												for (var i = 0; i < newJson.photos.photo.length; ++i) {
 														var source = "http://farm" + newJson.photos.photo[i].farm + ".static.flickr.com/" + newJson.photos.photo[i].server + "/" + newJson.photos.photo[i].id + "_" + newJson.photos.photo[i].secret + "_" + "m.jpg";
 														var link = "http://www.flickr.com/photos/" + newJson.photos.photo[i].owner + "/" + newJson.photos.photo[i].id + " target=_blank";
