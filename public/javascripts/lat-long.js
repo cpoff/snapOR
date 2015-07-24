@@ -1,5 +1,5 @@
 var APP = APP || {};
-(function (APP) { 
+(function (APP) {
 	var url = 'http://oregonstateparks.org/data/index.cfm';
 	var data = {
 		endpoint: '/parks',
@@ -13,12 +13,12 @@ var APP = APP || {};
 				"name": feature.park_name,
 				"latitude": feature.park_latitude,
 				"longitude": feature.park_longitude,
-				"parkFlickrCall": 'https://api.flickr.com/services/rest/?method=flickr.photos.search&api_key=a3a47a8bbef03987ba49563f5120127e&tags=statepark&lat=' + feature.park_latitude + '&lon=' + feature.park_longitude + '&radius=20&per_page=20&format=json'
+				"parkFlickrCall": 'https://api.flickr.com/services/rest/?method=flickr.photos.search&api_key=a3a47a8bbef03987ba49563f5120127e&tags=park&lat=' + feature.park_latitude + '&lon=' + feature.park_longitude + '&radius=5&per_page=20&format=json'
 			};
 			parkNameArray.push(feature.park_name);
 			parkCollection.add(parkObj);
 		});
-	} 
+	}
 
 	(function go() {
 		$.ajax(url, {
@@ -26,7 +26,7 @@ var APP = APP || {};
 		}).then(function(data, status, xhr) {
 			mapParkCollection(data);
 		}).then(function() {
-			mapView.render();		
+			mapView.render();
 		}).then(function() {
 			var substringMatcher = function(strs) {
 				return function findMatches(q, cb) {
@@ -50,7 +50,7 @@ var APP = APP || {};
 					hint: true,
 					highlight: true,
 					minLength: 1
-				}, 
+				},
 				{
 					name: 'parkNameArray',
 					source: substringMatcher(parkNameArray)
@@ -61,7 +61,7 @@ var APP = APP || {};
 					hint: true,
 					highlight: true,
 					minLength: 1
-				}, 
+				},
 				{
 					name: 'featureList',
 					source: substringMatcher(featureList)
@@ -69,7 +69,7 @@ var APP = APP || {};
 			});
 		});
 	})();
-	// APP.LatLong = { 
+	// APP.LatLong = {
 	// };
 
 })(APP);

@@ -3,7 +3,6 @@ _.templateSettings = {
 };
 
 var ParkModel = Backbone.Model.extend({
-		// urlRoot: '/parkdetail',
 		urlRoot: '/',
 		defaults: {
 				'park_name': 'blah',
@@ -49,6 +48,7 @@ var MarkerView = Backbone.View.extend({
 								info.setContent("<div><p><b>" + self.model.attributes.name + "</br><a href='#parkInfo'>Explore</a></div>");
 								info.open(theMap.map, marker);
 								var flickrURL = self.model.attributes.parkFlickrCall;
+								console.log(flickrURL);
 								var name = self.model.attributes.name;
 								$.getJSON(flickrURL)
 										.always(function(data) {
