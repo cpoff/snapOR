@@ -6420,6 +6420,9 @@ MAP CANVAS
 /******************
 FLICKR PICTURES
 ******************/
+#parkName {
+  text-align: center; }
+
 #pictures {
   display: flex;
   flex-direction: row;
