@@ -6438,6 +6438,9 @@ FLICKR PICTURES
   flex-shrink: 0;
   flex-basis: 0; }
 
+#parkInfo p {
+  text-align: center; }
+
 /******************
 MOBILE VERSION
 ******************/

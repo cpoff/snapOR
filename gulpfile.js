@@ -16,6 +16,7 @@ gulp.task('concatScripts', function(){
 		'./public/javascripts/backbone.js',
 		'./public/javascripts/lat-long.js',
 		'./public/javascripts/park_model.js',
+		'./public/javascripts/map.js',
 		'./public/javascripts/search_park_view.js',
 		'./public/javascripts/user_model.js',])
 		.pipe(maps.init())
@@ -47,6 +48,7 @@ gulp.task('watchFiles', function(){
 	gulp.watch('./public/javascripts/lat-long.js', ['minifyScripts']);
 	gulp.watch('./public/javascripts/park_model.js', ['minifyScripts']);
 	gulp.watch('./public/javascripts/user_model.js', ['minifyScripts']);
+	gulp.watch('./public/javascripts/map.js', ['minifyScripts']);
 	gulp.watch('./public/javascripts/search_park_view.js', ['minifyScripts']);
 });
 
