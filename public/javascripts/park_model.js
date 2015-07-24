@@ -60,6 +60,7 @@ var MarkerView = Backbone.View.extend({
 												}
 												console.log(newJson.photos.photo.length);
 												if(newJson.photos.photo.length>0){
+													$(".flickrPhoto").remove();
 													for (var i = 0; i < newJson.photos.photo.length; ++i) {
 															var source = "http://farm" + newJson.photos.photo[i].farm + ".static.flickr.com/" + newJson.photos.photo[i].server + "/" + newJson.photos.photo[i].id + "_" + newJson.photos.photo[i].secret + "_" + "m.jpg";
 															var link = "http://www.flickr.com/photos/" + newJson.photos.photo[i].owner + "/" + newJson.photos.photo[i].id + " target=_blank";
