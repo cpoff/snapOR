@@ -16,11 +16,11 @@ var ParkModel = Backbone.Model.extend({
 });
 
 var ParkCollection = Backbone.Collection.extend({
-		model: ParkModel,
-		url: '/',
-		initialize: function() {
-				this.fetch();
-		}
+	model: ParkModel,
+	url: '/',
+	initialize: function() {
+		this.fetch();
+	}
 });
 
 var parkModel = new ParkModel();
