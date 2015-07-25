@@ -37,14 +37,26 @@ var UserView = Backbone.View.extend({
 		'click #complete_regis': 'complete_regis',
 		'click #nav_update': 'nav_update',
 		'click #update_user': "update_user",//current_user_template
-		'click .save': 'save',//update_user_template
+		'click #update_btn': 'update_btn',//update_user_template
 		'click #logout': 'logout',
 		'click #login_user': 'login_user' 
 	},
+	update_btn: function() {
+		var self = this;
+		//jQuery.post( url [, data ] [, success ] [, dataType ] )
+		jQuery.post('/update_user_info', {email: userEmail, password: password}, function (reply) {
+			if (reply.error) {
+				console.log(reply);
+				alert("Error");
+			} else {
+				self.login_user();
+			}
+		});
+	},
 	nav_update: function() {
 		console.log("nav_update");
-		var update_user_template = _.template('<h2>Update</h2><label>Name: </label><input type="text" id="nameInput" value={{nameVal}} value=""</input><br /><label>Email: </label><input type="text" id="emailInput" value={{emailVal}} value=""</input><br /><label>Home Location: </label><input type="text" id="homeInput" value={{homeVal}} value=""</input><br /><label>Password: </label><input type="text" id="password" placeholder="change password" value=""</input><br /><button type="submit" id="save">Update Info</button>');
-		$('#user').html(update_user_template({emailVal: userEmail, nameVal: userName, homeVal: userLocation}));
+		var update_user_template = _.template('<h2>Update</h2><label>Name: </label><input type="text" id="nameInput" value={{nameVal}} value=""</input><br /><label>Email: </label><input type="text" id="emailInput" value={{emailVal}} value=""</input><br /><label>Home Location: </label><input type="text" id="homeInput" value={{homeVal}} value=""</input><br /><label>Password: </label><input type="text" id="password" placeholder="change password" value=""</input><br /><button type="submit" id="update_btn">Update Info</button>');
+		$('#userInfoDiv').html(update_user_template({emailVal: userEmail, nameVal: userName, homeVal: userLocation}));
 	},
 	login_user: function() {
 		var self = this;
