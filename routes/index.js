@@ -6,9 +6,19 @@ var uuid = require('uuid');
 var pwd = require('pwd');
 var app = require('../app');
 
-/* GET home page. */
+/* HOME PAGE */
 router.get('/', function(req, res, next) {
   res.render('index', { title: 'snapOR' });
+});
+
+/* USER PAGE */
+router.get('/user', function(req, res) {
+	res.render('user');
+});
+
+/* MISTAKE PAGE */
+router.get('/mistake', function(req, res) {
+	res.render('mistake');
 });
 
 function validateEmail(email) {
@@ -20,7 +30,7 @@ function validateEmail(email) {
 
 //res.cookie
 
-/*NEW USER REGISTRATION*/
+/* NEW USER REGISTRATION */
 router.post('/begin_regis', function(req, res){
 	console.log("bananas");
 	console.log(req.body);
@@ -75,18 +85,38 @@ router.post('/begin_regis', function(req, res){
 	});// closes initial db query for existing email
 });// closes router.post
 
-//User page
-router.get('/user', function(req, res) {
-	res.render('user');
-});
+// /* ROUTE TO SAVE NEW USER INFO TO ORCHESTRATE */
+// router.post('/save_new_user', function(req, res) {
+// 	var name = req.body.name;
+// 	var hometown = req.body.hometown;
+// 	var email = req.body.email; // email field auto-populates with email entered in initial registration modal
+// 	var database = app.get('database');
 
-//Mistake page
-router.get('/mistake', function(req, res) {
-	res.render('mistake');
-});
+// 	//db search for email value
+// 	db.search('snap', 'value.email:'+email)
+// 	.then(function(result) {
+// 		var currentUser = result.body.results[0].value;
+// 		if (result.body.count === 0) {
+// 			console.log("whoops")
+// 			res.render('mistake', {
+// 				error: 'Whoops!',
+// 				text: "Let's try that again, shall we?"
+// 			});
+// 		} else {
+// 			db.put('snap', user_key, {
+// 				'name': name,
+// 				'hometown': hometown
+// 			})// closes db.put
+// 			.then(function() {
+// 				console.log('User info pushed to Orchestrate');
+// 				res.end();
+// 			})// closes .then
+// 			.fail(function(err){});
+// 		}// closes else
+// });// closes router.post for /save_new_user
 
-/*ROUTE FOR EXISTING USER LOGIN*/  
-router.post('/user', function(req, res) { //this should be a get, it's requesting data from the server, if input matches the data, then user is redirected
+/* ROUTE FOR EXISTING USER LOGIN */  
+router.post('/user', function(req, res) {
 	var email = req.body.email;
 	var password = req.body.password;
 	var database = app.get('database');
