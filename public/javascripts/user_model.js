@@ -16,37 +16,47 @@ var UserModel = Backbone.Model.extend({
 
 var UserView = Backbone.View.extend({
 	el : '#register',
-	//TEMPLATE THAT POPULATES WHEN EXIS. USER CLICKS 'UPDATE' ON NAV
-	// BUTTON ID = SAVE
-	update_user_template : _.template('<h2>Update</h2><label>Name: </label><input type="text" id="nameInput" placeholder={{nameVal}} value=""</input><br /><label>Email: </label><input type="text" id="emailInput" placeholder={{emailVal}} value=""</input><br /><label>Home Location: </label><input type="text" id="homeInput" placeholder={{homeVal}} value=""</input><br /><label>Password: </label><input type="text" id="password" placeholder="change password" value=""</input><br /><button type="submit" id="save">Update Info</button>'),
-
 	// REGISTRATION PROCESS
 	render: function() {
 		var nameVal = this.model.get("name");
 		var emailVal = this.model.get("email");
 		var homeVal = this.model.get("home");
 
-		//NAV BAR OPTIONS FOR EXIS. USERS	
-		//BUTTON ID = UPDATE
-		var current_user_template = _.template('<h2>Welcome {{nameVal}}</h2><div><button type="sumbit" id="update">Update</button><button type="sumbit" id="logout">Logout</button>');
-		if(nameVal === '' && homeVal === ''){
-			this.$el.html(new_user_template({emailVal : this.model.get("email")}));
-		} else {
-			this.$el.html(
-				current_user_template({nameVal : this.model.get("name")}));
-			}	
-		//MODAL WINDOW FOR NEW USER TO ENTER NAME/HOMETOWN
-		//BUTTON ID = COMPLETE_REGIS
-			// var new_user_template =  _.template(
-			// 	'<div id="userInfoDiv"><h2>Welcome, {{emailVal}}</h2><p>Please review your information below, and update as needed.</p><form method="post" action="/complete_regis"><label id="userLabel">Name:</label><input id="nameInput" type="text" placeholder="Name"</input><br /><label id="userLabel">Email: </label><input id="emailInput" type="text" value="{{emailVal}}"</input><br /><label id="userLabel">Home Location: </label><input id="homeInput" type="text" placeholder="Where do you live?"</input><br /><button id="complete_regis" type="submit">Save Info</button></form></div>');
+		// //NAV BAR OPTIONS FOR EXIS. USERS	
+		// //BUTTON ID = UPDATE
+		// var current_user_template = _.template('<h2>Welcome {{nameVal}}</h2><div><button type="sumbit" id="update">Update</button><button type="sumbit" id="logout">Logout</button>');
+		// if(nameVal === '' && homeVal === ''){
+		// 	this.$el.html(new_user_template({emailVal : this.model.get("email")}));
+		// } else {
+		// 	this.$el.html(
+		// 		current_user_template({nameVal : this.model.get("name")}));
+		// 	}	
 	}, // closes render
 	events: {
-		'click #create_user': 'create_user',//new_user_template
+		'click #register_account': 'register_account',//new_user_template
 		'click #complete_regis': 'complete_regis',
-		'click #update': "update",//current_user_template
-		'click .save': 'save',//update_user_template
+		'click #nav_update': 'nav_update',
+		'click #update_user': "update_user",//current_user_template
+		'click #update_btn': 'update_btn',//update_user_template
 		'click #logout': 'logout',
 		'click #login_user': 'login_user' 
+	},
+	update_btn: function() {
+		var self = this;
+		//jQuery.post( url [, data ] [, success ] [, dataType ] )
+		jQuery.post('/update_user_info', {email: userEmail, password: password}, function (reply) {
+			if (reply.error) {
+				console.log(reply);
+				alert("Error");
+			} else {
+				self.login_user();
+			}
+		});
+	},
+	nav_update: function() {
+		console.log("nav_update");
+		var update_user_template = _.template('<h2>Update</h2><label>Name: </label><input type="text" id="nameInput" value={{nameVal}} value=""</input><br /><label>Email: </label><input type="text" id="emailInput" value={{emailVal}} value=""</input><br /><label>Home Location: </label><input type="text" id="homeInput" value={{homeVal}} value=""</input><br /><label>Password: </label><input type="text" id="password" placeholder="change password" value=""</input><br /><button type="submit" id="update_btn">Update Info</button>');
+		$('#userInfoDiv').html(update_user_template({emailVal: userEmail, nameVal: userName, homeVal: userLocation}));
 	},
 	login_user: function() {
 		var self = this;
@@ -66,11 +76,13 @@ var UserView = Backbone.View.extend({
 		var userLocation = $('#homeInput').val();
 		var userEmail = $('#emailInput').val();
 
+		jQuery.post('/save_new_user', {email: userEmail, password: password, name: userName, hometown: userHome});
+
 		this.model.replace(userName, userEmail, userLocation);
 		userView.render();
 		$("#user").append(userView.$el.html());
 	},
-	create_user: function(){
+	register_account: function(){
 		var self = this;
 		var userEmail = $('#email').val();
 		var password = $('#password').val();
@@ -79,7 +91,7 @@ var UserView = Backbone.View.extend({
 			jQuery.post('/begin_regis', {email: userEmail, password: password})
 			.then(function() {
 				var new_user_template =  _.template(
-				'<h2>Welcome, {{emailVal}}</h2><p>Please review your information below, and update as needed.</p><form method="post" action="/"><label id="userLabel">Name:</label><input id="nameInput" type="text" placeholder="Name"</input><br /><label id="userLabel">Email: </label><input id="emailInput" type="text" value="{{emailVal}}"</input><br /><label id="userLabel">Home Location: </label><input id="homeInput" type="text" placeholder="Where do you live?"</input><br /><button id="complete_regis" type="submit">Save Info</button></form>');
+				'<h2>Welcome, {{emailVal}}</h2><p>Please review your information below, and update as needed.</p><form method="post" action="/complete_regis"><label id="userLabel">Name:</label><input id="nameInput" type="text" name:name placeholder="Name"</input><br /><label id="userLabel">Email: </label><input id="emailInput" type="text" value="{{emailVal}}"</input><br /><label id="userLabel">Home Location: </label><input id="homeInput" type="text" name: hometown placeholder="Where do you live?"</input><br /><button id="complete_regis" type="submit">Save Info</button></form>');
 				$('#userInfoDiv').html(new_user_template({emailVal: userEmail}));
 				$('.reveal-modal-bg').css('display', 'none');
 				console.log("renderTemplate");
