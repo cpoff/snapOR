@@ -42,13 +42,12 @@ router.post('/begin_regis', function(req, res){
 	//console.log(db.search);
 	db.search('snap', 'value.email:'+email)
 	.then(function(result) {
-		console.log(result);
 		//console.log('email: ', email)
 		if (result.body.count !== 0) {
 			console.log("search result");
 			console.log(result.body.count);
-			res.render ('mistake', {
-				error: "Email has already been used to register."});
+			var message = {error: "Email has already been used to register."};
+			res.send(message);
 		} 
 		// else if(!validateEmail(email)){
 		// 	res.render ('mistake', {
@@ -87,35 +86,37 @@ router.post('/begin_regis', function(req, res){
 	});// closes initial db query for existing email
 });// closes router.post
 
-// /* ROUTE TO SAVE NEW USER INFO TO ORCHESTRATE */
-// router.post('/save_new_user', function(req, res) {
-// 	var name = req.body.name;
-// 	var hometown = req.body.hometown;
-// 	var email = req.body.email; // email field auto-populates with email entered in initial registration modal
-// 	var database = app.get('database');
+/* ROUTE TO SAVE NEW USER INFO TO ORCHESTRATE */
+router.post('/save_new_user', function(req, res) {
+	var name = req.body.name;
+	var hometown = req.body.hometown;
+	var email = req.body.email; // email field auto-populates with email entered in initial registration modal
+	var database = app.get('database');
 
-// 	//db search for email value
-// 	db.search('snap', 'value.email:'+email)
-// 	.then(function(result) {
-// 		var currentUser = result.body.results[0].value;
-// 		if (result.body.count === 0) {
-// 			console.log("whoops")
-// 			res.render('mistake', {
-// 				error: 'Whoops!',
-// 				text: "Let's try that again, shall we?"
-// 			});
-// 		} else {
-// 			db.put('snap', user_key, {
-// 				'name': name,
-// 				'hometown': hometown
-// 			})// closes db.put
-// 			.then(function() {
-// 				console.log('User info pushed to Orchestrate');
-// 				res.end();
-// 			})// closes .then
-// 			.fail(function(err){});
-// 		}// closes else
-// });// closes router.post for /save_new_user
+	//db search for email value
+	db.search('snap', 'value.email:'+email)
+	.then(function(result) {
+		var currentUser = result.body.results[0].value;
+		if (result.body.count === 0) {
+			console.log("whoops");
+			res.render('mistake', {
+				error: 'Whoops!',
+				text: "Let's try that again, shall we?"
+			});// closes res.render
+		} else {
+			db.put('snap', user_key, {
+				'name': name,
+				'hometown': hometown
+			})// db.put
+			.then(function() {
+				console.log('user info pushed to db');
+				res.end();
+			})
+			.fail(function(err) {
+			})
+		}// else
+	})// closes .then
+})// closes router.post
 
 /* ROUTE FOR EXISTING USER LOGIN */  
 router.post('/user', function(req, res) {
