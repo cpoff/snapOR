@@ -49,7 +49,6 @@ var UserView = Backbone.View.extend({
 				console.log(reply);
 				alert("Error");
 			} else {
-				self.login_user();
 			}
 		});
 	},
@@ -58,17 +57,20 @@ var UserView = Backbone.View.extend({
 		var update_user_template = _.template('<h2>Update</h2><label>Name: </label><input type="text" id="nameInput" value={{nameVal}} value=""</input><br /><label>Email: </label><input type="text" id="emailInput" value={{emailVal}} value=""</input><br /><label>Home Location: </label><input type="text" id="homeInput" value={{homeVal}} value=""</input><br /><label>Password: </label><input type="text" id="password" placeholder="change password" value=""</input><br /><button type="submit" id="update_btn">Update Info</button>');
 		$('#userInfoDiv').html(update_user_template({emailVal: userEmail, nameVal: userName, homeVal: userLocation}));
 	},
+	// login_user: function() {
+	// 	var self = this;
+	// 	jQuery.post('/user', {email: userEmail, password: password}, function (reply) {
+	// 		if (reply.error) {
+	// 			console.log(reply);
+	// 			alert("Error");
+	// 		} else {
+	// 			self.login_user();
+	// 		}
+	// 	});
+
 	login_user: function() {
 		var self = this;
-		//jQuery.post( url [, data ] [, success ] [, dataType ] )
-		jQuery.post('/user', {email: userEmail, password: password}, function (reply) {
-			if (reply.error) {
-				console.log(reply);
-				alert("Error");
-			} else {
-				self.login_user();
-			}
-		});
+		jQuery.post('/user', {email: userEmail, password: password})
 	},
 	//COMPLETE_REGIS RUNS WHEN USER CLICKS 'SAVE INFO' on new_user_template
 	complete_regis: function(){
@@ -89,15 +91,19 @@ var UserView = Backbone.View.extend({
 		var password_confirm = $('#password_confirm').val();
 		if(password===password_confirm){
 			jQuery.post('/begin_regis', {email: userEmail, password: password})
-			.then(function(message) {
-				if (message === error) {
-
-				} else {
-						var new_user_template =  _.template('<h2>Welcome, {{emailVal}}</h2><p>Please review your information below, and update as needed.</p><form method="post" action="/complete_regis"><label id="userLabel">Name:</label><input id="nameInput" type="text" name:name placeholder="Name"</input><br /><label id="userLabel">Email: </label><input id="emailInput" type="text" value="{{emailVal}}"</input><br /><label id="userLabel">Home Location: </label><input id="homeInput" type="text" name: hometown placeholder="Where do you live?"</input><br /><button id="complete_regis" type="submit">Save Info</button></form>');
+			.then(function() {
+				var new_user_template =  _.template('<h2>Welcome, {{emailVal}}</h2><p>Please review your information below, and update as needed.</p><form method="post" action="/complete_regis"><label id="userLabel">Name:</label><input id="nameInput" type="text" name:name placeholder="Name"</input><br /><label id="userLabel">Email: </label><input id="emailInput" type="text" value="{{emailVal}}"</input><br /><label id="userLabel">Home Location: </label><input id="homeInput" type="text" name: hometown placeholder="Where do you live?"</input><br /><button id="complete_regis" type="submit">Save Info</button></form>');
 				$('#userInfoDiv').html(new_user_template({emailVal: userEmail}));
 				$('.reveal-modal-bg').css('display', 'none');
 				console.log("renderTemplate");
-				}
+				// if (message) {
+				// 	console.log("Full Stop");
+				// } else {
+				// 		var new_user_template =  _.template('<h2>Welcome, {{emailVal}}</h2><p>Please review your information below, and update as needed.</p><form method="post" action="/complete_regis"><label id="userLabel">Name:</label><input id="nameInput" type="text" name:name placeholder="Name"</input><br /><label id="userLabel">Email: </label><input id="emailInput" type="text" value="{{emailVal}}"</input><br /><label id="userLabel">Home Location: </label><input id="homeInput" type="text" name: hometown placeholder="Where do you live?"</input><br /><button id="complete_regis" type="submit">Save Info</button></form>');
+				// $('#userInfoDiv').html(new_user_template({emailVal: userEmail}));
+				// $('.reveal-modal-bg').css('display', 'none');
+				// console.log("renderTemplate");
+				// }
 			}())// then
 		} else {
 			alert('Please make sure your password and password confirmation are the same.');

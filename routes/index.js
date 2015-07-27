@@ -46,8 +46,15 @@ router.post('/begin_regis', function(req, res){
 		if (result.body.count !== 0) {
 			console.log("search result");
 			console.log(result.body.count);
-			var message = {error: "Email has already been used to register."};
-			res.send(message);
+			res.end();
+
+			// res.render('mistake', {
+			// 	error: 'Here is the error',
+			// 	text: 'Here is the text'
+			// });
+
+			// var message = {error: "Email has already been used to register."};
+			// res.send(message);
 		} 
 		// else if(!validateEmail(email)){
 		// 	res.render ('mistake', {
@@ -59,7 +66,6 @@ router.post('/begin_regis', function(req, res){
 			var raw = {email: email, password: password};
 			//The info that gets stored
 			var stored = {email : email, salt:'', hash:''};
-
 			var register = function (raw) {
 				//Create and store encrypted user record:
 				pwd.hash(raw.password, function(err,salt,hash) {
@@ -123,27 +129,30 @@ router.post('/user', function(req, res) {
 	var email = req.body.email;
 	var password = req.body.password;
 	var database = app.get('database');
+	var currentUser;
+	console.log('exis user login');
 	db.search('snap', 'value.email:'+email)
 	.then(function(result) {
-		var currentUser = result.body.results[0].value;
+		//console.log(result.body.results[0].value)
+		console.log(result.body.count)
+		currentUser = result.body.results[0].value;
 		if (result.body.count === 0) {
 			console.log('search results:');
+			console.log(result.body.count);
 			res.render ('mistake', {
 				error: 'We did not find an account with that email address.',
 				text: 'Please try again.'
 			});
-
 		} else {
-			authenticate();
 			var authenticate = function(){
-				console.log(currentUser);
-				console.log("attempt to auth");
+				console.log(currentUser)
+				console.log("attempt to auth")
 				pwd.hash(password, currentUser.salt, function(err, hash){
 					console.log(currentUser.hash);
 					console.log(hash);
 					if(currentUser.hash===hash){
 						console.log("success");
-						res.redirect('/user');
+						res.redirect('/');
 					} else {
 						res.render('mistake', {
 							error: "It looks like your password was incorrect.",
@@ -152,6 +161,7 @@ router.post('/user', function(req, res) {
 					}// closes else
 				});// closes pwd.hash
 			};// closes function authenticate
+			authenticate();
 		}// closes else
 	});// closes .then
 });// closes login router
