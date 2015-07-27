@@ -89,12 +89,15 @@ var UserView = Backbone.View.extend({
 		var password_confirm = $('#password_confirm').val();
 		if(password===password_confirm){
 			jQuery.post('/begin_regis', {email: userEmail, password: password})
-			.then(function() {
-				var new_user_template =  _.template(
-				'<h2>Welcome, {{emailVal}}</h2><p>Please review your information below, and update as needed.</p><form method="post" action="/complete_regis"><label id="userLabel">Name:</label><input id="nameInput" type="text" name:name placeholder="Name"</input><br /><label id="userLabel">Email: </label><input id="emailInput" type="text" value="{{emailVal}}"</input><br /><label id="userLabel">Home Location: </label><input id="homeInput" type="text" name: hometown placeholder="Where do you live?"</input><br /><button id="complete_regis" type="submit">Save Info</button></form>');
+			.then(function(message) {
+				if (message === error) {
+
+				} else {
+						var new_user_template =  _.template('<h2>Welcome, {{emailVal}}</h2><p>Please review your information below, and update as needed.</p><form method="post" action="/complete_regis"><label id="userLabel">Name:</label><input id="nameInput" type="text" name:name placeholder="Name"</input><br /><label id="userLabel">Email: </label><input id="emailInput" type="text" value="{{emailVal}}"</input><br /><label id="userLabel">Home Location: </label><input id="homeInput" type="text" name: hometown placeholder="Where do you live?"</input><br /><button id="complete_regis" type="submit">Save Info</button></form>');
 				$('#userInfoDiv').html(new_user_template({emailVal: userEmail}));
 				$('.reveal-modal-bg').css('display', 'none');
 				console.log("renderTemplate");
+				}
 			}())// then
 		} else {
 			alert('Please make sure your password and password confirmation are the same.');
