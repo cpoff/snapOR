@@ -27,8 +27,6 @@ var MarkerView = Backbone.View.extend({
 						info.close();
 					}
 				});
-
-
 				var flickrURL = self.model.attributes.parkFlickrCall;
 				var name = self.model.attributes.name;
 				$.getJSON(flickrURL)

@@ -195,7 +195,7 @@ MAP CANVAS
 
 #map_canvas {
 	height: 85%;
-	width: 100%;
+	width: 85%;
 	// height: 600px;
 	// width: 1000px;
 	margin: 0 auto;
@@ -214,16 +214,21 @@ FLICKR PICTURES
 	display: flex;
 	flex-direction: row;
 	flex-wrap: wrap;
-	justify-content: space-around;
+	justify-content: space-between;
 	align-content: center;
 	align-items: center;
+// <<<<<<< HEAD
+// 	padding: 0 5%;
+// =======
 	margin-bottom: 50px;
+// >>>>>>> master
 }
 .flickrPhoto{
 	flex-grow: 0;
 	flex-grow:hover { transform: scale(1.1); }
 	flex-shrink: 0;
 	flex-basis: 0;
+	margin-bottom: 5%;
 }
 
 #parkInfo p {
@@ -272,5 +277,3 @@ PARK VIEW DATA
 #parkdiv{
 	text-align: center;
 }
-
-///what the hell
