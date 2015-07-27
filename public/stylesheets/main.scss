@@ -217,11 +217,7 @@ FLICKR PICTURES
 	justify-content: space-between;
 	align-content: center;
 	align-items: center;
-// <<<<<<< HEAD
-// 	padding: 0 5%;
-// =======
 	margin-bottom: 50px;
-// >>>>>>> master
 }
 .flickrPhoto{
 	flex-grow: 0;
@@ -233,6 +229,7 @@ FLICKR PICTURES
 
 #parkInfo p {
 	text-align: center;
+	color: $white;
 }
 
 .flickrPhoto:hover{

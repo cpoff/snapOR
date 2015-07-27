@@ -6454,7 +6454,8 @@ FLICKR PICTURES
     transform: scale(1.1); }
 
 #parkInfo p {
-  text-align: center; }
+  text-align: center;
+  color: #FFF; }
 
 .flickrPhoto:hover {
   box-shadow: 0px 0px 30px #000000;
