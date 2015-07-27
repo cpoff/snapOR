@@ -6453,7 +6453,7 @@ FLICKR PICTURES
   .flickrPhoto flex-grow:hover {
     transform: scale(1.1); }
 
-#parkInfo p {
+#pictures p {
   text-align: center;
   color: #FFF; }
 
