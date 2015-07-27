@@ -1,7 +1,25 @@
 extends layout
 
 block content
-	div#logged-out
+	div.hidden.logged-in
+		.fixed.sticky.hide-for-small-only
+			nav.top-bar(data-topbar="", role="navigation")
+				ul.title-area
+					li.name
+						h1
+							a(href='/') snapOR
+					li.toggle-topbar.menu-icon
+						a(href="#")
+							span Menu
+				section.top-bar-section
+					ul.right
+						li
+							a(href='#' id="logout") Logout
+									form(method="post" action="/logout_user")
+						li
+							//-a(href='#', id='nav-update', data-reveal-id='update') 
+							a(href='#' id="update") Update
+	div.logged-out
 		.fixed.sticky.hide-for-small-only
 			nav.top-bar(data-topbar="", role="navigation")
 				ul.title-area
@@ -51,8 +69,6 @@ block content
 				div Login
 			a(href='#', data-reveal-id='register') 
 				div Register
-			a(href='#', data-reveal-id="photos") 
-				div Discover Photos
 			a(href='#', data-reveal-id="parks")
 				div Explore Parks
 	#user

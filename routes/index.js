@@ -21,6 +21,11 @@ router.get('/mistake', function(req, res) {
 	res.render('mistake');
 });
 
+/* LOGGED-IN NAV */
+router.get('/logged-in-nav', function(req, res) {
+	res.render('logged-in-nav');
+});
+
 function validateEmail(email) {
 	var re = /^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
 	console.log('email test');
