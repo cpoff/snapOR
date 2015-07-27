@@ -40,6 +40,9 @@ var UserView = Backbone.View.extend({
 		'click #login_user': 'login_user', 
 		'click #logout': 'logout'
 	},
+	logout: function() {
+		jQuery.post('/logout')
+	}
 	///////////////////// PROC. TO REGISTER NEW USER FROM LANDING PAGE
 	register_account: function(){
 		var self = this;
@@ -101,8 +104,7 @@ var UserView = Backbone.View.extend({
 		jQuery.post('/user', {email: userEmail, password: password})
 		.then(function() {
 			console.log('new View')
-			$('div.logged-in').show()
-			$('div.logged-out').hide()
+			$('div.logged-out').detach();
 		})
 	},
 	///////////////////// CURRENT_USER_TEMPLATE

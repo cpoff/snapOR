@@ -205,5 +205,10 @@ router.post('/update_user_info', function(req, res) {
 	});// then
 });// closes route to update exis. user info
 
+/* ROUTE TO LOGOUT CURRENT USER */  
+router.post('/logout', function(req, res) {
+
+});
+
 
 module.exports = router;
