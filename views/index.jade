@@ -38,47 +38,11 @@ block content
 										label.label Re-enter Password: 
 										input#password_confirm(type="password" name="password_confirm" style="font-family: 'Robot Slab'" placeholder="password confirmation")
 										br
-										input#create_user.fire_new_modal(type="submit" style="font-family: 'Questrial'" value="Register Account" data-reveal-id="userDiv")
+										input#register_account(type="submit" style="font-family: 'Questrial'" value="Register Account" data-reveal-id="userDiv")
 					ul.left
 						li.active
 							a(href='#', data-reveal-id="parks") Explore Parks
 								#parks.reveal-modal.queries(data-reveal='', aria-labelledby='modalTitle', aria-hidden='true', role='dialog')
-	
-	//- div#logged-in
-	//- 	.fixed.sticky.hide-for-small-only
-	//- 		nav.top-bar(data-topbar="", role="navigation")
-	//- 			ul.title-area
-	//- 				li.name
-	//- 					h1
-	//- 						a(href='/') snapOR
-	//- 				li.toggle-topbar.menu-icon
-	//- 					a(href="#")
-	//- 						span Menu
-	//- 			section.top-bar-section
-	//- 				ul.right
-	//- 					li
-	//- 						a(href='#', data-reveal-id="logout") Logout
-	//- 								form(method="post" action="/user")
-	//- 					li
-	//- 						a(href='#', data-reveal-id='update') Update
-	//- 							#update.reveal-modal.users(data-reveal='', aria-labelledby='modalTitle', aria-hidden='true', role='dialog')
-	//- 								h2#modalTitle Update Account Information
-	//- 								a.close-reveal-modal(aria-label='Close') &times;
-	//- 								form(method='post' action='/update_user')
-	//- 									label.label Email: 
-	//- 									input#email(type="text" name="email" style="font-family: 'Roboto Slab'" placeholder="EMAILVAL")
-	//- 									label.label Password: 
-	//- 									input#password(type="password" name="password" style="font-family: 'Roboto Slab'" placeholder="PASSWORD DOTS")
-	//- 									label.label Name: 
-	//- 									input(type="text" name="username" style="font-family: 'Robot Slab'" placeholder="NAMEVAL")
-	//- 									br
-	//- 									label.label Hometown: 
-	//- 									input(type="text" name="hometown" style="font-family: 'Robot Slab'" placeholder="HOMEVAL")
-	//- 									input#update_user.fire_new_modal(type="submit" style="font-family: 'Questrial'" value="Register Account" data-reveal-id="userDiv")
-	//- 				ul.left
-	//- 					li.active
-	//- 						a(href='#', data-reveal-id="parks") Explore Parks
-	//- 							#parks.reveal-modal.queries(data-reveal='', aria-labelledby='modalTitle', aria-hidden='true', role='dialog')						
 	.show-for-small-only
 		.name
 			a(href='/')
@@ -100,4 +64,3 @@ block content
 	script(src='/javascripts/all.js')
 	script.
 		$(document).foundation();
-
