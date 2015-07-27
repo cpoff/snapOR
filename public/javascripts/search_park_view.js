@@ -20,21 +20,33 @@ var SearchParkView = Backbone.View.extend({
 		$.getJSON(flickrUrl) //fires the flickr url
 			.always(function(data) {
 				newJson = JSON.parse(data.responseText.slice(14, -1));
-				if($("#parkLabel").val()===undefined){
+				if($("#parkLabel").html()===undefined){
 					$("<h1 id='parkLabel'>"+name+"</h1>").appendTo('#parkHeader');
-				} else {
-					$("#parkHeader").replaceWith("<h1 id='parkLabel'>"+name+"</h1>");
-				}
-				if(newJson.photos.photo.length>0){
-					$(".flickrPhoto").remove();
-					for(var i = 0; i<newJson.photos.photo.length; ++i){
-						var source = "http://farm" + newJson.photos.photo[i].farm + ".static.flickr.com/" + newJson.photos.photo[i].server + "/" + newJson.photos.photo[i].id + "_" + newJson.photos.photo[i].secret + "_" + "m.jpg";
-						var link = "http://www.flickr.com/photos/" + newJson.photos.photo[i].owner + "/" + newJson.photos.photo[i].id;					
-						sourceArray.push(source);
-						$("<a href=" + link + "><img class=flickrPhoto src=" + source + "></a>").appendTo('#pictures');
+					if(newJson.photos.photo.length>0){
+						for(var i = 0; i<newJson.photos.photo.length; ++i){
+							var source = "http://farm" + newJson.photos.photo[i].farm + ".static.flickr.com/" + newJson.photos.photo[i].server + "/" + newJson.photos.photo[i].id + "_" + newJson.photos.photo[i].secret + "_" + "m.jpg";
+							var link = "http://www.flickr.com/photos/" + newJson.photos.photo[i].owner + "/" + newJson.photos.photo[i].id + " target=_blank";
+							sourceArray.push(source);
+							$("<a href=" + link + "><img class=flickrPhoto src=" + source + "></a>").appendTo('#pictures');
+						}
+					} else {
+						$("<p>Sorry, we couldn't find any photos from that park.</p>").appendTo('#pictures');
 					}
 				} else {
-					$("<p>Sorry, we couldn't find any photos from that park.</p>").appendTo('#pictures');
+					$("#parkLabel").remove();
+					$(".flickrPhoto").remove();
+					$("#pictures p").remove();
+					$("<h1 id='parkLabel'>"+name+"</h1>").appendTo('#parkHeader');
+					if(newJson.photos.photo.length>0){
+						for(var i = 0; i<newJson.photos.photo.length; ++i){
+							var source = "http://farm" + newJson.photos.photo[i].farm + ".static.flickr.com/" + newJson.photos.photo[i].server + "/" + newJson.photos.photo[i].id + "_" + newJson.photos.photo[i].secret + "_" + "m.jpg";
+							var link = "http://www.flickr.com/photos/" + newJson.photos.photo[i].owner + "/" + newJson.photos.photo[i].id + " target=_blank";
+							sourceArray.push(source);
+							$("<a href=" + link + "><img class=flickrPhoto src=" + source + "></a>").appendTo('#pictures');
+						}
+					} else {
+						$("<p>Sorry, we couldn't find any photos from that park.</p>").appendTo('#pictures');
+					}
 				}
 			});
 	},

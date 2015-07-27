@@ -48,7 +48,6 @@ var MarkerView = Backbone.View.extend({
 							$("#parkLabel").remove();
 							$(".flickrPhoto").remove();
 							$("#pictures p").remove();
-							console.log("dom already populated");
 							$("<h1 id='parkLabel'>" + name + "</h1>").appendTo('#parkHeader');
 							if (newJson.photos.photo.length > 0){
 								for (var i = 0; i < newJson.photos.photo.length; ++i) {
