@@ -12,6 +12,7 @@ var SearchParkView = Backbone.View.extend({
 		for(var i = 0; i<this.collection.models.length; i++){ //store all the park names into an array from the collection.model
 			parkNames.push(this.collection.models[i].attributes.name);
 		}
+		console.log(parkName);
 		var location = parkNames.indexOf(parkName); //returns the index position of the park the user is searching for
 		var flickrUrl = this.collection.models[location].attributes.parkFlickrCall; //sets that index position as the collection.modesls index position, and stores the parkFlicker url into a new variable
 		var name = this.collection.models[location].attributes.name;
@@ -24,10 +25,10 @@ var SearchParkView = Backbone.View.extend({
 				} else {
 					$("#parkHeader").replaceWith("<h1 id='parkLabel'>"+name+"</h1>");
 				}
-				if(newJson.photos.photo.length<1){
+				if(newJson.photos.photo.length>0){
 					$(".flickrPhoto").remove();
 					for(var i = 0; i<newJson.photos.photo.length; ++i){
-						var source = "http://farm" + newJson.photos.photo[i].farm + ".static.flickr.com/" + newJson.photos.photo[i].server + "/" + newJson.photos.photo[i].id + "_" + newJson.photos.photo[i].secret + "_" + "t.jpg";
+						var source = "http://farm" + newJson.photos.photo[i].farm + ".static.flickr.com/" + newJson.photos.photo[i].server + "/" + newJson.photos.photo[i].id + "_" + newJson.photos.photo[i].secret + "_" + "m.jpg";
 						var link = "http://www.flickr.com/photos/" + newJson.photos.photo[i].owner + "/" + newJson.photos.photo[i].id;					
 						sourceArray.push(source);
 						$("<a href=" + link + "><img class=flickrPhoto src=" + source + "></a>").appendTo('#pictures');
@@ -41,6 +42,9 @@ var SearchParkView = Backbone.View.extend({
 			'click #searchParks': 'searchParks'//fire flicker api, render parkView
 	}
 });
+
+
+
 
 var searchParkView = new SearchParkView({model: parkModel, collection: parkCollection});
 searchParkView.render();

@@ -11,6 +11,11 @@ VARIABLES
 $blue: #1E749E;
 $yellow: #FEC63D;
 $red: #FF5D55;
+$white: #FFF;
+$darkerGray: #222;
+$darkGray: #333;
+$gray: #666;
+$lightGray: #eee;
 
 $sans-serif: "Questrial", sans-serif;
 //$serif: "Roboto Slab", serif;
@@ -22,51 +27,63 @@ GENERAL
 ******************/
 
 body {
-	background-color: $blue;
+	background-color: $darkGray;
 }
 
 /******************
 NAV BAR
 ******************/
 
-body div.fixed.sticky nav.top-bar section.top-bar-section ul.right li a, body div.fixed.sticky nav.top-bar section.top-bar-section ul.left li.active a, body div.fixed.sticky nav.top-bar {
-	background-color: $red;
-	color: $yellow;
-	font-family: $sans-serif;
-}
+// body div.fixed.sticky nav.top-bar section.top-bar-section ul.right li a, body div.fixed.sticky nav.top-bar section.top-bar-section ul.left li.active a, body div.fixed.sticky nav.top-bar {
+// 	background-color: $white;
+// 	color: $darkGray;
+// 	font-family: $sans-serif;
+// }
 
 nav.top-bar {
-	background-color: $red;
-	color: $yellow;
+	background-color: $darkGray;
+	color: $white;
 	font-family: $sans-serif;
+	height: 5em;
 }
 
 div.sticky.hide-for-small-only nav.top-bar section.top-bar-section ul.left li.active a {
-	background-color: $red;
-	color: $yellow;
+	background-color: $darkGray;
+	color: $white;
 	font-family: $sans-serif;
+	padding-top: 17px
 }
 
 div.sticky.hide-for-small-only nav.top-bar section.top-bar-section ul.right li a {
-	background-color: $red;
-	color: $yellow;
+	background-color: $darkGray;
+	color: $white;
 	font-family: $sans-serif;
+	padding-top: 17px
 }
 
 /******************
 SITE NAME
 ******************/
+nav.top-bar ul.title-area li.name h1 {
+	background-color: $white;
+	color: $darkGray;
+}
+
 
 body div nav.top-bar ul.title-area li.name h1 a {
-	background-color: $yellow;
-	color: $red;
+	background-color: $white;
+	color: $darkGray;
 	font-family: $cursive;
 	font-size: 20px;
+	height: 4em;
+	padding: 17px 22px 0px 0px;
+	margin-left: 30px;
+	margin-right: 30px;
 }
 
 nav.top-bar ul.title-area li.toggle-topbar.menu-icon a {
-	background-color: $red;
-	color: $yellow;
+	background-color: $darkGray;
+	color: $white;
 	font-family: $sans-serif;
 }
 
@@ -79,14 +96,14 @@ nav.top-bar section.top-bar-section ul.left li a {
 }
 
 nav.top-bar.expanded.fixed section.top-bar-section ul.right li a{
-	background-color: $red;
-	color: $yellow;
+	background-color: $darkGray;
+	color: $white;
 	font-family: $sans-serif;
 }
 
 nav.top-bar.expanded.fixed section.top-bar-section ul.left li.active a {
-	background-color: $red;
-	color: $yellow;
+	background-color: $darkGray;
+	color: $white;
 	font-family: $sans-serif;
 }
 
@@ -159,6 +176,12 @@ USER PAGE
 #userInfoDiv {
 	max-width: 70%;
 	padding-left: 30px;
+	h2, p,  {
+		color: $white;
+	}
+	form label#userLabel {
+		color: $white;
+	}
 }
 
 button .button #saveBtn {
@@ -171,11 +194,11 @@ MAP CANVAS
 ******************/
 
 #map_canvas {
-	height: 75%;
-	width: 70%;
+	height: 85%;
+	width: 85%;
 	// height: 600px;
 	// width: 1000px;
-	margin: 5% auto;
+	margin: 0 auto;
 }
 
 /******************
@@ -185,6 +208,7 @@ FLICKR PICTURES
 	text-align: center;
 	margin-top: 10%;
 	margin-bottom: 5%;
+	color: $white;
 }
 #pictures{
 	display: flex;
@@ -193,7 +217,11 @@ FLICKR PICTURES
 	justify-content: space-between;
 	align-content: center;
 	align-items: center;
-	padding: 0 5%;
+// <<<<<<< HEAD
+// 	padding: 0 5%;
+// =======
+	margin-bottom: 50px;
+// >>>>>>> master
 }
 .flickrPhoto{
 	flex-grow: 0;
