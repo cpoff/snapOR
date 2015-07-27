@@ -38,17 +38,11 @@ block content
 										label.label Re-enter Password: 
 										input#password_confirm(type="password" name="password_confirm" style="font-family: 'Robot Slab'" placeholder="password confirmation")
 										br
-										input#register_account.fire_new_modal(type="submit" style="font-family: 'Questrial'" value="Register Account" data-reveal-id="userDiv")
+										input#register_account(type="submit" style="font-family: 'Questrial'" value="Register Account" data-reveal-id="userDiv")
 					ul.left
 						li.active
 							a(href='#', data-reveal-id="parks") Explore Parks
 								#parks.reveal-modal.queries(data-reveal='', aria-labelledby='modalTitle', aria-hidden='true', role='dialog')
-	
-
-					ul.left
-						li.active
-							a(href='#', data-reveal-id="parks") Explore Parks
-								#parks.reveal-modal.queries(data-reveal='', aria-labelledby='modalTitle', aria-hidden='true', role='dialog')						
 	.show-for-small-only
 		.name
 			a(href='/')
@@ -70,4 +64,3 @@ block content
 	script(src='/javascripts/all.js')
 	script.
 		$(document).foundation();
-
