@@ -6290,43 +6290,49 @@ VARIABLES
 GENERAL
 ******************/
 body {
-  background-color: #1E749E; }
+  background-color: #333; }
 
 /******************
 NAV BAR
 ******************/
-body div.fixed.sticky nav.top-bar section.top-bar-section ul.right li a, body div.fixed.sticky nav.top-bar section.top-bar-section ul.left li.active a, body div.fixed.sticky nav.top-bar {
-  background-color: #FF5D55;
-  color: #FEC63D;
-  font-family: "Questrial", sans-serif; }
-
 nav.top-bar {
-  background-color: #FF5D55;
-  color: #FEC63D;
-  font-family: "Questrial", sans-serif; }
+  background-color: #333;
+  color: #FFF;
+  font-family: "Questrial", sans-serif;
+  height: 5em; }
 
 div.sticky.hide-for-small-only nav.top-bar section.top-bar-section ul.left li.active a {
-  background-color: #FF5D55;
-  color: #FEC63D;
-  font-family: "Questrial", sans-serif; }
+  background-color: #333;
+  color: #FFF;
+  font-family: "Questrial", sans-serif;
+  padding-top: 17px; }
 
 div.sticky.hide-for-small-only nav.top-bar section.top-bar-section ul.right li a {
-  background-color: #FF5D55;
-  color: #FEC63D;
-  font-family: "Questrial", sans-serif; }
+  background-color: #333;
+  color: #FFF;
+  font-family: "Questrial", sans-serif;
+  padding-top: 17px; }
 
 /******************
 SITE NAME
 ******************/
+nav.top-bar ul.title-area li.name h1 {
+  background-color: #FFF;
+  color: #333; }
+
 body div nav.top-bar ul.title-area li.name h1 a {
-  background-color: #FEC63D;
-  color: #FF5D55;
+  background-color: #FFF;
+  color: #333;
   font-family: "Satisfy", cursive;
-  font-size: 20px; }
+  font-size: 20px;
+  height: 4em;
+  padding: 17px 22px 0px 0px;
+  margin-left: 30px;
+  margin-right: 30px; }
 
 nav.top-bar ul.title-area li.toggle-topbar.menu-icon a {
-  background-color: #FF5D55;
-  color: #FEC63D;
+  background-color: #333;
+  color: #FFF;
   font-family: "Questrial", sans-serif; }
 
 nav.top-bar section.top-bar-section ul.right li a {
@@ -6336,13 +6342,13 @@ nav.top-bar section.top-bar-section ul.left li a {
   font-size: 20px; }
 
 nav.top-bar.expanded.fixed section.top-bar-section ul.right li a {
-  background-color: #FF5D55;
-  color: #FEC63D;
+  background-color: #333;
+  color: #FFF;
   font-family: "Questrial", sans-serif; }
 
 nav.top-bar.expanded.fixed section.top-bar-section ul.left li.active a {
-  background-color: #FF5D55;
-  color: #FEC63D;
+  background-color: #333;
+  color: #FFF;
   font-family: "Questrial", sans-serif; }
 
 /******************
@@ -6405,6 +6411,10 @@ USER PAGE
 #userInfoDiv {
   max-width: 70%;
   padding-left: 30px; }
+  #userInfoDiv h2, #userInfoDiv p {
+    color: #FFF; }
+  #userInfoDiv form label#userLabel {
+    color: #FFF; }
 
 button .button #saveBtn {
   background-color: #FF5D55; }
@@ -6413,9 +6423,9 @@ button .button #saveBtn {
 MAP CANVAS
 ******************/
 #map_canvas {
-  height: 75%;
-  width: 70%;
-  margin: 5% auto; }
+  height: 85%;
+  width: 100%;
+  margin: 0 auto; }
 
 /******************
 FLICKR PICTURES
@@ -6423,7 +6433,8 @@ FLICKR PICTURES
 #parkLabel {
   text-align: center;
   margin-top: 10%;
-  margin-bottom: 5%; }
+  margin-bottom: 5%;
+  color: #FFF; }
 
 #pictures {
   display: flex;
@@ -6431,7 +6442,8 @@ FLICKR PICTURES
   flex-wrap: wrap;
   justify-content: space-around;
   align-content: center;
-  align-items: center; }
+  align-items: center;
+  margin-bottom: 50px; }
 
 .flickrPhoto {
   flex-grow: 0;
