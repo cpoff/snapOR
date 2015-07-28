@@ -35,55 +35,12 @@ var UserView = Backbone.View.extend({
 	events: {
 		'click #register_account': 'register_account',//new_user_template
 		'click #complete_regis': 'complete_regis',
-		'click #nav_update': 'nav_update',
-		'click #update_user': "update_user",//current_user_template
+		//'click #update_user': "update_user",//current_user_template
 		'click #update_btn': 'update_btn',//update_user_template
-		'click #logout': 'logout',
-		'click #login_user': 'login_user' 
+		'click #login_user': 'login_user', 
+		'click #logout': 'logout'
 	},
-	update_btn: function() {
-		var self = this;
-		//jQuery.post( url [, data ] [, success ] [, dataType ] )
-		jQuery.post('/update_user_info', {email: userEmail, password: password}, function (reply) {
-			if (reply.error) {
-				console.log(reply);
-				alert("Error");
-			} else {
-			}
-		});
-	},
-	nav_update: function() {
-		console.log("nav_update");
-		var update_user_template = _.template('<h2>Update</h2><label>Name: </label><input type="text" id="nameInput" value={{nameVal}} value=""</input><br /><label>Email: </label><input type="text" id="emailInput" value={{emailVal}} value=""</input><br /><label>Home Location: </label><input type="text" id="homeInput" value={{homeVal}} value=""</input><br /><label>Password: </label><input type="text" id="password" placeholder="change password" value=""</input><br /><button type="submit" id="update_btn">Update Info</button>');
-		$('#userInfoDiv').html(update_user_template({emailVal: userEmail, nameVal: userName, homeVal: userLocation}));
-	},
-	// login_user: function() {
-	// 	var self = this;
-	// 	jQuery.post('/user', {email: userEmail, password: password}, function (reply) {
-	// 		if (reply.error) {
-	// 			console.log(reply);
-	// 			alert("Error");
-	// 		} else {
-	// 			self.login_user();
-	// 		}
-	// 	});
-
-	login_user: function() {
-		var self = this;
-		jQuery.post('/user', {email: userEmail, password: password})
-	},
-	//COMPLETE_REGIS RUNS WHEN USER CLICKS 'SAVE INFO' on new_user_template
-	complete_regis: function(){
-		var userName = $('#nameInput').val();
-		var userLocation = $('#homeInput').val();
-		var userEmail = $('#emailInput').val();
-
-		jQuery.post('/save_new_user', {email: userEmail, password: password, name: userName, hometown: userHome});
-
-		this.model.replace(userName, userEmail, userLocation);
-		userView.render();
-		$("#user").append(userView.$el.html());
-	},
+	///////////////////// PROC. TO REGISTER NEW USER FROM LANDING PAGE
 	register_account: function(){
 		var self = this;
 		var userEmail = $('#email').val();
@@ -108,6 +65,45 @@ var UserView = Backbone.View.extend({
 		} else {
 			alert('Please make sure your password and password confirmation are the same.');
 		}
+	},
+	///////////////////// SAVES/SENDS USER NAME + HOMETOWN TO ORCHESTRATE
+	complete_regis: function(){
+		var userName = $('#nameInput').val();
+		var userLocation = $('#homeInput').val();
+		var userEmail = $('#emailInput').val();
+
+		jQuery.post('/save_new_user', {email: userEmail, password: password, name: userName, hometown: userHome});
+
+		this.model.replace(userName, userEmail, userLocation);
+		userView.render();
+		$("#user").append(userView.$el.html());
+	},
+	update_btn: function() {
+		var self = this;
+		//jQuery.post( url [, data ] [, success ] [, dataType ] )
+		jQuery.post('/update_user_info', {email: userEmail, password: password}, function (reply) {
+			if (reply.error) {
+				console.log(reply);
+				alert("Error");
+			} else {
+			}
+		});
+	},
+	///////////////////// NAV BAR TEMPLATE FOR LOGGED-IN USERS
+	nav_update: function() {
+		console.log("nav_update");
+		var update_user_template = _.template('<h2>Update</h2><label>Name: </label><input type="text" id="nameInput" value={{nameVal}} value=""</input><br /><label>Email: </label><input type="text" id="emailInput" value={{emailVal}} value=""</input><br /><label>Home Location: </label><input type="text" id="homeInput" value={{homeVal}} value=""</input><br /><label>Password: </label><input type="text" id="password" placeholder="change password" value=""</input><br /><button type="submit" id="update_btn">Update Info</button>');
+		$('#userInfoDiv').html(update_user_template({emailVal: userEmail, nameVal: userName, homeVal: userLocation}));
+	},
+	///////////////////// EXISTING USER LOGIN
+	login_user: function() {
+		var self = this;
+		jQuery.post('/user', {email: userEmail, password: password})
+		.then(function() {
+			console.log('new View')
+			$('div.logged-in').show()
+			$('div.logged-out').hide()
+		})
 	},
 	///////////////////// CURRENT_USER_TEMPLATE
 	update: function(){
