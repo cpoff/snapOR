@@ -103,37 +103,37 @@ router.post('/begin_regis', function(req, res){
 	});// closes initial db query for existing email
 });// closes router.post
 
-/* ROUTE TO SAVE NEW USER INFO TO ORCHESTRATE */
-router.post('/save_new_user', function(req, res) {
-	var name = req.body.name;
-	var hometown = req.body.hometown;
-	var email = req.body.email; // email field auto-populates with email entered in initial registration modal
-	var database = app.get('database');
+// /* ROUTE TO SAVE NEW USER INFO TO ORCHESTRATE */
+// router.post('/save_new_user', function(req, res) {
+// 	var name = req.body.name;
+// 	var hometown = req.body.hometown;
+// 	var email = req.body.email; // email field auto-populates with email entered in initial registration modal
+// 	var database = app.get('database');
 
-	//db search for email value
-	db.search('snap', 'value.email:'+email)
-	.then(function(result) {
-		var currentUser = result.body.results[0].value;
-		if (result.body.count === 0) {
-			console.log("whoops");
-			res.render('mistake', {
-				error: 'Whoops!',
-				text: "Let's try that again, shall we?"
-			});// closes res.render
-		} else {
-			db.put('snap', user_key, {
-				'name': name,
-				'hometown': hometown
-			})// db.put
-			.then(function() {
-				console.log('user info pushed to db');
-				res.end();
-			})
-			.fail(function(err) {
-			})
-		}// else
-	})// closes .then
-})// closes router.post
+// 	//db search for email value
+// 	db.search('snap', 'value.email:'+email)
+// 	.then(function(result) {
+// 		var currentUser = result.body.results[0].value;
+// 		if (result.body.count === 0) {
+// 			console.log("whoops");
+// 			res.render('mistake', {
+// 				error: 'Whoops!',
+// 				text: "Let's try that again, shall we?"
+// 			});// closes res.render
+// 		} else {
+// 			db.put('snap', user_key, {
+// 				'name': name,
+// 				'hometown': hometown
+// 			})// db.put
+// 			.then(function() {
+// 				console.log('user info pushed to db');
+// 				res.end();
+// 			})
+// 			.fail(function(err) {
+// 			})
+// 		}// else
+// 	})// closes .then
+// })// closes router.post
 
 /* ROUTE FOR EXISTING USER LOGIN */  
 router.post('/user', function(req, res) {

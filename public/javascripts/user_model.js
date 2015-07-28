@@ -33,11 +33,9 @@ var UserView = Backbone.View.extend({
 		// 	}	
 	}, // closes render
 	events: {
-		'click #register_account': 'register_account',//new_user_template
-		'click #complete_regis': 'complete_regis',
-		//'click #update_user': "update_user",//current_user_template
-		'click #update_btn': 'update_btn',//update_user_template
+		'click #register_account': 'register_account',
 		'click #login_user': 'login_user', 
+		'click #update_user': 'update_user',
 		'click #logout': 'logout'
 	},
 	// logout: function() {
@@ -63,18 +61,18 @@ var UserView = Backbone.View.extend({
 			alert('Please make sure your password and password confirmation are the same.');
 		}
 	},
-	///////////////////// SAVES/SENDS USER NAME + HOMETOWN TO ORCHESTRATE
-	complete_regis: function(){
-		var userName = $('#nameInput').val();
-		var userLocation = $('#homeInput').val();
-		var userEmail = $('#emailInput').val();
+	// ///////////////////// SAVES/SENDS USER NAME + HOMETOWN TO ORCHESTRATE
+	// complete_regis: function(){
+	// 	var userName = $('#nameInput').val();
+	// 	var userLocation = $('#homeInput').val();
+	// 	var userEmail = $('#emailInput').val();
 
-		jQuery.post('/save_new_user', {email: userEmail, password: password, name: userName, hometown: userLocation});
+	// 	jQuery.post('/save_new_user', {email: userEmail, password: password, name: userName, hometown: userLocation});
 
-		this.model.replace(userName, userEmail, userLocation);
-		userView.render();
-		$("#user").append(userView.$el.html());
-	},
+	// 	this.model.replace(userName, userEmail, userLocation);
+	// 	userView.render();
+	// 	$("#user").append(userView.$el.html());
+	// },
 	update_btn: function() {
 		var self = this;
 		//jQuery.post( url [, data ] [, success ] [, dataType ] )
