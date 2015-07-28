@@ -1,28 +1,28 @@
 extends layout
 
 block content
-	div.logged-in
-		.fixed.sticky.hide-for-small-only
-			nav.top-bar(data-topbar="", role="navigation")
-				ul.title-area
-					li.name
-						h1
-							a(href='/') snapOR
-					li.toggle-topbar.menu-icon
-						a(href="#")
-							span Menu
-				section.top-bar-section
-					ul.right
-						li
-							a(href='#' id="logout") Logout
-									form(method="post" action="/logout_user")
-						li
-							//-a(href='#', id='nav-update', data-reveal-id='update') 
-							a(href='#' id="update_account") My Account
-					ul.left
-						li.active
-							a(href='#', data-reveal-id="parks") Explore Parks
-								#parks.reveal-modal.queries(data-reveal='', aria-labelledby='modalTitle', aria-hidden='true', role='dialog')
+	//- div.logged-in
+	//- 	.fixed.sticky.hide-for-small-only
+	//- 		nav.top-bar(data-topbar="", role="navigation")
+	//- 			ul.title-area
+	//- 				li.name
+	//- 					h1
+	//- 						a(href='/') snapOR
+	//- 				li.toggle-topbar.menu-icon
+	//- 					a(href="#")
+	//- 						span Menu
+	//- 			section.top-bar-section
+	//- 				ul.right
+	//- 					li
+	//- 						a(href='#' id="logout") Logout
+	//- 								form(method="post" action="/logout_user")
+	//- 					li
+	//- 						//-a(href='#', id='nav-update', data-reveal-id='update') 
+	//- 						a(href='#' id="update_account") My Account
+	//- 				ul.left
+	//- 					li.active
+	//- 						a(href='#', data-reveal-id="parks") Explore Parks
+	//- 							#parks.reveal-modal.queries(data-reveal='', aria-labelledby='modalTitle', aria-hidden='true', role='dialog')
 	body
 	div.logged-out
 		.fixed.sticky.hide-for-small-only
@@ -35,25 +35,47 @@ block content
 						a(href="#")
 							span Menu
 				section.top-bar-section
-					ul.right
+					//- ul.right#logged-out
+					//- 	li
+					//- 		a(href='#', data-reveal-id="login") Login
+					//- 			#login.reveal-modal.users(data-reveal='', aria-labelledby='modalTitle', aria-hidden='true', role='dialog')
+					//- 				h2#modalTitle Login
+					//- 				a.close-reveal-modal(aria-label='Close') &times;
+					//- 				form(method="post" action="/user")
+					//- 					label.label Email: 
+					//- 					input(type="text" name="email" style="font-family: 'Robot Slab'" placeholder="user@domain.com")
+					//- 					label.label Password: 
+					//- 					input(type="password" name="password" style="font-family: 'Robot Slab'" placeholder="password")
+					//- 					input#login_user.button(type="submit" style="font-family: 'Questrial'" value="Login")
+					//- 					input.button(type="submit" style="font-family: 'Questrial'" value="Reset Password")
+					//- 	li
+					//- 		a(href='#', data-reveal-id='register') Register
+					//- 			#register.reveal-modal.users(data-reveal='', aria-labelledby='modalTitle', aria-hidden='true', role='dialog')
+					//- 				h2#modalTitle Register New Account
+					//- 				a.close-reveal-modal(aria-label='Close') &times;
+					//- 				form(method='post' action='/begin_regis')
+					//- 					label.label Email: 
+					//- 					input#email(type="text" name="email" style="font-family: 'Roboto Slab'" placeholder="user@example.com")
+					//- 					label.label Name: 
+					//- 					input#nameInput(type="text" name="nameInput" style="font-family: 'Roboto Slab'" placeholder="Enter Name")
+					//- 					label.label Hometown:
+					//- 					input#homeInput(type="text" name="homeInput" style="font-family: 'Roboto Slab'" placeholder="City & State")
+					//- 					label.label Password: 
+					//- 					input#password(type="password" name="password" style="font-family: 'Roboto Slab'" placeholder="password")
+					//- 					label.label Re-enter Password: 
+					//- 					input#password_confirm(type="password" name="password_confirm" style="font-family: 'Robot Slab'" placeholder="Re-type your password")
+					//- 					br
+					//- 					input#register_account(type="submit" style="font-family: 'Questrial'" value="Register Account" data-reveal-id="userDiv")
+					ul.right#logged-in
 						li
-							a(href='#', data-reveal-id="login") Login
-								#login.reveal-modal.users(data-reveal='', aria-labelledby='modalTitle', aria-hidden='true', role='dialog')
-									h2#modalTitle Login
-									a.close-reveal-modal(aria-label='Close') &times;
-									form(method="post" action="/user")
-										label.label Email: 
-										input(type="text" name="email" style="font-family: 'Robot Slab'" placeholder="user@domain.com")
-										label.label Password: 
-										input(type="password" name="password" style="font-family: 'Robot Slab'" placeholder="password")
-										input#login_user.button(type="submit" style="font-family: 'Questrial'" value="Login")
-										input.button(type="submit" style="font-family: 'Questrial'" value="Reset Password")
+							a(href='#', data-reveal-id="logout") Logout
+								form(method="post" action="/logout_user")
 						li
-							a(href='#', data-reveal-id='register') Register
-								#register.reveal-modal.users(data-reveal='', aria-labelledby='modalTitle', aria-hidden='true', role='dialog')
-									h2#modalTitle Register New Account
+							a(href='#', data-reveal-id='account') My Account
+								#account.reveal-modal.users(data-reveal='', aria-labelledby='modalTitle', aria-hidden='true', role='dialog')
+									h2#modalTitle Update Account
 									a.close-reveal-modal(aria-label='Close') &times;
-									form(method='post' action='/begin_regis')
+									form(method='post' action='/update_account')
 										label.label Email: 
 										input#email(type="text" name="email" style="font-family: 'Roboto Slab'" placeholder="user@example.com")
 										label.label Name: 
@@ -65,7 +87,7 @@ block content
 										label.label Re-enter Password: 
 										input#password_confirm(type="password" name="password_confirm" style="font-family: 'Robot Slab'" placeholder="Re-type your password")
 										br
-										input#register_account(type="submit" style="font-family: 'Questrial'" value="Register Account" data-reveal-id="userDiv")
+										input#update_user(type="submit" style="font-family: 'Questrial'" value="Update Your Account" data-reveal-id="userDiv")
 					ul.left
 						li.active
 							a(href='#', data-reveal-id="parks") Explore Parks
