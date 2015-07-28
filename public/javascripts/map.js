@@ -18,7 +18,7 @@ var MarkerView = Backbone.View.extend({
 		var sourceArray = [];
 		google.maps.event.addListener(marker, 'click', (function(marker) {
 			return function() {
-				info.setContent("<div><p><b>" + self.model.attributes.name + "</br><a href='#parkInfo'>Explore</a></div>");
+				info.setContent("<div><p><b>" + self.model.attributes.name + "</br><a href='#parkInfo'>Click to view pictures</a></div>");
 				info.open(theMap.map, marker);
 
 				//Close any open infoWindow if the map is clicked
