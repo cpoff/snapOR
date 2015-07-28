@@ -40,16 +40,21 @@ var UserView = Backbone.View.extend({
 		'click #login_user': 'login_user', 
 		'click #logout': 'logout'
 	},
+	// logout: function() {
+	// 	jQuery.post('/logout');
+	// },
 	///////////////////// PROC. TO REGISTER NEW USER FROM LANDING PAGE
 	register_account: function(){
 		var self = this;
 		var userEmail = $('#email').val();
 		var password = $('#password').val();
 		var password_confirm = $('#password_confirm').val();
+		var nameInput = $('#nameInput').val();
+		var homeInput = $('#homeInput').val();
 		if(password===password_confirm){
-			jQuery.post('/begin_regis', {email: userEmail, password: password})
+			jQuery.post('/begin_regis', {email: userEmail, password: password, name: nameInput, hometown: homeInput})
 			.then(function() {
-				var new_user_template =  _.template('<h2>Welcome, {{emailVal}}</h2><p>Please review your information below, and update as needed.</p><form method="post" action="/complete_regis"><label id="userLabel">Name:</label><input id="nameInput" type="text" name:name placeholder="Name"</input><br /><label id="userLabel">Email: </label><input id="emailInput" type="text" value="{{emailVal}}"</input><br /><label id="userLabel">Home Location: </label><input id="homeInput" type="text" name: hometown placeholder="Where do you live?"</input><br /><button id="complete_regis" type="submit">Save Info</button></form>');
+				var new_user_template = _.template('<h2>Welcome, {{emailVal}}</h2><p>Please review your information below, and update as needed.</p><form method="post" action="/complete_regis"><label id="userLabel">Name:</label><input id="nameInput" type="text" name:name placeholder="Name"</input><br /><label id="userLabel">Email: </label><input id="emailInput" type="text" value="{{emailVal}}"</input><br /><label id="userLabel">Home Location: </label><input id="homeInput" type="text" name: hometown placeholder="Where do you live?"</input><br /><button id="complete_regis" type="submit">Save Info</button></form>');
 				$('#userInfoDiv').html(new_user_template({emailVal: userEmail}));
 				$('.reveal-modal-bg').css('display', 'none');
 				console.log("renderTemplate");
@@ -72,7 +77,7 @@ var UserView = Backbone.View.extend({
 		var userLocation = $('#homeInput').val();
 		var userEmail = $('#emailInput').val();
 
-		jQuery.post('/save_new_user', {email: userEmail, password: password, name: userName, hometown: userHome});
+		jQuery.post('/save_new_user', {email: userEmail, password: password, name: userName, hometown: userLocation});
 
 		this.model.replace(userName, userEmail, userLocation);
 		userView.render();
@@ -90,20 +95,21 @@ var UserView = Backbone.View.extend({
 		});
 	},
 	///////////////////// NAV BAR TEMPLATE FOR LOGGED-IN USERS
-	nav_update: function() {
-		console.log("nav_update");
-		var update_user_template = _.template('<h2>Update</h2><label>Name: </label><input type="text" id="nameInput" value={{nameVal}} value=""</input><br /><label>Email: </label><input type="text" id="emailInput" value={{emailVal}} value=""</input><br /><label>Home Location: </label><input type="text" id="homeInput" value={{homeVal}} value=""</input><br /><label>Password: </label><input type="text" id="password" placeholder="change password" value=""</input><br /><button type="submit" id="update_btn">Update Info</button>');
-		$('#userInfoDiv').html(update_user_template({emailVal: userEmail, nameVal: userName, homeVal: userLocation}));
-	},
+	// nav_update: function() {
+	// 	console.log("nav_update");
+	// 	var update_user_template = _.template('<h2>Update</h2><label>Name: </label><input type="text" id="nameInput" value={{nameVal}} value=""</input><br /><label>Email: </label><input type="text" id="emailInput" value={{emailVal}} value=""</input><br /><label>Home Location: </label><input type="text" id="homeInput" value={{homeVal}} value=""</input><br /><label>Password: </label><input type="text" id="password" placeholder="change password" value=""</input><br /><button type="submit" id="update_btn">Update Info</button>');
+	// 	$('#userInfoDiv').html(update_user_template({emailVal: userEmail, nameVal: userName, homeVal: userLocation}));
+	// },
 	///////////////////// EXISTING USER LOGIN
 	login_user: function() {
 		var self = this;
 		jQuery.post('/user', {email: userEmail, password: password})
 		.then(function() {
 			console.log('new View')
-			$('div.logged-in').show()
-			$('div.logged-out').hide()
-		})
+			$('div.logged-out').hide();
+			//or detach / append
+			//or toggle class
+		});
 	},
 	///////////////////// CURRENT_USER_TEMPLATE
 	update: function(){
