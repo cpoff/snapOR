@@ -28,9 +28,10 @@ var MarkerView = Backbone.View.extend({
 					}
 				});
 				var flickrURL = self.model.attributes.parkFlickrCall;
-				var name = self.model.attributes.name;
-				$.getJSON(flickrURL)
-					.always(function(data) {
+				var name = self.model.attributes.name; //name of the Oregon State Park
+				$.getJSON(flickrURL) //fires flickr api
+					.always(function(data) { //after the server response with the flickr data
+						//the following code is similar to the code in search_park_view.js.  The difference in this file is that self replaces instances of this
 						newJson = JSON.parse(data.responseText.slice(14, -1));
 						if($("#parkLabel").html()===undefined){
 							$("<h1 id='parkLabel'>" + name + "</h1>").appendTo('#parkHeader');
