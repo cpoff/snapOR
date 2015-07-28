@@ -6396,6 +6396,13 @@ form div#featureList span.twitter-typeahead, form div#parkList span.twitter-type
 .open a.close-reveal-modal:hover {
   color: #FEC63D; }
 
+.tt-menu {
+  background-color: #FFF;
+  padding: 10%; }
+
+#parks {
+  width: 50%; }
+
 /******************
 USER PAGE
 ******************/

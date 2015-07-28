@@ -162,6 +162,14 @@ form div#featureList span.twitter-typeahead, form div#parkList span.twitter-type
 .open a.close-reveal-modal:hover {
 	color: $yellow;
 }
+
+.tt-menu {
+	background-color: $white;
+	padding: 10%;
+}
+#parks{
+	width: 50%;
+}
 /******************
 USER PAGE
 ******************/
