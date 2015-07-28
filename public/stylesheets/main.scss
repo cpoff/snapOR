@@ -206,10 +206,12 @@ MAP CANVAS
 ******************/
 
 #map_canvas {
-	height: 85%;
-	width: 85%;
+	// height: 85%;
+	// width: 85%;
 	// height: 600px;
 	// width: 1000px;
+	height: 85%;
+	width: 75%;
 	margin: 0 auto;
 }
 
@@ -286,3 +288,4 @@ PARK VIEW DATA
 #parkdiv{
 	text-align: center;
 }
+
