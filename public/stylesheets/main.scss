@@ -162,6 +162,14 @@ form div#featureList span.twitter-typeahead, form div#parkList span.twitter-type
 .open a.close-reveal-modal:hover {
 	color: $yellow;
 }
+
+.tt-menu {
+	background-color: $white;
+	padding: 10%;
+}
+#parks{
+	width: 50%;
+}
 /******************
 USER PAGE
 ******************/
@@ -231,7 +239,7 @@ FLICKR PICTURES
 	margin-bottom: 5%;
 }
 
-#parkInfo p {
+#pictures p {
 	text-align: center;
 	color: $white;
 }
