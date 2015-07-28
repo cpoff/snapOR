@@ -1,3 +1,8 @@
+one nave bar, two ULs
+toggle class
+display none
+display inline block
+
 ## Logged-in View
 ###### Workflow
 * Check for cookie to see if user is logged in
