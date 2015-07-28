@@ -5,7 +5,7 @@ _.templateSettings = {
 var ParkModel = Backbone.Model.extend({
 	urlRoot: '/',
 	defaults: {
-		'park_name': 'blah',
+		'park_name': '',
 		'park_latitude': '0',
 		'park_longitude': '0',
 		'parkFlickrCall': 'http://',
