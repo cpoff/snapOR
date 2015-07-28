@@ -6396,13 +6396,6 @@ form div#featureList span.twitter-typeahead, form div#parkList span.twitter-type
 .open a.close-reveal-modal:hover {
   color: #FEC63D; }
 
-.tt-menu {
-  background-color: #FFF;
-  padding: 10%; }
-
-#parks {
-  width: 50%; }
-
 /******************
 USER PAGE
 ******************/
@@ -6460,7 +6453,7 @@ FLICKR PICTURES
   .flickrPhoto flex-grow:hover {
     transform: scale(1.1); }
 
-#pictures p {
+#parkInfo p {
   text-align: center;
   color: #FFF; }
 
