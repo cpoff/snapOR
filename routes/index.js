@@ -39,8 +39,12 @@ function validateEmail(email) {
 router.post('/begin_regis', function(req, res){
 	console.log("bananas");
 	console.log(req.body);
+	console.log(req.body.name);
 	var email = req.body.email;
+	var name = req.body.name;
+	var hometown = req.body.hometown;
 	var password = req.body.password;
+	console.log(name);
 	//var password_confirm = req.body.password_confirm;
 	var user_key = uuid.v4();
 	var database = app.get('database');
@@ -68,24 +72,26 @@ router.post('/begin_regis', function(req, res){
 		// } 
 		else {
 			//The user's registration info
-			var raw = {email: email, password: password};
+			var raw = {email: email, name: name, hometown: hometown, password: password};
 			//The info that gets stored
-			var stored = {email : email, salt:'', hash:''};
+			var stored = {email: email, name: name, hometown: hometown, salt:'', hash:''};
 			var register = function (raw) {
 				//Create and store encrypted user record:
 				pwd.hash(raw.password, function(err,salt,hash) {
-					stored = {email:raw.email, salt:salt, hash:hash};
+					stored = {email: raw.email, name: raw.name, hometown: raw.hometown, salt:salt, hash:hash};
+					console.log('stored info');
 					console.log(stored);
 					db.put('snap', user_key, {
 						'email': stored.email,
-						// 'password': password
+						'name': stored.name,
+						'hometown': stored.hometown,
 						'salt': stored.salt,
 						'hash': stored.hash
 					})// closes db.put
 					.then(function(){
 						console.log('user created');
 						console.log("db push");
-						console.log(stored);
+						//console.log(stored);
 						res.end();
 						})// closes .then
 					.fail(function(err){});
@@ -97,37 +103,37 @@ router.post('/begin_regis', function(req, res){
 	});// closes initial db query for existing email
 });// closes router.post
 
-/* ROUTE TO SAVE NEW USER INFO TO ORCHESTRATE */
-router.post('/save_new_user', function(req, res) {
-	var name = req.body.name;
-	var hometown = req.body.hometown;
-	var email = req.body.email; // email field auto-populates with email entered in initial registration modal
-	var database = app.get('database');
+// /* ROUTE TO SAVE NEW USER INFO TO ORCHESTRATE */
+// router.post('/save_new_user', function(req, res) {
+// 	var name = req.body.name;
+// 	var hometown = req.body.hometown;
+// 	var email = req.body.email; // email field auto-populates with email entered in initial registration modal
+// 	var database = app.get('database');
 
-	//db search for email value
-	db.search('snap', 'value.email:'+email)
-	.then(function(result) {
-		var currentUser = result.body.results[0].value;
-		if (result.body.count === 0) {
-			console.log("whoops");
-			res.render('mistake', {
-				error: 'Whoops!',
-				text: "Let's try that again, shall we?"
-			});// closes res.render
-		} else {
-			db.put('snap', user_key, {
-				'name': name,
-				'hometown': hometown
-			})// db.put
-			.then(function() {
-				console.log('user info pushed to db');
-				res.end();
-			})
-			.fail(function(err) {
-			})
-		}// else
-	})// closes .then
-})// closes router.post
+// 	//db search for email value
+// 	db.search('snap', 'value.email:'+email)
+// 	.then(function(result) {
+// 		var currentUser = result.body.results[0].value;
+// 		if (result.body.count === 0) {
+// 			console.log("whoops");
+// 			res.render('mistake', {
+// 				error: 'Whoops!',
+// 				text: "Let's try that again, shall we?"
+// 			});// closes res.render
+// 		} else {
+// 			db.put('snap', user_key, {
+// 				'name': name,
+// 				'hometown': hometown
+// 			})// db.put
+// 			.then(function() {
+// 				console.log('user info pushed to db');
+// 				res.end();
+// 			})
+// 			.fail(function(err) {
+// 			})
+// 		}// else
+// 	})// closes .then
+// })// closes router.post
 
 /* ROUTE FOR EXISTING USER LOGIN */  
 router.post('/user', function(req, res) {
@@ -204,6 +210,11 @@ router.post('/update_user_info', function(req, res) {
 		}
 	});// then
 });// closes route to update exis. user info
+
+/* ROUTE TO LOGOUT CURRENT USER */  
+router.post('/logout', function(req, res) {
+
+});
 
 
 module.exports = router;

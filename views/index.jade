@@ -1,7 +1,7 @@
 extends layout
 
 block content
-	div.hidden.logged-in
+	div.logged-in
 		.fixed.sticky.hide-for-small-only
 			nav.top-bar(data-topbar="", role="navigation")
 				ul.title-area
@@ -18,7 +18,12 @@ block content
 									form(method="post" action="/logout_user")
 						li
 							//-a(href='#', id='nav-update', data-reveal-id='update') 
-							a(href='#' id="update") Update
+							a(href='#' id="update_account") My Account
+					ul.left
+						li.active
+							a(href='#', data-reveal-id="parks") Explore Parks
+								#parks.reveal-modal.queries(data-reveal='', aria-labelledby='modalTitle', aria-hidden='true', role='dialog')
+	body
 	div.logged-out
 		.fixed.sticky.hide-for-small-only
 			nav.top-bar(data-topbar="", role="navigation")
@@ -51,10 +56,14 @@ block content
 									form(method='post' action='/begin_regis')
 										label.label Email: 
 										input#email(type="text" name="email" style="font-family: 'Roboto Slab'" placeholder="user@example.com")
+										label.label Name: 
+										input#nameInput(type="text" name="nameInput" style="font-family: 'Roboto Slab'" placeholder="Enter Name")
+										label.label Hometown:
+										input#homeInput(type="text" name="homeInput" style="font-family: 'Roboto Slab'" placeholder="City & State")
 										label.label Password: 
 										input#password(type="password" name="password" style="font-family: 'Roboto Slab'" placeholder="password")
 										label.label Re-enter Password: 
-										input#password_confirm(type="password" name="password_confirm" style="font-family: 'Robot Slab'" placeholder="password confirmation")
+										input#password_confirm(type="password" name="password_confirm" style="font-family: 'Robot Slab'" placeholder="Re-type your password")
 										br
 										input#register_account(type="submit" style="font-family: 'Questrial'" value="Register Account" data-reveal-id="userDiv")
 					ul.left
