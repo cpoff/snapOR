@@ -57,9 +57,6 @@ var SearchParkView = Backbone.View.extend({
 	}
 });
 
-
-
-
 var searchParkView = new SearchParkView({model: parkModel, collection: parkCollection});
 searchParkView.render();
 $("#parks").append(searchParkView.$el);
