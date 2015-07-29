@@ -90,6 +90,7 @@ var UpdateView = Backbone.View.extend({
 	// },
 });
 
+
 /***** LOGOUT USERS *****/
 var LogoutView = Backbone.View.extend({
 	el: '#login-state',
