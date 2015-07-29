@@ -6313,12 +6313,6 @@ div.sticky.hide-for-small-only nav.top-bar section.top-bar-section ul.right li a
   font-family: "Questrial", sans-serif;
   padding-top: 17px; }
 
-div.sticky.hide-for-small-only nav.top-bar section.top-bar-section ul.right.display-nav li a {
-  display: inline-block; }
-
-div.sticky.hide-for-small-only nav.top-bar section.top-bar-section ul.right.hide-nav li a {
-  display: none; }
-
 /******************
 SITE NAME
 ******************/
@@ -6377,19 +6371,11 @@ MODALS
   color: #FEC63D;
   text-align: center; }
 
-#featureList, #parkList {
-  display: flex;
-  flex-direction: row;
-  justify-content: center; }
-
-#featureList .submit, #parkList .submit {
+#parkList .submit {
   width: 120px;
   margin-left: 5%; }
 
-#featureList .typeahead, #parkList .typeahead {
-  width: 100%; }
-
-form div#featureList span.twitter-typeahead, form div#parkList span.twitter-typeahead {
+div#parkList span.twitter-typeahead {
   width: 60%; }
 
 .button {
@@ -6437,7 +6423,7 @@ MAP CANVAS
 ******************/
 #map_canvas {
   height: 85%;
-  width: 85%;
+  width: 75%;
   margin: 0 auto; }
 
 /******************
@@ -6497,7 +6483,10 @@ MOBILE VERSION
     font-family: "Questrial", sans-serif; }
   .reveal-modal {
     width: 70%;
-    margin: 20%; } }
+    margin: 20%; }
+  div#parkList span.twitter-typeahead {
+    width: 100%;
+    margin-top: 50%; } }
 
 /******************
 PARK VIEW DATA

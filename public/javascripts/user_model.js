@@ -71,7 +71,8 @@ var UserView = Backbone.View.extend({
 		jQuery.post('/user', {email: userEmail, password: password})
 		.then(function() {
 			console.log('new View')
-			$('ul#logout-state').toggleClass('hide-nav display-nav', addOrRemove);
+			$('ul#logout-state').toggleClass('hide-nav');
+			//$('ul#login-state').toggleClass('display-nav', addOrRemove);
 			$('.reveal-modal-bg').css('display', 'none');
 		});
 	},
