@@ -6303,11 +6303,14 @@ body {
     color: #FFF;
     font-size: 1.5em; }
   #intro-content .sec-1 p {
-    margin-bottom: 0; }
+    margin-bottom: 0;
+    font-family: "Gilda Display", serif; }
   #intro-content .sec-2 p {
-    margin-bottom: 0; }
+    margin-bottom: 0;
+    font-family: "Gilda Display", serif; }
   #intro-content .sec-3 p {
-    margin-bottom: 50px; }
+    margin-bottom: 50px;
+    font-family: "Gilda Display", serif; }
 
 /******************
 NAV BAR
