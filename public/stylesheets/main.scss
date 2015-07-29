@@ -55,11 +55,8 @@ div.sticky.hide-for-small-only nav.top-bar section.top-bar-section ul.right li a
 	padding-top: 17px
 }
 
-div.sticky.hide-for-small-only nav.top-bar section.top-bar-section ul.right.display-nav li a {
-	display: inline-block;
-}
-
-div.sticky.hide-for-small-only nav.top-bar section.top-bar-section ul.right.hide-nav li a {
+#login-state.hide-nav, 
+#logout-state.hide-nav {
 	display: none;
 }
 
@@ -202,7 +199,7 @@ MAP CANVAS
 	// height: 600px;
 	// width: 1000px;
 	height: 85%;
-	width: 75%;
+	width: 87%;
 	margin: 0 auto;
 }
 

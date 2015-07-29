@@ -72,7 +72,7 @@ var UserView = Backbone.View.extend({
 		.then(function() {
 			console.log('new View')
 			$('ul#logout-state').toggleClass('hide-nav');
-			//$('ul#login-state').toggleClass('display-nav', addOrRemove);
+			$('ul#login-state').toggleClass('hide-nav');
 			$('.reveal-modal-bg').css('display', 'none');
 		});
 	},
