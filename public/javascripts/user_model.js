@@ -12,43 +12,9 @@ var UserModel = Backbone.Model.extend({
 			this.set({"name" : name, "email" : email, "home" : home});
 			this.save();
 	}
-}); // closes userModel
+});
 
-var UpdateView = Backbone.View.extend({
-	el: '#my_account',
-	events: {
-		'click #my_account': 'my_account'
-	},
-	update_user: function() {
-		//jQuery.post( url [, data ] [, success ] [, dataType ] )
-		jQuery.post('/update_user_info', {email: userEmail, password: password, name: nameInput, hometown: homeInput})
-	},
-	// update_user: function() {
-	// 	var self = this;
-	// 	//jQuery.post( url [, data ] [, success ] [, dataType ] )
-	// 	jQuery.post('/update_user_info', {email: userEmail, password: password, name: nameInput, hometown: homeInput}, function (reply) {
-	// 		if (reply.error) {
-	// 			console.log(reply);
-	// 			alert("Error");
-	// 		} else {
-	// 		}
-	// 	});
-	// },
-})
-
-var LogoutView = Backbone.View.extend({
-	el: '#login-state',
-	events: {
-		'click #logout': 'logout'
-	},
-	logout: function() {
-		console.log('user is logged out');
-		//$('.reveal-modal-bg').css('display', 'none');
-		$('ul#logout-state').toggleClass('hide-nav');
-		$('ul#login-state').toggleClass('hide-nav');
-	} 
-})
-
+/***** REGISTER NEW USERS *****/
 var RegView = Backbone.View.extend({
 	el: '#register',
 	events: {
@@ -73,15 +39,13 @@ var RegView = Backbone.View.extend({
 		}
 	},
 
-});// closes RegView
+});
 
+/***** LOGIN EXISTING USERS *****/
 var UserView = Backbone.View.extend({
 	el : '#login',
 	events: {
 		'click #login_user': 'login_user', 
-		'click #update_user': 'update_user',
-		'click #my_account': 'my_account',
-		'click #logout': 'logout',
 	},
 	login_user: function(event) {
 		var userEmail = $('#login-email').val();
@@ -96,7 +60,47 @@ var UserView = Backbone.View.extend({
 			$('.reveal-modal-bg').css('display', 'none');
 		});
 	}
-}); // closes userView
+});
+
+/***** UPDATE EXISTING USERS *****/
+var UpdateView = Backbone.View.extend({
+	el: '#my_account',
+	events: {
+		'click #update_user': 'update_user'
+	},
+	update_user: function(event) {
+		event.preventDefault();
+		console.log('user updated');
+		$('.reveal-modal-bg').css('display', 'none');
+	}
+	/***** WILL PUT INTO EFFECT W/SESSIONS *****/
+	// update_user: function(event) {
+	// 	event.preventDefault();
+	// 	var self = this;
+	// 	var userEmail = $('#email').val();
+	// 	var password = $('#password').val();
+	// 	var password_confirm = $('#password_confirm').val();
+	// 	var nameInput = $('#nameInput').val();
+	// 	var homeInput = $('#homeInput').val();
+	// 	if(password===password_confirm){
+	// 		jQuery.post('/update_user_info', {email: userEmail, password: password, name: nameInput, hometown: homeInput})
+	// 	}
+	// },
+});
+
+/***** LOGOUT USERS *****/
+var LogoutView = Backbone.View.extend({
+	el: '#login-state',
+	events: {
+		'click #logout': 'logout'
+	},
+	logout: function() {
+		console.log('user is logged out');
+		//$('.reveal-modal-bg').css('display', 'none');
+		$('ul#logout-state').toggleClass('hide-nav');
+		$('ul#login-state').toggleClass('hide-nav');
+	} 
+});
 
 var userModel = new UserModel();
 var userView = new UserView({model: userModel});
