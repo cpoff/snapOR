@@ -66,16 +66,23 @@ var UserView = Backbone.View.extend({
 
 /***** UPDATE EXISTING USERS *****/
 var UpdateView = Backbone.View.extend({
-	el: '#my_account',
+	el: '#account',
+	initialize: function() {
+		console.log(this);
+	},
 	events: {
 		'click #update_user': 'update_user'
 	},
 	update_user: function(event) {
 		event.preventDefault();
-		console.log('user updated');
-		$('.reveal-modal-bg').css('display', 'none');
+		console.log('server request')
+		jQuery.post('/update')
+		.then(function() {
+			console.log('user updated');
+			$('.reveal-modal-bg').css('display', 'none');
+		}())
 	}
-	/***** WILL PUT INTO EFFECT W/SESSIONS *****/
+	/***** FUTURE ITERATION: WILL PUT INTO EFFECT W/SESSIONS *****/
 	// update_user: function(event) {
 	// 	event.preventDefault();
 	// 	var self = this;
@@ -90,9 +97,10 @@ var UpdateView = Backbone.View.extend({
 	// },
 });
 
+
 /***** LOGOUT USERS *****/
 var LogoutView = Backbone.View.extend({
-	el: '#login-state',
+	el: '#logout_func',
 	events: {
 		'click #logout': 'logout'
 	},
@@ -106,5 +114,6 @@ var LogoutView = Backbone.View.extend({
 
 var userModel = new UserModel();
 var userView = new UserView({model: userModel});
-var regview = new RegView({model: userModel});
-var logoutview = new LogoutView({model: userModel});
+var regView = new RegView({model: userModel});
+var logoutView = new LogoutView({model: userModel});
+var updateView = new UpdateView({model: userModel});

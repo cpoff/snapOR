@@ -151,33 +151,33 @@ router.post('/user', function(req, res) {
 	});// closes .then
 });// closes login router
 
-/* ROUTE FOR UPDATING EXISTING USER INFO */  
-router.post('/update_user_info', function(req, res) {
-	console.log('beginning update');
-	console.log(req.body);
-	var email = req.body.email;
-	var name = req.body.name;
-	var hometown = req.body.hometown;
-	var password = req.body.password;
-	var database = app.get('database');
+// /* ROUTE FOR UPDATING EXISTING USER INFO */  
+// router.post('/update_user_info', function(req, res) {
+// 	console.log('beginning update');
+// 	console.log(req.body);
+// 	var email = req.body.email;
+// 	var name = req.body.name;
+// 	var hometown = req.body.hometown;
+// 	var password = req.body.password;
+// 	var database = app.get('database');
 	
-	dp.merge('snap', user_key, {
-		'email': stored.email,
-		'salt': stored.salt,
-		'hash': stored.hash,
-		'name': stored.name,
-		'hometown': stored.hometown
-	})// db.put
-	.then(function() {
-		console.log('user updated');
-		res.end();
-	})// then
-	.fail(function(err){});
-});// closes route to update exis. user info
-
-/* ROUTE TO LOGOUT CURRENT USER */  
-router.post('/logout', function(req, res) {
-
+// 	dp.merge('snap', user_key, {
+// 		'email': stored.email,
+// 		'salt': stored.salt,
+// 		'hash': stored.hash,
+// 		'name': stored.name,
+// 		'hometown': stored.hometown
+// 	})// db.put
+// 	.then(function() {
+// 		console.log('user updated');
+// 		res.end();
+// 	})// then
+// 	.fail(function(err){});
+// });// closes route to update exis. user info
+ 
+router.post('/update', function(req, res) {
+	console.log('update route');
+	res.end();
 });
 
 
