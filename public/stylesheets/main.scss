@@ -134,19 +134,12 @@ MODALS
 	text-align: center;
 }
 
-#featureList, #parkList{
-	display: flex;
-	flex-direction: row;
-	justify-content: center;
-}
-#featureList .submit, #parkList .submit{
+#parkList .submit{
 	width: 120px;
 	margin-left: 5%;
 }
-#featureList .typeahead, #parkList .typeahead{
-	width: 100%
-}
-form div#featureList span.twitter-typeahead, form div#parkList span.twitter-typeahead{
+
+div#parkList span.twitter-typeahead{
 	width: 60%;
 }
 
@@ -204,10 +197,12 @@ MAP CANVAS
 ******************/
 
 #map_canvas {
-	height: 85%;
-	width: 85%;
+	// height: 85%;
+	// width: 85%;
 	// height: 600px;
 	// width: 1000px;
+	height: 85%;
+	width: 75%;
 	margin: 0 auto;
 }
 
@@ -276,6 +271,10 @@ MOBILE VERSION
 		width: 70%;
 		margin: 20%;
 	}
+	div#parkList span.twitter-typeahead{
+		width: 100%;
+		margin-top: 50%;
+	}
 }
 
 /******************
@@ -284,3 +283,4 @@ PARK VIEW DATA
 #parkdiv{
 	text-align: center;
 }
+

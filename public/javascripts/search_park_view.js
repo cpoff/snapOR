@@ -3,8 +3,7 @@ var SearchParkView = Backbone.View.extend({
 	el: '#parks',
 	render: function(){
 		//Explore Parks modal, appears in dom when you click Explore Parks
-		var template = _.template('<h2 id="modalTitle">Explore Parks</h2><a class="close-reveal-modal aria-label="Close">&times;</a><div id="parkList"><input id="parkName" class="typeahead" type="text" name="Enter park name:" style="font-family: \'Robot Slab\'" placeholder="Ex: \'cape kiwanda\', \'silver falls state park\'"><br><a href="#" class="close-reveal-modal"><input id="searchParks" class="submit button" class="submit" value="Explore"></a></div>');
-		this.$el.html(template());
+		this.$el.html('<div id="parkList"><input id="parkName" class="typeahead" type="text" name="Enter park name:" style="font-family: \'Robot Slab\'" placeholder="Ex: \'cape kiwanda\', \'silver falls state park\'"><a href="#" class="close-reveal-modal"><input id="searchParks" class="submit button" class="submit" value="Explore"></a></div>');
 	},
 
 	searchParks: function(){
@@ -44,7 +43,7 @@ var SearchParkView = Backbone.View.extend({
 						for(var i = 0; i<newJson.photos.photo.length; ++i){
 							var source = "http://farm" + newJson.photos.photo[i].farm + ".static.flickr.com/" + newJson.photos.photo[i].server + "/" + newJson.photos.photo[i].id + "_" + newJson.photos.photo[i].secret + "_" + "m.jpg";
 							var link = "http://www.flickr.com/photos/" + newJson.photos.photo[i].owner + "/" + newJson.photos.photo[i].id + " target=_blank";
-							sourceArray.push(source);
+							// sourceArray.push(source);
 							$("<a href=" + link + "><img class=flickrPhoto src=" + source + "></a>").appendTo('#pictures');
 						}
 					} else {
@@ -57,9 +56,6 @@ var SearchParkView = Backbone.View.extend({
 			'click #searchParks': 'searchParks'//fire flicker api, render parkView
 	}
 });
-
-
-
 
 var searchParkView = new SearchParkView({model: parkModel, collection: parkCollection});
 searchParkView.render();
