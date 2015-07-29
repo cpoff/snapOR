@@ -6292,22 +6292,6 @@ GENERAL
 body {
   background-color: #333; }
 
-#intro-content {
-  width: 100%;
-  text-align: center;
-  padding-left: 20%;
-  padding-right: 20%; }
-  #intro-content p {
-    font-family: "Questrial", sans-serif;
-    color: #FFF;
-    font-size: 22px; }
-  #intro-content .sec-1 p {
-    margin-bottom: 0; }
-  #intro-content .sec-2 p {
-    margin-bottom: 0; }
-  #intro-content .sec-3 p {
-    margin-bottom: 50px; }
-
 /******************
 NAV BAR
 ******************/
@@ -6451,8 +6435,8 @@ FLICKR PICTURES
 ******************/
 #parkLabel {
   text-align: center;
-  margin-top: 6%;
-  margin-bottom: 2%;
+  margin-top: 10%;
+  margin-bottom: 5%;
   color: #FFF; }
 
 #pictures {
@@ -6472,20 +6456,14 @@ FLICKR PICTURES
   .flickrPhoto flex-grow:hover {
     transform: scale(1.1); }
 
-#pictures {
-  font-family: "Gilda Display", serif;
-  color: #FFF;
-  margin-left: 40%; }
+#pictures p {
+  text-align: center;
+  color: #FFF; }
 
 .flickrPhoto:hover {
   box-shadow: 0px 0px 30px #000000;
   transition: all 200ms ease-in;
   transform: scale(1.2); }
-
-#no-photos {
-  color: #FFF;
-  font-family: "Gilda Display", serif;
-  margin-left: 20%; }
 
 /******************
 MOBILE VERSION
