@@ -3,7 +3,6 @@
 //cd into snapOR/public/stylesheets, then run 'scss main.scss main.css' in terminal to compile scss to css or gulp serve
 
 
-
 /******************
 VARIABLES
 ******************/
@@ -27,7 +26,7 @@ GENERAL
 ******************/
 
 body {
-	background-color: $darkGray;
+	background-color: $blue;
 }
 
 #intro-content{
@@ -56,27 +55,27 @@ NAV BAR
 ******************/
 
 nav.top-bar {
-	background-color: $darkGray;
+	background-color: $red;
 	color: $white;
 	font-family: $sans-serif;
 	height: 5em;
 }
 
 div.sticky.hide-for-small-only nav.top-bar section.top-bar-section ul.left li.active a {
-	background-color: $darkGray;
+	background-color: $red;
 	color: $white;
 	font-family: $sans-serif;
 	padding-top: 17px
 }
 
 div.sticky.hide-for-small-only nav.top-bar section.top-bar-section ul.right li a {
-	background-color: $darkGray;
+	background-color: $red;
 	color: $white;
 	font-family: $sans-serif;
 	padding-top: 17px
 }
 
-#login-state.hide-nav, 
+#login-state.hide-nav,
 #logout-state.hide-nav {
 	display: none;
 }
@@ -86,13 +85,13 @@ SITE NAME
 ******************/
 nav.top-bar ul.title-area li.name h1 {
 	background-color: $white;
-	color: $darkGray;
+	color: $blue;
 }
 
 
 body div nav.top-bar ul.title-area li.name h1 a {
 	background-color: $white;
-	color: $darkGray;
+	color: $red;
 	font-family: $cursive;
 	font-size: 20px;
 	height: 4em;
@@ -102,7 +101,7 @@ body div nav.top-bar ul.title-area li.name h1 a {
 }
 
 nav.top-bar ul.title-area li.toggle-topbar.menu-icon a {
-	background-color: $darkGray;
+	background-color: $red;
 	color: $white;
 	font-family: $sans-serif;
 }
@@ -116,13 +115,13 @@ nav.top-bar section.top-bar-section ul.left li a {
 }
 
 nav.top-bar.expanded.fixed section.top-bar-section ul.right li a{
-	background-color: $darkGray;
+	background-color: $red;
 	color: $white;
 	font-family: $sans-serif;
 }
 
 nav.top-bar.expanded.fixed section.top-bar-section ul.left li.active a {
-	background-color: $darkGray;
+	background-color: $red;
 	color: $white;
 	font-family: $sans-serif;
 }
@@ -254,8 +253,8 @@ FLICKR PICTURES
 	font-family: $serif;
 	//text-align: center;
 	color: $white;
-	padding-left: 30px;
-	padding-right: 30px;
+	margin-left: 5%;
+	margin-right: 5%;
 }
 
 .flickrPhoto:hover{
