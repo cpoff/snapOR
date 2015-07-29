@@ -30,6 +30,27 @@ body {
 	background-color: $darkGray;
 }
 
+#intro-content{
+	width: 100%;
+	text-align: center;
+	padding-left: 20%;
+	padding-right: 20%;
+	p {
+	font-family: $sans-serif;
+	color: $white;
+	font-size: 22px;
+	}
+	.sec-1 p {
+		margin-bottom: 0;
+	}
+	.sec-2 p {
+		margin-bottom: 0;
+	}
+	.sec-3 p {
+		margin-bottom: 50px;
+	}
+}
+
 /******************
 NAV BAR
 ******************/
@@ -208,11 +229,11 @@ FLICKR PICTURES
 ******************/
 #parkLabel, {
 	text-align: center;
-	margin-top: 10%;
-	margin-bottom: 5%;
+	margin-top: 6%;
+	margin-bottom: 2%;
 	color: $white;
 }
-#pictures{
+#pictures {
 	display: flex;
 	flex-direction: row;
 	flex-wrap: wrap;
@@ -229,15 +250,23 @@ FLICKR PICTURES
 	margin-bottom: 5%;
 }
 
-#pictures p {
-	text-align: center;
+#pictures {
+	font-family: $serif;
+	//text-align: center;
 	color: $white;
+	margin-left: 40%;
 }
 
 .flickrPhoto:hover{
 	box-shadow: 0px 0px 30px #000000;
 	transition: all 200ms ease-in;
 	transform: scale(1.2);
+}
+
+#no-photos {
+	color: $white;
+	font-family: $serif;
+	margin-left: 20%;
 }
 
 /******************

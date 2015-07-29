@@ -32,7 +32,7 @@ var SearchParkView = Backbone.View.extend({
 							$("<a href=" + link + "><img class=flickrPhoto src=" + source + "></a>").appendTo('#pictures');
 						}
 					} else { //if newJson doesn't have any pictures, the an error message is appended to the page
-						$("<p>Sorry, we couldn't find any photos from that park.</p>").appendTo('#pictures');
+						$("<p id='no-photos'>Sorry, we couldn't find any photos from that park. Looks like you've got an adventure waiting! </p>").appendTo('#pictures');
 					}
 				} else { //if the user has already searched for a park (as indicated by a park name and either pictures or an error message appended below the google map), all of those elements of the previous search are removed from the dom, and the query results from the current search are appended.
 					$("#parkLabel").remove();
@@ -47,7 +47,7 @@ var SearchParkView = Backbone.View.extend({
 							$("<a href=" + link + "><img class=flickrPhoto src=" + source + "></a>").appendTo('#pictures');
 						}
 					} else {
-						$("<p>Sorry, we couldn't find any photos from that park.</p>").appendTo('#pictures');
+						$("<p>Sorry, we couldn't find any photos from that park. Looks like you've got an adventure waiting!</p>").appendTo('#pictures');
 					}
 				}
 			});
