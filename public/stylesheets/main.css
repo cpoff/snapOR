@@ -6290,7 +6290,7 @@ VARIABLES
 GENERAL
 ******************/
 body {
-  background-color: #1E749E; }
+  background-color: #333; }
 
 #intro-content {
   width: 100%;
@@ -6312,19 +6312,19 @@ body {
 NAV BAR
 ******************/
 nav.top-bar {
-  background-color: #FF5D55;
+  background-color: #333;
   color: #FFF;
   font-family: "Questrial", sans-serif;
   height: 5em; }
 
 div.sticky.hide-for-small-only nav.top-bar section.top-bar-section ul.left li.active a {
-  background-color: #FF5D55;
+  background-color: #333;
   color: #FFF;
   font-family: "Questrial", sans-serif;
   padding-top: 17px; }
 
 div.sticky.hide-for-small-only nav.top-bar section.top-bar-section ul.right li a {
-  background-color: #FF5D55;
+  background-color: #333;
   color: #FFF;
   font-family: "Questrial", sans-serif;
   padding-top: 17px; }
@@ -6338,11 +6338,11 @@ SITE NAME
 ******************/
 nav.top-bar ul.title-area li.name h1 {
   background-color: #FFF;
-  color: #1E749E; }
+  color: #333; }
 
 body div nav.top-bar ul.title-area li.name h1 a {
   background-color: #FFF;
-  color: #FF5D55;
+  color: #333;
   font-family: "Satisfy", cursive;
   font-size: 20px;
   height: 4em;
@@ -6351,7 +6351,7 @@ body div nav.top-bar ul.title-area li.name h1 a {
   margin-right: 30px; }
 
 nav.top-bar ul.title-area li.toggle-topbar.menu-icon a {
-  background-color: #FF5D55;
+  background-color: #333;
   color: #FFF;
   font-family: "Questrial", sans-serif; }
 
@@ -6362,12 +6362,12 @@ nav.top-bar section.top-bar-section ul.left li a {
   font-size: 20px; }
 
 nav.top-bar.expanded.fixed section.top-bar-section ul.right li a {
-  background-color: #FF5D55;
+  background-color: #333;
   color: #FFF;
   font-family: "Questrial", sans-serif; }
 
 nav.top-bar.expanded.fixed section.top-bar-section ul.left li.active a {
-  background-color: #FF5D55;
+  background-color: #333;
   color: #FFF;
   font-family: "Questrial", sans-serif; }
 
@@ -6475,8 +6475,7 @@ FLICKR PICTURES
 #pictures {
   font-family: "Gilda Display", serif;
   color: #FFF;
-  margin-left: 5%;
-  margin-right: 5%; }
+  margin-left: 40%; }
 
 .flickrPhoto:hover {
   box-shadow: 0px 0px 30px #000000;
