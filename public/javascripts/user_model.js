@@ -32,6 +32,8 @@ var RegView = Backbone.View.extend({
 			jQuery.post('/begin_regis', {email: userEmail, password: password, name: nameInput, hometown: homeInput})
 			.then(function() {
 				$('.reveal-modal-bg').css('display', 'none');
+				$('ul#logout-state').toggleClass('hide-nav');
+				$('ul#login-state').toggleClass('hide-nav');
 				console.log("renderTemplate");
 			}())// then
 		} else {
@@ -77,11 +79,11 @@ var UpdateView = Backbone.View.extend({
 	// update_user: function(event) {
 	// 	event.preventDefault();
 	// 	var self = this;
-	// 	var userEmail = $('#email').val();
-	// 	var password = $('#password').val();
-	// 	var password_confirm = $('#password_confirm').val();
-	// 	var nameInput = $('#nameInput').val();
-	// 	var homeInput = $('#homeInput').val();
+	// 	var userEmail = $('#email_update').val();
+	// 	var password = $('#password_update').val();
+	// 	var password_confirm = $('#password_confirm_update').val();
+	// 	var nameInput = $('#nameInput_update').val();
+	// 	var homeInput = $('#homeInput_update').val();
 	// 	if(password===password_confirm){
 	// 		jQuery.post('/update_user_info', {email: userEmail, password: password, name: nameInput, hometown: homeInput})
 	// 	}
