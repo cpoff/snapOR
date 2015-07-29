@@ -1,38 +1,13 @@
 extends layout
 
 block content
-	//- div.logged-in
-	//- 	.fixed.sticky.hide-for-small-only
-	//- 		nav.top-bar(data-topbar="", role="navigation")
-	//- 			ul.title-area
-	//- 				li.name
-	//- 					h1
-	//- 						a(href='/') snapOR
-	//- 				li.toggle-topbar.menu-icon
-	//- 					a(href="#")
-	//- 						span Menu
-	//- 			section.top-bar-section
-	//- 				ul.right
-	//- 					li
-	//- 						a(href='#' id="logout") Logout
-	//- 								form(method="post" action="/logout_user")
-	//- 					li
-	//- 						//-a(href='#', id='nav-update', data-reveal-id='update') 
-	//- 						a(href='#' id="update_account") My Account
-	//- 				ul.left
-	//- 					li.active
-	//- 						a(href='#', data-reveal-id="parks") Explore Parks
-	//- 							#parks.reveal-modal.queries(data-reveal='', aria-labelledby='modalTitle', aria-hidden='true', role='dialog')
 	body
 	.fixed.sticky.hide-for-small-only
-		nav.top-bar(data-topbar="", role="navigation")
+		nav.top-bar(data-topbar role="navigation" data-options="is_hover: false")
 			ul.title-area
 				li.name
 					h1
 						a(href='/') snapOR
-				li.toggle-topbar.menu-icon
-					a(href="#")
-						span Menu
 			section.top-bar-section
 				ul.right#logout-state
 					li
@@ -67,7 +42,7 @@ block content
 									input#register_account(type="submit" style="font-family: 'Questrial'" value="Register Account" data-reveal-id="userDiv")
 				ul.right#login-state.hide-nav
 					li
-						a(href='#', id="logout", data-reveal-id="logout") Logout
+						a(href='#', id="logout") Logout
 							form(method="post" action="/logout_user")
 					li
 						a(href='#', id="my_account" data-reveal-id='account') My Account

@@ -10,7 +10,7 @@ var gulp = require('gulp'),
 gulp.task('concatScripts', function(){
 	return gulp.src([
 		'./bower_components/jquery/dist/jquery.min.js',
-		'./bower_components/foundation/js/foundation.min.js', 
+		'./bower_components/foundation/js/foundation.js', 
 		'./bower_components/typeahead.js/dist/typeahead.bundle.min.js',
 		'./public/javascripts/underscore.js', 
 		'./public/javascripts/backbone.js',
