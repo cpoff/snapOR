@@ -6313,6 +6313,10 @@ div.sticky.hide-for-small-only nav.top-bar section.top-bar-section ul.right li a
   font-family: "Questrial", sans-serif;
   padding-top: 17px; }
 
+#login-state.hide-nav,
+#logout-state.hide-nav {
+  display: none; }
+
 /******************
 SITE NAME
 ******************/
@@ -6423,7 +6427,7 @@ MAP CANVAS
 ******************/
 #map_canvas {
   height: 85%;
-  width: 75%;
+  width: 87%;
   margin: 0 auto; }
 
 /******************
