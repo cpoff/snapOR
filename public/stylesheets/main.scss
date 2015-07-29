@@ -244,6 +244,8 @@ FLICKR PICTURES
 	align-content: center;
 	align-items: center;
 	margin-bottom: 50px;
+	padding-right: 10%;
+	padding-left: 10%;
 }
 .flickrPhoto{
 	flex-grow: 0;
@@ -253,12 +255,11 @@ FLICKR PICTURES
 	margin-bottom: 5%;
 }
 
-#pictures {
+#pictures p {
 	font-family: $serif;
-	//text-align: center;
 	color: $white;
-	padding-left: 40px;
-	padding-right: 40px;
+	padding-left: 25%;
+	padding-right: 25%;
 }
 
 .flickrPhoto:hover{
@@ -267,7 +268,7 @@ FLICKR PICTURES
 	transform: scale(1.2);
 }
 
-#no-photos {
+.no-photos {
 	color: $white;
 	font-family: $serif;
 	margin-left: 20%;
