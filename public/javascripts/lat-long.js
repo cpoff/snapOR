@@ -6,6 +6,7 @@ var APP = APP || {};
 		parkName: ""
 	};
 	var parkNameArray = []; //create an array that has a list of park names, for typeahead
+//	Feature list is not needed until we implement a 'search by feature'-cp
 	var featureList = ["Ampitheater", "Beach Access", "Bike Path", "Boat Ramp", "Cabin", "Camping", "Day-Use Fee", "Deluxe Cabin", "Deluxe Yurt", "Disc Golf", "Dump Station", "Exhibit Information", "Fishing", "Hiker Biker", "Hiking Trails", "Horse Trails", "Kayaking", "Marina", "Pet Friendly", "Picknicking", "Pit Toilets", "Playground", "Potable Water", "Reservable", "Restrooms Flush", "Hot Shower", "Swimming", "Tepee", "Vault Toilets", "Viewpoint", "Wildlife", "Windsurfing", "Open Year Round", "Yurt"];
 	function mapParkCollection(data) {
 		data.forEach(function(feature) {
@@ -13,9 +14,11 @@ var APP = APP || {};
 				"name": feature.park_name,
 				"latitude": feature.park_latitude,
 				"longitude": feature.park_longitude,
+//				This Flickr URL will need your own 'key'
 				"parkFlickrCall": 'https://api.flickr.com/services/rest/?method=flickr.photos.search&api_key=a3a47a8bbef03987ba49563f5120127e&tags=park&lat=' + feature.park_latitude + '&lon=' + feature.park_longitude + '&radius=5&per_page=20&format=json'
 			};
 			parkNameArray.push(feature.park_name);
+//			Pushing parkObj here populates the Park Collection with 196 models
 			parkCollection.add(parkObj);
 		});
 	}
