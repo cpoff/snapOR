@@ -34,16 +34,6 @@ body {
 NAV BAR
 ******************/
 
-// body div.fixed.sticky nav.top-bar section.top-bar-section ul.right li a, body div.fixed.sticky nav.top-bar section.top-bar-section ul.left li.active a, body div.fixed.sticky nav.top-bar {
-// 	background-color: $white;
-// 	color: $darkGray;
-// 	font-family: $sans-serif;
-// }
-
-// .hidden {
-// 	display: none;
-// }
-
 nav.top-bar {
 	background-color: $darkGray;
 	color: $white;
@@ -63,6 +53,14 @@ div.sticky.hide-for-small-only nav.top-bar section.top-bar-section ul.right li a
 	color: $white;
 	font-family: $sans-serif;
 	padding-top: 17px
+}
+
+div.sticky.hide-for-small-only nav.top-bar section.top-bar-section ul.right.display-nav li a {
+	display: inline-block;
+}
+
+div.sticky.hide-for-small-only nav.top-bar section.top-bar-section ul.right.hide-nav li a {
+	display: none;
 }
 
 /******************

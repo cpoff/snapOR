@@ -6313,6 +6313,12 @@ div.sticky.hide-for-small-only nav.top-bar section.top-bar-section ul.right li a
   font-family: "Questrial", sans-serif;
   padding-top: 17px; }
 
+div.sticky.hide-for-small-only nav.top-bar section.top-bar-section ul.right.display-nav li a {
+  display: inline-block; }
+
+div.sticky.hide-for-small-only nav.top-bar section.top-bar-section ul.right.hide-nav li a {
+  display: none; }
+
 /******************
 SITE NAME
 ******************/

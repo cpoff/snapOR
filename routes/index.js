@@ -38,12 +38,16 @@ function validateEmail(email) {
 /* NEW USER REGISTRATION */
 router.post('/begin_regis', function(req, res){
 	console.log("bananas");
+	console.log("req.body");
 	console.log(req.body);
+	console.log("req.body.name");
 	console.log(req.body.name);
+	console.log('apples');
 	var email = req.body.email;
 	var name = req.body.name;
 	var hometown = req.body.hometown;
 	var password = req.body.password;
+	console.log("name");
 	console.log(name);
 	//var password_confirm = req.body.password_confirm;
 	var user_key = uuid.v4();
@@ -131,7 +135,9 @@ router.post('/user', function(req, res) {
 					console.log(hash);
 					if(currentUser.hash===hash){
 						console.log("success");
-						res.redirect('/');
+						//res.redirect('/');
+						//res.end();
+						res.send('hello');
 					} else {
 						res.render('mistake', {
 							error: "It looks like your password was incorrect.",
@@ -147,36 +153,26 @@ router.post('/user', function(req, res) {
 
 /* ROUTE FOR UPDATING EXISTING USER INFO */  
 router.post('/update_user_info', function(req, res) {
+	console.log('beginning update');
+	console.log(req.body);
 	var email = req.body.email;
-	var password = req.body.password;
 	var name = req.body.name;
 	var hometown = req.body.hometown;
+	var password = req.body.password;
 	var database = app.get('database');
-
-	db.search('snap', 'value.email:'+email)
-	.then(function(result) {
-		var currentUser = result.body.results[0].value;
-		if (result.body.count === 0) {
-			console.log('no user to update');
-			res.render('mistake', {
-				error: 'We were not able to find your information',
-				text: 'Please try again.'
-			});// res.render
-		} else {
-			dp.put('snap', user_key, {
-				'email': stored.email,
-				'salt': stored.salt,
-				'hash': stored.hash,
-				'name': stored.name,
-				'hometown': stored.hometown
-			})// db.put
-			.then(function() {
-				console.log('user updated');
-				res.end();
-			})// then
-			.fail(function(err){});
-		}
-	});// then
+	
+	dp.merge('snap', user_key, {
+		'email': stored.email,
+		'salt': stored.salt,
+		'hash': stored.hash,
+		'name': stored.name,
+		'hometown': stored.hometown
+	})// db.put
+	.then(function() {
+		console.log('user updated');
+		res.end();
+	})// then
+	.fail(function(err){});
 });// closes route to update exis. user info
 
 /* ROUTE TO LOGOUT CURRENT USER */  
