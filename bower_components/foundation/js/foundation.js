@@ -5947,7 +5947,7 @@
       custom_back_text : true,
       back_text : 'Back',
       mobile_show_parent_link : true,
-      is_hover : true,
+      is_hover : false,
       scrolltop : true, // jump to top when sticky nav menu toggle is clicked
       sticky_on : 'all',
       dropdown_autoclose: true
