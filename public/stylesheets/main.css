@@ -6303,11 +6303,14 @@ body {
     color: #FFF;
     font-size: 1.5em; }
   #intro-content .sec-1 p {
-    margin-bottom: 0; }
+    margin-bottom: 0;
+    font-family: "Gilda Display", serif; }
   #intro-content .sec-2 p {
-    margin-bottom: 0; }
+    margin-bottom: 0;
+    font-family: "Gilda Display", serif; }
   #intro-content .sec-3 p {
-    margin-bottom: 50px; }
+    margin-bottom: 50px;
+    font-family: "Gilda Display", serif; }
 
 /******************
 NAV BAR
@@ -6463,7 +6466,9 @@ FLICKR PICTURES
   justify-content: space-between;
   align-content: center;
   align-items: center;
-  margin-bottom: 50px; }
+  margin-bottom: 50px;
+  padding-right: 10%;
+  padding-left: 10%; }
 
 .flickrPhoto {
   flex-grow: 0;
@@ -6473,18 +6478,18 @@ FLICKR PICTURES
   .flickrPhoto flex-grow:hover {
     transform: scale(1.1); }
 
-#pictures {
+#pictures p {
   font-family: "Gilda Display", serif;
   color: #FFF;
-  padding-left: 40px;
-  padding-right: 40px; }
+  padding-left: 25%;
+  padding-right: 25%; }
 
 .flickrPhoto:hover {
   box-shadow: 0px 0px 30px #000000;
   transition: all 200ms ease-in;
   transform: scale(1.2); }
 
-#no-photos {
+.no-photos {
   color: #FFF;
   font-family: "Gilda Display", serif;
   margin-left: 20%; }
