@@ -6475,7 +6475,8 @@ FLICKR PICTURES
 #pictures {
   font-family: "Gilda Display", serif;
   color: #FFF;
-  margin-left: 40%; }
+  padding-left: 30px;
+  padding-right: 30px; }
 
 .flickrPhoto:hover {
   box-shadow: 0px 0px 30px #000000;
