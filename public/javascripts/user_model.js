@@ -54,7 +54,6 @@ var UserView = Backbone.View.extend({
 		'click #update_user': 'update_user',
 		'click #my_account': 'my_account',
 		'click #logout': 'logout',
-
 	},
 	// logout: function() {
 	// 	jQuery.post('/logout');
@@ -66,8 +65,6 @@ var UserView = Backbone.View.extend({
 		var password = $('#login-pw').val();
 		console.log('login user func')
 		event.preventDefault();
-		// var self = this;
-		//$('ul#logout-state').toggleClass('hide-nav');
 		jQuery.post('/user', {email: userEmail, password: password})
 		.then(function() {
 			console.log('new View')
@@ -96,44 +93,12 @@ var UserView = Backbone.View.extend({
 	// 	});
 	// },
 	logout: function() {
-		//renders default nav
+		$('ul#logout-state').toggleClass('hide-nav');
+		$('ul#login-state').toggleClass('hide-nav');
+		$('.reveal-modal-bg').css('display', 'none');
 	}
-	///////////////////// CURRENT_USER_TEMPLATE
-	// update: function(){
-	// 	var nameVal = this.model.get("name");
-	// 	var emailVal = this.model.get("email");
-	// 	var homeVal = this.model.get("home");
-	// 	this.$el.html(update_user_template());
-	// },
-	///////////////////// UPDATE_USER_TEMPLATE
-	// save: function() {
-	// 	//data before changes made
-	// 	var nameVal = this.model.get("name");
-	// 	var emailVal = this.model.get("email");
-	// 	var homeVal = this.model.get("home");
-	// 	//changes made on form
-	// 	var nameChanged = this.$el.find("#nameInput").val();
-	// 	var emailChanged = this.$el.find("#emailInput").val();
-	// 	var homeChanged = this.$el.find("#homeInput").val();
-
-	// 	if(nameVal !== nameChanged || emailVal !== emailChanged || homeVal !== homeChanged){
-	// 		// this.model.update();
-	// 		this.model.replace("name", nameChanged);
-	// 		this.model.replace("email", emailChanged);
-	// 		this.model.replace("home", homeChanged);
-	// 	}
-	// },
 }); // closes userView
 
 var userModel = new UserModel();
 var userView = new UserView({model: userModel});
 var regview = new RegView({model: userModel});
-
-// $(function(){
-// 	$('#login-form').submit(function(e) {
-// 		e.preventDefault();
-// 		console.log("hi mom!");
-// 		$('#login_user').trigger('click')
-// 	})
-// });
-
