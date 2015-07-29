@@ -1,54 +1,7 @@
 extends layout
 
 block content
-	div.fixed.sticky
-		nav.top-bar(data-topbar="", role="navigation")
-			ul.title-area
-				li.name
-					h1
-						a(href='/') snapOR
-				li.toggle-topbar.menu-icon
-					a(href="#")
-						span Menu
-			section.top-bar-section
-				ul.right
-					li
-						a Welcome!
-				ul.left
-					li.active
-						a(href='#', data-reveal-id="photos") Discover Photos
-							#photos.reveal-modal(data-reveal='', aria-labelledby='modalTitle', aria-hidden='true', role='dialog')
-									h2#modalTitle Discover Photos
-									form(method="post" action="/photos")
-										input(type="text" name="Enter tags:" placeholder="Ex: 'waterfalls', 'cape kiwanda'")
-										br
-										input(type="submit" value="Discover")
-								//-a.close-reveal-modal(aria-label='Close') &times;
-					li.active
-						a(href='#', data-reveal-id="parks") Explore Parks
-							#parks.reveal-modal(data-reveal='', aria-labelledby='modalTitle', aria-hidden='true', role='dialog')
-									h2#modalTitle Explore Parks
-									form(method="post" action="/parks")
-										input(type="text" name="Enter park name:" placeholder="Ex: 'cape kiwanda', 'silver falls state park'")
-										br
-										input(type="submit" value="Explore")
-								//-a.close-reveal-modal(aria-label='Close') &times;
-	div#userDiv
-	.show-for-small-only
-		.name
-			a(href='/')
-				h1 snapOR
-			a(href='#', data-reveal-id="login") 
-				div Login
-			a(href='#', data-reveal-id='register') 
-				div Register
-			a(href='#', data-reveal-id="photos") 
-				div Discover Photos
-			a(href='#', data-reveal-id="parks")
-				div Explore Parks
-	#user
-	#map_canvas.hide-for-small-only
-	#pictures
+	h1 User
 	script(src='/javascripts/all.js')
 	script.
 		$(document).foundation();
