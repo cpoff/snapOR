@@ -18,7 +18,7 @@ var MarkerView = Backbone.View.extend({
 		var sourceArray = [];
 		google.maps.event.addListener(marker, 'click', (function(marker) {
 			return function() {
-				info.setContent("<div><p><b>" + self.model.attributes.name + "</br><a href='#parkInfo'>Click to view pictures</a></div>");
+				info.setContent("<div><p><b>" + self.model.attributes.name + "</br><a href='#parkInfo'>View Photos</a></div>");
 				info.open(theMap.map, marker);
 
 				//Close any open infoWindow if the map is clicked
@@ -43,7 +43,7 @@ var MarkerView = Backbone.View.extend({
 									$("<a href=" + link + "><img class=flickrPhoto src=" + source + "></a>").appendTo('#pictures');
 								}
 							} else {
-								$("<p>Sorry, we couldn't find any photos from that park.</p>").appendTo('#pictures');	
+								$("<p>We didn't find any photos from that park. Adventure forth and photograph!</p>").appendTo('#pictures');	
 							}
 						} else{
 							$("#parkLabel").remove();
@@ -58,7 +58,7 @@ var MarkerView = Backbone.View.extend({
 									$("<a href=" + link + "><img class=flickrPhoto src=" + source + "></a>").appendTo('#pictures');
 								}
 							} else {
-								$("<p>Sorry, we couldn't find any photos from that park.</p>").appendTo('#pictures');	
+								$("<p>We didn't find any photos from that park. Adventure forth and photograph!</p>").appendTo('#pictures');	
 							}
 						}
 					});

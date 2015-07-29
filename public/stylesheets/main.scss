@@ -36,9 +36,9 @@ body {
 	padding-right: 20%;
 	margin-top: 40px;
 	p {
-	font-family: $sans-serif;
+	font-family: $serif;
 	color: $white;
-	font-size: 22px;
+	font-size: 1.5em;
 	}
 	.sec-1 p {
 		margin-bottom: 0;
@@ -275,7 +275,7 @@ MOBILE VERSION
 ******************/
 @media only screen and (max-width: 40em){
 	.name h1 {
-		background-color: $yellow;
+		background-color: $blue;
 		font-family: $cursive;
 		font-size: 5em;
 		text-align: center;
