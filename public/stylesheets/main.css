@@ -6299,9 +6299,9 @@ body {
   padding-right: 20%;
   margin-top: 40px; }
   #intro-content p {
-    font-family: "Questrial", sans-serif;
+    font-family: "Gilda Display", serif;
     color: #FFF;
-    font-size: 22px; }
+    font-size: 1.5em; }
   #intro-content .sec-1 p {
     margin-bottom: 0; }
   #intro-content .sec-2 p {
@@ -6494,7 +6494,7 @@ MOBILE VERSION
 ******************/
 @media only screen and (max-width: 40em) {
   .name h1 {
-    background-color: #FEC63D;
+    background-color: #1E749E;
     font-family: "Satisfy", cursive;
     font-size: 5em;
     text-align: center; }
