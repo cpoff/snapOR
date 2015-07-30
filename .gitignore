@@ -7,7 +7,5 @@ public/javascripts/all.*
 public/javascripts/all.js
 public/javascripts/all.js.map
 public/javascripts/all.min.js
-public/stylesheets/main.css
-public/stylesheets/main.css.map
-public/stylesheets/main.scss
+
 
