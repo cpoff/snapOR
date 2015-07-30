@@ -3,7 +3,7 @@ var SearchParkView = Backbone.View.extend({
 	el: '#parks',
 	render: function(){
 		//Explore Parks modal, appears in dom when you click Explore Parks
-		this.$el.html('<div id="parkList"><input id="parkName" class="typeahead" type="text" name="Enter park name:" style="font-family: \'Robot Slab\'" placeholder="Ex: \'cape kiwanda\', \'silver falls state park\'"><a href="#" class="close-reveal-modal"><input id="searchParks" class="submit button" class="submit" value="Explore"></a></div>');
+		this.$el.html('<div id="parkList"><input id="parkName" class="typeahead" type="text" name="Enter park name:" style="font-family: \'Robot Slab\'" placeholder="Ex: \'cape kiwanda\', \'silver falls state park\'"><a href="#" class="close-reveal-modal"><input id="searchParks" class="submit button" class="submit" value="Explore"></a><p>Scroll below the map to view pictures</p></div>');
 	},
 
 	searchParks: function(){
