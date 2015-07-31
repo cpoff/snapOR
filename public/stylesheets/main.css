@@ -6292,25 +6292,25 @@ GENERAL
 body {
   background-color: #1E749E; }
 
+/******************
+ABOUT
+******************/
+#about {
+  background-color: #FF5D55; }
+
 #intro-content {
   width: 100%;
   text-align: center;
   padding-left: 20%;
   padding-right: 20%;
   margin-top: 40px; }
+  #intro-content h2 {
+    font-family: "Satisfy", cursive;
+    color: #FFF; }
   #intro-content p {
     font-family: "Gilda Display", serif;
     color: #FFF;
     font-size: 1.5em; }
-  #intro-content .sec-1 p {
-    margin-bottom: 0;
-    font-family: "Gilda Display", serif; }
-  #intro-content .sec-2 p {
-    margin-bottom: 0;
-    font-family: "Gilda Display", serif; }
-  #intro-content .sec-3 p {
-    margin-bottom: 50px;
-    font-family: "Gilda Display", serif; }
 
 /******************
 NAV BAR

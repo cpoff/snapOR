@@ -29,28 +29,28 @@ body {
 	background-color: $blue;
 }
 
+/******************
+ABOUT
+******************/
+
+#about {
+	background-color: $red;
+}
+
 #intro-content{
 	width: 100%;
 	text-align: center;
 	padding-left: 20%;
 	padding-right: 20%;
 	margin-top: 40px;
+	h2 {
+		font-family: $cursive;
+		color: $white;
+	}
 	p {
 	font-family: $serif;
 	color: $white;
 	font-size: 1.5em;
-	}
-	.sec-1 p {
-		margin-bottom: 0;
-		font-family: $serif;
-	}
-	.sec-2 p {
-		margin-bottom: 0;
-		font-family: $serif;
-	}
-	.sec-3 p {
-		margin-bottom: 50px;
-		font-family: $serif;
 	}
 }
 
