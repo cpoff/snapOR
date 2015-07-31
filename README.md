@@ -1,8 +1,8 @@
 #snapOR
 
-url: [snapOR on Heroku](https://snaporegon.herokuapp.com/)
+URL: [snapOR on Heroku](https://snaporegon.herokuapp.com/)
 
-landing page: [wireframe](https://moqups.com/angelariggs/zbq8VzMg/p:a418af527)
+Wireframes: [Moqups](https://moqups.com/angelariggs/zbq8VzMg/p:a418af527)
 
 ##APIs
 * [Oregon State Parks](http://oregonstateparks.org/data/index.cfm/)
@@ -14,11 +14,9 @@ landing page: [wireframe](https://moqups.com/angelariggs/zbq8VzMg/p:a418af527)
 Outline of mvp [Mind Map](https://bubbl.us/mindmap?h=2b3e64/5740cb/28h3pIVw29bJE)
 
 ##Areas of responsibility
-* Angela: state parks API, express server, foundation/sass, user view, cloud database: user login/logout/update
-* Nate: google maps API, initiating database (orchestrate), ui tests, park backbone, heroku, foundation/sass, gulp, explore parks modal and search, mobile styles
-* Curt: flickr API, heroku,  parks model/collection
-
-##Initial BDD descriptions:
+* Angela: Oregon State Parks API, Express server, Foundation/Sass, Backbone for user view, Orchestrate, UI testing
+* Nate: Google Maps API, UI testing, Backbone for parks, Heroku, Foundation mobile styles, Gulp
+* Curt: Flickr API, Heroku, Backbone for parks, UI testing
 
 ##To contribute
 ######Local workflow
