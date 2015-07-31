@@ -38,17 +38,12 @@ function validateEmail(email) {
 /* NEW USER REGISTRATION */
 router.post('/begin_regis', function(req, res){
 	console.log("bananas");
-	console.log("req.body");
+	console.log("Regis info:");
 	console.log(req.body);
-	console.log("req.body.name");
-	console.log(req.body.name);
-	console.log('apples');
 	var email = req.body.email;
 	var name = req.body.name;
 	var hometown = req.body.hometown;
 	var password = req.body.password;
-	console.log("name");
-	console.log(name);
 	//var password_confirm = req.body.password_confirm;
 	var user_key = uuid.v4();
 	var database = app.get('database');
@@ -59,12 +54,12 @@ router.post('/begin_regis', function(req, res){
 		if (result.body.count !== 0) {
 			console.log("search result");
 			console.log(result.body.count);
-			res.end();
+			//res.end();
 
-			// res.render('mistake', {
-			// 	error: 'Here is the error',
-			// 	text: 'Here is the text'
-			// });
+			res.render('mistake', {
+				error: 'Here is the error',
+				text: 'Here is the text'
+			});
 
 			// var message = {error: "Email has already been used to register."};
 			// res.send(message);
