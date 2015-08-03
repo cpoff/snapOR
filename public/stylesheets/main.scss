@@ -29,30 +29,6 @@ body {
 	background-color: $blue;
 }
 
-/******************
-ABOUT
-******************/
-
-#about {
-	background-color: $red;
-}
-
-#intro-content{
-	width: 100%;
-	text-align: center;
-	padding-left: 20%;
-	padding-right: 20%;
-	margin-top: 40px;
-	h2 {
-		font-family: $cursive;
-		color: $white;
-	}
-	p {
-	font-family: $serif;
-	color: $white;
-	font-size: 1.5em;
-	}
-}
 
 /******************
 NAV BAR
@@ -82,6 +58,37 @@ div.sticky.hide-for-small-only nav.top-bar section.top-bar-section ul.right li a
 #login-state.hide-nav,
 #logout-state.hide-nav {
 	display: none;
+}
+
+/******************
+ABOUT MODAL
+******************/
+
+#about {
+	background-color: $white;
+}
+
+#intro-content{
+	width: 100%;
+	text-align: center;
+	padding-left: 20%;
+	padding-right: 20%;
+	margin-top: 40px;
+	h2 {
+		font-family: $cursive;
+		color: $red;
+	}
+	p {
+	font-family: $serif;
+	color: $blue;
+	font-size: 1.25em;
+	}
+}
+
+.names {
+	color: $red;
+	font-family: $serif;
+	font-size: 1.35em;
 }
 
 /******************
