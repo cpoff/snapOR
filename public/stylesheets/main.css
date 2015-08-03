@@ -6293,26 +6293,6 @@ body {
   background-color: #1E749E; }
 
 /******************
-ABOUT
-******************/
-#about {
-  background-color: #FF5D55; }
-
-#intro-content {
-  width: 100%;
-  text-align: center;
-  padding-left: 20%;
-  padding-right: 20%;
-  margin-top: 40px; }
-  #intro-content h2 {
-    font-family: "Satisfy", cursive;
-    color: #FFF; }
-  #intro-content p {
-    font-family: "Gilda Display", serif;
-    color: #FFF;
-    font-size: 1.5em; }
-
-/******************
 NAV BAR
 ******************/
 nav.top-bar {
@@ -6336,6 +6316,31 @@ div.sticky.hide-for-small-only nav.top-bar section.top-bar-section ul.right li a
 #login-state.hide-nav,
 #logout-state.hide-nav {
   display: none; }
+
+/******************
+ABOUT MODAL
+******************/
+#about {
+  background-color: #FFF; }
+
+#intro-content {
+  width: 100%;
+  text-align: center;
+  padding-left: 20%;
+  padding-right: 20%;
+  margin-top: 40px; }
+  #intro-content h2 {
+    font-family: "Satisfy", cursive;
+    color: #FF5D55; }
+  #intro-content p {
+    font-family: "Gilda Display", serif;
+    color: #1E749E;
+    font-size: 1.25em; }
+
+.names {
+  color: #FF5D55;
+  font-family: "Gilda Display", serif;
+  font-size: 1.35em; }
 
 /******************
 SITE NAME
