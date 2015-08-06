@@ -31,27 +31,34 @@ var RegView = Backbone.View.extend({
 		var nameInput = $('#nameInput').val();
 		var homeInput = $('#homeInput').val();
 		if(password===password_confirm){
-			$.ajax({
-				type: "POST",
-				url:'/begin_regis',
-				data: {email: userEmail, password: password, name: nameInput, hometown: homeInput},
-				success: function(message) {
-					if (!message.error) {
-						console.log(message);
-						$('.reveal-modal-bg').css('display', 'none');
-						$('ul#logout-state').toggleClass('hide-nav');
-						$('ul#login-state').toggleClass('hide-nav');
-						console.log("renderTemplate");
-						res.end();
-					} else {
-						$.get('/mistake', {
-							error: 'this is the error',
-							text: 'this is the text'
-						})
-					}
-				},
-				dataType: 'json'
-			});// closes ajax post
+			jQuery.post('/begin_regis', {email: userEmail, password: password, name: nameInput, hometown: homeInput})
+				.then(function() {
+					$('.reveal-modal-bg').css('display', 'none');
+					$('ul#logout-state').toggleClass('hide-nav');
+					$('ul#login-state').toggleClass('hide-nav');
+					console.log("renderTemplate");
+				}())// then
+			// $.ajax({
+			// 	type: "POST",
+			// 	url:'/begin_regis',
+			// 	data: {email: userEmail, password: password, name: nameInput, hometown: homeInput},
+			// 	success: function(message) {
+			// 		if (!message.error) {
+			// 			console.log(message);
+			// 			$('.reveal-modal-bg').css('display', 'none');
+			// 			$('ul#logout-state').toggleClass('hide-nav');
+			// 			$('ul#login-state').toggleClass('hide-nav');
+			// 			console.log("renderTemplate");
+			// 			res.end();
+			// 		} else {
+			// 			$.get('/mistake', {
+			// 				error: 'this is the error',
+			// 				text: 'this is the text'
+			// 			})
+			// 		}
+			// 	},
+			// 	dataType: 'json'
+			// });// closes ajax post
 		} else {
 			alert('Please make sure your password and password confirmation are the same.');
 		}
