@@ -16,7 +16,9 @@
     "orchestrate": "^0.4.5",
     "pwd": "0.0.4",
     "serve-favicon": "^2.3.0",
-    "uuid": "*"
+    "uuid": "*",
+    "passport": "*",
+    "passport-local": "*"
   },
   "devDependencies": {
     "gulp": "^3.9.0",

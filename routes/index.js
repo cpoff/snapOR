@@ -5,8 +5,8 @@ var db = require('orchestrate')(process.env.dbKey || config.dbKey);
 var uuid = require('uuid');
 var pwd = require('pwd');
 var app = require('../app');
-// var passport = require('passport');
-// var LocalStrategy = require('passport-local').Strategy;
+var passport = require('passport');
+var LocalStrategy = require('passport-local').Strategy;
 
 /* HOME PAGE */
 router.get('/', function(req, res, next) {
