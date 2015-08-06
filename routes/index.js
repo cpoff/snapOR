@@ -5,15 +5,12 @@ var db = require('orchestrate')(process.env.dbKey || config.dbKey);
 var uuid = require('uuid');
 var pwd = require('pwd');
 var app = require('../app');
+var passport = require('passport');
+var LocalStrategy = require('passport-local').Strategy;
 
 /* HOME PAGE */
 router.get('/', function(req, res, next) {
   res.render('index', { title: 'snapOR' });
-});
-
-/* USER PAGE */
-router.get('/user', function(req, res) {
-	res.render('user');
 });
 
 /* MISTAKE PAGE */
@@ -44,25 +41,22 @@ router.post('/begin_regis', function(req, res){
 	var name = req.body.name;
 	var hometown = req.body.hometown;
 	var password = req.body.password;
-	//var password_confirm = req.body.password_confirm;
 	var user_key = uuid.v4();
 	var database = app.get('database');
 	//console.log(db.search);
 	db.search('snap', 'value.email:'+email)
 	.then(function(result) {
-		//console.log('email: ', email)
+		console.log('count');
+		console.log(result.body.count);
 		if (result.body.count !== 0) {
-			console.log("search result");
-			console.log(result.body.count);
 			//res.end();
-
-			res.render('mistake', {
-				error: 'Here is the error',
-				text: 'Here is the text'
-			});
-
-			// var message = {error: "Email has already been used to register."};
-			// res.send(message);
+			// res.redirect('/mistake', {
+			// 	error: 'Here is the error',
+			// 	text: 'Here is the text'
+			// });
+				console.log('mistake');
+				var message = {error: "Email has already been used to register."};
+				res.send(message);
 		} 
 		// else if(!validateEmail(email)){
 		// 	res.render ('mistake', {
