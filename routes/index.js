@@ -50,13 +50,13 @@ router.post('/begin_regis', function(req, res){
 		console.log(result.body.count);
 		if (result.body.count !== 0) {
 			//res.end();
-			// res.redirect('/mistake', {
-			// 	error: 'Here is the error',
-			// 	text: 'Here is the text'
-			// });
-				console.log('mistake');
-				var message = {error: "Email has already been used to register."};
-				res.send(message);
+			res.render('mistake', {
+				error: 'Here is the error',
+				text: 'Here is the text'
+			});
+				// console.log('mistake');
+				// var message = {error: "Email has already been used to register."};
+				// res.send(message);
 		} 
 		// else if(!validateEmail(email)){
 		// 	res.render ('mistake', {
