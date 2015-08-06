@@ -1,3 +1,5 @@
+//Oregon State Parks API
+
 var APP = APP || {};
 (function (APP) {
 	var url = 'http://oregonstateparks.org/data/index.cfm';
