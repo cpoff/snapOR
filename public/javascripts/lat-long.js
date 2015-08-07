@@ -2,7 +2,7 @@
 
 var APP = APP || {};
 (function (APP) {
-	var url = '//oregonstateparks.org/data/index.cfm';
+	var url = 'http://oregonstateparks.org/data/index.cfm';
 	var data = {
 		endpoint: '/parks',
 		parkName: ""
