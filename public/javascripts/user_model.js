@@ -20,11 +20,14 @@ var UserModel = Backbone.Model.extend({
 var RegView = Backbone.View.extend({
 	el: '#register',
 	events: {
+		// click event id from foundation modal in index.jade
 		'click #register_account': 'register_account'
 	},
 	register_account: function(event){
+		// preventDefault to block ajax request from index.jade
 		event.preventDefault();
 		var self = this;
+		// vars to find the values entered in the 'register' modal
 		var userEmail = $('#email').val();
 		var password = $('#password').val();
 		var password_confirm = $('#password_confirm').val();
@@ -33,6 +36,7 @@ var RegView = Backbone.View.extend({
 		if(password===password_confirm){
 			jQuery.post('/begin_regis', {email: userEmail, password: password, name: nameInput, hometown: homeInput})
 				.then(function() {
+					// removes background styling for modal and displays toggled nav bar. V2 will have persistence.
 					$('.reveal-modal-bg').css('display', 'none');
 					$('ul#logout-state').toggleClass('hide-nav');
 					$('ul#login-state').toggleClass('hide-nav');
@@ -70,12 +74,14 @@ var RegView = Backbone.View.extend({
 var UserView = Backbone.View.extend({
 	el : '#login',
 	events: {
+		// click event id from foundation modal in index.jade
 		'click #login_user': 'login_user', 
 	},
 	login_user: function(event) {
 		var userEmail = $('#login-email').val();
 		var password = $('#login-pw').val();
 		console.log('login user func')
+		// preventDefault to block ajax request from index.jade
 		event.preventDefault();
 		jQuery.post('/user', {email: userEmail, password: password})
 		.then(function() {
@@ -97,6 +103,7 @@ var UpdateView = Backbone.View.extend({
 		'click #update_user': 'update_user'
 	},
 	update_user: function(event) {
+		// preventDefault to block ajax request from index.jade
 		event.preventDefault();
 		console.log('server request')
 		jQuery.post('/update')
@@ -122,6 +129,7 @@ var UpdateView = Backbone.View.extend({
 
 
 /***** LOGOUT USERS *****/
+// Currently just switches the navbar view; V2 will use passport for persistence
 var LogoutView = Backbone.View.extend({
 	el: '#logout_func',
 	events: {
