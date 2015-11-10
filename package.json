@@ -28,5 +28,8 @@
     "gulp-uglify": "^1.2.0",
     "chai": "*",
     "mocha": "*"
+  },
+    "engines": {
+    "node": "4.0.0"
   }
 }
