@@ -32,7 +32,6 @@ Outline of mvp [Mind Map](https://bubbl.us/mindmap?h=2b3e64/5740cb/28h3pIVw29bJE
 * After a push, submit a pull request
 
 ##Gulp
-if 'gulp command not found', run npm install gulp -g
 
 To make style changes
 	1. run 'gulp watch' in terminal
